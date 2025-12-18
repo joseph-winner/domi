@@ -16,6 +16,12 @@ export function AuthProvider({ children }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    // Skip auth listener if auth is not initialized (during build)
+    if (!auth) {
+      setLoading(false);
+      return;
+    }
+
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setUser(user);
       setLoading(false);
@@ -25,6 +31,7 @@ export function AuthProvider({ children }) {
   }, []);
 
   const login = async (email, password) => {
+    if (!auth) return { success: false, error: "Auth not initialized" };
     try {
       const result = await signInWithEmailAndPassword(auth, email, password);
       return { success: true, user: result.user };
@@ -34,6 +41,7 @@ export function AuthProvider({ children }) {
   };
 
   const logout = async () => {
+    if (!auth) return { success: false, error: "Auth not initialized" };
     try {
       await signOut(auth);
       return { success: true };
