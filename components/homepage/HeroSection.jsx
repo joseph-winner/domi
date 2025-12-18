@@ -1,8 +1,9 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import { getHeroContent } from "@/lib/firestore";
 
-const slides = [
+const defaultSlides = [
   {
     image: "/img/main-slide1.jpg",
     verse: "Isaiah 53:5",
@@ -20,8 +21,30 @@ const slides = [
   },
 ];
 
+const defaultContent = {
+  slides: defaultSlides,
+  tagline: { primary: "Spirited", secondary: "to Care" },
+  title: "Doctors On Mission",
+  titleHighlight: "International",
+  subtitle:
+    "Extending hope-giving healthcare and faith-filled compassion to the overlooked corners of the globe.",
+};
+
 function HeroSection() {
   const [current, setCurrent] = useState(0);
+  const [content, setContent] = useState(defaultContent);
+
+  useEffect(() => {
+    const loadContent = async () => {
+      const data = await getHeroContent();
+      if (data && data.slides && data.slides.length > 0) {
+        setContent({ ...defaultContent, ...data });
+      }
+    };
+    loadContent();
+  }, []);
+
+  const slides = content.slides || defaultSlides;
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -52,16 +75,22 @@ function HeroSection() {
       {/* Slide Content */}
       <div className="relative z-10 flex w-full flex-col items-center px-5 py-24 text-center md:px-10">
         <div className="mb-5 inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/10 px-6 py-2 text-[0.65rem] uppercase tracking-[0.45em] backdrop-blur">
-          <span className="text-[#FF126B] font-semibold">Spirited</span>
-          <span className="text-white/80">to Care</span>
+          <span className="text-[#FF126B] font-semibold">
+            {content.tagline?.primary || "Spirited"}
+          </span>
+          <span className="text-white/80">
+            {content.tagline?.secondary || "to Care"}
+          </span>
         </div>
         <h1 className="text-4xl font-extrabold leading-tight sm:text-5xl md:text-6xl">
-          Doctors On Mission{" "}
-          <span className="text-[#A1CB4A]">International</span>
+          {content.title || "Doctors On Mission"}{" "}
+          <span className="text-[#A1CB4A]">
+            {content.titleHighlight || "International"}
+          </span>
         </h1>
         <p className="mt-4 max-w-3xl text-base text-gray-200 sm:text-lg">
-          Extending hope-giving healthcare and faith-filled compassion to the
-          overlooked corners of the globe.
+          {content.subtitle ||
+            "Extending hope-giving healthcare and faith-filled compassion to the overlooked corners of the globe."}
         </p>
         <div
           className="mt-8 w-full max-w-2xl rounded-3xl border border-white/15 bg-white/5 p-6 text-left backdrop-blur"
