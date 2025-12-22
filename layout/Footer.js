@@ -51,7 +51,7 @@ function Footer({
       <div className="relative">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
           {/* Top */}
-          <div className="grid gap-10 py-12 md:grid-cols-2 lg:grid-cols-12 lg:gap-8">
+          <div className="grid gap-8 py-12 md:grid-cols-2 lg:grid-cols-12 lg:gap-6">
             {/* Brand */}
             <div className="lg:col-span-4">
               <div className="flex items-center gap-4">
@@ -97,7 +97,7 @@ function Footer({
             </div>
 
             {/* Links */}
-            <div className="lg:col-span-3">
+            <div className="lg:col-span-2">
               <h3 className="text-base font-semibold">Quick Links</h3>
               <ul className="mt-4 space-y-3 text-sm text-white/75">
                 {quickLinks.map((l) => (
@@ -116,7 +116,7 @@ function Footer({
               </ul>
             </div>
 
-            <div className="lg:col-span-3">
+            <div className="lg:col-span-2">
               <h3 className="text-base font-semibold">Work With Us</h3>
               <ul className="mt-4 space-y-3 text-sm text-white/75">
                 {workWithUs.map((l) => (
@@ -136,7 +136,7 @@ function Footer({
             </div>
 
             {/* Reach out */}
-            <div className="lg:col-span-2">
+            <div className="lg:col-span-4">
               <h3 className="text-base font-semibold">Reach Out</h3>
 
               <div className="mt-4 space-y-4 text-sm text-white/75">
@@ -144,14 +144,16 @@ function Footer({
                   <p className="font-semibold text-white/90">Mail:</p>
                   <a
                     href="mailto:info@doctorsonmissionint.org"
-                    className="mt-2 inline-flex items-center gap-2 hover:text-white"
+                    className="mt-2 flex items-center gap-2 hover:text-white break-all"
                   >
-                    <Mail className="h-4 w-4 text-amber-300" />
-                    info@doctorsonmissionint.org
+                    <Mail className="h-4 w-4 shrink-0 text-amber-300" />
+                    <span className="break-all">
+                      info@doctorsonmissionint.org
+                    </span>
                   </a>
 
                   <p className="mt-4 font-semibold text-white/90">Address:</p>
-                  <p className="mt-2 inline-flex gap-2 leading-relaxed">
+                  <p className="mt-2 flex gap-2 leading-relaxed">
                     <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-amber-300" />
                     <span>
                       P.O.box 421315, Mbarara–Isingiro road, Mbarara City,
@@ -181,7 +183,7 @@ function Footer({
           <div className="h-px w-full bg-gradient-to-r from-transparent via-white/25 to-transparent" />
 
           {/* Bottom bar */}
-          <div className="flex flex-col gap-4 py-6 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex flex-col items-center gap-4 py-6 text-center sm:flex-row sm:justify-between sm:text-left">
             <p className="text-sm text-white/70">
               © {new Date().getFullYear()} Doctors On Mission International{" "}
               <span className="text-white/40">|</span> Powered by{" "}
@@ -193,7 +195,7 @@ function Footer({
               </a>
             </p>
 
-            <div className="hidden items-center gap-4 sm:flex">
+            <div className="flex items-center gap-4">
               {socials.map(({ label, href, Icon }) => (
                 <a
                   key={label}
