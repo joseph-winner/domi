@@ -276,13 +276,13 @@ function VolunteerPage() {
       {/* HERO */}
       <section className={`relative overflow-hidden ${brand.gradient}`}>
         {/* BG IMAGE */}
-        <div className="absolute inset-0 opacity-30">
+        {/* <div className="absolute inset-0 opacity-30">
           <img
-            src="/img/volunteer/hero.jpg"
+            src="/img/volunteer/medical-mission.jpg"
             alt="Volunteer medical mission in Uganda"
             className="h-full w-full object-cover"
           />
-        </div>
+        </div> */}
 
         {/* BLOBS */}
         <div className="pointer-events-none absolute -left-24 -top-24 h-80 w-80 rounded-full bg-[#0389C3]/25 blur-3xl" />
@@ -353,7 +353,7 @@ function VolunteerPage() {
               <div className="absolute -inset-3 rounded-3xl bg-gradient-to-br from-[#0389C3]/25 via-white/10 to-[#EABF4E]/15 blur-2xl" />
               <div className="relative overflow-hidden rounded-3xl border border-[#0389C3]/20 bg-white/5 p-3 shadow-2xl shadow-black/30">
                 <img
-                  src="/img/volunteer/poster.jpg"
+                  src="/img/VOLUNTEERS AMMP.jpg"
                   alt="Volunteers program poster"
                   className="h-[520px] w-full rounded-2xl object-cover"
                 />
@@ -513,7 +513,7 @@ function VolunteerPage() {
 
             <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-3 shadow-2xl shadow-black/30">
               <img
-                src="/img/volunteer/group.jpg"
+                src="/img/about-5.jpg"
                 alt="Volunteer group in Uganda"
                 className="h-full min-h-[320px] w-full rounded-2xl object-cover"
               />
@@ -597,7 +597,7 @@ function VolunteerPage() {
 
             <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-3 shadow-2xl shadow-black/30">
               <img
-                src="/img/volunteer/location.jpg"
+                src="/img/about-bg.jpg"
                 alt="Uganda placement location"
                 className="h-full min-h-[520px] w-full rounded-2xl object-cover"
               />
@@ -662,7 +662,7 @@ function VolunteerPage() {
                 <div className="mt-3 flex items-center gap-3">
                   <div className="h-12 w-12 overflow-hidden rounded-2xl border border-white/10 bg-white/5">
                     <img
-                      src="/img/volunteer/team.jpg"
+                      src="/img/team-leader.jpg"
                       alt="DOMI team"
                       className="h-full w-full object-cover"
                     />

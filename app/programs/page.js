@@ -2,16 +2,15 @@
 import React, { useMemo, useState } from "react";
 
 function Page() {
-  // 👉 Replace these with your real images in /public/images/programs/*
   const IMAGES = {
-    partnerships: "/images/programs/partnerships.jpg",
-    volunteers: "/images/programs/volunteers.jpg",
-    trainings: "/images/programs/trainings.jpg",
-    heroGallery1: "/images/programs/gallery-1.jpg",
-    heroGallery2: "/images/programs/gallery-2.jpg",
-    heroGallery3: "/images/programs/gallery-3.jpg",
-    upcomingPoster: "/images/programs/upcoming-medical-camp.jpg",
-    eyeCampPoster: "/images/programs/eye-surgical-camp.jpg",
+    partnerships: "/img/partnerships.jpg",
+    volunteers: "/img/volunteers.jpg",
+    trainings: "/img/trainings.jpg",
+    heroGallery1: "/programs/domi-1.jpg",
+    heroGallery2: "/programs/domi-2.jpg",
+    heroGallery3: "/programs/domi-3.jpg",
+    upcomingPoster: "/img/3daymedcamp.jpg",
+    eyeCampPoster: "/programs/eye-surgical-camp.jpg",
   };
 
   const programCards = [
@@ -45,7 +44,7 @@ function Page() {
     verse: "“…and by His stripes , we are healed” Isaiah 53:5",
     cta: { label: "Learn more", href: "#camp-details" },
     // 👉 Replace with your real YouTube ID
-    youtubeId: "dQw4w9WgXcQ",
+    youtubeId: "pCgwrY99J0I?si=O9CZ_k-FuWXs6OYN",
   };
 
   const highlights = [
@@ -86,37 +85,37 @@ function Page() {
     {
       id: "g4",
       category: "Outreach",
-      src: "/images/programs/gallery-4.jpg",
+      src: "/programs/domi-4.jpg",
       title: "Patient education & counseling",
     },
     {
       id: "g5",
       category: "Surgical Camps",
-      src: "/images/programs/gallery-5.jpg",
+      src: "/programs/domi-5.jpg",
       title: "Surgical support & follow-up",
     },
     {
       id: "g6",
       category: "Partnerships",
-      src: "/images/programs/gallery-6.jpg",
+      src: "/programs/domi-6.jpg",
       title: "Team & partners group photo",
     },
     {
       id: "g7",
       category: "Medical Camps",
-      src: "/images/programs/gallery-7.jpg",
+      src: "/programs/domi-7.jpg",
       title: "Clinic setup & supplies",
     },
     {
       id: "g8",
       category: "Outreach",
-      src: "/images/programs/gallery-8.jpg",
+      src: "/programs/domi-8.jpg",
       title: "Community engagement",
     },
     {
       id: "g9",
       category: "Medical Camps",
-      src: "/images/programs/gallery-9.jpg",
+      src: "/programs/domi-9.jpg",
       title: "Triage and vitals",
     },
   ];
@@ -130,12 +129,12 @@ function Page() {
     {
       title: "Ogul Medical Camp",
       subtitle: "Doctors on Mission • Highlights",
-      youtubeId: "dQw4w9WgXcQ",
+      youtubeId: "2S60glFtJtE?si=6SCa5ycNa6lFR6uc",
     },
     {
       title: "Medical camp highlights",
       subtitle: "Field moments & impact",
-      youtubeId: "dQw4w9WgXcQ",
+      youtubeId: "vxvxHN658OE?si=qlTq2K8OVp3f2isn",
     },
   ];
 
@@ -447,7 +446,7 @@ function Page() {
                 loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950/50 via-transparent to-transparent opacity-0 transition group-hover:opacity-100" />
-              <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between gap-3 rounded-2xl border border-white/10 bg-white/10 p-4 text-white backdrop-blur">
+              {/* <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between gap-3 rounded-2xl border border-white/10 bg-white/10 p-4 text-white backdrop-blur">
                 <div>
                   <div className="text-sm font-extrabold">
                     Tap to view poster
@@ -459,7 +458,7 @@ function Page() {
                 <div className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/15">
                   ↗
                 </div>
-              </div>
+              </div> */}
             </button>
           </div>
         </div>
@@ -769,11 +768,6 @@ function Page() {
                 </a>
               </div>
             </div>
-          </div>
-
-          <div className="mt-8 text-center text-xs text-slate-400">
-            © {new Date().getFullYear()} Doctors on Mission International •
-            Programs
           </div>
         </div>
       </section>

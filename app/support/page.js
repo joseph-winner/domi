@@ -22,8 +22,7 @@ function page() {
       excerpt:
         "In partnership with Holy Innocents Childrens Hospital, we hosted a week-long paediatric surgical camp with local and visiting clinicians. Our focus was safe surgery, compassionate care, and restoring hope for children and families.",
       highlight: "“He took our illnesses and bore our diseases.” Isaiah 53:4",
-      image:
-        "https://images.unsplash.com/photo-1580281657527-47f249e8f3b2?auto=format&fit=crop&w=1400&q=80",
+      image: "/img/upcoming-programs-1.jpg",
     },
     {
       tag: "Previous Outreach",
@@ -33,8 +32,7 @@ function page() {
       excerpt:
         "Together with local partners, we conducted a community medical camp providing consultations, basic labs, treatment, and referrals. We served children, elderly, and families with limited access to care.",
       highlight: "“By His stripes, we were healed.” 1 Peter 2:24",
-      image:
-        "https://images.unsplash.com/photo-1526256262350-7da7584cf5eb?auto=format&fit=crop&w=1400&q=80",
+      image: "/img/upcoming-programs -2.jpg",
     },
   ];
 
@@ -70,7 +68,7 @@ function page() {
                   <div className="absolute -inset-3 rounded-[2.25rem] bg-gradient-to-br from-sky-400/20 via-emerald-300/10 to-white/10 blur-md" />
                   <div className="relative overflow-hidden rounded-[2rem] border border-white/60 bg-white/50 shadow-[0_25px_70px_-45px_rgba(2,132,199,0.6)] backdrop-blur">
                     <img
-                      src="https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=1400&q=80"
+                      src="/img/support-1.jpg"
                       alt="Clinician preparing for a medical mission"
                       className="h-[320px] w-full object-cover sm:h-[380px] lg:h-[520px]"
                       loading="lazy"
@@ -276,7 +274,7 @@ function page() {
                 {/* Replace the src with your actual featured video */}
                 <iframe
                   className="absolute inset-0 h-full w-full"
-                  src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0"
+                  src="https://www.youtube.com/embed/vxvxHN658OE?si=qlTq2K8OVp3f2isn"
                   title="Doctors on Mission — Featured Video"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
@@ -322,10 +320,10 @@ function page() {
                       Mission partnership
                     </p>
                     <p className="mt-2 text-sm font-semibold text-white">
-                      0700 000 000
+                      +256 782 524 317
                     </p>
-                    <p className="mt-1 text-xs text-white/60">
-                      Replace with official contact
+                    <p className="mt-1 text-xs text-white font-semibold">
+                      +256 784 808 738
                     </p>
                   </div>
 
@@ -337,8 +335,10 @@ function page() {
                       Centenary Bank, Mbarara Branch
                     </p>
                     <p className="mt-1 text-xs text-white/60">
-                      Account:{" "}
-                      <span className="text-white/80">ECBRUCKA XXX</span>
+                      Account: <span className="text-white/80">3100107255</span>{" "}
+                      <br />
+                      SWIFT:
+                      <span className="text-white/80">CERBUGKA XXX</span>
                     </p>
                   </div>
                 </div>
@@ -399,7 +399,7 @@ function page() {
             <div className="lg:col-span-6">
               <div className="relative h-full overflow-hidden rounded-[2.5rem] border border-white/10 bg-white/5 shadow-[0_30px_90px_-60px_rgba(0,0,0,0.65)]">
                 <img
-                  src="https://images.unsplash.com/photo-1581595219315-a187dd40c322?auto=format&fit=crop&w=1400&q=80"
+                  src="/img/upcoming-programs.jpg"
                   alt="Surgical team during a medical mission"
                   className="h-full min-h-[420px] w-full object-cover opacity-95"
                   loading="lazy"

@@ -575,7 +575,7 @@ function AboutPage() {
               <div className="relative aspect-video rounded-3xl overflow-hidden shadow-2xl border border-white/10">
                 <iframe
                   className="w-full h-full"
-                  src="https://www.youtube.com/embed/your-video-id"
+                  src="https://www.youtube.com/embed/Guups3m-nhs?si=f7oE5HgSCg_LrnrD"
                   title="Gulu Medical camp Ogul Village 2023"
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -586,10 +586,10 @@ function AboutPage() {
           </div>
 
           {/* Video Navigation Dots */}
-          <div className="flex justify-center gap-3 mt-10">
+          {/* <div className="flex justify-center gap-3 mt-10">
             <span className="w-3 h-3 rounded-full bg-white cursor-pointer shadow-lg shadow-white/25"></span>
             <span className="w-3 h-3 rounded-full bg-white/30 cursor-pointer hover:bg-white/60 transition-all duration-300 hover:scale-125"></span>
-          </div>
+          </div> */}
         </div>
       </section>
 

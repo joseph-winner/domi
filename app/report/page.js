@@ -12,7 +12,8 @@ const REPORTS = [
     category: "Mission Report",
     dateRange: "1 Week",
     cover: "/reports/buhweju-eye-report.png",
-    downloadUrl: "/reports/buhweju-eye-surgical-mission-report.pdf",
+    downloadUrl:
+      "/files/BUHWEJU EYE SURGICAL MISSION - Doctors on Mission International.pdf",
     tags: ["Eye Care", "Surgery", "Community Outreach"],
   },
   {
@@ -36,7 +37,7 @@ const REPORTS = [
     category: "Medical Camp",
     dateRange: "28th – 30th March 2025",
     cover: "/reports/gulu-medical-camp-report.png",
-    downloadUrl: "/reports/gulu-medical-camp-report.pdf",
+    downloadUrl: "/files/Gulu Medical Camp Report.pdf",
     tags: ["Screening", "Treatment", "Referrals"],
   },
   {
@@ -48,7 +49,7 @@ const REPORTS = [
     category: "Mission Deck",
     dateRange: "28th – 30th March 2025",
     cover: "/reports/gulu-mission-deck.png",
-    downloadUrl: "/reports/doctors-on-mission-gulu-mission.pdf",
+    downloadUrl: "/files/Gulu Medical Camp Report.pdf",
     tags: ["Outreach", "Mission", "Community Health"],
   },
   {
@@ -60,7 +61,7 @@ const REPORTS = [
     category: "Annual Report",
     dateRange: "Jan – Dec 2024",
     cover: "/reports/annual-report-2024.png",
-    downloadUrl: "/reports/annual-report-2024.pdf",
+    downloadUrl: "/files/domi-annual-report-2024.pdf",
     tags: ["Impact", "Financials", "Milestones"],
   },
 ];
