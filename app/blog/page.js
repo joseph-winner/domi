@@ -1,45 +1,29 @@
-export const metadata = {
-  title: "Medical Mission Stories & Health Insights",
-  description:
-    "Stories from the field, volunteer experiences and practical health tips from Doctor's on Mission International (DOMI).",
-};
+"use client";
 
-const featuredPosts = [
-  {
-    id: 1,
-    tag: "Field Story",
-    title: "When a Village Clinic Became an Emergency Theatre Overnight",
-    excerpt:
-      "How a small DOMI outreach in rural Uganda turned into a life-saving surgical response when a bus accident overwhelmed the local health centre.",
-    author: "Dr. Grace Atuhaire",
-    role: "General Surgeon & Mission Lead",
-    readTime: "7 min read",
-    highlight:
-      "In remote communities, minutes can mean the difference between life and loss.",
-  },
-  {
-    id: 2,
-    tag: "Health Guide",
-    title: "5 Simple Checks Every Community Health Outreach Should Offer",
-    excerpt:
-      "From blood pressure screening to basic eye exams, these quick checks can quietly prevent long‑term disability.",
-    author: "Nurse Daniel Akampurira",
-    role: "Community Health Nurse",
-    readTime: "5 min read",
-  },
-  {
-    id: 3,
-    tag: "Volunteer Voice",
-    title: "What I Learnt Serving on My First DOMI Mission",
-    excerpt:
-      "A medical student reflects on faith, fatigue and the small moments of joy that make every long day worth it.",
-    author: "Sarah Nanyonga",
-    role: "Medical Student Volunteer",
-    readTime: "4 min read",
-  },
-];
+import { useState, useEffect } from "react";
+import { getBlogs } from "@/lib/firestore";
+import Link from "next/link";
 
 export default function BlogPage() {
+  const [blogs, setBlogs] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    loadBlogs();
+  }, []);
+
+  async function loadBlogs() {
+    const data = await getBlogs();
+    // Filter only published blogs
+    const publishedBlogs = data.filter((blog) => blog.published);
+    setBlogs(publishedBlogs);
+    setLoading(false);
+  }
+
+  const featuredPosts = blogs.filter((blog) => blog.featured).slice(0, 3);
+  const regularPosts = blogs.filter((blog) => !blog.featured);
+  const displayPosts =
+    featuredPosts.length > 0 ? featuredPosts : blogs.slice(0, 3);
   return (
     <main className="min-h-screen bg-[#f5fafc] pb-16 text-slate-800">
       {/* Hero */}
@@ -166,67 +150,151 @@ export default function BlogPage() {
           </button>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-3">
-          {featuredPosts.map((post) => (
-            <article
-              key={post.id}
-              className={`group relative flex flex-col rounded-2xl border bg-white/90 p-4 shadow-sm transition-transform hover:-translate-y-1 hover:shadow-lg ${
-                post.id === 1
-                  ? "border-[#0086bf]/50 md:col-span-2 md:flex-row md:items-stretch"
-                  : "border-sky-100"
-              }`}
-            >
-              <div className="flex-1 space-y-3">
-                <div className="flex items-center gap-2 text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-sky-700">
-                  <span className="inline-flex items-center gap-1 rounded-full bg-sky-50 px-2 py-1">
-                    <span className="h-1.5 w-1.5 rounded-full bg-[#ebbe4d]" />
-                    {post.tag}
-                  </span>
-                  {post.id === 1 && (
-                    <span className="rounded-full bg-[#0086bf]/10 px-2 py-1 text-[0.6rem] text-[#0086bf] border border-[#0086bf]/30">
-                      Featured
-                    </span>
-                  )}
-                </div>
-
-                <h3 className="text-base sm:text-lg font-semibold text-slate-900 group-hover:text-[#0086bf]">
-                  {post.title}
-                </h3>
-
-                <p className="text-xs sm:text-sm text-slate-700">
-                  {post.excerpt}
-                </p>
-
-                {post.highlight && (
-                  <p className="text-xs text-sky-800 bg-sky-50/90 border border-sky-200 rounded-xl px-3 py-2">
-                    {post.highlight}
-                  </p>
+        {loading ? (
+          <div className="flex items-center justify-center py-12">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#0086bf]"></div>
+          </div>
+        ) : displayPosts.length === 0 ? (
+          <div className="text-center py-12">
+            <p className="text-slate-600 text-lg">
+              No blog posts available yet. Check back soon for stories from the
+              field!
+            </p>
+          </div>
+        ) : (
+          <div className="grid gap-6 md:grid-cols-3">
+            {displayPosts.map((post, index) => (
+              <article
+                key={post.id}
+                className={`group relative flex flex-col rounded-2xl border bg-white/90 p-4 shadow-sm transition-transform hover:-translate-y-1 hover:shadow-lg ${
+                  index === 0 && post.featured
+                    ? "border-[#0086bf]/50 md:col-span-2 md:flex-row md:items-stretch"
+                    : "border-sky-100"
+                }`}
+              >
+                {post.featuredImage && index === 0 && (
+                  <div className="md:w-1/3 mb-4 md:mb-0 md:mr-4">
+                    <img
+                      src={post.featuredImage}
+                      alt={post.title}
+                      className="w-full h-48 md:h-full object-cover rounded-xl"
+                    />
+                  </div>
                 )}
-
-                <div className="flex items-center justify-between pt-3 text-[0.7rem] sm:text-xs text-slate-600">
-                  <div>
-                    <p className="font-semibold text-slate-800">
-                      {post.author}
-                    </p>
-                    <p>{post.role}</p>
+                <div className="flex-1 space-y-3">
+                  <div className="flex items-center gap-2 text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-sky-700">
+                    {post.category && (
+                      <span className="inline-flex items-center gap-1 rounded-full bg-sky-50 px-2 py-1">
+                        <span className="h-1.5 w-1.5 rounded-full bg-[#ebbe4d]" />
+                        {post.category}
+                      </span>
+                    )}
+                    {post.featured && (
+                      <span className="rounded-full bg-[#0086bf]/10 px-2 py-1 text-[0.6rem] text-[#0086bf] border border-[#0086bf]/30">
+                        Featured
+                      </span>
+                    )}
                   </div>
-                  <div className="flex flex-col items-end gap-1">
-                    <span className="inline-flex items-center gap-1 rounded-full bg-[#ebbe4d]/15 px-3 py-1 text-[0.68rem] font-semibold text-amber-700">
-                      ⏱ {post.readTime}
-                    </span>
-                    <button
-                      type="button"
-                      className="inline-flex items-center gap-1 rounded-full bg-[#0086bf] px-3 py-1 text-[0.7rem] font-semibold text-white shadow-sm hover:bg-sky-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#0086bf]"
-                    >
-                      Read story
-                      <span className="ml-0.5">→</span>
-                    </button>
+
+                  <h3 className="text-base sm:text-lg font-semibold text-slate-900 group-hover:text-[#0086bf]">
+                    {post.title}
+                  </h3>
+
+                  <p className="text-xs sm:text-sm text-slate-700">
+                    {post.excerpt}
+                  </p>
+
+                  <div className="flex items-center justify-between pt-3 text-[0.7rem] sm:text-xs text-slate-600">
+                    <div>
+                      {post.author && (
+                        <>
+                          <p className="font-semibold text-slate-800">
+                            {post.author}
+                          </p>
+                          {post.authorRole && <p>{post.authorRole}</p>}
+                        </>
+                      )}
+                    </div>
+                    <div className="flex flex-col items-end gap-1">
+                      {post.readTime && (
+                        <span className="inline-flex items-center gap-1 rounded-full bg-[#ebbe4d]/15 px-3 py-1 text-[0.68rem] font-semibold text-amber-700">
+                          ⏱ {post.readTime}
+                        </span>
+                      )}
+                      <Link
+                        href={`/blog/${post.slug}`}
+                        className="inline-flex items-center gap-1 rounded-full bg-[#0086bf] px-3 py-1 text-[0.7rem] font-semibold text-white shadow-sm hover:bg-sky-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#0086bf]"
+                      >
+                        Read story
+                        <span className="ml-0.5">→</span>
+                      </Link>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </article>
-          ))}
-        </div>
+              </article>
+            ))}
+          </div>
+        )}
+
+        {/* Show remaining posts if any */}
+        {!loading && regularPosts.length > 0 && (
+          <div className="mt-12">
+            <h3 className="text-2xl font-semibold text-slate-900 mb-6">
+              More Stories
+            </h3>
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {regularPosts.map((post) => (
+                <article
+                  key={post.id}
+                  className="group relative flex flex-col rounded-2xl border border-sky-100 bg-white/90 overflow-hidden shadow-sm transition-transform hover:-translate-y-1 hover:shadow-lg"
+                >
+                  {post.featuredImage && (
+                    <div className="w-full h-48 overflow-hidden">
+                      <img
+                        src={post.featuredImage}
+                        alt={post.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                    </div>
+                  )}
+                  <div className="p-4 space-y-3">
+                    {post.category && (
+                      <span className="inline-flex items-center gap-1 rounded-full bg-sky-50 px-2 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-sky-700">
+                        <span className="h-1.5 w-1.5 rounded-full bg-[#ebbe4d]" />
+                        {post.category}
+                      </span>
+                    )}
+
+                    <h3 className="text-base font-semibold text-slate-900 group-hover:text-[#0086bf]">
+                      {post.title}
+                    </h3>
+
+                    <p className="text-sm text-slate-700 line-clamp-2">
+                      {post.excerpt}
+                    </p>
+
+                    <div className="flex items-center justify-between pt-2">
+                      <div className="text-xs text-slate-600">
+                        {post.author && (
+                          <p className="font-semibold text-slate-800">
+                            {post.author}
+                          </p>
+                        )}
+                      </div>
+                      <Link
+                        href={`/blog/${post.slug}`}
+                        className="inline-flex items-center gap-1 text-[#0086bf] text-sm font-semibold hover:gap-2 transition-all"
+                      >
+                        Read more
+                        <span>→</span>
+                      </Link>
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        )}
 
         <div className="mt-10 flex flex-col sm:flex-row items-center justify-between gap-4 rounded-2xl border border-dashed border-[#0086bf]/30 bg-sky-50/40 px-6 py-5 text-sm">
           <div className="max-w-xl text-center sm:text-left">

@@ -10,33 +10,36 @@ import {
   Eye,
   Edit,
   ArrowRight,
+  Layers,
+  Globe,
+  BookOpen,
 } from "lucide-react";
 import Link from "next/link";
 import { initializeContent } from "@/lib/firestore";
 
 const stats = [
   {
-    label: "Total Sections",
+    label: "Homepage Sections",
     value: "12",
-    icon: FileText,
+    icon: Layers,
     color: "from-cyan-500 to-blue-500",
+  },
+  {
+    label: "Static Pages",
+    value: "8",
+    icon: FileText,
+    color: "from-amber-500 to-orange-500",
+  },
+  {
+    label: "Blog Posts",
+    value: "0",
+    icon: BookOpen,
+    color: "from-green-500 to-emerald-500",
   },
   {
     label: "Media Files",
     value: "24",
     icon: Image,
-    color: "from-amber-500 to-orange-500",
-  },
-  {
-    label: "Page Views",
-    value: "1.2K",
-    icon: Eye,
-    color: "from-green-500 to-emerald-500",
-  },
-  {
-    label: "Last Updated",
-    value: "Today",
-    icon: Edit,
     color: "from-purple-500 to-pink-500",
   },
 ];
@@ -46,82 +49,148 @@ const quickActions = [
     label: "Edit Hero Section",
     href: "/admin/dashboard/hero",
     icon: LayoutDashboard,
+    category: "section",
   },
-  { label: "Manage Gallery", href: "/admin/dashboard/gallery", icon: Image },
   {
-    label: "Update Programs",
-    href: "/admin/dashboard/programs",
-    icon: FileText,
+    label: "Manage Blogs",
+    href: "/admin/dashboard/blogs",
+    icon: BookOpen,
+    category: "content",
   },
-  { label: "Site Settings", href: "/admin/dashboard/settings", icon: Settings },
+  {
+    label: "Manage Gallery",
+    href: "/admin/dashboard/gallery",
+    icon: Image,
+    category: "content",
+  },
+  {
+    label: "Site Settings",
+    href: "/admin/dashboard/settings",
+    icon: Settings,
+    category: "settings",
+  },
 ];
 
-const sections = [
+// Homepage Sections (components for homepage)
+const homepageSections = [
   {
     name: "Hero Section",
-    status: "published",
-    lastEdit: "2 hours ago",
+    description: "Main banner with slides",
     href: "/admin/dashboard/hero",
+    icon: LayoutDashboard,
   },
   {
     name: "About Section",
-    status: "published",
-    lastEdit: "1 day ago",
+    description: "Who we are information",
     href: "/admin/dashboard/about",
+    icon: FileText,
   },
   {
     name: "Missions",
-    status: "published",
-    lastEdit: "3 days ago",
+    description: "Mission, Vision, Values",
     href: "/admin/dashboard/missions",
+    icon: TrendingUp,
   },
   {
     name: "Services",
-    status: "published",
-    lastEdit: "1 week ago",
+    description: "What we do",
     href: "/admin/dashboard/services",
+    icon: Users,
   },
   {
     name: "Programs",
-    status: "draft",
-    lastEdit: "5 hours ago",
+    description: "Program information",
     href: "/admin/dashboard/programs",
+    icon: FileText,
   },
   {
     name: "Medical Camp",
-    status: "published",
-    lastEdit: "2 days ago",
+    description: "Medical camp highlights",
     href: "/admin/dashboard/medical-camp",
+    icon: Users,
   },
   {
     name: "Works",
-    status: "published",
-    lastEdit: "4 days ago",
+    description: "Our work showcase",
     href: "/admin/dashboard/works",
+    icon: Image,
   },
   {
     name: "Fundraising",
-    status: "published",
-    lastEdit: "1 day ago",
+    description: "Support our mission",
     href: "/admin/dashboard/fundraising",
+    icon: TrendingUp,
   },
   {
     name: "Video Section",
-    status: "published",
-    lastEdit: "1 week ago",
+    description: "Welcome video",
     href: "/admin/dashboard/video",
+    icon: Eye,
   },
   {
     name: "Footer",
-    status: "published",
-    lastEdit: "2 weeks ago",
+    description: "Footer content",
     href: "/admin/dashboard/footer",
+    icon: Settings,
   },
   {
     name: "Navbar",
-    status: "published",
-    lastEdit: "1 month ago",
+    description: "Navigation menu",
     href: "/admin/dashboard/navbar",
+    icon: Settings,
+  },
+];
+
+// Static Pages (route pages)
+const staticPages = [
+  {
+    name: "Contact Page",
+    route: "/contact",
+    description: "Contact information & form",
+    status: "active",
+    href: "/admin/dashboard/contact",
+  },
+  {
+    name: "Gallery Page",
+    route: "/gallery",
+    description: "Photo gallery",
+    status: "active",
+    href: "/admin/dashboard/gallery",
+  },
+  {
+    name: "Support Page",
+    route: "/support",
+    description: "Support a mission",
+    status: "active",
+    href: "/admin/dashboard/support",
+  },
+  {
+    name: "Volunteer Page",
+    route: "/volunteer",
+    description: "Volunteer information",
+    status: "active",
+    href: "/admin/dashboard/volunteer",
+  },
+  {
+    name: "Join Team Page",
+    route: "/jointeam",
+    description: "Join our team",
+    status: "active",
+    href: "/admin/dashboard/jointeam",
+  },
+  {
+    name: "Press Page",
+    route: "/press",
+    description: "Press releases",
+    status: "active",
+    href: "/admin/dashboard/press",
+  },
+  {
+    name: "Report Page",
+    route: "/report",
+    description: "Annual reports",
+    status: "active",
+    href: "/admin/dashboard/report",
   },
 ];
 
@@ -207,59 +276,115 @@ export default function DashboardPage() {
           </div>
         </div>
 
-        {/* Content Sections */}
-        <div className="lg:col-span-2 bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
-          <div className="flex items-center justify-between mb-4">
-            <h2 className="text-lg font-semibold text-slate-900">
-              Content Sections
-            </h2>
-            <Link
-              href="/admin/dashboard/sections"
-              className="text-sm text-cyan-600 hover:text-cyan-700"
-            >
-              View all
-            </Link>
-          </div>
-          <div className="overflow-x-auto">
-            <table className="w-full">
-              <thead>
-                <tr className="text-left text-sm text-slate-500 border-b border-slate-200">
-                  <th className="pb-3 font-medium">Section</th>
-                  <th className="pb-3 font-medium">Status</th>
-                  <th className="pb-3 font-medium">Last Edit</th>
-                  <th className="pb-3 font-medium"></th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-slate-100">
-                {sections.slice(0, 6).map((section, idx) => (
-                  <tr key={idx} className="text-sm">
-                    <td className="py-3 font-medium text-slate-900">
+        {/* Content Overview */}
+        <div className="lg:col-span-2 space-y-4">
+          {/* Homepage Sections */}
+          <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+            <div className="flex items-center justify-between mb-4">
+              <div className="flex items-center gap-2">
+                <Layers className="w-5 h-5 text-cyan-600" />
+                <h2 className="text-lg font-semibold text-slate-900">
+                  Homepage Sections
+                </h2>
+              </div>
+              <Link
+                href="/admin/dashboard/page-order"
+                className="text-sm text-cyan-600 hover:text-cyan-700"
+              >
+                Manage Order
+              </Link>
+            </div>
+            <p className="text-sm text-slate-600 mb-4">
+              Sections that appear on the homepage (components)
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-h-96 overflow-y-auto">
+              {homepageSections.map((section, idx) => (
+                <Link
+                  key={idx}
+                  href={section.href}
+                  className="flex items-start gap-3 p-3 rounded-lg border border-slate-200 hover:border-cyan-300 hover:bg-cyan-50/50 transition group"
+                >
+                  <section.icon className="w-5 h-5 text-slate-400 group-hover:text-cyan-600 mt-0.5" />
+                  <div className="flex-1 min-w-0">
+                    <div className="text-sm font-medium text-slate-900 group-hover:text-cyan-700">
                       {section.name}
-                    </td>
-                    <td className="py-3">
-                      <span
-                        className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
-                          section.status === "published"
-                            ? "bg-green-100 text-green-700"
-                            : "bg-amber-100 text-amber-700"
-                        }`}
-                      >
-                        {section.status}
-                      </span>
-                    </td>
-                    <td className="py-3 text-slate-600">{section.lastEdit}</td>
-                    <td className="py-3">
-                      <Link
-                        href={section.href}
-                        className="text-cyan-600 hover:text-cyan-700 font-medium"
-                      >
-                        Edit
-                      </Link>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+                    </div>
+                    <div className="text-xs text-slate-500">
+                      {section.description}
+                    </div>
+                  </div>
+                  <ArrowRight className="w-4 h-4 text-slate-300 group-hover:text-cyan-600 opacity-0 group-hover:opacity-100 transition-all" />
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* Static Pages */}
+          <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+            <div className="flex items-center gap-2 mb-4">
+              <Globe className="w-5 h-5 text-amber-600" />
+              <h2 className="text-lg font-semibold text-slate-900">
+                Static Pages
+              </h2>
+            </div>
+            <p className="text-sm text-slate-600 mb-4">
+              Individual route pages (not homepage sections)
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {staticPages.map((page, idx) => (
+                <Link
+                  key={idx}
+                  href={page.href}
+                  className="flex items-start justify-between p-3 rounded-lg border border-slate-200 hover:border-amber-300 hover:bg-amber-50/50 transition group"
+                >
+                  <div className="flex-1 min-w-0">
+                    <div className="text-sm font-medium text-slate-900 group-hover:text-amber-700">
+                      {page.name}
+                    </div>
+                    <div className="text-xs text-slate-500 mb-1">
+                      {page.description}
+                    </div>
+                    <code className="text-[10px] text-cyan-600 bg-cyan-50 px-2 py-0.5 rounded">
+                      {page.route}
+                    </code>
+                  </div>
+                  <div className="flex flex-col items-end gap-1">
+                    <span className="inline-flex px-2 py-1 rounded-full text-[10px] font-medium bg-green-100 text-green-700">
+                      {page.status}
+                    </span>
+                    <Edit className="w-4 h-4 text-slate-300 group-hover:text-amber-600 transition-all" />
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* Blog Management */}
+          <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+            <div className="flex items-center justify-between mb-4">
+              <div className="flex items-center gap-2">
+                <BookOpen className="w-5 h-5 text-green-600" />
+                <h2 className="text-lg font-semibold text-slate-900">
+                  Blog Posts
+                </h2>
+              </div>
+              <Link
+                href="/admin/dashboard/blogs"
+                className="text-sm text-cyan-600 hover:text-cyan-700 font-medium"
+              >
+                Manage Blogs →
+              </Link>
+            </div>
+            <p className="text-sm text-slate-600 mb-3">
+              Create and manage blog posts for your website.
+            </p>
+            <Link
+              href="/admin/dashboard/blogs/new"
+              className="inline-flex items-center gap-2 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm"
+            >
+              <FileText className="w-4 h-4" />
+              Create New Blog Post
+            </Link>
           </div>
         </div>
       </div>

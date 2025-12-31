@@ -20,6 +20,7 @@ import {
   LogOut,
   Layers,
   ArrowUpDown,
+  BookOpen,
 } from "lucide-react";
 import { useAuth } from "@/context/AuthContext";
 import { useRouter } from "next/navigation";
@@ -46,6 +47,8 @@ const menuItems = [
   { label: "Gallery", href: "/admin/dashboard/gallery", icon: Image },
   { label: "Navbar", href: "/admin/dashboard/navbar", icon: Menu },
   { label: "Footer", href: "/admin/dashboard/footer", icon: FileText },
+  { type: "divider", label: "Content" },
+  { label: "Blog Posts", href: "/admin/dashboard/blogs", icon: BookOpen },
   { type: "divider", label: "Page Builder" },
   { label: "Custom Sections", href: "/admin/dashboard/sections", icon: Layers },
   {
