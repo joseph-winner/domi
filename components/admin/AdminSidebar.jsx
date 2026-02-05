@@ -9,7 +9,6 @@ import {
   Users,
   Home,
   Info,
-  Target,
   Briefcase,
   Tv,
   Heart,
@@ -21,6 +20,7 @@ import {
   Layers,
   ArrowUpDown,
   BookOpen,
+  MapPin,
 } from "lucide-react";
 import { useAuth } from "@/context/AuthContext";
 import { useRouter } from "next/navigation";
@@ -29,7 +29,11 @@ const menuItems = [
   { label: "Dashboard", href: "/admin/dashboard", icon: LayoutDashboard },
   { label: "Hero Section", href: "/admin/dashboard/hero", icon: Home },
   { label: "About", href: "/admin/dashboard/about", icon: Info },
-  { label: "Missions", href: "/admin/dashboard/missions", icon: Target },
+  {
+    label: "Missions List",
+    href: "/admin/dashboard/missions-list",
+    icon: MapPin,
+  },
   { label: "Services", href: "/admin/dashboard/services", icon: Briefcase },
   { label: "Programs", href: "/admin/dashboard/programs", icon: FileText },
   { label: "Video Section", href: "/admin/dashboard/video", icon: Tv },

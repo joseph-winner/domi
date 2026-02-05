@@ -157,6 +157,16 @@ function Navbar() {
                   SUPPORT A MISSION
                 </Link>
               </li>
+              <li>
+                <Link
+                  href="/missions"
+                  className={`transition-colors hover:text-[#EABF4E] ${
+                    isActive("/missions") ? "text-[#EABF4E]" : ""
+                  }`}
+                >
+                  MISSIONS
+                </Link>
+              </li>
               <li
                 className="relative group"
                 onMouseEnter={() => setNewsOpen(true)}
@@ -266,6 +276,14 @@ function Navbar() {
               }`}
             >
               SUPPORT A MISSION
+            </Link>
+            <Link
+              href="/missions"
+              className={`block py-1 ${
+                isActive("/missions") ? "text-[#EABF4E] font-semibold" : ""
+              }`}
+            >
+              MISSIONS
             </Link>
             <div>
               <button
