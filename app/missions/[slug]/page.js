@@ -13,6 +13,7 @@ export default function MissionDetailPage() {
   const slug = Array.isArray(params?.slug) ? params.slug[0] : params?.slug;
   const [loading, setLoading] = useState(true);
   const [mission, setMission] = useState(null);
+  const [activeImage, setActiveImage] = useState("");
 
   const normalizeMission = useMemo(
     () => (item) => ({
@@ -21,9 +22,36 @@ export default function MissionDetailPage() {
       image: item.image || "/img/upcoming-programs.jpg",
       impact: item.impact || [],
       partners: item.partners || [],
+      descriptionImages: item.descriptionImages || [],
+      videoUrl: item.videoUrl || "",
     }),
     [],
   );
+
+  const getYoutubeEmbedUrl = (url) => {
+    if (!url) return "";
+    try {
+      const parsed = new URL(url);
+      const host = parsed.hostname.replace("www.", "");
+      let videoId = "";
+
+      if (host === "youtu.be") {
+        videoId = parsed.pathname.split("/").filter(Boolean)[0] || "";
+      } else if (host === "youtube.com") {
+        if (parsed.pathname.startsWith("/watch")) {
+          videoId = parsed.searchParams.get("v") || "";
+        } else if (parsed.pathname.startsWith("/embed/")) {
+          videoId = parsed.pathname.split("/")[2] || "";
+        } else if (parsed.pathname.startsWith("/shorts/")) {
+          videoId = parsed.pathname.split("/")[2] || "";
+        }
+      }
+
+      return videoId ? `https://www.youtube.com/embed/${videoId}` : "";
+    } catch (error) {
+      return "";
+    }
+  };
 
   useEffect(() => {
     const loadMission = async () => {
@@ -75,7 +103,7 @@ export default function MissionDetailPage() {
       />
 
       <main className="min-h-screen bg-gradient-to-b from-sky-50 via-white to-emerald-50 text-slate-900">
-        <section className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-10 lg:py-14">
+        <section className="mx-auto max-w-none px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
           <Link
             href="/missions"
             className="inline-flex items-center gap-2 text-sm font-semibold text-sky-700 hover:text-sky-800"
@@ -100,6 +128,36 @@ export default function MissionDetailPage() {
               <p className="mt-4 text-base leading-relaxed text-slate-600">
                 {mission.overview}
               </p>
+
+              {mission.descriptionImages.length > 0 && (
+                <div className="mt-6">
+                  <h2 className="text-lg font-semibold text-slate-900">
+                    Mission moments
+                  </h2>
+                  <div className="mt-3 grid auto-rows-[120px] grid-cols-2 gap-3 sm:auto-rows-[150px] sm:grid-cols-3">
+                    {mission.descriptionImages.map((url, index) => (
+                      <button
+                        key={`${url}-${index}`}
+                        type="button"
+                        onClick={() => setActiveImage(url)}
+                        className={`group relative overflow-hidden rounded-2xl border border-white/80 bg-white/80 shadow-[0_20px_50px_-40px_rgba(2,132,199,0.45)] backdrop-blur ${
+                          index === 0 && mission.descriptionImages.length > 2
+                            ? "col-span-2 row-span-2"
+                            : ""
+                        }`}
+                      >
+                        <img
+                          src={url}
+                          alt={`${mission.title} image ${index + 1}`}
+                          className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
+                          loading="lazy"
+                        />
+                        <span className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 transition group-hover:opacity-100" />
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
 
               <div className="mt-8">
                 <h2 className="text-lg font-semibold text-slate-900">Impact</h2>
@@ -133,12 +191,31 @@ export default function MissionDetailPage() {
                   ))}
                 </ul>
               </div>
+
+              {getYoutubeEmbedUrl(mission.videoUrl) && (
+                <div className="rounded-[2rem] border border-white/70 bg-white/70 p-6 shadow-[0_25px_70px_-55px_rgba(2,132,199,0.35)] backdrop-blur">
+                  <h2 className="text-sm font-semibold uppercase tracking-wider text-slate-500">
+                    Mission video
+                  </h2>
+                  <div className="mt-3 overflow-hidden rounded-2xl border border-white/80 bg-white/80 shadow-[0_20px_50px_-40px_rgba(2,132,199,0.45)]">
+                    <div className="relative w-full overflow-hidden pt-[56.25%]">
+                      <iframe
+                        src={getYoutubeEmbedUrl(mission.videoUrl)}
+                        title={`${mission.title} video`}
+                        className="absolute inset-0 h-full w-full"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowFullScreen
+                      />
+                    </div>
+                  </div>
+                </div>
+              )}
             </aside>
           </div>
         </section>
 
         <section className="border-t border-slate-100 bg-white">
-          <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-10 lg:py-16">
+          <div className="mx-auto max-w-none px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
             <div className="grid gap-8 lg:grid-cols-2 lg:items-center">
               <div>
                 <p className="text-xs font-semibold uppercase tracking-wider text-emerald-700">
@@ -170,6 +247,23 @@ export default function MissionDetailPage() {
             </div>
           </div>
         </section>
+
+        {activeImage && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/80 p-6">
+            <button
+              type="button"
+              onClick={() => setActiveImage("")}
+              className="absolute right-5 top-5 rounded-full bg-white/90 px-3 py-1.5 text-sm font-semibold text-slate-900 shadow-lg transition hover:bg-white"
+            >
+              Close
+            </button>
+            <img
+              src={activeImage}
+              alt="Mission full view"
+              className="max-h-[85vh] w-auto max-w-[92vw] rounded-3xl object-contain shadow-2xl"
+            />
+          </div>
+        )}
       </main>
     </div>
   );

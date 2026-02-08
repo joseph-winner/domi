@@ -4,6 +4,7 @@ import { Plus, Pencil, Trash2, ExternalLink } from "lucide-react";
 import PageHeader from "@/components/admin/PageHeader";
 import FormField from "@/components/admin/FormField";
 import ImageUpload from "@/components/admin/ImageUpload";
+import MultiImageUpload from "@/components/admin/MultiImageUpload";
 import slugify from "@/lib/slugify";
 import {
   addMissionItem,
@@ -18,6 +19,8 @@ const emptyMission = {
   location: "",
   date: "",
   image: "",
+  descriptionImages: [],
+  videoUrl: "",
   excerpt: "",
   overview: "",
   impact: [],
@@ -56,6 +59,8 @@ export default function MissionsListAdminPage() {
       ...mission,
       impact: mission.impact || [],
       partners: mission.partners || [],
+      descriptionImages: mission.descriptionImages || [],
+      videoUrl: mission.videoUrl || "",
     });
     setShowModal(true);
   };
@@ -87,6 +92,10 @@ export default function MissionsListAdminPage() {
       partners: Array.isArray(normalizedForm.partners)
         ? normalizedForm.partners
         : [],
+      descriptionImages: Array.isArray(normalizedForm.descriptionImages)
+        ? normalizedForm.descriptionImages
+        : [],
+      videoUrl: normalizedForm.videoUrl || "",
     };
 
     const result = editing?.id
@@ -209,6 +218,17 @@ export default function MissionsListAdminPage() {
                 onChange={(url) => setForm((prev) => ({ ...prev, image: url }))}
                 folder="missions"
               />
+              <MultiImageUpload
+                label="Description Images"
+                value={form.descriptionImages}
+                onChange={(images) =>
+                  setForm((prev) => ({
+                    ...prev,
+                    descriptionImages: images,
+                  }))
+                }
+                folder="missions"
+              />
 
               <div className="grid gap-4 md:grid-cols-2">
                 <FormField
@@ -266,6 +286,19 @@ export default function MissionsListAdminPage() {
                 placeholder="Full overview for the mission page"
                 rows={4}
               />
+              <div>
+                <FormField
+                  label="YouTube Video Link"
+                  value={form.videoUrl}
+                  onChange={(e) =>
+                    setForm((prev) => ({ ...prev, videoUrl: e.target.value }))
+                  }
+                  placeholder="https://www.youtube.com/watch?v=..."
+                />
+                <p className="mt-2 text-xs text-slate-500">
+                  Paste the full YouTube link. We will embed it automatically.
+                </p>
+              </div>
               <FormField
                 label="Impact (comma separated)"
                 value={form.impact.join(", ")}
