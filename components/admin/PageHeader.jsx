@@ -6,6 +6,7 @@ export default function PageHeader({
   title,
   description,
   backLink = "/admin/dashboard",
+  backText = "Back to Dashboard",
 }) {
   return (
     <div className="mb-6">
@@ -14,7 +15,7 @@ export default function PageHeader({
         className="inline-flex items-center gap-2 text-sm text-slate-600 hover:text-slate-900 mb-4 transition"
       >
         <ArrowLeft className="w-4 h-4" />
-        Back to Dashboard
+        {backText}
       </Link>
       <h1 className="text-2xl font-bold text-slate-900">{title}</h1>
       {description && <p className="text-slate-600 mt-1">{description}</p>}

@@ -9,6 +9,11 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@tiptap/extension-image": "^3.22.4",
+    "@tiptap/extension-link": "^3.22.4",
+    "@tiptap/extension-placeholder": "^3.22.4",
+    "@tiptap/react": "^3.22.4",
+    "@tiptap/starter-kit": "^3.22.4",
     "firebase": "^12.7.0",
     "lucide-react": "^0.561.0",
     "next": "16.0.10",

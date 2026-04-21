@@ -7,9 +7,11 @@ import PageHeader from "@/components/admin/PageHeader";
 import FormField from "@/components/admin/FormField";
 import ImageUpload from "@/components/admin/ImageUpload";
 import SaveButton from "@/components/admin/SaveButton";
+import RichTextEditor from "@/components/admin/RichTextEditor";
 import { getBlog, addBlog, updateBlog } from "@/lib/firestore";
-import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
+import { storage } from "@/lib/firebase";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 export default function BlogEditorPage() {
   const { user, loading: authLoading } = useAuth();
@@ -67,11 +69,18 @@ export default function BlogEditorPage() {
   }
 
   const handleChange = (field, value) => {
-    setFormData((prev) => ({ ...prev, [field]: value }));
+    const normalizedValue =
+      value && typeof value === "object" && "target" in value
+        ? value.target.type === "checkbox"
+          ? value.target.checked
+          : value.target.value
+        : value;
+
+    setFormData((prev) => ({ ...prev, [field]: normalizedValue }));
 
     // Auto-generate slug from title
     if (field === "title" && isNew) {
-      const slug = value
+      const slug = String(normalizedValue || "")
         .toLowerCase()
         .replace(/[^a-z0-9]+/g, "-")
         .replace(/^-+|-+$/g, "");
@@ -103,6 +112,24 @@ export default function BlogEditorPage() {
     setSaving(false);
   };
 
+  const handleContentImageUpload = async (file) => {
+    if (!file) return "";
+
+    try {
+      const timestamp = Date.now();
+      const fileName = `blogs/content/${timestamp}_${file.name}`;
+      const storageRef = ref(storage, fileName);
+
+      await uploadBytes(storageRef, file);
+      const downloadURL = await getDownloadURL(storageRef);
+      return downloadURL;
+    } catch (error) {
+      console.error("Content image upload error:", error);
+      alert("Failed to upload content image. Please try again.");
+      return "";
+    }
+  };
+
   if (authLoading || !user || loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
@@ -113,14 +140,6 @@ export default function BlogEditorPage() {
 
   return (
     <div className="max-w-4xl mx-auto">
-      <Link
-        href="/admin/dashboard/blogs"
-        className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 mb-4"
-      >
-        <ArrowLeft className="w-4 h-4" />
-        Back to Blogs
-      </Link>
-
       <div className="flex items-center justify-between mb-6">
         <PageHeader
           title={isNew ? "Create New Blog Post" : "Edit Blog Post"}
@@ -129,6 +148,8 @@ export default function BlogEditorPage() {
               ? "Share stories and insights from your missions."
               : "Update your blog post content."
           }
+          backLink="/admin/dashboard/blogs"
+          backText="Back to Blogs"
         />
         <SaveButton onClick={handleSave} saving={saving} />
       </div>
@@ -217,14 +238,13 @@ export default function BlogEditorPage() {
             helpText="Main image for the blog post"
           />
 
-          <FormField
+          <RichTextEditor
             label="Blog Content"
             value={formData.content}
             onChange={(value) => handleChange("content", value)}
             placeholder="Write your blog post content here..."
-            type="textarea"
-            rows={15}
-            helpText="You can use line breaks for paragraphs. HTML is supported."
+            onUploadImage={handleContentImageUpload}
+            helpText="Use headings, lists, links, quotes, inline code, and images to create rich blog posts."
           />
         </div>
 

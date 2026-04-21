@@ -10,6 +10,8 @@ export default function FormField({
   required = false,
   rows = 4,
   className = "",
+  helpText = "",
+  inputRef = null,
 }) {
   const inputClasses =
     "w-full px-4 py-2.5 rounded-lg border border-slate-300 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500/30 focus:border-cyan-500 transition";
@@ -22,6 +24,7 @@ export default function FormField({
       </label>
       {type === "textarea" ? (
         <textarea
+          ref={inputRef}
           name={name}
           value={value}
           onChange={onChange}
@@ -32,6 +35,7 @@ export default function FormField({
         />
       ) : (
         <input
+          ref={inputRef}
           type={type}
           name={name}
           value={value}
@@ -41,6 +45,8 @@ export default function FormField({
           className={inputClasses}
         />
       )}
+
+      {helpText && <p className="mt-2 text-xs text-slate-500">{helpText}</p>}
     </div>
   );
 }
