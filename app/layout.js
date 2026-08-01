@@ -1,13 +1,14 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
 import Navbar from "@/layout/Navbar";
 import Footer from "@/layout/Footer";
 
-const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
+  display: "swap",
+  weight: ["300", "400", "500", "600", "700"],
 });
 
 const SITE_NAME = "Doctor’s on Mission International (DOMI)";
@@ -150,9 +151,7 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${inter.variable} font-sans antialiased`}>
         <Script
           id="org-jsonld"
           type="application/ld+json"

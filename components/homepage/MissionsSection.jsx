@@ -1,24 +1,27 @@
 import React from "react";
-import { FaBullseye, FaEye, FaHeart } from "react-icons/fa";
+import { Target, Eye, HeartHandshake, Check } from "lucide-react";
 
 function MissionsSection() {
   const cards = [
     {
-      icon: FaBullseye,
+      icon: Target,
+      tone: "primary",
       label: "Mission",
       pill: "Why we go",
       title: "Our Mission",
       text: "To enable free access to universal healthcare to all communities, bringing healing and bridging the gap to essential healthcare needs.",
     },
     {
-      icon: FaEye,
+      icon: Eye,
+      tone: "secondary",
       label: "Vision",
       pill: "What we see",
       title: "Our Vision",
-      text: "Uniting Christian medical teams with skills and training to provide free, quality and compassionate care in low‑resource and conflict‑stricken communities.",
+      text: "Uniting Christian medical teams with skills and training to provide free, quality and compassionate care in low-resource and conflict-stricken communities.",
     },
     {
-      icon: FaHeart,
+      icon: HeartHandshake,
+      tone: "accent",
       label: "Values",
       pill: "How we serve",
       title: "Core Values",
@@ -34,66 +37,76 @@ function MissionsSection() {
     },
   ];
 
+  const toneMap = {
+    primary: "bg-[color:var(--brand-primary)]/12 text-[color:var(--brand-primary-700)]",
+    secondary: "bg-[color:var(--brand-secondary)]/18 text-[#a07d1e]",
+    accent: "bg-[color:var(--brand-accent)]/18 text-[#5f7d1f]",
+  };
+
   return (
-    <section className="py-20 bg-white text-slate-900">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-14">
-          <span className="inline-flex items-center justify-center rounded-full border border-[#10C0DE]/20 bg-[#10C0DE]/5 px-3 py-1 text-xs font-medium uppercase tracking-[0.2em] text-[#045D42]">
+    <section className="bg-[color:var(--surface)] px-5 py-20 sm:px-8 lg:px-10 lg:py-28">
+      <div className="mx-auto max-w-7xl">
+        {/* Header */}
+        <div className="mx-auto max-w-2xl text-center">
+          <span className="inline-flex items-center gap-2 rounded-full border border-[color:var(--line)] bg-white px-4 py-1.5 text-[0.78rem] font-medium text-[color:var(--ink-soft)]">
+            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[color:var(--brand-primary)] text-white">
+              <HeartHandshake className="h-3 w-3" />
+            </span>
             Our heartbeat
           </span>
-
-          <h2 className="mt-5 text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight text-slate-900">
-            What Guides Every Mission
+          <h2 className="mt-6 text-[2rem] leading-[1.06] tracking-[-0.03em] text-[color:var(--ink)] sm:text-4xl lg:text-[2.75rem]">
+            What guides every mission
           </h2>
-
-          <p className="mt-4 text-sm md:text-base text-slate-600 leading-relaxed">
+          <p className="mx-auto mt-4 max-w-xl text-[0.98rem] leading-relaxed text-[color:var(--muted)]">
             Behind every outreach is a clear mission, a hopeful vision and
             unshakable values that keep our hearts aligned with the people we
             serve.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-7 lg:gap-10">
-          {cards.map((card, index) => {
+        {/* Cards */}
+        <div className="mt-14 grid gap-6 md:grid-cols-3">
+          {cards.map((card) => {
             const Icon = card.icon;
-
             return (
               <div
-                key={index}
-                className="group relative flex h-full flex-col items-center rounded-3xl border border-slate-100 bg-white px-7 py-10 text-center shadow-sm transition-transform duration-200 hover:-translate-y-1 hover:shadow-md"
+                key={card.title}
+                className="group flex h-full flex-col rounded-[1.5rem] border border-[color:var(--line)] bg-white p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_60px_-40px_rgba(20,33,31,0.5)]"
               >
-                <div className="mb-6 flex justify-center">
-                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#E9FCFF] text-[#10C0DE]">
-                    <Icon className="text-3xl" />
-                  </div>
-                </div>
+                <span
+                  className={`flex h-12 w-12 items-center justify-center rounded-2xl ${toneMap[card.tone]}`}
+                >
+                  <Icon className="h-6 w-6" />
+                </span>
 
-                <p className="mb-1 text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-[#045D42]/80">
+                <p className="mt-6 text-[0.72rem] font-semibold uppercase tracking-[0.2em] text-[color:var(--muted)]">
                   {card.label}
                 </p>
-
-                <h3 className="text-xl md:text-2xl font-semibold text-slate-900 mb-2">
+                <h3 className="mt-1.5 text-2xl tracking-[-0.02em] text-[color:var(--ink)]">
                   {card.title}
                 </h3>
 
                 {card.pill && (
-                  <span className="mb-4 inline-flex items-center rounded-full bg-[#10C0DE]/5 px-3 py-1 text-[0.68rem] font-medium text-[#045D42] ring-1 ring-[#10C0DE]/20">
+                  <span className="mt-3 inline-flex w-fit items-center rounded-full bg-[color:var(--surface)] px-3 py-1 text-[0.7rem] font-medium text-[color:var(--ink-soft)]">
                     {card.pill}
                   </span>
                 )}
 
-                {card.text && (
-                  <p className="text-sm text-slate-700 leading-relaxed">
-                    {card.text}
-                  </p>
-                )}
+                <p className="mt-4 text-[0.9rem] leading-relaxed text-[color:var(--muted)]">
+                  {card.text}
+                </p>
 
                 {card.list && (
-                  <ul className="mt-4 space-y-1.5 text-sm text-slate-800 inline-block text-left">
+                  <ul className="mt-5 grid grid-cols-2 gap-x-4 gap-y-2.5">
                     {card.list.map((item) => (
-                      <li key={item} className="flex items-center gap-2">
-                        <span className="h-1.5 w-1.5 rounded-full bg-[#10C0DE]/80" />
-                        <span>{item}</span>
+                      <li
+                        key={item}
+                        className="flex items-center gap-2 text-[0.88rem] text-[color:var(--ink-soft)]"
+                      >
+                        <span className="flex h-4 w-4 flex-none items-center justify-center rounded-full bg-[color:var(--brand-primary)]/12 text-[color:var(--brand-primary-700)]">
+                          <Check className="h-2.5 w-2.5" strokeWidth={3} />
+                        </span>
+                        {item}
                       </li>
                     ))}
                   </ul>

@@ -1,83 +1,45 @@
-"use client";
 import React from "react";
-import Image from "next/image";
 
 function Banner({
   title = "Page Title",
   subtitle = "Your subtitle goes here",
-  backgroundImage = "/img/page-title-10.jpg",
-  align = "center", // "left", "center", "right"
+  eyebrow = "Doctors on Mission Int",
+  // kept for backward compatibility with existing callers (no longer full-bleed)
+  backgroundImage,
+  align = "left",
 }) {
-  const alignmentClasses = {
-    left: "items-start text-left",
-    center: "items-center text-center",
-    right: "items-end text-right",
-  };
+  const alignClass =
+    align === "center"
+      ? "items-center text-center mx-auto"
+      : "items-start text-left";
 
   return (
-    <section className="relative w-full overflow-hidden">
-      {/* Background Image with Overlay */}
-      <div className="absolute inset-0 -z-10">
-        <Image
-          src={backgroundImage}
-          alt="Banner Background"
-          fill
-          className="object-cover"
-          priority
-        />
-        {/* Multi-layer gradient overlay for depth */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0a1628]/90 via-[#0a1628]/75 to-[#0a1628]/90" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0086bf]/20 via-transparent to-[#ebbe4d]/20" />
+    <section className="relative overflow-hidden border-b border-[color:var(--line)] bg-[color:var(--surface)]">
+      {/* Soft brand decoration */}
+      <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-[color:var(--brand-primary)]/12 blur-3xl" />
+      <div className="pointer-events-none absolute -bottom-28 left-1/3 h-64 w-64 rounded-full bg-[color:var(--brand-secondary)]/12 blur-3xl" />
 
-        {/* Decorative elements */}
-        <div className="absolute inset-0 overflow-hidden">
-          {/* Animated gradient orbs */}
-          <div className="absolute -top-20 -left-20 h-64 w-64 rounded-full bg-[#0086bf]/20 blur-3xl animate-pulse" />
-          <div className="absolute -bottom-20 -right-20 h-64 w-64 rounded-full bg-[#ebbe4d]/20 blur-3xl animate-pulse delay-1000" />
-
-          {/* Subtle grid pattern overlay */}
-          <div
-            className="absolute inset-0 opacity-[0.03]"
-            style={{
-              backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
-                               linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
-              backgroundSize: "50px 50px",
-            }}
-          />
-        </div>
-      </div>
-
-      {/* Content Container */}
-      <div
-        className={`relative z-10 flex min-h-[320px] md:min-h-[380px] flex-col justify-center px-6 md:px-12 lg:px-20 py-20 ${alignmentClasses[align]}`}
-      >
-        {/* Decorative line */}
-        <div className="mb-6 flex items-center gap-3">
-          <span className="h-[2px] w-8 md:w-12 bg-gradient-to-r from-[#0086bf] to-[#ebbe4d] rounded-full" />
-          <span className="h-1.5 w-1.5 rounded-full bg-[#ebbe4d]" />
-        </div>
-
-        {/* Title with gradient accent */}
-        <h1 className="relative text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 tracking-tight">
-          <span className="relative">
-            {title}
-            {/* Underline accent */}
-            <span className="absolute -bottom-2 left-0 h-1 w-16 md:w-24 bg-gradient-to-r from-[#0086bf] to-[#ebbe4d] rounded-full" />
+      <div className="relative mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-20 lg:px-10 lg:py-24">
+        <div className={`flex max-w-3xl flex-col ${alignClass}`}>
+          <span className="inline-flex items-center gap-2 rounded-full border border-[color:var(--line)] bg-white px-4 py-1.5 text-[0.78rem] font-medium text-[color:var(--ink-soft)]">
+            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[color:var(--brand-primary)] text-white">
+              <svg viewBox="0 0 24 24" className="h-3 w-3" fill="currentColor">
+                <path d="M12 2l2.4 5.6L20 8.2l-4.2 3.9L17 18l-5-3-5 3 1.2-5.9L4 8.2l5.6-.6z" />
+              </svg>
+            </span>
+            {eyebrow}
           </span>
-        </h1>
 
-        {/* Subtitle */}
-        <p className="text-base md:text-lg lg:text-xl text-white/70 max-w-2xl leading-relaxed font-light">
-          {subtitle}
-        </p>
+          <h1 className="mt-6 text-[2.5rem] leading-[1.03] tracking-[-0.035em] text-[color:var(--ink)] sm:text-6xl lg:text-[4.5rem]">
+            {title}
+          </h1>
 
-        {/* Bottom decorative element */}
-        {/* <div className="mt-8 flex items-center gap-2">
-          <span className="h-1 w-1 rounded-full bg-white/30" />
-          <span className="h-1 w-1 rounded-full bg-white/50" />
-          <span className="h-1 w-1 rounded-full bg-[#0086bf]" />
-          <span className="h-1 w-1 rounded-full bg-[#ebbe4d]" />
-        </div> */}
+          {subtitle && (
+            <p className="mt-5 max-w-2xl text-[1rem] leading-relaxed text-[color:var(--muted)] sm:text-lg">
+              {subtitle}
+            </p>
+          )}
+        </div>
       </div>
     </section>
   );

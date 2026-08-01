@@ -1,124 +1,108 @@
 import React from "react";
 import Image from "next/image";
-import { FaQuoteLeft } from "react-icons/fa";
+import { Quote } from "lucide-react";
 import teamLeaderImg from "@/public/img/team-leader.jpg";
 
 function MessageSection() {
+  const paragraphs = [
+    {
+      lead: "Greeting from Doctor's on Mission International",
+      body: " a volunteer-based, non-for-profit organization with an aim of being a pillar of medical missions in resource-limited settings. We champion community-based healthcare provision through tailor-made community programs.",
+    },
+    {
+      lead: "Limited access to healthcare services:",
+      body: " Uganda's healthcare system is still struggling to provide access to basic healthcare services, especially in rural areas.",
+    },
+    {
+      lead: "High disease burden:",
+      body: " Uganda has a high prevalence of infectious diseases such as malaria, HIV/AIDS, and tuberculosis, which puts a strain on the healthcare system.",
+    },
+    {
+      lead: "Inadequate healthcare financing:",
+      body: " Uganda's healthcare system is underfunded, with inadequate resources allocated to health, leading to a shortage of medical personnel, equipment, and medicines.",
+    },
+    {
+      lead: "Poor health infrastructure:",
+      body: " The country's health infrastructure is inadequate, with a shortage of hospitals, health centers, and medical equipment, making it difficult to provide quality healthcare services. Doctors on Mission International aims at bridging the gap of healthcare in rural settings through Christian-based medical missions. I encourage you to partner with us in making this possible. May God richly bless you as you consider donating to support this work in Africa.",
+    },
+  ];
+
   return (
-    <section className="bg-gradient-to-b from-slate-50 to-white py-20 px-4">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-14">
-          <p className="inline-flex items-center gap-2 rounded-full bg-[#EABF4E]/20 px-4 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-[#053759]">
-            <span className="h-1.5 w-1.5 rounded-full bg-[#EABF4E]" />
+    <section className="bg-[color:var(--surface)] px-5 py-20 sm:px-8 lg:px-10 lg:py-28">
+      <div className="mx-auto max-w-7xl">
+        {/* Header */}
+        <div className="mx-auto max-w-2xl text-center">
+          <span className="inline-flex items-center gap-2 rounded-full border border-[color:var(--line)] bg-white px-4 py-1.5 text-[0.78rem] font-medium text-[color:var(--ink-soft)]">
+            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[color:var(--brand-secondary)] text-white">
+              <Quote className="h-3 w-3 fill-current" />
+            </span>
             Leadership Message
-          </p>
-          <h2 className="mt-4 text-3xl md:text-4xl font-bold tracking-tight text-[#053759]">
+          </span>
+          <h2 className="mt-6 text-[2rem] leading-[1.06] tracking-[-0.03em] text-[color:var(--ink)] sm:text-4xl lg:text-[2.75rem]">
             Message from our Team Leader
           </h2>
-          <p className="mt-3 max-w-2xl mx-auto text-sm md:text-base text-slate-600">
+          <p className="mx-auto mt-4 max-w-2xl text-[0.98rem] leading-relaxed text-[color:var(--muted)]">
             A personal word from the heart of our mission, sharing the realities
             on the ground and the hope we carry into every community we serve.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-5 gap-10 items-stretch">
-          {/* Image Block */}
-          <div className="lg:col-span-2 flex justify-center">
-            <div className="relative h-full w-full max-w-md overflow-hidden rounded-3xl bg-slate-900 shadow-xl shadow-slate-900/15 ring-1 ring-slate-900/10">
+        <div className="mt-14 grid items-stretch gap-8 lg:grid-cols-5">
+          {/* Image */}
+          <div className="lg:col-span-2">
+            <div className="relative h-full min-h-[22rem] overflow-hidden rounded-[1.75rem] border border-[color:var(--line)]">
               <Image
                 src={teamLeaderImg}
                 alt="Dr Mulyamboga Paul - Team Leader"
-                className="h-full w-full object-cover transition-transform duration-500 ease-out hover:scale-105"
+                fill
+                className="object-cover"
                 priority
               />
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/65 via-slate-900/10 to-transparent" />
-              <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between gap-4">
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#EABF4E]">
-                    Team Leader
-                  </p>
-                  <p className="mt-1 text-base font-semibold text-white">
-                    Dr Mulyamboga Paul
-                  </p>
-                  <p className="mt-0.5 text-xs text-slate-200/80">
-                    Doctors on Mission International
-                  </p>
-                </div>
-                <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-[#EABF4E] text-[#053759] shadow-md">
-                  <FaQuoteLeft className="h-5 w-5" />
-                </span>
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+              <div className="absolute inset-x-5 bottom-5">
+                <p className="text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-[color:var(--brand-secondary)]">
+                  Team Leader
+                </p>
+                <p className="mt-1 text-lg font-medium text-white">
+                  Dr Mulyamboga Paul
+                </p>
+                <p className="mt-0.5 text-[0.8rem] text-white/75">
+                  Doctors on Mission International
+                </p>
               </div>
             </div>
           </div>
 
-          {/* Text Block */}
-          <div className="lg:col-span-3 flex">
-            <div className="relative flex-1 rounded-3xl bg-white/80 p-8 md:p-10 shadow-xl shadow-slate-900/10 ring-1 ring-slate-200 backdrop-blur">
-              <FaQuoteLeft className="pointer-events-none absolute -top-10 left-8 h-16 w-16 text-[#EABF4E]/40 select-none" />
-              <div className="space-y-4 text-[0.9rem] leading-relaxed text-slate-700">
-                <p>
-                  <strong className="font-semibold text-[#053759]">
-                    Greeting from Doctor's on Mission International
-                  </strong>{" "}
-                  a volunteer-based, non-for-profit organization with an aim of
-                  being a pillar of medical missions in resource-limited
-                  settings. We champion community-based healthcare provision
-                  through tailor-made community programs.
-                </p>
-                <p>
-                  <strong className="font-semibold text-[#053759]">
-                    Limited access to healthcare services:
-                  </strong>{" "}
-                  Uganda's healthcare system is still struggling to provide
-                  access to basic healthcare services, especially in rural
-                  areas.
-                </p>
-                <p>
-                  <strong className="font-semibold text-[#053759]">
-                    High disease burden:
-                  </strong>{" "}
-                  Uganda has a high prevalence of infectious diseases such as
-                  malaria, HIV/AIDS, and tuberculosis, which puts a strain on
-                  the healthcare system.
-                </p>
-                <p>
-                  <strong className="font-semibold text-[#053759]">
-                    Inadequate healthcare financing:
-                  </strong>{" "}
-                  Uganda's healthcare system is underfunded, with inadequate
-                  resources allocated to health, leading to a shortage of
-                  medical personnel, equipment, and medicines.
-                </p>
-                <p>
-                  <strong className="font-semibold text-[#053759]">
-                    Poor health infrastructure:
-                  </strong>{" "}
-                  The country's health infrastructure is inadequate, with a
-                  shortage of hospitals, health centers, and medical equipment,
-                  making it difficult to provide quality healthcare services.
-                  Doctors on Mission International aims at bridging the gap of
-                  healthcare in rural settings through Christian-based medical
-                  missions. I encourage you to partner with us in making this
-                  possible. May God richly bless you as you consider donating to
-                  support this work in Africa.
-                </p>
+          {/* Letter */}
+          <div className="lg:col-span-3">
+            <div className="relative h-full rounded-[1.75rem] border border-[color:var(--line)] bg-white p-8 md:p-10">
+              <Quote className="absolute right-8 top-8 h-12 w-12 fill-current text-[color:var(--brand-secondary)]/20" />
+              <div className="space-y-4 text-[0.92rem] leading-relaxed text-[color:var(--muted)]">
+                {paragraphs.map((p) => (
+                  <p key={p.lead}>
+                    <strong className="font-semibold text-[color:var(--ink)]">
+                      {p.lead}
+                    </strong>
+                    {p.body}
+                  </p>
+                ))}
               </div>
 
-              <div className="mt-6 flex flex-wrap items-center justify-between gap-4 border-t border-slate-200 pt-5">
+              <div className="mt-6 flex flex-wrap items-center justify-between gap-4 border-t border-[color:var(--line)] pt-5">
                 <div>
-                  <p className="text-sm font-semibold text-[#053759]">
+                  <p className="text-sm font-semibold text-[color:var(--ink)]">
                     Dr Mulyamboga Paul
                   </p>
-                  <p className="text-xs text-slate-500">
+                  <p className="text-xs text-[color:var(--muted)]">
                     Team Leader, Doctors on Mission International
                   </p>
                 </div>
-                <div className="flex gap-2 text-[0.7rem] font-medium text-slate-500">
-                  <span className="inline-flex items-center gap-1 rounded-full bg-slate-100 px-3 py-1">
-                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+                <div className="flex flex-wrap gap-2 text-[0.72rem] font-medium text-[color:var(--ink-soft)]">
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-[color:var(--surface)] px-3 py-1">
+                    <span className="h-1.5 w-1.5 rounded-full bg-[color:var(--brand-accent)]" />
                     Impact-driven mission
                   </span>
-                  <span className="hidden sm:inline-flex items-center gap-1 rounded-full bg-slate-100 px-3 py-1">
+                  <span className="hidden items-center rounded-full bg-[color:var(--surface)] px-3 py-1 sm:inline-flex">
                     Community health
                   </span>
                 </div>

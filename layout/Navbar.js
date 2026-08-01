@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ChevronDown, Menu, X } from "lucide-react";
+import { ChevronDown, Menu, X, Phone } from "lucide-react";
 import { FaFacebookF, FaTwitter, FaLinkedinIn } from "react-icons/fa";
 import DonateModal from "@/components/DonateModal";
 
@@ -17,10 +17,7 @@ function Navbar() {
   const pathname = usePathname();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 40);
-    };
-
+    const handleScroll = () => setScrolled(window.scrollY > 30);
     handleScroll();
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -32,298 +29,272 @@ function Navbar() {
   };
 
   const isHome = pathname === "/";
-  const isTransparent = isHome && !scrolled;
+  // Overlay (white text on the hero image) only on the home hero, before scroll
+  const overlay = isHome && !scrolled;
+
+  const navLinks = [
+    { label: "Home", href: "/" },
+    {
+      label: "About",
+      dropdown: [
+        { label: "About Us", href: "/about" },
+        { label: "Programs", href: "/programs" },
+        { label: "Gallery", href: "/gallery" },
+      ],
+      open: aboutOpen,
+      setOpen: setAboutOpen,
+      match: ["/about", "/programs", "/gallery"],
+    },
+    { label: "Volunteer", href: "/voluteer" },
+    { label: "Support a Mission", href: "/support" },
+    { label: "Missions", href: "/missions" },
+    {
+      label: "News",
+      dropdown: [
+        { label: "Reports", href: "/report" },
+        { label: "Press Release", href: "/press" },
+        { label: "Blog", href: "/blog" },
+      ],
+      open: newsOpen,
+      setOpen: setNewsOpen,
+      match: ["/report", "/press", "/blog"],
+    },
+    { label: "Contact", href: "/contact" },
+  ];
+
+  const linkBase = overlay
+    ? "text-white/85 hover:text-white"
+    : "text-[color:var(--ink-soft)] hover:text-[color:var(--ink)]";
+  const linkActive = overlay
+    ? "text-white"
+    : "text-[color:var(--brand-primary-700)]";
 
   return (
     <header
-      className={`w-full z-30 sticky top-0 transition-shadow duration-300 ${
-        scrolled || !isTransparent ? "shadow-sm" : "shadow-none"
+      className={`${isHome ? "fixed" : "sticky"} inset-x-0 top-0 z-40 transition-all duration-300 ${
+        overlay
+          ? "bg-transparent"
+          : "border-b border-[color:var(--line)] bg-white/85 shadow-[0_1px_20px_rgba(0,0,0,0.04)] backdrop-blur-xl"
       }`}
     >
-      {/* Top Bar */}
-      <div className="bg-white px-4 py-2 flex justify-between items-center text-xs sm:text-sm text-gray-600">
-        <div>
-          Tel:
-          <a href="tel:+256782524317" className="ml-1 hover:text-[#0389C3]">
-            +256 782 524 317
-          </a>
-          <span className="mx-1">|</span>
-          <a href="tel:+256784808738" className="hover:text-[#0389C3]">
-            +256 784 808 738
-          </a>
-        </div>
-        <div className="flex items-center gap-4">
-          <span className="hidden sm:inline">DOCTORS ON MISSION INT</span>
-          <div className="flex gap-3 text-gray-600">
-            <a href="#" aria-label="Twitter">
-              <FaTwitter />
+      {/* Top contact strip */}
+      <div
+        className={`hidden border-b transition-colors md:block ${
+          overlay
+            ? "border-white/15 text-white/70"
+            : "border-[color:var(--line)] text-[color:var(--muted)]"
+        }`}
+      >
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-2 text-xs lg:px-10">
+          <div className="flex items-center gap-2">
+            <Phone className="h-3.5 w-3.5" />
+            <a
+              href="tel:+256782524317"
+              className="transition hover:text-[color:var(--brand-primary)]"
+            >
+              +256 782 524 317
             </a>
-            <a href="#" aria-label="Facebook">
-              <FaFacebookF />
+            <span className="opacity-40">|</span>
+            <a
+              href="tel:+256784808738"
+              className="transition hover:text-[color:var(--brand-primary)]"
+            >
+              +256 784 808 738
             </a>
-            <a href="#" aria-label="LinkedIn">
-              <FaLinkedinIn />
-            </a>
+          </div>
+          <div className="flex items-center gap-5">
+            <span className="uppercase tracking-[0.2em]">
+              Doctors on Mission International
+            </span>
+            <div className="flex items-center gap-3">
+              <a
+                href="#"
+                aria-label="Twitter"
+                className="transition hover:text-[color:var(--brand-primary)]"
+              >
+                <FaTwitter />
+              </a>
+              <a
+                href="#"
+                aria-label="Facebook"
+                className="transition hover:text-[color:var(--brand-primary)]"
+              >
+                <FaFacebookF />
+              </a>
+              <a
+                href="#"
+                aria-label="LinkedIn"
+                className="transition hover:text-[color:var(--brand-primary)]"
+              >
+                <FaLinkedinIn />
+              </a>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Main Navbar */}
-      <nav
-        className={`text-white px-4 py-3 relative transition-colors duration-300 ${
-          isTransparent ? "bg-transparent" : "bg-[#0389C3]/95 backdrop-blur-sm"
-        }`}
-      >
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          {/* Logo at far left */}
-          <div className="flex items-center gap-3 sm:gap-4">
-            <Image
-              src="/logos/doctors-mission-logo.svg"
-              alt="Logo"
-              width={48}
-              height={48}
-              className="rounded-md"
-            />
-            <div className="hidden sm:flex flex-col leading-tight">
-              <span className="text-xs uppercase tracking-[0.2em] text-white/80">
-                Doctors on Mission
-              </span>
-              <span className="text-sm font-semibold">
-                International (DOMI)
-              </span>
-            </div>
+      {/* Main bar */}
+      <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3.5 sm:px-6 lg:px-10">
+        {/* Logo */}
+        <Link href="/" className="flex items-center gap-3">
+          <Image
+            src="/logos/doctors-mission-logo.svg"
+            alt="Doctors on Mission International"
+            width={44}
+            height={44}
+            className="rounded-md"
+          />
+          <div className="hidden flex-col leading-tight sm:flex">
+            <span
+              className={`text-[0.62rem] uppercase tracking-[0.22em] ${
+                overlay ? "text-white/70" : "text-[color:var(--muted)]"
+              }`}
+            >
+              Doctors on Mission
+            </span>
+            <span
+              className={`text-sm font-semibold tracking-tight ${
+                overlay ? "text-white" : "text-[color:var(--ink)]"
+              }`}
+            >
+              International (DOMI)
+            </span>
           </div>
+        </Link>
 
-          {/* Nav Links */}
-          <div className="flex items-center gap-6 font-semibold hidden md:flex">
-            <ul className="flex items-center gap-6">
-              <li>
-                <Link
-                  href="/"
-                  className={`transition-colors hover:text-[#EABF4E] ${
-                    isActive("/") ? "text-[#EABF4E]" : ""
-                  }`}
-                >
-                  HOME
-                </Link>
-              </li>
+        {/* Desktop links */}
+        <ul className="hidden items-center gap-7 text-[0.82rem] font-medium lg:flex">
+          {navLinks.map((item) =>
+            item.dropdown ? (
               <li
-                className="relative group"
-                onMouseEnter={() => setAboutOpen(true)}
-                onMouseLeave={() => setAboutOpen(false)}
+                key={item.label}
+                className="relative"
+                onMouseEnter={() => item.setOpen(true)}
+                onMouseLeave={() => item.setOpen(false)}
               >
                 <button
-                  className={`flex items-center gap-1 transition-colors hover:text-[#EABF4E] ${
-                    isActive("/about") ||
-                    isActive("/programs") ||
-                    isActive("/gallery")
-                      ? "text-[#EABF4E]"
-                      : ""
+                  className={`flex items-center gap-1 transition-colors ${
+                    item.match.some((m) => isActive(m)) ? linkActive : linkBase
                   }`}
                 >
-                  ABOUT <ChevronDown size={16} />
+                  {item.label}
+                  <ChevronDown className="h-3.5 w-3.5" />
                 </button>
-                {aboutOpen && (
-                  <ul className="absolute top-full left-0 bg-white text-black shadow-md rounded-md py-2 w-40 z-20">
-                    <li className="px-4 py-2 hover:bg-gray-100">
-                      <Link href="/about">About Us</Link>
-                    </li>
-                    <li className="px-4 py-2 hover:bg-gray-100">
-                      <Link href="/programs">Programs</Link>
-                    </li>
-                    <li className="px-4 py-2 hover:bg-gray-100">
-                      <Link href="/gallery">Gallery</Link>
-                    </li>
+                {item.open && (
+                  <ul className="absolute left-1/2 top-full w-48 -translate-x-1/2 pt-3">
+                    <div className="overflow-hidden rounded-2xl border border-[color:var(--line)] bg-white p-1.5 shadow-xl shadow-black/5">
+                      {item.dropdown.map((d) => (
+                        <li key={d.href}>
+                          <Link
+                            href={d.href}
+                            className="block rounded-xl px-3.5 py-2.5 text-[0.82rem] text-[color:var(--ink-soft)] transition hover:bg-[color:var(--surface)] hover:text-[color:var(--ink)]"
+                          >
+                            {d.label}
+                          </Link>
+                        </li>
+                      ))}
+                    </div>
                   </ul>
                 )}
               </li>
-              <li>
+            ) : (
+              <li key={item.label}>
                 <Link
-                  href="/voluteer"
-                  className={`transition-colors hover:text-[#EABF4E] ${
-                    isActive("/voluteer") ? "text-[#EABF4E]" : ""
+                  href={item.href}
+                  className={`transition-colors ${
+                    isActive(item.href) ? linkActive : linkBase
                   }`}
                 >
-                  VOLUNTEER
+                  {item.label}
                 </Link>
               </li>
-              <li>
-                <Link
-                  href="/support"
-                  className={`transition-colors hover:text-[#EABF4E] ${
-                    isActive("/support") ? "text-[#EABF4E]" : ""
-                  }`}
-                >
-                  SUPPORT A MISSION
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/missions"
-                  className={`transition-colors hover:text-[#EABF4E] ${
-                    isActive("/missions") ? "text-[#EABF4E]" : ""
-                  }`}
-                >
-                  MISSIONS
-                </Link>
-              </li>
-              <li
-                className="relative group"
-                onMouseEnter={() => setNewsOpen(true)}
-                onMouseLeave={() => setNewsOpen(false)}
-              >
-                <button
-                  className={`flex items-center gap-1 transition-colors hover:text-[#EABF4E] ${
-                    isActive("/report") ||
-                    isActive("/press") ||
-                    isActive("/blog")
-                      ? "text-[#EABF4E]"
-                      : ""
-                  }`}
-                >
-                  NEWS <ChevronDown size={16} />
-                </button>
-                {newsOpen && (
-                  <ul className="absolute top-full left-0 bg-white text-black shadow-md rounded-md py-2 w-40 z-20">
-                    <li className="px-4 py-2 hover:bg-gray-100">
-                      <Link href="/report">Reports</Link>
-                    </li>
-                    <li className="px-4 py-2 hover:bg-gray-100">
-                      <Link href="/press">Press Release</Link>
-                    </li>
-                    <li className="px-4 py-2 hover:bg-gray-100">
-                      <Link href="/blog">Blog</Link>
-                    </li>
-                  </ul>
-                )}
-              </li>
-              <li>
-                <Link
-                  href="/contact"
-                  className={`transition-colors hover:text-[#EABF4E] ${
-                    isActive("/contact") ? "text-[#EABF4E]" : ""
-                  }`}
-                >
-                  CONTACT
-                </Link>
-              </li>
-            </ul>
-          </div>
+            )
+          )}
+        </ul>
 
-          {/* Donate and Mobile Toggle */}
-          <div className="flex items-center gap-4">
+        {/* Right actions */}
+        <div className="flex items-center gap-3">
+          <button
+            type="button"
+            onClick={() => setDonateOpen(true)}
+            className="hidden rounded-full bg-[color:var(--brand-primary)] px-6 py-2.5 text-[0.82rem] font-semibold text-white shadow-lg shadow-[color:var(--brand-primary)]/25 transition hover:-translate-y-0.5 hover:bg-[color:var(--brand-primary-600)] md:inline-flex"
+          >
+            Donate
+          </button>
+          <button
+            className={`lg:hidden ${
+              overlay ? "text-white" : "text-[color:var(--ink)]"
+            }`}
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Toggle menu"
+          >
+            {menuOpen ? <X size={26} /> : <Menu size={26} />}
+          </button>
+        </div>
+      </nav>
+
+      {/* Mobile menu */}
+      {menuOpen && (
+        <div className="border-t border-[color:var(--line)] bg-white px-5 py-4 lg:hidden">
+          <div className="flex flex-col gap-1 text-[0.9rem]">
+            {navLinks.map((item) =>
+              item.dropdown ? (
+                <div key={item.label}>
+                  <button
+                    className="flex w-full items-center justify-between py-2.5 text-[color:var(--ink-soft)]"
+                    onClick={() => item.setOpen(!item.open)}
+                  >
+                    {item.label}
+                    <ChevronDown
+                      className={`h-4 w-4 transition-transform ${
+                        item.open ? "rotate-180" : ""
+                      }`}
+                    />
+                  </button>
+                  {item.open && (
+                    <div className="mb-1 ml-3 flex flex-col gap-1 border-l border-[color:var(--line)] pl-4">
+                      {item.dropdown.map((d) => (
+                        <Link
+                          key={d.href}
+                          href={d.href}
+                          onClick={() => setMenuOpen(false)}
+                          className="py-2 text-[color:var(--muted)] hover:text-[color:var(--ink)]"
+                        >
+                          {d.label}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  onClick={() => setMenuOpen(false)}
+                  className={`py-2.5 ${
+                    isActive(item.href)
+                      ? "font-semibold text-[color:var(--brand-primary-700)]"
+                      : "text-[color:var(--ink-soft)]"
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              )
+            )}
             <button
               type="button"
-              onClick={() => setDonateOpen(true)}
-              className="bg-[#EABF4E] text-white font-semibold px-4 py-2 rounded-full shadow-md hover:bg-[#d6a931] hidden md:inline-flex items-center gap-2 transition-transform hover:-translate-y-0.5"
+              onClick={() => {
+                setDonateOpen(true);
+                setMenuOpen(false);
+              }}
+              className="mt-3 w-full rounded-full bg-[color:var(--brand-primary)] px-5 py-3 text-center text-sm font-semibold text-white shadow-md"
             >
-              <span className="text-lg">➜</span>
-              <span>DONATE</span>
-            </button>
-            <button
-              className="md:hidden text-white"
-              onClick={() => setMenuOpen(!menuOpen)}
-            >
-              {menuOpen ? <X size={28} /> : <Menu size={28} />}
+              Donate
             </button>
           </div>
         </div>
+      )}
 
-        {/* Mobile Menu */}
-        {menuOpen && (
-          <div className="md:hidden bg-[#0389C3] text-white mt-2 p-4 space-y-2">
-            <Link
-              href="/"
-              className={`block py-1 ${
-                isActive("/") ? "text-[#EABF4E] font-semibold" : ""
-              }`}
-            >
-              HOME
-            </Link>
-            <div>
-              <button
-                className="flex items-center gap-1 w-full"
-                onClick={() => setAboutOpen(!aboutOpen)}
-              >
-                ABOUT <ChevronDown size={16} />
-              </button>
-              {aboutOpen && (
-                <div className="pl-4 mt-1 space-y-1">
-                  <Link href="/about" className="block">
-                    About Us
-                  </Link>
-                  <Link href="/programs" className="block">
-                    Programs
-                  </Link>
-                  <Link href="/gallery" className="block">
-                    Gallery
-                  </Link>
-                </div>
-              )}
-            </div>
-            <Link
-              href="/voluteer"
-              className={`block py-1 ${
-                isActive("/voluteer") ? "text-[#EABF4E] font-semibold" : ""
-              }`}
-            >
-              VOLUNTEER
-            </Link>
-            <Link
-              href="/support"
-              className={`block py-1 ${
-                isActive("/support") ? "text-[#EABF4E] font-semibold" : ""
-              }`}
-            >
-              SUPPORT A MISSION
-            </Link>
-            <Link
-              href="/missions"
-              className={`block py-1 ${
-                isActive("/missions") ? "text-[#EABF4E] font-semibold" : ""
-              }`}
-            >
-              MISSIONS
-            </Link>
-            <div>
-              <button
-                className="flex items-center gap-1 w-full"
-                onClick={() => setNewsOpen(!newsOpen)}
-              >
-                NEWS <ChevronDown size={16} />
-              </button>
-              {newsOpen && (
-                <div className="pl-4 mt-1 space-y-1">
-                  <Link href="/report" className="block">
-                    Reports
-                  </Link>
-                  <Link href="/press" className="block">
-                    Press Release
-                  </Link>
-                  <Link href="/blog" className="block">
-                    Blog
-                  </Link>
-                </div>
-              )}
-            </div>
-            <Link
-              href="/contact"
-              className={`block py-1 ${
-                isActive("/contact") ? "text-[#EABF4E] font-semibold" : ""
-              }`}
-            >
-              CONTACT
-            </Link>
-            <button
-              type="button"
-              onClick={() => setDonateOpen(true)}
-              className="inline-block mt-4 bg-[#EABF4E] text-white px-4 py-2 rounded-full shadow-md w-full text-center font-semibold tracking-wide"
-            >
-              ➜ DONATE
-            </button>
-          </div>
-        )}
-      </nav>
       <DonateModal open={donateOpen} onClose={() => setDonateOpen(false)} />
     </header>
   );

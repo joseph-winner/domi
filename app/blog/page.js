@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { getBlogs } from "@/lib/firestore";
 import Link from "next/link";
+import { ArrowUpRight, Newspaper } from "lucide-react";
 
 export default function BlogPage() {
   const [blogs, setBlogs] = useState([]);
@@ -14,7 +15,6 @@ export default function BlogPage() {
 
   async function loadBlogs() {
     const data = await getBlogs();
-    // Filter only published blogs
     const publishedBlogs = data.filter((blog) => blog.published);
     setBlogs(publishedBlogs);
     setLoading(false);
@@ -24,295 +24,149 @@ export default function BlogPage() {
   const regularPosts = blogs.filter((blog) => !blog.featured);
   const displayPosts =
     featuredPosts.length > 0 ? featuredPosts : blogs.slice(0, 3);
-  return (
-    <main className="min-h-screen bg-[#f5fafc] pb-16 text-slate-800">
-      {/* Hero */}
-      <section className="relative max-w-6xl mx-auto px-4 pt-10 sm:pt-14 lg:pt-16">
-        <div className="grid gap-10 lg:grid-cols-[1.4fr_minmax(0,1fr)] items-center">
-          <div className="space-y-6 text-slate-800">
-            <span className="inline-flex items-center gap-2 rounded-full border border-sky-100 bg-white/80 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-sky-700 shadow-sm">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#0086bf] animate-pulse" />
-              DOMI Stories & Insights
-            </span>
 
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-slate-900 leading-tight">
-              Healing bodies,
-              <span className="relative inline-block text-[#0086bf]">
-                <span className="absolute inset-x-0 -bottom-1 h-2 bg-[#ebbe4d]/40 blur-[2px]" />
-                <span className="relative mx-2 bg-gradient-to-r from-[#0086bf] via-sky-500 to-[#ebbe4d] bg-clip-text text-transparent">
-                  restoring hope
-                </span>
+  const meta = (post) => post.date || post.readTime || post.author || "";
+
+  const PostCard = ({ post }) => (
+    <article className="group flex h-full flex-col overflow-hidden rounded-[1.5rem] border border-[color:var(--line)] bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_28px_65px_-45px_rgba(20,33,31,0.55)]">
+      {post.featuredImage && (
+        <div className="relative m-2.5 overflow-hidden rounded-[1.15rem]">
+          <img
+            src={post.featuredImage}
+            alt={post.title}
+            className="h-56 w-full object-cover transition duration-700 group-hover:scale-105"
+          />
+        </div>
+      )}
+      <div className="flex flex-1 flex-col px-6 pb-6 pt-3">
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <div className="flex flex-wrap items-center gap-2">
+            {post.category && (
+              <span className="inline-flex items-center rounded-full border border-[color:var(--line)] px-3 py-1 text-[0.72rem] font-medium text-[color:var(--ink-soft)]">
+                {post.category}
               </span>
-              — one story at a time.
-            </h1>
-
-            <p className="max-w-xl text-sm sm:text-base text-slate-700">
-              Go behind the scenes of DOMI missions: read field reports,
-              volunteer reflections and simple health tips shaped by real
-              patients in underserved communities.
-            </p>
-
-            <div className="flex flex-wrap gap-3 items-center">
-              <button className="inline-flex items-center gap-2 rounded-full bg-[#0086bf] px-5 py-2.5 text-sm font-semibold text-white shadow-md shadow-sky-500/30 hover:bg-sky-700 transition-transform hover:-translate-y-0.5">
-                Start with the latest
-                <span className="text-lg">↗</span>
-              </button>
-              <div className="flex flex-wrap gap-2 text-xs sm:text-[0.78rem] text-slate-500">
-                <span className="inline-flex items-center gap-1 rounded-full bg-white/80 px-3 py-1 shadow-sm border border-slate-100">
-                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
-                  Surgical missions
-                </span>
-                <span className="inline-flex items-center gap-1 rounded-full bg-white/80 px-3 py-1 shadow-sm border border-slate-100">
-                  <span className="h-1.5 w-1.5 rounded-full bg-amber-400" />
-                  Community clinics
-                </span>
-                <span className="inline-flex items-center gap-1 rounded-full bg-white/80 px-3 py-1 shadow-sm border border-slate-100">
-                  <span className="h-1.5 w-1.5 rounded-full bg-sky-400" />
-                  Health education
-                </span>
-              </div>
-            </div>
-
-            <dl className="mt-6 grid grid-cols-3 gap-4 max-w-md text-xs sm:text-sm">
-              <div className="rounded-2xl bg-white p-4 shadow-sm border border-sky-50">
-                <dt className="text-slate-600">Mission stories</dt>
-                <dd className="mt-1 text-lg font-semibold text-slate-900">
-                  40+
-                </dd>
-              </div>
-              <div className="rounded-2xl bg-white p-4 shadow-sm border border-sky-50">
-                <dt className="text-slate-600">Volunteer voices</dt>
-                <dd className="mt-1 text-lg font-semibold text-slate-900">
-                  25+
-                </dd>
-              </div>
-              <div className="rounded-2xl bg-white p-4 shadow-sm border border-sky-50">
-                <dt className="text-slate-600">Health briefs</dt>
-                <dd className="mt-1 text-lg font-semibold text-slate-900">
-                  30+
-                </dd>
-              </div>
-            </dl>
+            )}
+            {post.featured && (
+              <span className="inline-flex items-center rounded-full bg-[color:var(--brand-primary)]/10 px-3 py-1 text-[0.72rem] font-medium text-[color:var(--brand-primary-700)]">
+                Featured
+              </span>
+            )}
           </div>
+          {meta(post) && (
+            <span className="text-[0.78rem] text-[color:var(--muted)]">
+              {meta(post)}
+            </span>
+          )}
+        </div>
 
-          {/* Right card */}
-          <div className="relative">
-            <div className="absolute -inset-4 rounded-3xl bg-gradient-to-br from-[#0086bf]/10 via-sky-300/15 to-[#ebbe4d]/10 blur-2xl" />
-            <div className="relative overflow-hidden rounded-3xl bg-white/90 border border-sky-100 shadow-xl">
-              <div className="border-b border-sky-50 bg-sky-50/60 px-5 py-3 flex items-center justify-between">
-                <div className="flex items-center gap-2 text-xs text-slate-500">
-                  <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-                  Live from the field
-                </div>
-                <span className="rounded-full bg-[#ebbe4d]/20 px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-amber-700">
-                  Mission Log
-                </span>
-              </div>
-              <div className="px-5 py-4 space-y-3 text-sm text-slate-800">
-                <p className="font-semibold text-slate-900">
-                  "We set up theatre under lantern light, but hope felt brighter
-                  than any generator."
-                </p>
-                <p>
-                  Each DOMI mission blends clinical excellence with compassion.
-                  Our blog captures those moments of quiet courage, answered
-                  prayer and restored health that statistics alone can&apos;t
-                  show.
-                </p>
-                <div className="flex items-center justify-between text-xs text-slate-600 pt-1">
-                  <span>New posts every mission season</span>
-                  <span className="inline-flex items-center gap-1 rounded-full bg-sky-50 px-2.5 py-1 text-[0.7rem] text-sky-700">
-                    <span className="h-1.5 w-1.5 rounded-full bg-[#0086bf]" />
-                    Faith • Medicine • Community
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
+        <h3 className="mt-4 text-xl leading-snug tracking-[-0.02em] text-[color:var(--ink)]">
+          {post.title}
+        </h3>
+        {post.excerpt && (
+          <p className="mt-3 flex-1 text-[0.9rem] leading-relaxed text-[color:var(--muted)]">
+            {post.excerpt}
+          </p>
+        )}
+
+        <Link
+          href={`/blog/${post.slug}`}
+          className="group/btn mt-6 inline-flex items-center justify-center gap-2 rounded-full border border-[color:var(--line)] px-5 py-3 text-sm font-medium text-[color:var(--ink)] transition hover:border-[color:var(--brand-primary)] hover:bg-[color:var(--brand-primary)] hover:text-white"
+        >
+          Read this article
+          <ArrowUpRight className="h-4 w-4 transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
+        </Link>
+      </div>
+    </article>
+  );
+
+  return (
+    <main className="bg-white">
+      {/* Header */}
+      <section className="border-b border-[color:var(--line)] bg-[color:var(--surface)]">
+        <div className="mx-auto max-w-7xl px-5 py-16 text-center sm:px-8 sm:py-20 lg:px-10">
+          <span className="inline-flex items-center gap-2 rounded-full border border-[color:var(--line)] bg-white px-4 py-1.5 text-[0.78rem] font-medium text-[color:var(--ink-soft)]">
+            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[color:var(--brand-primary)] text-white">
+              <Newspaper className="h-3 w-3" />
+            </span>
+            Blog
+          </span>
+          <h1 className="mx-auto mt-6 max-w-3xl text-[2.5rem] leading-[1.04] tracking-[-0.035em] text-[color:var(--ink)] sm:text-6xl">
+            Blog &amp; updates
+          </h1>
+          <p className="mx-auto mt-5 max-w-2xl text-[1rem] leading-relaxed text-[color:var(--muted)] sm:text-lg">
+            Go behind the scenes of DOMI missions: field reports, volunteer
+            reflections and simple health tips shaped by real patients in
+            underserved communities.
+          </p>
         </div>
       </section>
 
-      {/* Posts grid */}
-      <section className="mt-12 max-w-6xl mx-auto px-4">
-        <div className="flex items-baseline justify-between gap-4 mb-6">
+      <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8 lg:px-10 lg:py-20">
+        {/* Latest */}
+        <div className="mb-8 flex items-end justify-between gap-4">
           <div>
-            <h2 className="text-xl sm:text-2xl font-semibold text-slate-900">
+            <h2 className="text-2xl tracking-[-0.02em] text-[color:var(--ink)] sm:text-3xl">
               Latest from the mission field
             </h2>
-            <p className="mt-1 text-sm text-slate-700">
+            <p className="mt-2 max-w-xl text-[0.95rem] text-[color:var(--muted)]">
               Curated highlights from recent DOMI outreaches, volunteer journeys
               and community health campaigns.
             </p>
           </div>
-          <button className="hidden sm:inline-flex items-center gap-2 rounded-full border border-sky-100 bg-white/80 px-4 py-2 text-xs font-semibold text-slate-700 hover:border-[#0086bf]/60 hover:text-[#0086bf]">
-            Receive mission updates
-            <span className="text-base">✉</span>
-          </button>
         </div>
 
         {loading ? (
-          <div className="flex items-center justify-center py-12">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#0086bf]"></div>
+          <div className="flex items-center justify-center py-16">
+            <div className="h-10 w-10 animate-spin rounded-full border-2 border-[color:var(--line)] border-t-[color:var(--brand-primary)]" />
           </div>
         ) : displayPosts.length === 0 ? (
-          <div className="text-center py-12">
-            <p className="text-slate-600 text-lg">
+          <div className="rounded-[1.5rem] border border-dashed border-[color:var(--line)] py-16 text-center">
+            <p className="text-[color:var(--muted)]">
               No blog posts available yet. Check back soon for stories from the
               field!
             </p>
           </div>
         ) : (
-          <div className="grid gap-6 md:grid-cols-3">
-            {displayPosts.map((post, index) => (
-              <article
-                key={post.id}
-                className={`group relative flex flex-col rounded-2xl border bg-white/90 p-4 shadow-sm transition-transform hover:-translate-y-1 hover:shadow-lg ${
-                  index === 0 && post.featured
-                    ? "border-[#0086bf]/50 md:col-span-2 md:flex-row md:items-stretch"
-                    : "border-sky-100"
-                }`}
-              >
-                {post.featuredImage && index === 0 && (
-                  <div className="md:w-1/3 mb-4 md:mb-0 md:mr-4">
-                    <img
-                      src={post.featuredImage}
-                      alt={post.title}
-                      className="w-full h-48 md:h-full object-cover rounded-xl"
-                    />
-                  </div>
-                )}
-                <div className="flex-1 space-y-3">
-                  <div className="flex items-center gap-2 text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-sky-700">
-                    {post.category && (
-                      <span className="inline-flex items-center gap-1 rounded-full bg-sky-50 px-2 py-1">
-                        <span className="h-1.5 w-1.5 rounded-full bg-[#ebbe4d]" />
-                        {post.category}
-                      </span>
-                    )}
-                    {post.featured && (
-                      <span className="rounded-full bg-[#0086bf]/10 px-2 py-1 text-[0.6rem] text-[#0086bf] border border-[#0086bf]/30">
-                        Featured
-                      </span>
-                    )}
-                  </div>
-
-                  <h3 className="text-base sm:text-lg font-semibold text-slate-900 group-hover:text-[#0086bf]">
-                    {post.title}
-                  </h3>
-
-                  <p className="text-xs sm:text-sm text-slate-700">
-                    {post.excerpt}
-                  </p>
-
-                  <div className="flex items-center justify-between pt-3 text-[0.7rem] sm:text-xs text-slate-600">
-                    <div>
-                      {post.author && (
-                        <>
-                          <p className="font-semibold text-slate-800">
-                            {post.author}
-                          </p>
-                          {post.authorRole && <p>{post.authorRole}</p>}
-                        </>
-                      )}
-                    </div>
-                    <div className="flex flex-col items-end gap-1">
-                      {post.readTime && (
-                        <span className="inline-flex items-center gap-1 rounded-full bg-[#ebbe4d]/15 px-3 py-1 text-[0.68rem] font-semibold text-amber-700">
-                          ⏱ {post.readTime}
-                        </span>
-                      )}
-                      <Link
-                        href={`/blog/${post.slug}`}
-                        className="inline-flex items-center gap-1 rounded-full bg-[#0086bf] px-3 py-1 text-[0.7rem] font-semibold text-white shadow-sm hover:bg-sky-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#0086bf]"
-                      >
-                        Read story
-                        <span className="ml-0.5">→</span>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </article>
+          <div className="grid gap-6 md:grid-cols-2">
+            {displayPosts.map((post) => (
+              <PostCard key={post.id} post={post} />
             ))}
           </div>
         )}
 
-        {/* Show remaining posts if any */}
+        {/* More stories */}
         {!loading && regularPosts.length > 0 && (
-          <div className="mt-12">
-            <h3 className="text-2xl font-semibold text-slate-900 mb-6">
+          <div className="mt-16">
+            <h2 className="mb-8 text-2xl tracking-[-0.02em] text-[color:var(--ink)] sm:text-3xl">
               More Stories
-            </h3>
+            </h2>
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               {regularPosts.map((post) => (
-                <article
-                  key={post.id}
-                  className="group relative flex flex-col rounded-2xl border border-sky-100 bg-white/90 overflow-hidden shadow-sm transition-transform hover:-translate-y-1 hover:shadow-lg"
-                >
-                  {post.featuredImage && (
-                    <div className="w-full h-48 overflow-hidden">
-                      <img
-                        src={post.featuredImage}
-                        alt={post.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                      />
-                    </div>
-                  )}
-                  <div className="p-4 space-y-3">
-                    {post.category && (
-                      <span className="inline-flex items-center gap-1 rounded-full bg-sky-50 px-2 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-sky-700">
-                        <span className="h-1.5 w-1.5 rounded-full bg-[#ebbe4d]" />
-                        {post.category}
-                      </span>
-                    )}
-
-                    <h3 className="text-base font-semibold text-slate-900 group-hover:text-[#0086bf]">
-                      {post.title}
-                    </h3>
-
-                    <p className="text-sm text-slate-700 line-clamp-2">
-                      {post.excerpt}
-                    </p>
-
-                    <div className="flex items-center justify-between pt-2">
-                      <div className="text-xs text-slate-600">
-                        {post.author && (
-                          <p className="font-semibold text-slate-800">
-                            {post.author}
-                          </p>
-                        )}
-                      </div>
-                      <Link
-                        href={`/blog/${post.slug}`}
-                        className="inline-flex items-center gap-1 text-[#0086bf] text-sm font-semibold hover:gap-2 transition-all"
-                      >
-                        Read more
-                        <span>→</span>
-                      </Link>
-                    </div>
-                  </div>
-                </article>
+                <PostCard key={post.id} post={post} />
               ))}
             </div>
           </div>
         )}
 
-        <div className="mt-10 flex flex-col sm:flex-row items-center justify-between gap-4 rounded-2xl border border-dashed border-[#0086bf]/30 bg-sky-50/40 px-6 py-5 text-sm">
-          <div className="max-w-xl text-center sm:text-left">
-            <p className="font-semibold text-slate-900">
+        {/* Share a story */}
+        <div className="mt-14 flex flex-col items-center justify-between gap-4 rounded-[1.5rem] border border-[color:var(--line)] bg-[color:var(--surface)] px-6 py-7 text-center sm:flex-row sm:text-left">
+          <div className="max-w-xl">
+            <p className="text-lg tracking-[-0.02em] text-[color:var(--ink)]">
               Have a story from a DOMI outreach that should be told?
             </p>
-            <p className="text-slate-600 text-xs sm:text-sm mt-1">
-              We love amplifying the voices of patients, volunteers and
-              partners. Share your testimony, field reflection or health
-              education idea for the DOMI blog.
+            <p className="mt-1.5 text-[0.9rem] text-[color:var(--muted)]">
+              We love amplifying the voices of patients, volunteers and partners.
+              Share your testimony, field reflection or health education idea.
             </p>
           </div>
-          <button className="inline-flex items-center gap-2 rounded-full bg-[#ebbe4d] px-5 py-2.5 text-xs sm:text-sm font-semibold text-slate-900 shadow-md shadow-amber-300/50 hover:bg-[#e1b53b] transition-transform hover:-translate-y-0.5">
-            Share a story
-            <span className="text-base">✍</span>
-          </button>
+          <Link
+            href="/contact"
+            className="inline-flex flex-none items-center gap-2 rounded-full bg-[color:var(--brand-primary)] px-6 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-[color:var(--brand-primary-600)]"
+          >
+            Share a story <ArrowUpRight className="h-4 w-4" />
+          </Link>
         </div>
-      </section>
+      </div>
     </main>
   );
 }

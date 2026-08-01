@@ -1,67 +1,79 @@
 import React from "react";
-import { FiHeart, FiUsers, FiArrowRight } from "react-icons/fi";
+import { Heart, Users, ArrowUpRight } from "lucide-react";
 
 function CalltoAction() {
+  const options = [
+    {
+      Icon: Heart,
+      href: "#support-child",
+      title: "Support a child's surgery",
+      desc: "Help fund critical surgeries so children can receive the life-saving care they deserve.",
+      cta: "Learn more",
+    },
+    {
+      Icon: Users,
+      href: "#kibuku-mission",
+      title: "Kibuku Medical Mission",
+      desc: "Support our on-the-ground medical outreach bringing care to under-served communities in Kibuku.",
+      cta: "Get involved",
+    },
+  ];
+
   return (
-    <section className="py-20 bg-slate-50">
-      <div className="max-w-6xl mx-auto px-4">
-        <div className="text-center mb-12">
-          <p className="text-xs font-semibold tracking-[0.2em] text-sky-600 uppercase">
-            Make an impact today
-          </p>
-          <h2 className="mt-4 text-3xl md:text-4xl font-semibold text-slate-900">
-            Your support changes lives
-          </h2>
-          <p className="mt-4 text-base md:text-lg text-slate-600 max-w-2xl mx-auto">
-            Choose how you would like to get involved and help provide
-            life-changing care for children and communities.
-          </p>
-        </div>
+    <section className="bg-white px-5 py-14 sm:px-8 lg:px-10">
+      <div className="mx-auto max-w-7xl">
+        <div className="relative overflow-hidden rounded-[2.5rem] bg-[color:var(--brand-primary)] px-6 py-14 sm:px-12 lg:py-16">
+          {/* subtle grid + glow */}
+          <div
+            className="pointer-events-none absolute inset-0 opacity-[0.12]"
+            style={{
+              backgroundImage:
+                "linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)",
+              backgroundSize: "48px 48px",
+            }}
+          />
+          <div className="pointer-events-none absolute -bottom-24 left-1/2 h-64 w-[36rem] -translate-x-1/2 rounded-full bg-white/25 blur-3xl" />
 
-        <div className="grid gap-6 md:grid-cols-2">
-          <a
-            href="#support-child"
-            className="group flex flex-col justify-between rounded-2xl border border-slate-200 bg-white/80 p-6 shadow-sm backdrop-blur-sm transition hover:-translate-y-1 hover:border-sky-500/60 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-50"
-          >
-            <div>
-              <div className="inline-flex items-center justify-center rounded-full bg-sky-50 text-sky-600 p-2 mb-4">
-                <FiHeart className="h-5 w-5" />
-              </div>
-              <h3 className="text-lg md:text-xl font-semibold text-slate-900">
-                Support a child's surgery
-              </h3>
-              <p className="mt-2 text-sm md:text-base text-slate-600">
-                Help fund critical surgeries so children can receive the
-                life-saving care they deserve.
+          <div className="relative">
+            {/* Header */}
+            <div className="mx-auto max-w-2xl text-center">
+              <p className="text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-white/80">
+                Make an impact today
+              </p>
+              <h2 className="mt-4 text-[2rem] leading-[1.06] tracking-[-0.03em] text-white sm:text-4xl lg:text-[2.75rem]">
+                Your support changes lives
+              </h2>
+              <p className="mx-auto mt-4 max-w-xl text-[0.98rem] leading-relaxed text-white/85">
+                Choose how you would like to get involved and help provide
+                life-changing care for children and communities.
               </p>
             </div>
-            <span className="mt-4 inline-flex items-center text-sm font-semibold text-sky-600">
-              Learn more
-              <FiArrowRight className="ml-1.5 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-            </span>
-          </a>
 
-          <a
-            href="#kibuku-mission"
-            className="group flex flex-col justify-between rounded-2xl border border-slate-200 bg-white/80 p-6 shadow-sm backdrop-blur-sm transition hover:-translate-y-1 hover:border-amber-500/70 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-50"
-          >
-            <div>
-              <div className="inline-flex items-center justify-center rounded-full bg-amber-50 text-amber-600 p-2 mb-4">
-                <FiUsers className="h-5 w-5" />
-              </div>
-              <h3 className="text-lg md:text-xl font-semibold text-slate-900">
-                Kibuku Medical Mission
-              </h3>
-              <p className="mt-2 text-sm md:text-base text-slate-600">
-                Support our on-the-ground medical outreach bringing care to
-                under-served communities in Kibuku.
-              </p>
+            {/* Option cards */}
+            <div className="mx-auto mt-11 grid max-w-3xl gap-5 sm:grid-cols-2">
+              {options.map((o) => (
+                <a
+                  key={o.title}
+                  href={o.href}
+                  className="group flex flex-col rounded-[1.4rem] bg-white/95 p-6 shadow-lg shadow-black/10 transition hover:-translate-y-1 hover:bg-white"
+                >
+                  <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-[color:var(--brand-primary)]/12 text-[color:var(--brand-primary-700)]">
+                    <o.Icon className="h-5 w-5" />
+                  </span>
+                  <h3 className="mt-5 text-lg tracking-[-0.02em] text-[color:var(--ink)]">
+                    {o.title}
+                  </h3>
+                  <p className="mt-2 flex-1 text-[0.88rem] leading-relaxed text-[color:var(--muted)]">
+                    {o.desc}
+                  </p>
+                  <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-[color:var(--brand-primary-700)]">
+                    {o.cta}
+                    <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  </span>
+                </a>
+              ))}
             </div>
-            <span className="mt-4 inline-flex items-center text-sm font-semibold text-amber-600">
-              Get involved
-              <FiArrowRight className="ml-1.5 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-            </span>
-          </a>
+          </div>
         </div>
       </div>
     </section>

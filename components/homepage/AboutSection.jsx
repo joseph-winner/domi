@@ -1,96 +1,105 @@
 import React from "react";
 import Image from "next/image";
+import { ArrowUpRight, HeartHandshake, MapPin } from "lucide-react";
 
 function AboutSection() {
+  const stats = [
+    {
+      value: "2023",
+      label: "Founded",
+      note: "Established to unite Christian medical teams delivering hope and healing in underserved communities.",
+    },
+    {
+      value: "+500",
+      label: "Lives Touched",
+      note: "Through free surgeries, outreach clinics and medical missions across low-resource settings.",
+    },
+  ];
+
   return (
-    <section className="bg-[#F8FAFC] py-16 px-4">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid md:grid-cols-2 gap-12 items-start">
-          {/* Left: Text + Two Cards + CTA */}
-          <div className="space-y-10 text-center md:text-left">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-[#053759] mb-4">
-                Who We Are
-              </h2>
-              <p className="text-gray-700">
-                Doctor’s on Mission International is a volunteer-based
-                non-for-profit organization uniting like-minded Christian
-                medical teams with the aim of serving humanity through freely
-                accessible, acceptable, and reliable medical and surgical care.
-                Our goal is to reduce the burden on medical care within
-                communities while serving God and bringing healing to those in
-                need.
-              </p>
-            </div>
+    <section className="bg-white px-5 py-20 sm:px-8 lg:px-10 lg:py-28">
+      <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2 lg:gap-16">
+        {/* Left: copy + stat cells + CTA */}
+        <div>
+          <span className="inline-flex items-center gap-2 rounded-full border border-[color:var(--line)] bg-white px-4 py-1.5 text-[0.78rem] font-medium text-[color:var(--ink-soft)]">
+            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[color:var(--brand-primary)]/12 text-[color:var(--brand-primary-700)]">
+              <HeartHandshake className="h-3 w-3" />
+            </span>
+            Who We Are
+          </span>
 
-            <div className="grid sm:grid-cols-2 gap-6">
-              <div className="bg-white rounded-xl shadow-md px-6 py-8 border-t-4 border-[#10C0DE] text-center md:text-left">
-                <h3 className="text-5xl font-extrabold text-[#053759] mb-2">
-                  2023
-                </h3>
-                <p className="text-sm font-medium text-[#045D42] uppercase">
-                  Founded
-                </p>
-                <p className="mt-4 text-gray-600 text-sm">
-                  Established in 2023 to unite Christian medical teams to
-                  deliver hope and healing in underserved communities.
-                </p>
-              </div>
+          <h2 className="mt-6 text-[2rem] leading-[1.06] tracking-[-0.03em] text-[color:var(--ink)] sm:text-4xl lg:text-[2.75rem]">
+            Uniting medical teams to serve humanity
+          </h2>
 
-              <div className="bg-white rounded-xl shadow-md px-6 py-8 border-t-4 border-[#A1CB4A] text-center md:text-left">
-                <h3 className="text-5xl font-extrabold text-[#053759] mb-2">
-                  +500
-                </h3>
-                <p className="text-sm font-medium text-[#045D42] uppercase">
-                  Lives Touched
-                </p>
-                <p className="mt-4 text-gray-600 text-sm">
-                  Through free surgeries, outreach clinics, and medical missions
-                  across low-resource settings.
-                </p>
-              </div>
-            </div>
+          <p className="mt-5 max-w-xl text-[0.98rem] leading-relaxed text-[color:var(--muted)]">
+            Doctor&rsquo;s on Mission International is a volunteer-based
+            non-for-profit organization uniting like-minded Christian medical
+            teams with the aim of serving humanity through freely accessible,
+            acceptable and reliable medical and surgical care. Our goal is to
+            reduce the burden on medical care within communities while serving
+            God and bringing healing to those in need.
+          </p>
 
-            <div className="pt-2">
-              <a
-                href="#read-more"
-                className="inline-block px-6 py-3 rounded-md border border-[#10C0DE] text-[#10C0DE] font-semibold hover:bg-[#10C0DE] hover:text-white transition"
+          {/* Stat cells — divided card (Medical Resources ref) */}
+          <div className="mt-9 grid max-w-lg grid-cols-2 overflow-hidden rounded-2xl border border-[color:var(--line)]">
+            {stats.map((s, i) => (
+              <div
+                key={s.label}
+                className={`p-6 ${
+                  i === 0 ? "border-r border-[color:var(--line)]" : ""
+                }`}
               >
-                Read More
-              </a>
-            </div>
+                <p className="text-[0.78rem] font-medium uppercase tracking-wide text-[color:var(--muted)]">
+                  {s.label}
+                </p>
+                <p className="mt-1.5 text-4xl font-light tracking-[-0.03em] text-[color:var(--ink)]">
+                  {s.value}
+                </p>
+                <p className="mt-3 text-[0.82rem] leading-relaxed text-[color:var(--muted)]">
+                  {s.note}
+                </p>
+              </div>
+            ))}
           </div>
 
-          {/* Right: Image */}
-          <div className="max-w-xl mx-auto md:mx-0">
-            <div className="rounded-xl overflow-hidden shadow-lg">
-              <Image
-                src="/img/who-we-are.jpg"
-                alt="Doctors on mission banner"
-                width={800}
-                height={533}
-                className="object-cover w-full h-full"
-                priority
-              />
+          <a
+            href="/about"
+            className="group mt-9 inline-flex items-center gap-2 rounded-full bg-[color:var(--brand-primary)] px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-[color:var(--brand-primary)]/25 transition hover:-translate-y-0.5 hover:bg-[color:var(--brand-primary-600)]"
+          >
+            Read More
+            <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          </a>
+        </div>
+
+        {/* Right: image + floating card */}
+        <div className="relative">
+          <div className="relative overflow-hidden rounded-[2rem] border border-[color:var(--line)]">
+            <Image
+              src="/img/who-we-are.jpg"
+              alt="Doctors on Mission International team serving a community"
+              width={820}
+              height={720}
+              className="h-full w-full object-cover"
+              priority
+            />
+          </div>
+
+          {/* Floating fact card */}
+          <div className="absolute bottom-5 left-5 right-5 flex items-center gap-3 rounded-2xl border border-[color:var(--line)] bg-white/95 p-4 shadow-xl shadow-black/5 backdrop-blur sm:left-6 sm:right-auto sm:max-w-xs">
+            <span className="flex h-11 w-11 flex-none items-center justify-center rounded-xl bg-[color:var(--brand-primary)]/12 text-[color:var(--brand-primary-700)]">
+              <MapPin className="h-5 w-5" />
+            </span>
+            <div>
+              <p className="text-sm font-semibold tracking-tight text-[color:var(--ink)]">
+                Faith-driven, volunteer-based
+              </p>
+              <p className="mt-0.5 text-[0.8rem] leading-snug text-[color:var(--muted)]">
+                Serving from Mbarara City across South-Western Uganda.
+              </p>
             </div>
           </div>
         </div>
-
-        {/* Full-width third card below the image */}
-        {/* <div className="mt-10">
-          <div className="bg-white rounded-xl shadow-md px-6 py-8 border-t-4 border-[#FF126B] text-center md:text-left max-w-4xl mx-auto">
-            <h3 className="text-5xl font-extrabold text-[#053759] mb-2">
-              1 MISSION
-            </h3>
-            <p className="text-sm font-medium text-[#045D42] uppercase">
-              Healing & Hope
-            </p>
-            <p className="mt-4 text-gray-600 text-sm">
-              To bridge the gap in healthcare access while glorifying God and
-              empowering communities through compassion.
-            </p>
-          </div>
-        </div> */}
       </div>
     </section>
   );

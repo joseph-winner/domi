@@ -6,8 +6,9 @@ import {
   Phone,
   Mail,
   Send,
-  Clock,
-  BadgeCheck,
+  HeartHandshake,
+  MessageSquare,
+  ArrowUpRight,
   ExternalLink,
 } from "lucide-react";
 
@@ -41,7 +42,7 @@ function page() {
     message: "",
   });
 
-  const [status, setStatus] = useState({ state: "idle", msg: "" }); // idle | error | success | sending
+  const [status, setStatus] = useState({ state: "idle", msg: "" });
 
   const errors = useMemo(() => {
     const e = {};
@@ -71,143 +72,201 @@ function page() {
       });
       return;
     }
-
     setStatus({ state: "sending", msg: "Sending your message…" });
-
-    // Replace with your backend / API route / Formspree, etc.
     await new Promise((r) => setTimeout(r, 700));
-
     setStatus({
       state: "success",
-      msg: "Message sent! We’ll get back to you as soon as possible.",
+      msg: "Message sent! We'll get back to you as soon as possible.",
     });
-
     setForm({ name: "", email: "", phone: "", subject: "", message: "" });
   }
 
+  const inquiryCards = [
+    {
+      title: "General Inquiries",
+      desc: "For questions about our organization, ongoing missions, donation options, or general information.",
+      tint: "bg-[color:var(--brand-primary)]",
+      textOn: "text-white",
+      sub: "text-white/85",
+    },
+    {
+      title: "Partnership Opportunities",
+      desc: "If you represent an organization, foundation, church or business interested in partnering with DOMI.",
+      tint: "bg-[color:var(--brand-secondary)]",
+      textOn: "text-[color:var(--ink)]",
+      sub: "text-[color:var(--ink-soft)]",
+    },
+  ];
+
+  const reasons = [
+    {
+      Icon: HeartHandshake,
+      title: "Personalized Support",
+      desc: "Whether you are a donor, volunteer or partner, our team helps you every step of the way.",
+    },
+    {
+      Icon: MessageSquare,
+      title: "Clear Communication",
+      desc: "We respond promptly, typically within 24–48 hours, with the answers you need.",
+    },
+  ];
+
   return (
-    <main className="relative min-h-screen bg-slate-50">
-      {/* Decorative background (medical colors) */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute -top-28 left-1/2 h-72 w-[44rem] -translate-x-1/2 rounded-full bg-gradient-to-r from-cyan-200/70 via-emerald-200/60 to-sky-200/70 blur-3xl" />
-        <div className="absolute -bottom-28 right-[-6rem] h-80 w-80 rounded-full bg-gradient-to-br from-emerald-200/60 to-cyan-200/60 blur-3xl" />
-        <div className="absolute top-40 left-[-6rem] h-72 w-72 rounded-full bg-gradient-to-br from-sky-200/60 to-cyan-200/60 blur-3xl" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(2,132,199,0.12)_1px,transparent_0)] [background-size:28px_28px]" />
-      </div>
-
-      <div className="relative mx-auto max-w-6xl px-4 pb-20 pt-14 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="flex flex-col items-start gap-3">
-          <span className="inline-flex items-center gap-2 rounded-full border border-sky-200 bg-white/70 px-3 py-1 text-xs font-medium text-sky-800 shadow-sm backdrop-blur">
-            <BadgeCheck className="h-4 w-4" />
-            Contact • Support • Partnerships
-          </span>
-
-          <h1 className="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
+    <main className="bg-white">
+      {/* Header */}
+      <section className="border-b border-[color:var(--line)] bg-[color:var(--surface)]">
+        <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-20 lg:px-10">
+          <span className="inline-flex items-center gap-2 rounded-full border border-[color:var(--line)] bg-white px-4 py-1.5 text-[0.78rem] font-medium text-[color:var(--ink-soft)]">
+            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[color:var(--brand-primary)] text-white">
+              <Mail className="h-3 w-3" />
+            </span>
             Contact Us
+          </span>
+          <h1 className="mt-6 max-w-3xl text-[2.5rem] leading-[1.03] tracking-[-0.035em] text-[color:var(--ink)] sm:text-6xl">
+            Let&rsquo;s start a conversation
           </h1>
-
-          <p className="max-w-2xl text-sm leading-relaxed text-slate-600 sm:text-base">
+          <p className="mt-5 max-w-2xl text-[1rem] leading-relaxed text-[color:var(--muted)] sm:text-lg">
             Reach out for medical mission inquiries, volunteering, donations, or
             partnership opportunities.
           </p>
         </div>
+      </section>
 
-        {/* Contact cards (Address / Phone / Email) */}
-        <section className="mt-10">
-          <div className="grid gap-4 sm:grid-cols-3">
-            <div className="rounded-2xl border border-white/60 bg-white/70 p-5 shadow-sm backdrop-blur">
-              <div className="flex items-start gap-3">
-                <span className="grid h-11 w-11 place-items-center rounded-2xl bg-sky-600 text-white shadow-sm">
-                  <MapPin className="h-5 w-5" />
-                </span>
-                <div>
-                  <h3 className="font-semibold text-slate-900">Address</h3>
-                  <p className="mt-1 text-sm text-slate-600">
-                    {CONTACT.addressLines[0]}
-                    <br />
-                    {CONTACT.addressLines[1]}
-                  </p>
-                </div>
+      <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8 lg:px-10 lg:py-20">
+        {/* Inquiry cards */}
+        <div className="grid gap-5 md:grid-cols-2">
+          {inquiryCards.map((c) => (
+            <div
+              key={c.title}
+              className={`relative overflow-hidden rounded-[1.75rem] ${c.tint} p-8 text-center sm:p-10`}
+            >
+              <div className="pointer-events-none absolute -bottom-16 left-1/2 h-40 w-[26rem] -translate-x-1/2 rounded-full bg-white/20 blur-3xl" />
+              <div className="relative">
+                <h2 className={`text-2xl tracking-[-0.02em] ${c.textOn}`}>
+                  {c.title}
+                </h2>
+                <p className={`mx-auto mt-3 max-w-sm text-[0.92rem] leading-relaxed ${c.sub}`}>
+                  {c.desc}
+                </p>
+                <a
+                  href={`mailto:${CONTACT.email}`}
+                  className="mt-6 inline-flex items-center gap-2 rounded-full bg-[color:var(--ink)] px-6 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5"
+                >
+                  Contact Us <ArrowUpRight className="h-4 w-4" />
+                </a>
               </div>
             </div>
+          ))}
+        </div>
 
-            <div className="rounded-2xl border border-white/60 bg-white/70 p-5 shadow-sm backdrop-blur">
-              <div className="flex items-start gap-3">
-                <span className="grid h-11 w-11 place-items-center rounded-2xl bg-emerald-600 text-white shadow-sm">
-                  <Phone className="h-5 w-5" />
-                </span>
-                <div>
-                  <h3 className="font-semibold text-slate-900">Phone</h3>
-                  <div className="mt-2 space-y-1 text-sm">
-                    {CONTACT.phones.map((p) => (
-                      <a
-                        key={p}
-                        href={`tel:${p.replace(/\s/g, "")}`}
-                        className="block text-slate-700 hover:text-emerald-700"
-                      >
-                        {p}
-                      </a>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
+        {/* Why reach out + form */}
+        <div className="mt-14 grid gap-10 lg:grid-cols-12 lg:gap-14">
+          {/* Left */}
+          <div className="lg:col-span-5">
+            <span className="inline-flex items-center gap-2 rounded-full border border-[color:var(--line)] bg-white px-4 py-1.5 text-[0.78rem] font-medium text-[color:var(--ink-soft)]">
+              <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[color:var(--brand-primary)] text-white">
+                <HeartHandshake className="h-3 w-3" />
+              </span>
+              Contact Us
+            </span>
+            <h2 className="mt-6 text-[2rem] leading-[1.06] tracking-[-0.03em] text-[color:var(--ink)] sm:text-4xl">
+              Why reach out to us?
+            </h2>
+            <p className="mt-5 max-w-lg text-[0.98rem] leading-relaxed text-[color:var(--muted)]">
+              We are dedicated to offering personalized guidance and support for
+              any questions you may have. Whether you are a donor, volunteer or
+              partner, our team is here to assist you every step of the way.
+            </p>
 
-            <div className="rounded-2xl border border-white/60 bg-white/70 p-5 shadow-sm backdrop-blur">
-              <div className="flex items-start gap-3">
-                <span className="grid h-11 w-11 place-items-center rounded-2xl bg-cyan-600 text-white shadow-sm">
-                  <Mail className="h-5 w-5" />
-                </span>
-                <div>
-                  <h3 className="font-semibold text-slate-900">
-                    Email Address
+            <div className="mt-8 grid gap-6 sm:grid-cols-2">
+              {reasons.map((r) => (
+                <div key={r.title}>
+                  <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[color:var(--brand-primary)]/12 text-[color:var(--brand-primary-700)]">
+                    <r.Icon className="h-5 w-5" />
+                  </span>
+                  <h3 className="mt-4 text-lg tracking-[-0.02em] text-[color:var(--ink)]">
+                    {r.title}
                   </h3>
-                  <a
-                    href={`mailto:${CONTACT.email}`}
-                    className="mt-2 block text-sm text-slate-700 hover:text-cyan-700"
-                  >
-                    {CONTACT.email}
-                  </a>
-                  <p className="mt-1 text-xs text-slate-500">
-                    {CONTACT.website}
+                  <p className="mt-1.5 text-[0.88rem] leading-relaxed text-[color:var(--muted)]">
+                    {r.desc}
                   </p>
                 </div>
+              ))}
+            </div>
+
+            {/* Contact details */}
+            <div className="mt-9 space-y-4 rounded-[1.5rem] border border-[color:var(--line)] bg-[color:var(--surface)] p-6">
+              <div className="flex items-start gap-3">
+                <MapPin className="mt-0.5 h-5 w-5 flex-none text-[color:var(--brand-primary-700)]" />
+                <p className="text-[0.9rem] leading-relaxed text-[color:var(--ink-soft)]">
+                  {CONTACT.addressLines.join(", ")}
+                </p>
               </div>
+              <div className="flex items-start gap-3">
+                <Phone className="mt-0.5 h-5 w-5 flex-none text-[color:var(--brand-primary-700)]" />
+                <div className="text-[0.9rem] text-[color:var(--ink-soft)]">
+                  {CONTACT.phones.map((p) => (
+                    <a
+                      key={p}
+                      href={`tel:${p.replace(/\s/g, "")}`}
+                      className="block hover:text-[color:var(--brand-primary-700)]"
+                    >
+                      {p}
+                    </a>
+                  ))}
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <Mail className="mt-0.5 h-5 w-5 flex-none text-[color:var(--brand-primary-700)]" />
+                <a
+                  href={`mailto:${CONTACT.email}`}
+                  className="text-[0.9rem] text-[color:var(--ink-soft)] hover:text-[color:var(--brand-primary-700)]"
+                >
+                  {CONTACT.email}
+                </a>
+              </div>
+              <a
+                href={CONTACT.directionsUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 text-sm font-semibold text-[color:var(--brand-primary-700)] hover:underline"
+              >
+                <ExternalLink className="h-4 w-4" /> Open in Google Maps
+              </a>
+            </div>
+
+            {/* Scripture */}
+            <div className="mt-6 rounded-[1.5rem] border border-[color:var(--line)] p-6">
+              <p className="text-sm font-semibold text-[color:var(--ink)]">
+                {CONTACT.scripture.ref}
+              </p>
+              <p className="mt-2 text-[0.9rem] leading-relaxed text-[color:var(--muted)]">
+                &ldquo;{CONTACT.scripture.text}&rdquo;
+              </p>
             </div>
           </div>
-        </section>
 
-        {/* Form + scripture */}
-        <section className="mt-10 grid gap-6 lg:grid-cols-12">
           {/* Form */}
           <div className="lg:col-span-7">
-            <div className="rounded-3xl border border-white/60 bg-white/80 p-6 shadow-sm backdrop-blur sm:p-8">
-              <div className="flex items-start justify-between gap-4">
-                <div>
-                  <h2 className="text-xl font-semibold text-slate-900">
-                    Drop us a line
-                  </h2>
-                  <p className="mt-1 text-sm text-slate-600">
-                    We’ll respond as soon as possible (typically within 24–48
-                    hours).
-                  </p>
-                </div>
-                <span className="hidden items-center gap-2 rounded-2xl bg-slate-900 px-3 py-2 text-xs font-medium text-white sm:inline-flex">
-                  <Clock className="h-4 w-4" />
-                  24–48 hrs
-                </span>
-              </div>
+            <div className="rounded-[1.75rem] border border-[color:var(--line)] bg-[color:var(--surface)] p-6 sm:p-9">
+              <h2 className="text-2xl tracking-[-0.02em] text-[color:var(--ink)]">
+                Let&rsquo;s Chat
+              </h2>
+              <p className="mt-1.5 text-[0.92rem] text-[color:var(--muted)]">
+                Want to learn more about us, we are ready to help.
+              </p>
 
               {status.state !== "idle" && (
                 <div
+                  role="status"
+                  aria-live="polite"
                   className={[
                     "mt-5 rounded-2xl border px-4 py-3 text-sm",
                     status.state === "success"
-                      ? "border-emerald-200 bg-emerald-50 text-emerald-800"
+                      ? "border-[color:var(--brand-accent)]/40 bg-[color:var(--brand-accent)]/10 text-[#4f6a1a]"
                       : status.state === "sending"
-                      ? "border-sky-200 bg-sky-50 text-sky-800"
-                      : "border-rose-200 bg-rose-50 text-rose-800",
+                      ? "border-[color:var(--brand-primary)]/30 bg-[color:var(--brand-primary)]/8 text-[color:var(--brand-primary-700)]"
+                      : "border-rose-200 bg-rose-50 text-rose-700",
                   ].join(" ")}
                 >
                   {status.msg}
@@ -217,11 +276,11 @@ function page() {
               <form onSubmit={onSubmit} className="mt-6 space-y-4">
                 <div className="grid gap-4 sm:grid-cols-2">
                   <Field
-                    label="Your Name"
+                    label="Your Full Name"
                     name="name"
                     value={form.name}
                     onChange={onChange}
-                    placeholder="Your name"
+                    placeholder="Enter your full name"
                     error={errors.name}
                   />
                   <Field
@@ -234,7 +293,6 @@ function page() {
                     type="email"
                   />
                 </div>
-
                 <div className="grid gap-4 sm:grid-cols-2">
                   <Field
                     label="Phone Number"
@@ -245,17 +303,16 @@ function page() {
                     error={errors.phone}
                   />
                   <Field
-                    label="Subject"
+                    label="Your Subject"
                     name="subject"
                     value={form.subject}
                     onChange={onChange}
-                    placeholder="What is this about?"
+                    placeholder="Your subject"
                     error={errors.subject}
                   />
                 </div>
-
                 <div>
-                  <label className="mb-1 block text-sm font-medium text-slate-800">
+                  <label className="mb-1.5 block text-sm font-medium text-[color:var(--ink-soft)]">
                     Your Message
                   </label>
                   <textarea
@@ -265,122 +322,48 @@ function page() {
                     rows={6}
                     placeholder="Write your message…"
                     className={[
-                      "w-full rounded-2xl border bg-white/70 px-4 py-3 text-sm text-slate-900 shadow-sm outline-none transition",
+                      "w-full rounded-2xl border bg-white px-4 py-3 text-sm text-[color:var(--ink)] outline-none transition placeholder:text-[color:var(--muted)]",
                       errors.message
-                        ? "border-rose-300 focus:border-rose-400 focus:ring-4 focus:ring-rose-100"
-                        : "border-slate-200 focus:border-sky-300 focus:ring-4 focus:ring-sky-100",
+                        ? "border-rose-300 focus:ring-4 focus:ring-rose-100"
+                        : "border-[color:var(--line)] focus:border-[color:var(--brand-primary)] focus:ring-4 focus:ring-[color:var(--brand-primary)]/12",
                     ].join(" ")}
                     aria-invalid={Boolean(errors.message)}
                   />
                   {errors.message && (
-                    <p className="mt-1 text-xs font-medium text-rose-700">
+                    <p className="mt-1 text-xs font-medium text-rose-600">
                       {errors.message}
                     </p>
                   )}
                 </div>
-
-                <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                  <p className="text-xs text-slate-500">
-                    Tip: Include your location and preferred contact method for
-                    faster follow-up.
-                  </p>
-
-                  <button
-                    type="submit"
-                    disabled={status.state === "sending"}
-                    className="inline-flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-sky-600 to-emerald-500 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-70"
-                  >
-                    <Send className="h-4 w-4" />
-                    Submit a Message
-                  </button>
-                </div>
+                <button
+                  type="submit"
+                  disabled={status.state === "sending"}
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[color:var(--ink)] px-5 py-3.5 text-sm font-semibold text-white transition hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-70"
+                >
+                  <Send className="h-4 w-4" />
+                  Send Message
+                </button>
               </form>
             </div>
-
-            {/* Scripture block */}
-            <div className="mt-6 rounded-3xl border border-white/60 bg-white/75 p-6 shadow-sm backdrop-blur sm:p-8">
-              <p className="text-xs font-semibold tracking-wide text-slate-900">
-                {CONTACT.scripture.ref}
-              </p>
-              <p className="mt-2 text-sm leading-relaxed text-slate-700">
-                “{CONTACT.scripture.text}”
-              </p>
-            </div>
           </div>
-
-          {/* Side panel */}
-          <div className="lg:col-span-5">
-            <div className="sticky top-6 space-y-5">
-              <div className="rounded-3xl border border-white/60 bg-white/75 p-6 shadow-sm backdrop-blur sm:p-7">
-                <h3 className="text-lg font-semibold text-slate-900">
-                  Find us
-                </h3>
-                <p className="mt-2 text-sm text-slate-600">
-                  Visit our office or open directions to our location in
-                  Mbarara.
-                </p>
-
-                <div className="mt-4 space-y-3 text-sm text-slate-700">
-                  <div className="flex items-start gap-3">
-                    <span className="mt-0.5 grid h-9 w-9 place-items-center rounded-2xl bg-sky-50 text-sky-700 ring-1 ring-sky-100">
-                      <MapPin className="h-4 w-4" />
-                    </span>
-                    <div>
-                      <p className="font-medium text-slate-900">Address</p>
-                      <p className="text-slate-600">
-                        {CONTACT.addressLines.join(" • ")}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-3">
-                    <span className="mt-0.5 grid h-9 w-9 place-items-center rounded-2xl bg-cyan-50 text-cyan-700 ring-1 ring-cyan-100">
-                      <Mail className="h-4 w-4" />
-                    </span>
-                    <div>
-                      <p className="font-medium text-slate-900">Email</p>
-                      <a
-                        href={`mailto:${CONTACT.email}`}
-                        className="text-slate-700 hover:text-cyan-700"
-                      >
-                        {CONTACT.email}
-                      </a>
-                    </div>
-                  </div>
-                </div>
-
-                <a
-                  href={CONTACT.directionsUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-slate-900 px-4 py-3 text-sm font-semibold text-white shadow-sm transition hover:brightness-110"
-                >
-                  <ExternalLink className="h-4 w-4" />
-                  Open in Google Maps
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
+        </div>
 
         {/* Map */}
-        <section className="mt-12">
-          <div className="overflow-hidden rounded-3xl border border-white/60 bg-white/70 shadow-sm backdrop-blur">
-            <iframe
-              title="Doctors on Mission location map"
-              src={`https://www.google.com/maps?q=${encodeURIComponent(
-                CONTACT.mapQuery
-              )}&output=embed`}
-              className="h-[320px] w-full sm:h-[380px]"
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            />
-          </div>
-        </section>
-
-        <div className="mt-10 text-xs text-slate-500">
-          © {new Date().getFullYear()} {CONTACT.org}. All rights reserved.
+        <div className="mt-14 overflow-hidden rounded-[1.75rem] border border-[color:var(--line)]">
+          <iframe
+            title="Doctors on Mission location map"
+            src={`https://www.google.com/maps?q=${encodeURIComponent(
+              CONTACT.mapQuery
+            )}&output=embed`}
+            className="h-[320px] w-full sm:h-[400px]"
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
         </div>
+
+        <p className="mt-8 text-xs text-[color:var(--muted)]">
+          © {new Date().getFullYear()} {CONTACT.org}. All rights reserved.
+        </p>
       </div>
     </main>
   );
@@ -389,21 +372,21 @@ function page() {
 function Field({ label, error, ...props }) {
   return (
     <div>
-      <label className="mb-1 block text-sm font-medium text-slate-800">
+      <label className="mb-1.5 block text-sm font-medium text-[color:var(--ink-soft)]">
         {label}
       </label>
       <input
         {...props}
         className={[
-          "w-full rounded-2xl border bg-white/70 px-4 py-3 text-sm text-slate-900 shadow-sm outline-none transition",
+          "w-full rounded-2xl border bg-white px-4 py-3 text-sm text-[color:var(--ink)] outline-none transition placeholder:text-[color:var(--muted)]",
           error
-            ? "border-rose-300 focus:border-rose-400 focus:ring-4 focus:ring-rose-100"
-            : "border-slate-200 focus:border-sky-300 focus:ring-4 focus:ring-sky-100",
+            ? "border-rose-300 focus:ring-4 focus:ring-rose-100"
+            : "border-[color:var(--line)] focus:border-[color:var(--brand-primary)] focus:ring-4 focus:ring-[color:var(--brand-primary)]/12",
         ].join(" ")}
         aria-invalid={Boolean(error)}
       />
       {error && (
-        <p className="mt-1 text-xs font-medium text-rose-700">{error}</p>
+        <p className="mt-1 text-xs font-medium text-rose-600">{error}</p>
       )}
     </div>
   );
