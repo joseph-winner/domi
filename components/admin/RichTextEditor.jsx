@@ -151,7 +151,7 @@ export default function RichTextEditor({
         </label>
       )}
 
-      <div className="rounded-lg border border-slate-300 bg-white">
+      <div className="rounded-lg border border-slate-300 bg-[color:var(--paper)]">
         <div className="flex flex-wrap gap-2 border-b border-slate-200 p-2">
           <ToolbarButton
             title="Bold"

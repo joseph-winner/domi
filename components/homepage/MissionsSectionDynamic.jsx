@@ -83,7 +83,7 @@ function MissionsSectionDynamic() {
             return (
               <div
                 key={index}
-                className="bg-white rounded-2xl p-8 shadow-lg border border-slate-100 hover:shadow-xl transition-shadow"
+                className="bg-[color:var(--paper)] rounded-2xl p-8 shadow-lg border border-slate-100 hover:shadow-xl transition-shadow"
               >
                 <div className="flex items-center gap-4 mb-4">
                   <div className="w-12 h-12 rounded-full bg-[#10C0DE]/10 flex items-center justify-center">

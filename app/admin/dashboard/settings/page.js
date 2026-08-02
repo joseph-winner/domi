@@ -62,7 +62,7 @@ export default function SettingsPage() {
 
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Branding */}
-        <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+        <div className="bg-[color:var(--paper)] rounded-2xl p-6 shadow-sm border border-slate-200">
           <h2 className="text-lg font-semibold text-slate-900 mb-4">
             Branding
           </h2>
@@ -91,7 +91,7 @@ export default function SettingsPage() {
         </div>
 
         {/* Colors */}
-        <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+        <div className="bg-[color:var(--paper)] rounded-2xl p-6 shadow-sm border border-slate-200">
           <h2 className="text-lg font-semibold text-slate-900 mb-4">
             Brand Colors
           </h2>
@@ -198,7 +198,7 @@ export default function SettingsPage() {
         </div>
 
         {/* SEO */}
-        <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+        <div className="bg-[color:var(--paper)] rounded-2xl p-6 shadow-sm border border-slate-200">
           <h2 className="text-lg font-semibold text-slate-900 mb-4">
             SEO Settings
           </h2>

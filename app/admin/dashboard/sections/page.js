@@ -88,7 +88,7 @@ export default function CustomSectionsPage() {
           <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#912923]"></div>
         </div>
       ) : sections.length === 0 ? (
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-12 text-center">
+        <div className="bg-[color:var(--paper)] rounded-xl shadow-sm border border-gray-200 p-12 text-center">
           <Layers className="w-16 h-16 text-gray-300 mx-auto mb-4" />
           <h3 className="text-xl font-semibold text-gray-700 mb-2">
             No Custom Sections Yet
@@ -106,7 +106,7 @@ export default function CustomSectionsPage() {
           </Link>
         </div>
       ) : (
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+        <div className="bg-[color:var(--paper)] rounded-xl shadow-sm border border-gray-200 overflow-hidden">
           <div className="grid grid-cols-12 gap-4 px-6 py-3 bg-gray-50 border-b border-gray-200 text-sm font-medium text-gray-600">
             <div className="col-span-1"></div>
             <div className="col-span-4">Section Name</div>

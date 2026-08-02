@@ -37,14 +37,13 @@ function ProgramsSection() {
 
   return (
     <section id="programs" className="w-full">
-      {/* Featured program (dark) */}
-      <div className="bg-[color:var(--ink)] px-5 py-20 sm:px-8 lg:px-10 lg:py-24">
+      {/* Featured program (brand navy) */}
+      <div className="bg-[color:var(--brand-primary)] px-5 py-20 sm:px-8 lg:px-10 lg:py-24">
         <div className="mx-auto max-w-7xl">
           <div className="grid items-stretch gap-10 lg:grid-cols-12">
             {/* Left content */}
             <div className="lg:col-span-5">
-              <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-[0.78rem] font-medium text-white/80 backdrop-blur">
-                <span className="h-1.5 w-1.5 rounded-full bg-[color:var(--brand-secondary)]" />
+              <span className="inline-flex items-center rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-white/80">
                 Our Programs
               </span>
 
@@ -83,7 +82,7 @@ function ProgramsSection() {
               </div>
 
               {/* Quote + CTA */}
-              <div className="mt-8 rounded-[1.5rem] bg-[color:var(--brand-secondary)] p-6 text-[color:var(--ink)]">
+              <div className="mt-8 rounded-[14px] bg-[color:var(--brand-secondary)] p-6 text-[color:var(--ink)]">
                 <div className="flex items-start justify-between gap-6">
                   <div>
                     <p className="text-lg font-medium leading-snug">
@@ -113,10 +112,10 @@ function ProgramsSection() {
 
             {/* Right video */}
             <div className="lg:col-span-7">
-              <div className="h-full overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/5">
+              <div className="h-full overflow-hidden rounded-[16px] border border-white/10 bg-white/5">
                 <div className="flex items-center justify-between gap-3 border-b border-white/10 px-5 py-4">
                   <div className="flex items-center gap-3">
-                    <div className="h-9 w-9 rounded-xl bg-[color:var(--brand-primary)]/70" />
+                    <div className="h-9 w-9 rounded-xl bg-[color:var(--brand-accent)]/70" />
                     <div>
                       <p className="text-sm font-semibold text-white">
                         Program Highlight
@@ -151,7 +150,7 @@ function ProgramsSection() {
                   <div className="flex flex-wrap gap-2">
                     <a
                       href="#donate"
-                      className="rounded-full bg-white px-4 py-2 text-xs font-semibold text-[color:var(--ink)] transition hover:-translate-y-0.5"
+                      className="rounded-full bg-[color:var(--paper)] px-4 py-2 text-xs font-semibold text-[color:var(--ink)] transition hover:-translate-y-0.5"
                     >
                       Support this program
                     </a>
@@ -170,11 +169,10 @@ function ProgramsSection() {
       </div>
 
       {/* Interview (light) */}
-      <div className="bg-white px-5 py-20 sm:px-8 lg:px-10 lg:py-24">
+      <div className="bg-[color:var(--paper)] px-5 py-20 sm:px-8 lg:px-10 lg:py-24">
         <div className="mx-auto max-w-7xl">
           <div className="mx-auto max-w-2xl text-center">
-            <span className="inline-flex items-center gap-2 rounded-full border border-[color:var(--line)] bg-white px-4 py-1.5 text-[0.78rem] font-medium text-[color:var(--ink-soft)]">
-              <span className="h-1.5 w-1.5 rounded-full bg-[color:var(--brand-primary)]" />
+            <span className="inline-flex items-center rounded-full border border-[color:var(--line)] bg-[color:var(--paper)] px-4 py-1.5 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-[color:var(--muted)]">
               Doctors on Mission International
             </span>
             <h3 className="mt-6 text-[2rem] leading-[1.06] tracking-[-0.03em] text-[color:var(--ink)] sm:text-4xl">
@@ -187,12 +185,12 @@ function ProgramsSection() {
             </p>
           </div>
 
-          <div className="mt-10 overflow-hidden rounded-[1.75rem] border border-[color:var(--line)] bg-[color:var(--surface)]">
+          <div className="mt-10 overflow-hidden rounded-[16px] border border-[color:var(--line)] bg-[color:var(--surface)]">
             <div className="flex items-center justify-between gap-3 border-b border-[color:var(--line)] px-5 py-4">
               <p className="text-sm font-semibold text-[color:var(--ink)]">
                 Featured Interview
               </p>
-              <span className="rounded-full bg-white px-3 py-1 text-xs font-semibold text-[color:var(--muted)]">
+              <span className="rounded-full bg-[color:var(--paper)] px-3 py-1 text-xs font-semibold text-[color:var(--muted)]">
                 Watch
               </span>
             </div>
@@ -222,7 +220,7 @@ function ProgramsSection() {
                 </a>
                 <a
                   href="#programs"
-                  className="rounded-full border border-[color:var(--line)] bg-white px-4 py-2 text-xs font-semibold text-[color:var(--ink)] transition hover:bg-[color:var(--surface)]"
+                  className="rounded-full border border-[color:var(--line)] bg-[color:var(--paper)] px-4 py-2 text-xs font-semibold text-[color:var(--ink)] transition hover:bg-[color:var(--surface)]"
                 >
                   Back to programs
                 </a>

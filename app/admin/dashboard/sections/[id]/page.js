@@ -339,7 +339,7 @@ export default function SectionEditorPage() {
       </div>
 
       {/* Section Settings */}
-      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-6">
+      <div className="bg-[color:var(--paper)] rounded-xl shadow-sm border border-gray-200 p-6 mb-6">
         <h3 className="text-lg font-semibold text-gray-900 mb-4">
           Section Settings
         </h3>
@@ -464,7 +464,7 @@ export default function SectionEditorPage() {
       </div>
 
       {/* Content Blocks */}
-      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+      <div className="bg-[color:var(--paper)] rounded-xl shadow-sm border border-gray-200 p-6">
         <div className="flex items-center justify-between mb-4">
           <h3 className="text-lg font-semibold text-gray-900">
             Content Blocks ({section.blocks.length})
@@ -507,7 +507,7 @@ export default function SectionEditorPage() {
           </button>
 
           {showBlockPicker && (
-            <div className="absolute top-full left-0 right-0 mt-2 bg-white rounded-xl shadow-lg border border-gray-200 p-4 z-10">
+            <div className="absolute top-full left-0 right-0 mt-2 bg-[color:var(--paper)] rounded-xl shadow-lg border border-gray-200 p-4 z-10">
               <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
                 {BLOCK_TYPES.map((blockType) => (
                   <button

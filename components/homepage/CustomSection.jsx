@@ -242,7 +242,7 @@ function CardsBlock({ block }) {
       {block.items.map((card, idx) => (
         <div
           key={idx}
-          className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100"
+          className="bg-[color:var(--paper)] rounded-xl shadow-lg overflow-hidden border border-gray-100"
         >
           {card.image && (
             <div className="relative h-48">

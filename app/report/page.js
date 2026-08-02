@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useMemo, useState } from "react";
+import Banner from "@/layout/Banner";
 
 const REPORTS = [
   {
@@ -133,27 +134,9 @@ function Icon({ name, className = "h-5 w-5" }) {
 
 function Badge({ children }) {
   return (
-    <span className="inline-flex items-center rounded-full border border-sky-200/60 bg-white/70 px-2.5 py-1 text-xs font-medium text-slate-700 shadow-sm backdrop-blur">
+    <span className="inline-flex items-center rounded-full border border-[color:var(--line)] bg-white/90 px-2.5 py-1 text-xs font-medium text-[color:var(--ink-soft)] backdrop-blur">
       {children}
     </span>
-  );
-}
-
-function SkeletonCover() {
-  return (
-    <div className="relative h-48 w-full overflow-hidden rounded-2xl bg-gradient-to-br from-sky-100 via-cyan-50 to-emerald-50">
-      <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-sky-300/40 blur-2xl" />
-      <div className="absolute -left-10 -bottom-10 h-40 w-40 rounded-full bg-emerald-300/30 blur-2xl" />
-      <div className="absolute inset-0 opacity-[0.08] [background-image:radial-gradient(circle_at_1px_1px,#0ea5e9_1px,transparent_0)] [background-size:18px_18px]" />
-      <div className="absolute left-4 top-4 inline-flex items-center gap-2 rounded-full bg-white/70 px-3 py-1 text-xs font-semibold text-slate-700 shadow-sm backdrop-blur">
-        <span className="h-2 w-2 rounded-full bg-emerald-500" />
-        PDF Report
-      </div>
-      <div className="absolute bottom-4 left-4 right-4">
-        <div className="h-4 w-2/3 rounded bg-slate-900/10" />
-        <div className="mt-2 h-3 w-1/2 rounded bg-slate-900/10" />
-      </div>
-    </div>
   );
 }
 
@@ -163,22 +146,23 @@ function ReportModal({ open, onClose, report }) {
   return (
     <div className="fixed inset-0 z-[80] flex items-center justify-center p-4">
       <div
-        className="absolute inset-0 bg-slate-950/60 backdrop-blur-sm"
+        className="absolute inset-0 bg-black/60 backdrop-blur-sm"
         onClick={onClose}
       />
-      <div className="relative z-[81] w-full max-w-5xl overflow-hidden rounded-3xl border border-white/10 bg-white shadow-2xl">
-        <div className="flex items-center justify-between gap-3 border-b border-slate-200/70 px-5 py-4">
+      <div className="relative z-[81] w-full max-w-5xl overflow-hidden rounded-[14px] border border-[color:var(--line)] bg-[color:var(--paper)] shadow-2xl">
+        <div className="flex items-center justify-between gap-3 border-b border-[color:var(--line)] px-5 py-4">
           <div className="min-w-0">
-            <p className="truncate text-sm font-semibold text-slate-900">
+            <p className="truncate text-sm font-semibold text-[color:var(--ink)]">
               {report.title}
             </p>
-            <p className="truncate text-xs text-slate-600">{report.subtitle}</p>
+            <p className="truncate text-xs text-[color:var(--muted)]">
+              {report.subtitle}
+            </p>
           </div>
-
           <div className="flex items-center gap-2">
             <a
               href={report.downloadUrl}
-              className="inline-flex items-center gap-2 rounded-2xl bg-sky-600 px-3 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-sky-700"
+              className="btn btn-primary btn-sm"
               download
             >
               <Icon name="download" className="h-4 w-4" />
@@ -186,15 +170,14 @@ function ReportModal({ open, onClose, report }) {
             </a>
             <button
               onClick={onClose}
-              className="inline-flex items-center justify-center rounded-2xl border border-slate-200 bg-white p-2 text-slate-700 shadow-sm transition hover:bg-slate-50"
+              className="inline-flex items-center justify-center rounded-full border border-[color:var(--line)] bg-[color:var(--paper)] p-2 text-[color:var(--ink-soft)] transition hover:bg-[color:var(--surface)]"
               aria-label="Close"
             >
               <Icon name="x" className="h-5 w-5" />
             </button>
           </div>
         </div>
-
-        <div className="h-[70vh] bg-slate-50">
+        <div className="h-[70vh] bg-[color:var(--surface)]">
           <iframe
             title={report.title}
             src={report.downloadUrl}
@@ -234,129 +217,70 @@ function page() {
     });
   }, [query, category, year]);
 
+  const stats = [
+    { value: REPORTS.length, label: "Reports" },
+    {
+      value: Array.from(new Set(REPORTS.map((r) => r.year))).length,
+      label: "Years",
+    },
+    {
+      value: Array.from(new Set(REPORTS.map((r) => r.category))).length,
+      label: "Categories",
+    },
+  ];
+
   return (
-    <div className="min-h-screen bg-slate-50">
-      {/* Hero */}
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-sky-50 via-cyan-50 to-slate-50" />
-        <div className="absolute -top-24 right-[-80px] h-72 w-72 rounded-full bg-sky-300/30 blur-3xl" />
-        <div className="absolute -bottom-24 left-[-80px] h-72 w-72 rounded-full bg-emerald-300/20 blur-3xl" />
-        <div className="absolute inset-0 opacity-[0.09] [background-image:radial-gradient(circle_at_1px_1px,#0ea5e9_1px,transparent_0)] [background-size:20px_20px]" />
+    <main className="bg-[color:var(--paper)]">
+      <Banner
+        eyebrow="Reports Library"
+        title="Mission & Annual Reports"
+        subtitle="Transparency, impact and outcomes. Download PDFs, filter by year or category, and preview reports before saving."
+      />
 
-        <div className="relative mx-auto max-w-7xl px-4 pb-10 pt-12 sm:px-6 lg:px-8">
-          <div className="grid items-end gap-8 lg:grid-cols-[1.2fr_0.8fr]">
-            <div>
-              <div className="inline-flex items-center gap-2 rounded-full border border-sky-200/60 bg-white/70 px-3 py-1 text-xs font-semibold text-slate-700 shadow-sm backdrop-blur">
-                <span className="h-2 w-2 rounded-full bg-emerald-500" />
-                Doctors on Mission • Reports Library
-              </div>
-
-              <h1 className="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
-                Mission & Annual Reports
-                <span className="block bg-gradient-to-r from-sky-700 via-cyan-600 to-emerald-600 bg-clip-text text-transparent">
-                  Transparency. Impact. Outcomes.
-                </span>
-              </h1>
-
-              <p className="mt-4 max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg">
-                Explore our published mission reports and annual impact
-                summaries. Download PDFs, filter by year or category, and
-                preview reports before saving.
-              </p>
-
-              <div className="mt-6 flex flex-wrap items-center gap-3">
-                <a
-                  href="#reports"
-                  className="inline-flex items-center gap-2 rounded-2xl bg-sky-600 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-sky-700"
-                >
-                  <Icon name="file" className="h-5 w-5" />
-                  Browse Reports
-                </a>
-                <a
-                  href="/contact"
-                  className="inline-flex items-center gap-2 rounded-2xl border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-800 shadow-sm transition hover:bg-slate-50"
-                >
-                  Request a Report
-                </a>
-              </div>
-            </div>
-
-            <div className="rounded-3xl border border-white/40 bg-white/70 p-5 shadow-lg backdrop-blur">
-              <div className="flex items-center justify-between">
-                <p className="text-sm font-semibold text-slate-900">
-                  Quick Stats
-                </p>
-                <span className="text-xs text-slate-500">Updated library</span>
-              </div>
-
-              <div className="mt-4 grid grid-cols-3 gap-3">
-                <div className="rounded-2xl bg-gradient-to-b from-sky-50 to-white p-4 text-center">
-                  <p className="text-2xl font-extrabold text-slate-900">
-                    {REPORTS.length}
-                  </p>
-                  <p className="mt-1 text-xs font-medium text-slate-600">
-                    Reports
-                  </p>
-                </div>
-                <div className="rounded-2xl bg-gradient-to-b from-cyan-50 to-white p-4 text-center">
-                  <p className="text-2xl font-extrabold text-slate-900">
-                    {Array.from(new Set(REPORTS.map((r) => r.year))).length}
-                  </p>
-                  <p className="mt-1 text-xs font-medium text-slate-600">
-                    Years
-                  </p>
-                </div>
-                <div className="rounded-2xl bg-gradient-to-b from-emerald-50 to-white p-4 text-center">
-                  <p className="text-2xl font-extrabold text-slate-900">
-                    {Array.from(new Set(REPORTS.map((r) => r.category))).length}
-                  </p>
-                  <p className="mt-1 text-xs font-medium text-slate-600">
-                    Categories
-                  </p>
-                </div>
-              </div>
-
-              <div className="mt-4 rounded-2xl border border-slate-200/70 bg-white p-4">
-                <div className="flex items-center gap-2 text-slate-700">
-                  <Icon name="eye" className="h-5 w-5" />
-                  <p className="text-sm font-semibold">Preview in-browser</p>
-                </div>
-                <p className="mt-1 text-xs leading-relaxed text-slate-600">
-                  Use <span className="font-semibold">View</span> to preview a
-                  report (PDF). Use{" "}
-                  <span className="font-semibold">Download</span> to save it
-                  instantly.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Filters */}
       <section
         id="reports"
-        className="relative mx-auto max-w-7xl px-4 pb-10 sm:px-6 lg:px-8"
+        className="mx-auto max-w-7xl px-5 py-14 sm:px-8 lg:px-10 lg:py-16"
       >
-        <div className="-mt-8 rounded-3xl border border-white/40 bg-white/70 p-4 shadow-lg backdrop-blur sm:p-5">
+        {/* Quick stats */}
+        <div className="grid grid-cols-3 gap-4">
+          {stats.map((s) => (
+            <div
+              key={s.label}
+              className="rounded-2xl border border-[color:var(--line)] bg-[color:var(--surface)] p-5 text-center"
+            >
+              <p className="text-3xl font-medium tracking-[-0.03em] text-[color:var(--ink)]">
+                {s.value}
+              </p>
+              <p className="mt-1 text-[0.82rem] text-[color:var(--muted)]">
+                {s.label}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        {/* Filters */}
+        <div className="mt-8 rounded-[14px] border border-[color:var(--line)] bg-[color:var(--paper)] p-4 sm:p-5">
           <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
-            <div className="flex flex-1 items-center gap-2 rounded-2xl border border-slate-200 bg-white px-3 py-2 shadow-sm">
-              <Icon name="search" className="h-5 w-5 text-slate-500" />
+            <div className="flex flex-1 items-center gap-2 rounded-full border border-[color:var(--line)] bg-[color:var(--surface)] px-4 py-2.5">
+              <Icon name="search" className="h-5 w-5 text-[color:var(--muted)]" />
               <input
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Search reports by title, location, or tag..."
-                className="w-full bg-transparent text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none"
+                className="w-full bg-transparent text-sm text-[color:var(--ink)] placeholder:text-[color:var(--muted)] focus:outline-none"
               />
             </div>
 
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-              <div className="inline-flex items-center gap-2 rounded-2xl border border-slate-200 bg-white px-3 py-2 shadow-sm">
-                <Icon name="filter" className="h-5 w-5 text-slate-500" />
+              <div className="inline-flex items-center gap-2 rounded-full border border-[color:var(--line)] bg-[color:var(--paper)] px-4 py-2.5">
+                <Icon
+                  name="filter"
+                  className="h-5 w-5 text-[color:var(--muted)]"
+                />
                 <select
                   value={category}
                   onChange={(e) => setCategory(e.target.value)}
-                  className="bg-transparent text-sm font-semibold text-slate-700 focus:outline-none"
+                  className="bg-transparent text-sm font-medium text-[color:var(--ink-soft)] focus:outline-none"
                 >
                   {CATEGORIES.map((c) => (
                     <option key={c} value={c}>
@@ -366,14 +290,14 @@ function page() {
                 </select>
               </div>
 
-              <div className="inline-flex items-center gap-2 rounded-2xl border border-slate-200 bg-white px-3 py-2 shadow-sm">
-                <span className="text-xs font-semibold text-slate-500">
+              <div className="inline-flex items-center gap-2 rounded-full border border-[color:var(--line)] bg-[color:var(--paper)] px-4 py-2.5">
+                <span className="text-xs font-semibold text-[color:var(--muted)]">
                   Year
                 </span>
                 <select
                   value={year}
                   onChange={(e) => setYear(e.target.value)}
-                  className="bg-transparent text-sm font-semibold text-slate-700 focus:outline-none"
+                  className="bg-transparent text-sm font-medium text-[color:var(--ink-soft)] focus:outline-none"
                 >
                   {years.map((y) => (
                     <option key={y} value={y}>
@@ -382,21 +306,10 @@ function page() {
                   ))}
                 </select>
               </div>
-
-              <div className="text-xs text-slate-600">
-                Showing{" "}
-                <span className="font-semibold text-slate-900">
-                  {filtered.length}
-                </span>{" "}
-                of{" "}
-                <span className="font-semibold text-slate-900">
-                  {REPORTS.length}
-                </span>
-              </div>
             </div>
           </div>
 
-          <div className="mt-4 flex flex-wrap gap-2">
+          <div className="mt-4 flex flex-wrap items-center gap-2">
             {CATEGORIES.map((c) => {
               const active = category === c;
               return (
@@ -404,16 +317,26 @@ function page() {
                   key={c}
                   onClick={() => setCategory(c)}
                   className={[
-                    "rounded-full px-3 py-1 text-xs font-semibold transition",
+                    "rounded-full px-3.5 py-1.5 text-xs font-medium transition",
                     active
-                      ? "bg-sky-600 text-white shadow-sm"
-                      : "border border-slate-200 bg-white text-slate-700 hover:bg-slate-50",
+                      ? "bg-[color:var(--brand-primary)] text-white"
+                      : "border border-[color:var(--line)] bg-[color:var(--paper)] text-[color:var(--ink-soft)] hover:border-[color:var(--brand-primary)]",
                   ].join(" ")}
                 >
                   {c}
                 </button>
               );
             })}
+            <span className="ml-auto text-xs text-[color:var(--muted)]">
+              Showing{" "}
+              <span className="font-semibold text-[color:var(--ink)]">
+                {filtered.length}
+              </span>{" "}
+              of{" "}
+              <span className="font-semibold text-[color:var(--ink)]">
+                {REPORTS.length}
+              </span>
+            </span>
           </div>
         </div>
 
@@ -422,89 +345,73 @@ function page() {
           {filtered.map((r) => (
             <article
               key={r.id}
-              className="group flex h-full flex-col overflow-hidden rounded-3xl border border-slate-200/70 bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-lg"
+              className="group flex h-full flex-col overflow-hidden rounded-[14px] border border-[color:var(--line)] bg-[color:var(--paper)] transition hover:-translate-y-1 hover:shadow-[0_28px_65px_-45px_rgba(12,34,51,0.5)]"
             >
-              <div className="flex-1 p-4">
-                {/* Cover */}
-                <div className="relative">
-                  {r.cover ? (
-                    <div className="relative h-48 w-full overflow-hidden rounded-2xl bg-slate-100">
-                      <img
-                        src={r.cover}
-                        alt={`${r.title} cover`}
-                        className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"
-                        onError={(e) => {
-                          // fallback if the image isn't available
-                          e.currentTarget.style.display = "none";
-                        }}
-                      />
-                      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/35 via-slate-950/0 to-transparent" />
-                      <div className="absolute left-3 top-3">
-                        <Badge>{r.category}</Badge>
-                      </div>
-                      <div className="absolute bottom-3 left-3 right-3 flex flex-wrap gap-2">
-                        <Badge>{r.year}</Badge>
-                        <Badge>{r.location}</Badge>
-                      </div>
-                    </div>
-                  ) : (
-                    <SkeletonCover />
-                  )}
+              <div className="relative m-2.5 h-48 overflow-hidden rounded-[12px] bg-[color:var(--surface)]">
+                <img
+                  src={r.cover}
+                  alt={`${r.title} cover`}
+                  className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"
+                  onError={(e) => {
+                    e.currentTarget.style.display = "none";
+                  }}
+                />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                <div className="absolute left-3 top-3">
+                  <Badge>{r.category}</Badge>
                 </div>
-
-                <div className="mt-4">
-                  <h3 className="text-base font-extrabold tracking-tight text-slate-900">
-                    {r.title}
-                  </h3>
-                  <p className="mt-1 line-clamp-2 text-sm leading-relaxed text-slate-600">
-                    {r.subtitle}
-                  </p>
-
-                  <div className="mt-3 flex flex-wrap gap-2">
-                    <Badge>{r.dateRange}</Badge>
-                    {r.tags.slice(0, 2).map((t) => (
-                      <Badge key={t}>{t}</Badge>
-                    ))}
-                    {r.tags.length > 2 ? (
-                      <Badge>+{r.tags.length - 2}</Badge>
-                    ) : null}
-                  </div>
-
-                  <div className="mt-4 grid grid-cols-2 gap-2">
-                    <button
-                      onClick={() => setActiveReport(r)}
-                      className="inline-flex items-center justify-center gap-2 rounded-2xl border border-slate-200 bg-white px-3 py-2 text-sm font-semibold text-slate-800 shadow-sm transition hover:bg-slate-50"
-                    >
-                      <Icon name="eye" className="h-4 w-4" />
-                      View
-                    </button>
-                    <a
-                      href={r.downloadUrl}
-                      download
-                      className="inline-flex items-center justify-center gap-2 rounded-2xl bg-sky-600 px-3 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-sky-700"
-                    >
-                      <Icon name="download" className="h-4 w-4" />
-                      Download
-                    </a>
-                  </div>
+                <div className="absolute bottom-3 left-3 right-3 flex flex-wrap gap-2">
+                  <Badge>{r.year}</Badge>
+                  <Badge>{r.location}</Badge>
                 </div>
               </div>
 
-              <div className="h-1 w-full bg-gradient-to-r from-sky-500 via-cyan-500 to-emerald-500 opacity-70" />
+              <div className="flex flex-1 flex-col px-5 pb-5">
+                <h3 className="text-lg tracking-[-0.02em] text-[color:var(--ink)]">
+                  {r.title}
+                </h3>
+                <p className="mt-1.5 line-clamp-2 text-[0.88rem] leading-relaxed text-[color:var(--muted)]">
+                  {r.subtitle}
+                </p>
+
+                <div className="mt-3 flex flex-wrap gap-2">
+                  <Badge>{r.dateRange}</Badge>
+                  {r.tags.slice(0, 2).map((t) => (
+                    <Badge key={t}>{t}</Badge>
+                  ))}
+                  {r.tags.length > 2 ? (
+                    <Badge>+{r.tags.length - 2}</Badge>
+                  ) : null}
+                </div>
+
+                <div className="mt-5 grid grid-cols-2 gap-2">
+                  <button
+                    onClick={() => setActiveReport(r)}
+                    className="btn btn-outline btn-sm"
+                  >
+                    <Icon name="eye" className="h-4 w-4" />
+                    View
+                  </button>
+                  <a href={r.downloadUrl} download className="btn btn-primary btn-sm">
+                    <Icon name="download" className="h-4 w-4" />
+                    Download
+                  </a>
+                </div>
+              </div>
             </article>
           ))}
         </div>
 
         {/* Empty state */}
         {filtered.length === 0 && (
-          <div className="mt-10 rounded-3xl border border-slate-200 bg-white p-8 text-center shadow-sm">
-            <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-sky-50 text-sky-700">
+          <div className="mt-10 rounded-[14px] border border-dashed border-[color:var(--line)] p-10 text-center">
+            <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-[color:var(--brand-primary)]/10 text-[color:var(--brand-primary-700)]">
               <Icon name="file" className="h-6 w-6" />
             </div>
-            <h3 className="mt-4 text-lg font-extrabold text-slate-900">
+            <h3 className="mt-4 text-xl tracking-[-0.02em] text-[color:var(--ink)]">
               No reports found
             </h3>
-            <p className="mt-1 text-sm text-slate-600">
+            <p className="mt-1 text-sm text-[color:var(--muted)]">
               Try changing your filters or search using simpler keywords.
             </p>
             <button
@@ -513,7 +420,7 @@ function page() {
                 setCategory("All");
                 setYear("All");
               }}
-              className="mt-4 inline-flex items-center justify-center rounded-2xl bg-sky-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-sky-700"
+              className="btn btn-primary mt-5"
             >
               Reset filters
             </button>
@@ -521,48 +428,33 @@ function page() {
         )}
 
         {/* CTA */}
-        <div className="mt-10 overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm">
-          <div className="relative p-6 sm:p-8">
-            <div className="absolute inset-0 bg-gradient-to-r from-sky-50 via-white to-emerald-50" />
-            <div className="absolute -right-14 -top-14 h-40 w-40 rounded-full bg-sky-300/30 blur-2xl" />
-            <div className="absolute -left-14 -bottom-14 h-40 w-40 rounded-full bg-emerald-300/20 blur-2xl" />
-
-            <div className="relative flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-              <div>
-                <p className="text-sm font-semibold text-slate-900">
-                  Need a report not listed here?
-                </p>
-                <p className="mt-1 text-sm text-slate-600">
-                  Reach out and we’ll share the right document, updates, or
-                  supporting materials.
-                </p>
-              </div>
-              <div className="flex flex-wrap gap-3">
-                <a
-                  href="/contact"
-                  className="inline-flex items-center justify-center rounded-2xl bg-sky-600 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-sky-700"
-                >
-                  Contact Us
-                </a>
-                <a
-                  href="#reports"
-                  className="inline-flex items-center justify-center rounded-2xl border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-800 shadow-sm transition hover:bg-slate-50"
-                >
-                  Back to Reports
-                </a>
-              </div>
-            </div>
+        <div className="mt-12 flex flex-col items-center justify-between gap-4 rounded-[14px] border border-[color:var(--line)] bg-[color:var(--surface)] px-6 py-7 text-center sm:flex-row sm:text-left">
+          <div>
+            <p className="text-lg tracking-[-0.02em] text-[color:var(--ink)]">
+              Need a report not listed here?
+            </p>
+            <p className="mt-1.5 text-[0.9rem] text-[color:var(--muted)]">
+              Reach out and we&rsquo;ll share the right document, updates, or
+              supporting materials.
+            </p>
+          </div>
+          <div className="flex flex-none flex-wrap gap-3">
+            <a href="/contact" className="btn btn-primary">
+              Contact Us
+            </a>
+            <a href="#reports" className="btn btn-outline">
+              Back to Reports
+            </a>
           </div>
         </div>
       </section>
 
-      {/* Modal */}
       <ReportModal
         open={!!activeReport}
         report={activeReport}
         onClose={() => setActiveReport(null)}
       />
-    </div>
+    </main>
   );
 }
 

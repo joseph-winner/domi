@@ -28,9 +28,9 @@ export default function BlogPage() {
   const meta = (post) => post.date || post.readTime || post.author || "";
 
   const PostCard = ({ post }) => (
-    <article className="group flex h-full flex-col overflow-hidden rounded-[1.5rem] border border-[color:var(--line)] bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_28px_65px_-45px_rgba(20,33,31,0.55)]">
+    <article className="group flex h-full flex-col overflow-hidden rounded-[14px] border border-[color:var(--line)] bg-[color:var(--paper)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_28px_65px_-45px_rgba(20,33,31,0.55)]">
       {post.featuredImage && (
-        <div className="relative m-2.5 overflow-hidden rounded-[1.15rem]">
+        <div className="relative m-2.5 overflow-hidden rounded-[12px]">
           <img
             src={post.featuredImage}
             alt={post.title}
@@ -80,11 +80,11 @@ export default function BlogPage() {
   );
 
   return (
-    <main className="bg-white">
+    <main className="bg-[color:var(--paper)]">
       {/* Header */}
       <section className="border-b border-[color:var(--line)] bg-[color:var(--surface)]">
         <div className="mx-auto max-w-7xl px-5 py-16 text-center sm:px-8 sm:py-20 lg:px-10">
-          <span className="inline-flex items-center gap-2 rounded-full border border-[color:var(--line)] bg-white px-4 py-1.5 text-[0.78rem] font-medium text-[color:var(--ink-soft)]">
+          <span className="inline-flex items-center gap-2 rounded-full border border-[color:var(--line)] bg-[color:var(--paper)] px-4 py-1.5 text-[0.78rem] font-medium text-[color:var(--ink-soft)]">
             <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[color:var(--brand-primary)] text-white">
               <Newspaper className="h-3 w-3" />
             </span>
@@ -120,7 +120,7 @@ export default function BlogPage() {
             <div className="h-10 w-10 animate-spin rounded-full border-2 border-[color:var(--line)] border-t-[color:var(--brand-primary)]" />
           </div>
         ) : displayPosts.length === 0 ? (
-          <div className="rounded-[1.5rem] border border-dashed border-[color:var(--line)] py-16 text-center">
+          <div className="rounded-[14px] border border-dashed border-[color:var(--line)] py-16 text-center">
             <p className="text-[color:var(--muted)]">
               No blog posts available yet. Check back soon for stories from the
               field!
@@ -149,7 +149,7 @@ export default function BlogPage() {
         )}
 
         {/* Share a story */}
-        <div className="mt-14 flex flex-col items-center justify-between gap-4 rounded-[1.5rem] border border-[color:var(--line)] bg-[color:var(--surface)] px-6 py-7 text-center sm:flex-row sm:text-left">
+        <div className="mt-14 flex flex-col items-center justify-between gap-4 rounded-[14px] border border-[color:var(--line)] bg-[color:var(--surface)] px-6 py-7 text-center sm:flex-row sm:text-left">
           <div className="max-w-xl">
             <p className="text-lg tracking-[-0.02em] text-[color:var(--ink)]">
               Have a story from a DOMI outreach that should be told?

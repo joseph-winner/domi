@@ -46,22 +46,20 @@ function ServiceSection() {
   const tones = [
     "bg-[color:var(--brand-primary)]/12 text-[color:var(--brand-primary-700)]",
     "bg-[color:var(--brand-secondary)]/18 text-[#a07d1e]",
-    "bg-[color:var(--brand-accent)]/18 text-[#5f7d1f]",
+    "bg-[color:var(--brand-accent)]/15 text-[#0b7e94]",
   ];
 
   return (
-    <section className="bg-white px-5 py-20 sm:px-8 lg:px-10 lg:py-28">
+    <section className="bg-[color:var(--paper)] px-5 py-20 sm:px-8 lg:px-10 lg:py-28">
       <div className="mx-auto max-w-7xl">
         {/* Header */}
         <div className="mx-auto max-w-2xl text-center">
-          <span className="inline-flex items-center gap-2 rounded-full border border-[color:var(--line)] bg-white px-4 py-1.5 text-[0.78rem] font-medium text-[color:var(--ink-soft)]">
-            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[color:var(--brand-primary)] text-white">
-              <Sparkles className="h-3 w-3" />
-            </span>
+          <span className="inline-flex items-center rounded-full border border-[color:var(--line)] bg-[color:var(--paper)] px-4 py-1.5 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-[color:var(--muted)]">
             What we do
           </span>
-          <h2 className="mt-6 text-[2rem] leading-[1.06] tracking-[-0.03em] text-[color:var(--ink)] sm:text-4xl lg:text-[2.75rem]">
-            Ways we bring care to communities
+          <h2 className="mt-6 text-[2.25rem] leading-[1.02] tracking-[-0.035em] text-[color:var(--ink)] sm:text-4xl lg:text-[2.75rem]">
+            Ways we bring care{" "}
+            <span className="tone-muted">to communities</span>
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-[0.98rem] leading-relaxed text-[color:var(--muted)]">
             From medical missions to training and humanitarian relief, every
@@ -74,7 +72,7 @@ function ServiceSection() {
           {services.map((s, i) => (
             <div
               key={s.title}
-              className="group flex h-full flex-col rounded-[1.5rem] border border-[color:var(--line)] bg-white p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_60px_-40px_rgba(20,33,31,0.5)]"
+              className="group flex h-full flex-col rounded-[14px] border border-[color:var(--line)] bg-[color:var(--paper)] p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_60px_-40px_rgba(20,33,31,0.5)]"
             >
               <span
                 className={`flex h-12 w-12 items-center justify-center rounded-2xl ${tones[i % 3]}`}

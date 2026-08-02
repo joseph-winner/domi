@@ -182,7 +182,7 @@ export default function BlogDetailPage() {
             </Link>
             <Link
               href="/volunteer"
-              className="inline-flex items-center gap-2 bg-white text-[#0086bf] border-2 border-[#0086bf] px-6 py-3 rounded-full hover:bg-sky-50 transition-colors font-semibold"
+              className="inline-flex items-center gap-2 bg-[color:var(--paper)] text-[#0086bf] border-2 border-[#0086bf] px-6 py-3 rounded-full hover:bg-sky-50 transition-colors font-semibold"
             >
               Volunteer With Us
             </Link>

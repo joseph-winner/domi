@@ -90,7 +90,7 @@ export default function BlogsPage() {
           <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-cyan-600"></div>
         </div>
       ) : blogs.length === 0 ? (
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-12 text-center">
+        <div className="bg-[color:var(--paper)] rounded-xl shadow-sm border border-gray-200 p-12 text-center">
           <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
             <Eye className="w-8 h-8 text-gray-400" />
           </div>
@@ -109,7 +109,7 @@ export default function BlogsPage() {
           </Link>
         </div>
       ) : (
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+        <div className="bg-[color:var(--paper)] rounded-xl shadow-sm border border-gray-200 overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead className="bg-gray-50 border-b border-gray-200">

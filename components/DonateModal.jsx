@@ -27,13 +27,13 @@ function DonateModal({ open, onClose }) {
       role="dialog"
     >
       <div
-        className="relative w-full max-w-2xl rounded-3xl bg-white p-6 sm:p-8 shadow-2xl border border-slate-100"
+        className="relative w-full max-w-2xl rounded-[16px] bg-[color:var(--paper)] p-6 sm:p-8 shadow-2xl border border-slate-100"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close button */}
         <button
           onClick={onClose}
-          className="absolute right-4 top-4 rounded-full border border-slate-200 bg-white p-1 text-slate-500 shadow-sm hover:bg-slate-50 hover:text-slate-700"
+          className="absolute right-4 top-4 rounded-full border border-slate-200 bg-[color:var(--paper)] p-1 text-slate-500 shadow-sm hover:bg-slate-50 hover:text-slate-700"
           aria-label="Close donation details"
         >
           <X size={18} />
@@ -98,7 +98,7 @@ function DonateModal({ open, onClose }) {
           </section>
 
           {/* PayPal */}
-          <section className="rounded-2xl border border-slate-100 bg-white p-4 sm:p-5 shadow-[0_6px_18px_rgba(15,23,42,0.06)]">
+          <section className="rounded-2xl border border-slate-100 bg-[color:var(--paper)] p-4 sm:p-5 shadow-[0_6px_18px_rgba(15,23,42,0.06)]">
             <div className="mb-3 flex items-center gap-3">
               <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-sky-500 text-white shadow-sm">
                 <FaPaypal size={18} />
@@ -117,7 +117,7 @@ function DonateModal({ open, onClose }) {
 
           {/* Mobile Money */}
           <section className="grid gap-4 sm:grid-cols-2">
-            <div className="rounded-2xl border border-slate-100 bg-white p-4 sm:p-5 shadow-[0_6px_18px_rgba(15,23,42,0.04)]">
+            <div className="rounded-2xl border border-slate-100 bg-[color:var(--paper)] p-4 sm:p-5 shadow-[0_6px_18px_rgba(15,23,42,0.04)]">
               <div className="mb-2 flex items-center gap-3">
                 <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-yellow-400 text-slate-900 shadow-sm">
                   <FaMobileAlt size={18} />
@@ -134,7 +134,7 @@ function DonateModal({ open, onClose }) {
               </p>
             </div>
 
-            <div className="rounded-2xl border border-slate-100 bg-white p-4 sm:p-5 shadow-[0_6px_18px_rgba(15,23,42,0.04)]">
+            <div className="rounded-2xl border border-slate-100 bg-[color:var(--paper)] p-4 sm:p-5 shadow-[0_6px_18px_rgba(15,23,42,0.04)]">
               <div className="mb-2 flex items-center gap-3">
                 <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-red-500 text-white shadow-sm">
                   <FaMobileAlt size={18} />

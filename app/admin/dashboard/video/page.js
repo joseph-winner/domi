@@ -56,7 +56,7 @@ export default function VideoPage() {
       />
 
       <form onSubmit={handleSubmit} className="space-y-6">
-        <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+        <div className="bg-[color:var(--paper)] rounded-2xl p-6 shadow-sm border border-slate-200">
           <h2 className="text-lg font-semibold text-slate-900 mb-4">Content</h2>
 
           <FormField
@@ -103,7 +103,7 @@ export default function VideoPage() {
 
         {/* Preview */}
         {data.videoId && (
-          <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+          <div className="bg-[color:var(--paper)] rounded-2xl p-6 shadow-sm border border-slate-200">
             <h2 className="text-lg font-semibold text-slate-900 mb-4">
               Preview
             </h2>

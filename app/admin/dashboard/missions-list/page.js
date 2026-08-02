@@ -150,7 +150,7 @@ export default function MissionsListAdminPage() {
         {missions.map((mission) => (
           <div
             key={mission.id}
-            className="bg-white rounded-2xl p-5 shadow-sm border border-slate-200 flex flex-col gap-4 md:flex-row md:items-center md:justify-between"
+            className="bg-[color:var(--paper)] rounded-2xl p-5 shadow-sm border border-slate-200 flex flex-col gap-4 md:flex-row md:items-center md:justify-between"
           >
             <div className="flex items-start gap-4">
               <img
@@ -206,7 +206,7 @@ export default function MissionsListAdminPage() {
 
       {showModal && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-2xl p-6 w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+          <div className="bg-[color:var(--paper)] rounded-2xl p-6 w-full max-w-2xl max-h-[90vh] overflow-y-auto">
             <h2 className="text-lg font-semibold text-slate-900 mb-4">
               {editing ? "Edit Mission" : "Add Mission"}
             </h2>

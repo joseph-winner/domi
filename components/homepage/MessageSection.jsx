@@ -32,14 +32,12 @@ function MessageSection() {
       <div className="mx-auto max-w-7xl">
         {/* Header */}
         <div className="mx-auto max-w-2xl text-center">
-          <span className="inline-flex items-center gap-2 rounded-full border border-[color:var(--line)] bg-white px-4 py-1.5 text-[0.78rem] font-medium text-[color:var(--ink-soft)]">
-            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[color:var(--brand-secondary)] text-white">
-              <Quote className="h-3 w-3 fill-current" />
-            </span>
+          <span className="inline-flex items-center rounded-full border border-[color:var(--line)] bg-[color:var(--paper)] px-4 py-1.5 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-[color:var(--muted)]">
             Leadership Message
           </span>
-          <h2 className="mt-6 text-[2rem] leading-[1.06] tracking-[-0.03em] text-[color:var(--ink)] sm:text-4xl lg:text-[2.75rem]">
-            Message from our Team Leader
+          <h2 className="mt-6 text-[2.25rem] leading-[1.02] tracking-[-0.035em] text-[color:var(--ink)] sm:text-4xl lg:text-[2.75rem]">
+            Message from{" "}
+            <span className="tone-muted">our Team Leader</span>
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-[0.98rem] leading-relaxed text-[color:var(--muted)]">
             A personal word from the heart of our mission, sharing the realities
@@ -50,7 +48,7 @@ function MessageSection() {
         <div className="mt-14 grid items-stretch gap-8 lg:grid-cols-5">
           {/* Image */}
           <div className="lg:col-span-2">
-            <div className="relative h-full min-h-[22rem] overflow-hidden rounded-[1.75rem] border border-[color:var(--line)]">
+            <div className="relative h-full min-h-[22rem] overflow-hidden rounded-[16px] border border-[color:var(--line)]">
               <Image
                 src={teamLeaderImg}
                 alt="Dr Mulyamboga Paul - Team Leader"
@@ -75,7 +73,7 @@ function MessageSection() {
 
           {/* Letter */}
           <div className="lg:col-span-3">
-            <div className="relative h-full rounded-[1.75rem] border border-[color:var(--line)] bg-white p-8 md:p-10">
+            <div className="relative h-full rounded-[16px] border border-[color:var(--line)] bg-[color:var(--paper)] p-8 md:p-10">
               <Quote className="absolute right-8 top-8 h-12 w-12 fill-current text-[color:var(--brand-secondary)]/20" />
               <div className="space-y-4 text-[0.92rem] leading-relaxed text-[color:var(--muted)]">
                 {paragraphs.map((p) => (

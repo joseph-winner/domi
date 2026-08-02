@@ -112,11 +112,11 @@ function page() {
   ];
 
   return (
-    <main className="bg-white">
+    <main className="bg-[color:var(--paper)]">
       {/* Header */}
       <section className="border-b border-[color:var(--line)] bg-[color:var(--surface)]">
         <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-20 lg:px-10">
-          <span className="inline-flex items-center gap-2 rounded-full border border-[color:var(--line)] bg-white px-4 py-1.5 text-[0.78rem] font-medium text-[color:var(--ink-soft)]">
+          <span className="inline-flex items-center gap-2 rounded-full border border-[color:var(--line)] bg-[color:var(--paper)] px-4 py-1.5 text-[0.78rem] font-medium text-[color:var(--ink-soft)]">
             <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[color:var(--brand-primary)] text-white">
               <Mail className="h-3 w-3" />
             </span>
@@ -138,7 +138,7 @@ function page() {
           {inquiryCards.map((c) => (
             <div
               key={c.title}
-              className={`relative overflow-hidden rounded-[1.75rem] ${c.tint} p-8 text-center sm:p-10`}
+              className={`relative overflow-hidden rounded-[16px] ${c.tint} p-8 text-center sm:p-10`}
             >
               <div className="pointer-events-none absolute -bottom-16 left-1/2 h-40 w-[26rem] -translate-x-1/2 rounded-full bg-white/20 blur-3xl" />
               <div className="relative">
@@ -163,7 +163,7 @@ function page() {
         <div className="mt-14 grid gap-10 lg:grid-cols-12 lg:gap-14">
           {/* Left */}
           <div className="lg:col-span-5">
-            <span className="inline-flex items-center gap-2 rounded-full border border-[color:var(--line)] bg-white px-4 py-1.5 text-[0.78rem] font-medium text-[color:var(--ink-soft)]">
+            <span className="inline-flex items-center gap-2 rounded-full border border-[color:var(--line)] bg-[color:var(--paper)] px-4 py-1.5 text-[0.78rem] font-medium text-[color:var(--ink-soft)]">
               <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[color:var(--brand-primary)] text-white">
                 <HeartHandshake className="h-3 w-3" />
               </span>
@@ -195,7 +195,7 @@ function page() {
             </div>
 
             {/* Contact details */}
-            <div className="mt-9 space-y-4 rounded-[1.5rem] border border-[color:var(--line)] bg-[color:var(--surface)] p-6">
+            <div className="mt-9 space-y-4 rounded-[14px] border border-[color:var(--line)] bg-[color:var(--surface)] p-6">
               <div className="flex items-start gap-3">
                 <MapPin className="mt-0.5 h-5 w-5 flex-none text-[color:var(--brand-primary-700)]" />
                 <p className="text-[0.9rem] leading-relaxed text-[color:var(--ink-soft)]">
@@ -236,7 +236,7 @@ function page() {
             </div>
 
             {/* Scripture */}
-            <div className="mt-6 rounded-[1.5rem] border border-[color:var(--line)] p-6">
+            <div className="mt-6 rounded-[14px] border border-[color:var(--line)] p-6">
               <p className="text-sm font-semibold text-[color:var(--ink)]">
                 {CONTACT.scripture.ref}
               </p>
@@ -248,7 +248,7 @@ function page() {
 
           {/* Form */}
           <div className="lg:col-span-7">
-            <div className="rounded-[1.75rem] border border-[color:var(--line)] bg-[color:var(--surface)] p-6 sm:p-9">
+            <div className="rounded-[16px] border border-[color:var(--line)] bg-[color:var(--surface)] p-6 sm:p-9">
               <h2 className="text-2xl tracking-[-0.02em] text-[color:var(--ink)]">
                 Let&rsquo;s Chat
               </h2>
@@ -322,7 +322,7 @@ function page() {
                     rows={6}
                     placeholder="Write your message…"
                     className={[
-                      "w-full rounded-2xl border bg-white px-4 py-3 text-sm text-[color:var(--ink)] outline-none transition placeholder:text-[color:var(--muted)]",
+                      "w-full rounded-2xl border bg-[color:var(--paper)] px-4 py-3 text-sm text-[color:var(--ink)] outline-none transition placeholder:text-[color:var(--muted)]",
                       errors.message
                         ? "border-rose-300 focus:ring-4 focus:ring-rose-100"
                         : "border-[color:var(--line)] focus:border-[color:var(--brand-primary)] focus:ring-4 focus:ring-[color:var(--brand-primary)]/12",
@@ -349,7 +349,7 @@ function page() {
         </div>
 
         {/* Map */}
-        <div className="mt-14 overflow-hidden rounded-[1.75rem] border border-[color:var(--line)]">
+        <div className="mt-14 overflow-hidden rounded-[16px] border border-[color:var(--line)]">
           <iframe
             title="Doctors on Mission location map"
             src={`https://www.google.com/maps?q=${encodeURIComponent(
@@ -378,7 +378,7 @@ function Field({ label, error, ...props }) {
       <input
         {...props}
         className={[
-          "w-full rounded-2xl border bg-white px-4 py-3 text-sm text-[color:var(--ink)] outline-none transition placeholder:text-[color:var(--muted)]",
+          "w-full rounded-2xl border bg-[color:var(--paper)] px-4 py-3 text-sm text-[color:var(--ink)] outline-none transition placeholder:text-[color:var(--muted)]",
           error
             ? "border-rose-300 focus:ring-4 focus:ring-rose-100"
             : "border-[color:var(--line)] focus:border-[color:var(--brand-primary)] focus:ring-4 focus:ring-[color:var(--brand-primary)]/12",

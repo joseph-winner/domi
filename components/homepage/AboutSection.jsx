@@ -17,19 +17,17 @@ function AboutSection() {
   ];
 
   return (
-    <section className="bg-white px-5 py-20 sm:px-8 lg:px-10 lg:py-28">
+    <section className="bg-[color:var(--paper)] px-5 py-20 sm:px-8 lg:px-10 lg:py-28">
       <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2 lg:gap-16">
         {/* Left: copy + stat cells + CTA */}
         <div>
-          <span className="inline-flex items-center gap-2 rounded-full border border-[color:var(--line)] bg-white px-4 py-1.5 text-[0.78rem] font-medium text-[color:var(--ink-soft)]">
-            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[color:var(--brand-primary)]/12 text-[color:var(--brand-primary-700)]">
-              <HeartHandshake className="h-3 w-3" />
-            </span>
+          <span className="inline-flex items-center rounded-full border border-[color:var(--line)] bg-[color:var(--paper)] px-4 py-1.5 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-[color:var(--muted)]">
             Who We Are
           </span>
 
-          <h2 className="mt-6 text-[2rem] leading-[1.06] tracking-[-0.03em] text-[color:var(--ink)] sm:text-4xl lg:text-[2.75rem]">
-            Uniting medical teams to serve humanity
+          <h2 className="mt-6 text-[2.25rem] leading-[1.02] tracking-[-0.035em] text-[color:var(--ink)] sm:text-4xl lg:text-[2.75rem]">
+            Uniting medical teams{" "}
+            <span className="tone-muted">to serve humanity</span>
           </h2>
 
           <p className="mt-5 max-w-xl text-[0.98rem] leading-relaxed text-[color:var(--muted)]">
@@ -74,7 +72,7 @@ function AboutSection() {
 
         {/* Right: image + floating card */}
         <div className="relative">
-          <div className="relative overflow-hidden rounded-[2rem] border border-[color:var(--line)]">
+          <div className="relative overflow-hidden rounded-[18px] border border-[color:var(--line)]">
             <Image
               src="/img/who-we-are.jpg"
               alt="Doctors on Mission International team serving a community"

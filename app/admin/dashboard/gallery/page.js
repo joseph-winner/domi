@@ -105,7 +105,7 @@ export default function GalleryPage() {
         {images.map((image) => (
           <div
             key={image.id}
-            className="group relative bg-white rounded-xl overflow-hidden shadow-sm border border-slate-200"
+            className="group relative bg-[color:var(--paper)] rounded-xl overflow-hidden shadow-sm border border-slate-200"
           >
             <img
               src={image.url}
@@ -147,7 +147,7 @@ export default function GalleryPage() {
       {/* Add Image Modal */}
       {showModal && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-2xl p-6 w-full max-w-md">
+          <div className="bg-[color:var(--paper)] rounded-2xl p-6 w-full max-w-md">
             <h2 className="text-lg font-semibold text-slate-900 mb-4">
               Add Image
             </h2>

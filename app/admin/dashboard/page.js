@@ -232,7 +232,7 @@ export default function DashboardPage() {
         {stats.map((stat, idx) => (
           <div
             key={idx}
-            className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200"
+            className="bg-[color:var(--paper)] rounded-2xl p-6 shadow-sm border border-slate-200"
           >
             <div className="flex items-center justify-between">
               <div>
@@ -253,7 +253,7 @@ export default function DashboardPage() {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Quick Actions */}
-        <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+        <div className="bg-[color:var(--paper)] rounded-2xl p-6 shadow-sm border border-slate-200">
           <h2 className="text-lg font-semibold text-slate-900 mb-4">
             Quick Actions
           </h2>
@@ -279,7 +279,7 @@ export default function DashboardPage() {
         {/* Content Overview */}
         <div className="lg:col-span-2 space-y-4">
           {/* Homepage Sections */}
-          <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+          <div className="bg-[color:var(--paper)] rounded-2xl p-6 shadow-sm border border-slate-200">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-2">
                 <Layers className="w-5 h-5 text-cyan-600" />
@@ -320,7 +320,7 @@ export default function DashboardPage() {
           </div>
 
           {/* Static Pages */}
-          <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+          <div className="bg-[color:var(--paper)] rounded-2xl p-6 shadow-sm border border-slate-200">
             <div className="flex items-center gap-2 mb-4">
               <Globe className="w-5 h-5 text-amber-600" />
               <h2 className="text-lg font-semibold text-slate-900">
@@ -360,7 +360,7 @@ export default function DashboardPage() {
           </div>
 
           {/* Blog Management */}
-          <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+          <div className="bg-[color:var(--paper)] rounded-2xl p-6 shadow-sm border border-slate-200">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-2">
                 <BookOpen className="w-5 h-5 text-green-600" />

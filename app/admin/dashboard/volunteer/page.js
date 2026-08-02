@@ -145,7 +145,7 @@ export default function VolunteerPage() {
       />
 
       <form onSubmit={handleSubmit} className="space-y-6">
-        <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+        <div className="bg-[color:var(--paper)] rounded-2xl p-6 shadow-sm border border-slate-200">
           <h2 className="text-lg font-semibold text-slate-900 mb-4">
             Main Content
           </h2>
@@ -184,7 +184,7 @@ export default function VolunteerPage() {
         </div>
 
         {/* Quick Stats */}
-        <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+        <div className="bg-[color:var(--paper)] rounded-2xl p-6 shadow-sm border border-slate-200">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-lg font-semibold text-slate-900">
               Quick Stats
@@ -251,7 +251,7 @@ export default function VolunteerPage() {
         </div>
 
         {/* Highlights */}
-        <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+        <div className="bg-[color:var(--paper)] rounded-2xl p-6 shadow-sm border border-slate-200">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-lg font-semibold text-slate-900">
               Volunteer Highlights
@@ -293,7 +293,7 @@ export default function VolunteerPage() {
         </div>
 
         {/* Services */}
-        <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+        <div className="bg-[color:var(--paper)] rounded-2xl p-6 shadow-sm border border-slate-200">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-lg font-semibold text-slate-900">
               Service Areas
@@ -358,7 +358,7 @@ export default function VolunteerPage() {
         </div>
 
         {/* Requirements */}
-        <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+        <div className="bg-[color:var(--paper)] rounded-2xl p-6 shadow-sm border border-slate-200">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-lg font-semibold text-slate-900">
               Volunteer Requirements
@@ -421,7 +421,7 @@ export default function VolunteerPage() {
         </div>
 
         {/* Benefits */}
-        <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+        <div className="bg-[color:var(--paper)] rounded-2xl p-6 shadow-sm border border-slate-200">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-lg font-semibold text-slate-900">
               Volunteer Benefits

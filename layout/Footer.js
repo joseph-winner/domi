@@ -51,7 +51,7 @@ function Footer({ logoSrc = "/logos/doctors-mission-logo.svg" }) {
 
             {/* Newsletter */}
          {/* <form
-  className="mt-7 flex max-w-md items-center gap-2 rounded-full border border-[color:var(--line)] bg-white p-1.5"
+  className="mt-7 flex max-w-md items-center gap-2 rounded-full border border-[color:var(--line)] bg-[color:var(--paper)] p-1.5"
 >
               <label htmlFor="footer-email" className="sr-only">
                 Email address
@@ -82,7 +82,7 @@ function Footer({ logoSrc = "/logos/doctors-mission-logo.svg" }) {
               </a>
               <a
                 href="/contact"
-                className="inline-flex items-center rounded-full border border-[color:var(--line)] bg-white px-5 py-2.5 text-sm font-semibold text-[color:var(--ink)] transition hover:border-[color:var(--brand-primary)]"
+                className="inline-flex items-center rounded-full border border-[color:var(--line)] bg-[color:var(--paper)] px-5 py-2.5 text-sm font-semibold text-[color:var(--ink)] transition hover:border-[color:var(--brand-primary)]"
               >
                 Become a Partner
               </a>
@@ -153,7 +153,7 @@ function Footer({ logoSrc = "/logos/doctors-mission-logo.svg" }) {
                     key={label}
                     href={href}
                     aria-label={label}
-                    className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[color:var(--line)] bg-white text-[color:var(--ink-soft)] transition hover:border-[color:var(--brand-primary)] hover:text-[color:var(--brand-primary-700)]"
+                    className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[color:var(--line)] bg-[color:var(--paper)] text-[color:var(--ink-soft)] transition hover:border-[color:var(--brand-primary)] hover:text-[color:var(--brand-primary-700)]"
                   >
                     <Icon className="h-4 w-4" />
                   </a>

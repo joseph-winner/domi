@@ -7,7 +7,7 @@ export default function AdminHeader() {
   const { user } = useAuth();
 
   return (
-    <header className="h-16 bg-white border-b border-slate-200 px-6 flex items-center justify-between">
+    <header className="h-16 bg-[color:var(--paper)] border-b border-slate-200 px-6 flex items-center justify-between">
       {/* Search */}
       <div className="flex items-center gap-4">
         <div className="relative">

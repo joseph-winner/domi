@@ -7,23 +7,25 @@
    ============================================================ */
 
 :root {
-  --background: #ffffff;
-  --foreground: #14211f;
+  --background: #fdfcfa;
+  --foreground: #1c1a16;
 
-  /* Brand */
-  --brand-primary: #10c0de;
-  --brand-primary-600: #0ea6c0;
-  --brand-primary-700: #0c8ba1;
+  /* Brand — primary deep navy, secondary gold, accent cyan (sparingly) */
+  --brand-primary: #053759;
+  --brand-primary-600: #0a4d78; /* hover / lighter navy */
+  --brand-primary-700: #053759; /* readable link text on light */
   --brand-secondary: #eabf4e;
-  --brand-accent: #a1cb4a;
+  --brand-accent: #10c0de;
+  --brand-accent-600: #0ea6c0;
 
-  /* Neutrals / ink */
-  --ink: #14211f; /* headings, near-black with a touch of teal */
-  --ink-soft: #3c4a48;
-  --muted: #64726f; /* body / secondary text */
-  --line: #e6e9e7; /* hairline borders */
-  --surface: #f5f6f2; /* soft off-white section bg */
-  --surface-2: #eef0ea;
+  /* Neutrals / ink — warm greige editorial canvas */
+  --paper: #fdfcfa; /* main near-white section bg (barely-warm, "even white") */
+  --ink: #1c1a16; /* headings — warm near-black */
+  --ink-soft: #4a463d;
+  --muted: #6b665c; /* body / secondary text — warm gray */
+  --line: #e8e3d9; /* warm hairline borders */
+  --surface: #f3efe7; /* VERY light beige, used sparingly for accent sections */
+  --surface-2: #ece6db;
 }
 
 @theme inline {
@@ -36,12 +38,14 @@
   --color-brand-700: var(--brand-primary-700);
   --color-brand-secondary: var(--brand-secondary);
   --color-brand-accent: var(--brand-accent);
+  --color-brand-accent-600: var(--brand-accent-600);
   --color-ink: var(--ink);
   --color-ink-soft: var(--ink-soft);
   --color-muted: var(--muted);
   --color-line: var(--line);
   --color-surface: var(--surface);
   --color-surface-2: var(--surface-2);
+  --color-paper: var(--paper);
 }
 
 body {
@@ -63,22 +67,28 @@ body {
   h3,
   h4 {
     color: var(--ink);
-    font-weight: 400; /* elegant but a touch more presence than hairline */
-    letter-spacing: -0.03em;
-    line-height: 1.08;
+    font-weight: 600; /* editorial semibold */
+    letter-spacing: -0.035em; /* very tight tracking */
+    line-height: 1.04;
     text-wrap: balance;
   }
 
   h5,
   h6 {
     color: var(--ink);
-    font-weight: 500;
+    font-weight: 600;
     letter-spacing: -0.02em;
   }
 
   p {
     text-wrap: pretty;
   }
+}
+
+/* Two-tone editorial heading: continuation reads muted.
+   Usage: <h2>Statement <span class="tone-muted">continuation</span></h2> */
+.tone-muted {
+  color: var(--muted);
 }
 
 .tracking-tightish {
@@ -92,7 +102,7 @@ body {
   gap: 0.5rem;
   border-radius: 9999px;
   border: 1px solid var(--line);
-  background: #ffffff;
+  background: var(--paper);
   padding: 0.4rem 0.9rem 0.4rem 0.4rem;
   font-size: 0.78rem;
   font-weight: 500;
@@ -112,9 +122,98 @@ body {
 
 /* Standard rounded card surface */
 .card-soft {
-  border-radius: 1.5rem;
+  border-radius: 14px;
   border: 1px solid var(--line);
+  background: var(--paper);
+}
+
+/* ---- Standardized button system -------------------------
+   Pill shape, consistent sizing/weight/hover. Pair with an
+   <ArrowUpRight/> icon for the reference "Read more ↗" look. */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease,
+    border-color 0.2s ease, color 0.2s ease, filter 0.2s ease;
+}
+.btn-sm {
+  padding: 0.55rem 1.1rem;
+  font-size: 0.8rem;
+}
+.btn-lg {
+  padding: 0.9rem 1.9rem;
+  font-size: 0.95rem;
+}
+.btn svg {
+  height: 1rem;
+  width: 1rem;
+}
+
+.btn-primary {
+  background: var(--brand-primary);
+  color: #ffffff;
+}
+.btn-primary:hover {
+  background: var(--brand-primary-600);
+  transform: translateY(-2px);
+}
+
+.btn-accent {
+  background: var(--brand-accent);
+  color: #06232f;
+}
+.btn-accent:hover {
+  filter: brightness(1.05);
+  transform: translateY(-2px);
+}
+
+.btn-dark {
+  background: var(--ink);
+  color: #ffffff;
+}
+.btn-dark:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.15);
+}
+
+.btn-outline {
+  background: var(--paper);
+  color: var(--ink);
+  border: 1px solid var(--line);
+}
+.btn-outline:hover {
+  border-color: var(--brand-primary);
+  transform: translateY(-2px);
+}
+
+.btn-white {
   background: #ffffff;
+  color: var(--ink);
+}
+.btn-white:hover {
+  transform: translateY(-2px);
+  filter: brightness(0.97);
+}
+
+/* Ghost outline for dark backgrounds */
+.btn-ghost {
+  background: rgba(255, 255, 255, 0.06);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}
+.btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateY(-2px);
 }
 
 /* ---- Banner / hero animations (kept from before) -------- */

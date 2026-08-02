@@ -154,7 +154,7 @@ export default function BlogEditorPage() {
         <SaveButton onClick={handleSave} saving={saving} />
       </div>
 
-      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 space-y-6">
+      <div className="bg-[color:var(--paper)] rounded-xl shadow-sm border border-gray-200 p-6 space-y-6">
         {/* Basic Info */}
         <div className="space-y-4">
           <h3 className="text-lg font-semibold text-gray-900 border-b pb-2">

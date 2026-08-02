@@ -123,7 +123,7 @@ export default function ContactPage() {
       />
 
       <form onSubmit={handleSubmit} className="space-y-6">
-        <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+        <div className="bg-[color:var(--paper)] rounded-2xl p-6 shadow-sm border border-slate-200">
           <h2 className="text-lg font-semibold text-slate-900 mb-4">
             Contact Information
           </h2>
@@ -192,7 +192,7 @@ export default function ContactPage() {
         </div>
 
         {/* Phone Numbers */}
-        <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+        <div className="bg-[color:var(--paper)] rounded-2xl p-6 shadow-sm border border-slate-200">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-lg font-semibold text-slate-900">
               Phone Numbers
@@ -234,7 +234,7 @@ export default function ContactPage() {
         </div>
 
         {/* Address Lines */}
-        <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+        <div className="bg-[color:var(--paper)] rounded-2xl p-6 shadow-sm border border-slate-200">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-lg font-semibold text-slate-900">
               Address Lines
@@ -276,7 +276,7 @@ export default function ContactPage() {
         </div>
 
         {/* Scripture */}
-        <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+        <div className="bg-[color:var(--paper)] rounded-2xl p-6 shadow-sm border border-slate-200">
           <h2 className="text-lg font-semibold text-slate-900 mb-4">
             Scripture Verse
           </h2>
@@ -352,7 +352,7 @@ export default function ContactPage() {
         </div>
 
         {/* Social Links */}
-        <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+        <div className="bg-[color:var(--paper)] rounded-2xl p-6 shadow-sm border border-slate-200">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-lg font-semibold text-slate-900">
               Social Media Links

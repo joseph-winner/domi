@@ -39,11 +39,11 @@ export default function FAQAccordion({
   const [open, setOpen] = useState(0);
 
   return (
-    <section className="bg-white px-5 py-20 sm:px-8 lg:px-10 lg:py-28">
+    <section className="bg-[color:var(--paper)] px-5 py-20 sm:px-8 lg:px-10 lg:py-28">
       <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-12 lg:gap-14">
         {/* Left */}
         <div className="lg:col-span-5">
-          <span className="inline-flex items-center gap-2 rounded-full border border-[color:var(--line)] bg-white px-4 py-1.5 text-[0.78rem] font-medium text-[color:var(--ink-soft)]">
+          <span className="inline-flex items-center gap-2 rounded-full border border-[color:var(--line)] bg-[color:var(--paper)] px-4 py-1.5 text-[0.78rem] font-medium text-[color:var(--ink-soft)]">
             <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[color:var(--brand-primary)] text-white">
               <HelpCircle className="h-3 w-3" />
             </span>
@@ -65,13 +65,13 @@ export default function FAQAccordion({
 
         {/* Accordion */}
         <div className="lg:col-span-7">
-          <div className="divide-y divide-[color:var(--line)] overflow-hidden rounded-[1.5rem] border border-[color:var(--line)]">
+          <div className="divide-y divide-[color:var(--line)] overflow-hidden rounded-[14px] border border-[color:var(--line)]">
             {items.map((item, i) => {
               const isOpen = open === i;
               return (
                 <div
                   key={item.q}
-                  className={isOpen ? "bg-white" : "bg-[color:var(--surface)]"}
+                  className={isOpen ? "bg-[color:var(--paper)]" : "bg-[color:var(--surface)]"}
                 >
                   <button
                     onClick={() => setOpen(isOpen ? -1 : i)}

@@ -60,7 +60,7 @@ function AboutSection() {
               {content.stats?.map((stat, index) => (
                 <div
                   key={index}
-                  className={`bg-white rounded-xl shadow-md px-6 py-8 border-t-4 ${
+                  className={`bg-[color:var(--paper)] rounded-xl shadow-md px-6 py-8 border-t-4 ${
                     borderColors[index % borderColors.length]
                   } text-center md:text-left`}
                 >

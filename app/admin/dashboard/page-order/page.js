@@ -181,7 +181,7 @@ export default function PageOrderPage() {
             </div>
           </div>
 
-          <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+          <div className="bg-[color:var(--paper)] rounded-xl shadow-sm border border-gray-200 overflow-hidden">
             {sections.map((section, index) => {
               const info = getSectionInfo(section);
               const isBuiltIn = section.type === "built-in";

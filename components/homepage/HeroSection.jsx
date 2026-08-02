@@ -82,7 +82,7 @@ function HeroSection() {
         <div className="max-w-3xl">
           {/* Eyebrow — tagline */}
           <div className="hero-rise hero-rise-1 mb-6 inline-flex items-center gap-2.5 rounded-full border border-white/25 bg-white/10 px-4 py-1.5 text-[0.7rem] uppercase tracking-[0.35em] backdrop-blur-md">
-            <span className="h-1.5 w-1.5 rounded-full bg-[color:var(--brand-primary)]" />
+            <span className="h-1.5 w-1.5 rounded-full bg-[color:var(--brand-accent)]" />
             <span className="font-medium text-white">
               {content.tagline?.primary || "Spirited"}
             </span>
@@ -100,7 +100,7 @@ function HeroSection() {
           {/* Giant thin heading */}
           <h1 className="hero-rise hero-rise-3 text-[2.75rem] font-normal leading-[1.02] tracking-[-0.035em] text-white sm:text-6xl md:text-7xl lg:text-[5.25rem]">
             {content.title || "Doctors On Mission"}{" "}
-            <span className="font-medium text-[color:var(--brand-primary)]">
+            <span className="font-medium text-[color:var(--brand-accent)]">
               {content.titleHighlight || "International"}
             </span>
           </h1>
@@ -109,7 +109,7 @@ function HeroSection() {
           <div className="hero-rise hero-rise-4 mt-9 flex flex-wrap items-center gap-3">
             <a
               href="/about"
-              className="group inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 text-sm font-medium text-[color:var(--ink)] shadow-lg shadow-black/20 transition hover:-translate-y-0.5 hover:bg-white/90"
+              className="group inline-flex items-center gap-2 rounded-full bg-[color:var(--paper)] px-7 py-3.5 text-sm font-medium text-[color:var(--ink)] shadow-lg shadow-black/20 transition hover:-translate-y-0.5 hover:bg-white/90"
             >
               About Us
               <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -162,7 +162,7 @@ function HeroSection() {
                   <span
                     className={`block h-[3px] rounded-full transition-all duration-500 ${
                       isActive
-                        ? "w-10 bg-[color:var(--brand-primary)]"
+                        ? "w-10 bg-[color:var(--brand-accent)]"
                         : "w-5 bg-white/40 group-hover:bg-white/70"
                     }`}
                   />

@@ -80,7 +80,7 @@ export default function ProgramsPage() {
 
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Main Content */}
-        <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+        <div className="bg-[color:var(--paper)] rounded-2xl p-6 shadow-sm border border-slate-200">
           <h2 className="text-lg font-semibold text-slate-900 mb-4">
             Main Content
           </h2>
@@ -104,7 +104,7 @@ export default function ProgramsPage() {
         </div>
 
         {/* Videos */}
-        <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+        <div className="bg-[color:var(--paper)] rounded-2xl p-6 shadow-sm border border-slate-200">
           <h2 className="text-lg font-semibold text-slate-900 mb-4">
             Video Embeds
           </h2>
@@ -130,7 +130,7 @@ export default function ProgramsPage() {
         </div>
 
         {/* Interview Section */}
-        <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+        <div className="bg-[color:var(--paper)] rounded-2xl p-6 shadow-sm border border-slate-200">
           <h2 className="text-lg font-semibold text-slate-900 mb-4">
             Interview Section
           </h2>
@@ -158,7 +158,7 @@ export default function ProgramsPage() {
         </div>
 
         {/* Highlights */}
-        <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+        <div className="bg-[color:var(--paper)] rounded-2xl p-6 shadow-sm border border-slate-200">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-lg font-semibold text-slate-900">Highlights</h2>
             <button

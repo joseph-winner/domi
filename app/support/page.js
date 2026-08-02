@@ -71,13 +71,13 @@ function page() {
         subtitle="Connecting volunteer clinicians with local health facilities to deliver life-restoring care across Uganda."
       />
 
-      <main className="bg-white text-[color:var(--ink)]">
+      <main className="bg-[color:var(--paper)] text-[color:var(--ink)]">
         {/* Intro */}
         <section className="mx-auto max-w-7xl px-5 py-16 sm:px-8 lg:px-10 lg:py-20">
           <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-14">
             {/* Image */}
             <div className="lg:col-span-5">
-              <div className="relative overflow-hidden rounded-[2rem] border border-[color:var(--line)]">
+              <div className="relative overflow-hidden rounded-[18px] border border-[color:var(--line)]">
                 <img
                   src="/img/support-1.jpg"
                   alt="Clinician preparing for a medical mission"
@@ -100,7 +100,7 @@ function page() {
 
             {/* Copy */}
             <div className="lg:col-span-7">
-              <span className="inline-flex items-center gap-2 rounded-full border border-[color:var(--line)] bg-white px-4 py-1.5 text-[0.78rem] font-medium text-[color:var(--ink-soft)]">
+              <span className="inline-flex items-center gap-2 rounded-full border border-[color:var(--line)] bg-[color:var(--paper)] px-4 py-1.5 text-[0.78rem] font-medium text-[color:var(--ink-soft)]">
                 <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[color:var(--brand-primary)] text-white">
                   <HeartHandshake className="h-3 w-3" />
                 </span>
@@ -125,7 +125,7 @@ function page() {
                 </a>
                 <a
                   href="#give"
-                  className="inline-flex items-center justify-center gap-2 rounded-full border border-[color:var(--line)] bg-white px-6 py-3 text-sm font-semibold text-[color:var(--ink)] transition hover:border-[color:var(--brand-primary)]"
+                  className="inline-flex items-center justify-center gap-2 rounded-full border border-[color:var(--line)] bg-[color:var(--paper)] px-6 py-3 text-sm font-semibold text-[color:var(--ink)] transition hover:border-[color:var(--brand-primary)]"
                 >
                   Donate to a Camp <HandCoins className="h-4 w-4" />
                 </a>
@@ -162,7 +162,7 @@ function page() {
         <section className="px-5 pb-4 sm:px-8 lg:px-10">
           <div className="mx-auto max-w-7xl">
             <div className="mx-auto mb-10 max-w-2xl text-center">
-              <span className="inline-flex items-center gap-2 rounded-full border border-[color:var(--line)] bg-white px-4 py-1.5 text-[0.78rem] font-medium text-[color:var(--ink-soft)]">
+              <span className="inline-flex items-center gap-2 rounded-full border border-[color:var(--line)] bg-[color:var(--paper)] px-4 py-1.5 text-[0.78rem] font-medium text-[color:var(--ink-soft)]">
                 <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[color:var(--brand-secondary)] text-white">
                   <HandCoins className="h-3 w-3" />
                 </span>
@@ -172,7 +172,7 @@ function page() {
                 Your support, made visible
               </h2>
             </div>
-            <div className="relative overflow-hidden rounded-[2rem] bg-[color:var(--brand-secondary)] px-6 py-12 sm:px-10">
+            <div className="relative overflow-hidden rounded-[18px] bg-[color:var(--brand-secondary)] px-6 py-12 sm:px-10">
               <div className="pointer-events-none absolute -bottom-16 left-1/2 h-40 w-[30rem] -translate-x-1/2 rounded-full bg-white/25 blur-3xl" />
               <div className="relative grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
                 {impact.map((s) => (
@@ -194,7 +194,7 @@ function page() {
         <section className="mx-auto max-w-7xl px-5 py-16 sm:px-8 lg:px-10 lg:py-20">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <span className="inline-flex items-center gap-2 rounded-full border border-[color:var(--line)] bg-white px-4 py-1.5 text-[0.78rem] font-medium text-[color:var(--ink-soft)]">
+              <span className="inline-flex items-center gap-2 rounded-full border border-[color:var(--line)] bg-[color:var(--paper)] px-4 py-1.5 text-[0.78rem] font-medium text-[color:var(--ink-soft)]">
                 <span className="h-1.5 w-1.5 rounded-full bg-[color:var(--brand-primary)]" />
                 Impact
               </span>
@@ -218,7 +218,7 @@ function page() {
             {outreaches.map((o) => (
               <article
                 key={o.title}
-                className="group overflow-hidden rounded-[1.75rem] border border-[color:var(--line)] bg-white transition hover:-translate-y-1 hover:shadow-[0_28px_65px_-45px_rgba(20,33,31,0.5)]"
+                className="group overflow-hidden rounded-[16px] border border-[color:var(--line)] bg-[color:var(--paper)] transition hover:-translate-y-1 hover:shadow-[0_28px_65px_-45px_rgba(20,33,31,0.5)]"
               >
                 <div className="p-6 sm:p-8">
                   <div className="flex flex-wrap items-center gap-2">
@@ -258,7 +258,7 @@ function page() {
         {/* Featured video */}
         <section className="mx-auto max-w-7xl px-5 pb-16 sm:px-8 lg:px-10 lg:pb-20">
           <div className="mx-auto max-w-2xl text-center">
-            <span className="inline-flex items-center gap-2 rounded-full border border-[color:var(--line)] bg-white px-4 py-1.5 text-[0.78rem] font-medium text-[color:var(--ink-soft)]">
+            <span className="inline-flex items-center gap-2 rounded-full border border-[color:var(--line)] bg-[color:var(--paper)] px-4 py-1.5 text-[0.78rem] font-medium text-[color:var(--ink-soft)]">
               <span className="h-1.5 w-1.5 rounded-full bg-[color:var(--brand-primary)]" />
               Watch our featured video
             </span>
@@ -271,7 +271,7 @@ function page() {
             </p>
           </div>
 
-          <div className="relative mt-10 overflow-hidden rounded-[2rem] border border-[color:var(--line)] bg-black">
+          <div className="relative mt-10 overflow-hidden rounded-[18px] border border-[color:var(--line)] bg-black">
             <div className="relative aspect-video">
               <iframe
                 className="absolute inset-0 h-full w-full"
@@ -309,7 +309,7 @@ function page() {
                 ))}
               </ul>
 
-              <div className="mt-8 rounded-[1.75rem] border border-white/10 bg-white/5 p-6">
+              <div className="mt-8 rounded-[16px] border border-white/10 bg-white/5 p-6">
                 <p className="text-sm font-semibold text-white">
                   Consider partnering with us today, support a camp today.
                 </p>
@@ -343,7 +343,7 @@ function page() {
                 <div className="mt-6 flex flex-col gap-3 sm:flex-row">
                   <a
                     href="/contact"
-                    className="inline-flex items-center justify-center gap-2 rounded-full bg-[color:var(--brand-primary)] px-6 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-[color:var(--brand-primary-600)]"
+                    className="inline-flex items-center justify-center gap-2 rounded-full bg-[color:var(--brand-accent)] px-6 py-3 text-sm font-semibold text-[#06232f] transition hover:-translate-y-0.5 hover:brightness-105"
                   >
                     Donate Now <HandCoins className="h-4 w-4" />
                   </a>
@@ -376,10 +376,10 @@ function page() {
                 ].map((c) => (
                   <div
                     key={c.title}
-                    className="rounded-[1.5rem] border border-white/10 bg-white/5 p-5"
+                    className="rounded-[14px] border border-white/10 bg-white/5 p-5"
                   >
                     <span className="inline-flex rounded-xl bg-white/10 p-2">
-                      <c.icon className="h-5 w-5 text-[color:var(--brand-primary)]" />
+                      <c.icon className="h-5 w-5 text-[color:var(--brand-accent)]" />
                     </span>
                     <p className="mt-3 text-sm font-semibold text-white">
                       {c.title}
@@ -393,7 +393,7 @@ function page() {
             </div>
 
             <div className="lg:col-span-6">
-              <div className="relative h-full overflow-hidden rounded-[2rem] border border-white/10">
+              <div className="relative h-full overflow-hidden rounded-[18px] border border-white/10">
                 <img
                   src="/img/upcoming-programs.jpg"
                   alt="Surgical team during a medical mission"
@@ -402,8 +402,8 @@ function page() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[color:var(--ink)] via-[color:var(--ink)]/20 to-transparent" />
                 <div className="absolute inset-x-0 bottom-0 p-6 sm:p-8">
-                  <div className="max-w-xl rounded-[1.5rem] border border-white/10 bg-black/40 p-5 backdrop-blur">
-                    <p className="text-xs font-semibold uppercase tracking-wide text-[color:var(--brand-primary)]">
+                  <div className="max-w-xl rounded-[14px] border border-white/10 bg-black/40 p-5 backdrop-blur">
+                    <p className="text-xs font-semibold uppercase tracking-wide text-[color:var(--brand-accent)]">
                       Our Promise
                     </p>
                     <p className="mt-2 text-[0.9rem] leading-relaxed text-white/80">

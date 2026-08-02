@@ -42,23 +42,14 @@ function VideoSection() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="bg-white px-5 py-14 sm:px-8 lg:px-10">
+    <section ref={sectionRef} className="bg-[color:var(--paper)] px-5 py-14 sm:px-8 lg:px-10">
       <div className="mx-auto max-w-7xl">
-        <div className="relative overflow-hidden rounded-[2.5rem] bg-[color:var(--brand-primary)] px-6 py-12 sm:px-12 lg:py-14">
-          <div
-            className="pointer-events-none absolute inset-0 opacity-[0.1]"
-            style={{
-              backgroundImage:
-                "linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)",
-              backgroundSize: "48px 48px",
-            }}
-          />
-
-          <div className="relative grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
+        <div className="overflow-hidden rounded-[20px] bg-[color:var(--brand-primary)] px-6 py-12 sm:px-12 lg:py-14">
+          <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
             {/* Copy */}
             <div>
               <span className="inline-flex items-center gap-2 rounded-full bg-white/20 px-4 py-1.5 text-[0.78rem] font-medium text-white">
-                <span className="h-1.5 w-1.5 rounded-full bg-white" />
+                <span className="h-1.5 w-1.5 rounded-full bg-[color:var(--paper)]" />
                 Our Story
               </span>
               <h2 className="mt-6 text-[2rem] leading-[1.06] tracking-[-0.03em] text-white sm:text-4xl lg:text-[2.6rem]">
@@ -76,7 +67,7 @@ function VideoSection() {
 
             {/* Video */}
             <div className="relative">
-              <div className="overflow-hidden rounded-[1.5rem] bg-black shadow-2xl shadow-black/30 ring-1 ring-white/20">
+              <div className="overflow-hidden rounded-[14px] bg-black shadow-2xl shadow-black/30 ring-1 ring-white/20">
                 <div className="aspect-video w-full">
                   <iframe
                     ref={iframeRef}
@@ -88,7 +79,7 @@ function VideoSection() {
                   ></iframe>
                 </div>
               </div>
-              <div className="pointer-events-none absolute left-4 top-4 inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-[0.8rem] font-semibold text-[color:var(--ink)] shadow-lg">
+              <div className="pointer-events-none absolute left-4 top-4 inline-flex items-center gap-2 rounded-full bg-[color:var(--paper)] px-4 py-2 text-[0.8rem] font-semibold text-[color:var(--ink)] shadow-lg">
                 <Play className="h-3.5 w-3.5 fill-current text-[color:var(--brand-primary-700)]" />
                 Watch our story
               </div>

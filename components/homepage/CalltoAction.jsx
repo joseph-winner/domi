@@ -20,21 +20,10 @@ function CalltoAction() {
   ];
 
   return (
-    <section className="bg-white px-5 py-14 sm:px-8 lg:px-10">
+    <section className="bg-[color:var(--paper)] px-5 py-14 sm:px-8 lg:px-10">
       <div className="mx-auto max-w-7xl">
-        <div className="relative overflow-hidden rounded-[2.5rem] bg-[color:var(--brand-primary)] px-6 py-14 sm:px-12 lg:py-16">
-          {/* subtle grid + glow */}
-          <div
-            className="pointer-events-none absolute inset-0 opacity-[0.12]"
-            style={{
-              backgroundImage:
-                "linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)",
-              backgroundSize: "48px 48px",
-            }}
-          />
-          <div className="pointer-events-none absolute -bottom-24 left-1/2 h-64 w-[36rem] -translate-x-1/2 rounded-full bg-white/25 blur-3xl" />
-
-          <div className="relative">
+        <div className="overflow-hidden rounded-[20px] bg-[color:var(--brand-primary)] px-6 py-14 sm:px-12 lg:py-16">
+          <div>
             {/* Header */}
             <div className="mx-auto max-w-2xl text-center">
               <p className="text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-white/80">
@@ -55,7 +44,7 @@ function CalltoAction() {
                 <a
                   key={o.title}
                   href={o.href}
-                  className="group flex flex-col rounded-[1.4rem] bg-white/95 p-6 shadow-lg shadow-black/10 transition hover:-translate-y-1 hover:bg-white"
+                  className="group flex flex-col rounded-[14px] bg-white/95 p-6 shadow-lg shadow-black/10 transition hover:-translate-y-1 hover:bg-[color:var(--paper)]"
                 >
                   <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-[color:var(--brand-primary)]/12 text-[color:var(--brand-primary-700)]">
                     <o.Icon className="h-5 w-5" />
