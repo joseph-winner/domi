@@ -7,8 +7,8 @@
    ============================================================ */
 
 :root {
-  --background: #fdfcfa;
-  --foreground: #1c1a16;
+  --background: #ffffff;
+  --foreground: #053759;
 
   /* Brand — primary deep navy, secondary gold, accent cyan (sparingly) */
   --brand-primary: #053759;
@@ -19,13 +19,15 @@
   --brand-accent-600: #0ea6c0;
 
   /* Neutrals / ink — warm greige editorial canvas */
-  --paper: #fdfcfa; /* main near-white section bg (barely-warm, "even white") */
-  --ink: #1c1a16; /* headings — warm near-black */
-  --ink-soft: #4a463d;
-  --muted: #6b665c; /* body / secondary text — warm gray */
-  --line: #e8e3d9; /* warm hairline borders */
-  --surface: #f3efe7; /* VERY light beige, used sparingly for accent sections */
-  --surface-2: #ece6db;
+  --paper: #ffffff; /* clean white canvas */
+  --ink: #053759; /* deep blue headings */
+  --ink-soft: #164d70;
+  --muted: #47708a; /* muted blue body text */
+  --line: rgba(5, 55, 89, 0.16); /* blue-tinted hairline borders */
+  --surface: #053759; /* dark blue cards, buttons, and stat containers */
+  --surface-2: #10c0de;
+  --section-gold: #fff7e5;
+  --section-teal: #e8f8fb;
 }
 
 @theme inline {
@@ -56,6 +58,66 @@ body {
   font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+}
+
+/* Full-width sections stay soft and readable; dark blue is reserved for UI surfaces. */
+section[class~="bg-[color:var(--surface)]"] {
+  background-color: var(--section-gold) !important;
+}
+
+section[class~="bg-[color:var(--surface)]"]:nth-of-type(even) {
+  background-color: var(--section-teal) !important;
+}
+
+/* Navy card surfaces always use white copy. */
+:is(
+  [class~="bg-[#053759]"],
+  [class~="bg-[color:var(--brand-primary)]"],
+  [class~="bg-[color:var(--ink)]"],
+  article[class~="bg-[color:var(--surface)]"],
+  div[class~="bg-[color:var(--surface)]"],
+  li[class~="bg-[color:var(--surface)]"]
+) :is(h1, h2, h3, h4, h5, h6, p, span, a, strong, li, label) {
+  color: #ffffff !important;
+}
+
+/* Section labels are text-only: no pills, borders, fills, dots, or rounded containers. */
+span.inline-flex.rounded-full {
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+}
+
+/* Never allow light surfaces to inherit white text from a dark parent card. */
+:is(article, div, li)[class~="bg-[color:var(--paper)]"] :is(h1, h2, h3, h4, h5, h6, p, span, a, strong, li, label),
+:is(article, div, li)[class~="bg-white"] :is(h1, h2, h3, h4, h5, h6, p, span, a, strong, li, label) {
+  color: #000000 !important;
+}
+
+/* Navy actions always retain white labels, even when placed inside white cards. */
+:is(a, button)[class~="bg-[#053759]"],
+:is(a, button)[class~="bg-[color:var(--brand-primary)]"],
+:is(a, button)[class~="bg-[color:var(--ink)]"],
+:is(article, div, li)[class~="bg-[color:var(--paper)]"] :is(a, button)[class~="bg-[#053759]"],
+:is(article, div, li)[class~="bg-[color:var(--paper)]"] :is(a, button)[class~="bg-[color:var(--brand-primary)]"],
+:is(article, div, li)[class~="bg-[color:var(--paper)]"] :is(a, button)[class~="bg-[color:var(--ink)]"],
+:is(article, div, li)[class~="bg-white"] :is(a, button)[class~="bg-[#053759]"],
+:is(article, div, li)[class~="bg-white"] :is(a, button)[class~="bg-[color:var(--brand-primary)]"],
+:is(article, div, li)[class~="bg-white"] :is(a, button)[class~="bg-[color:var(--ink)]"] {
+  color: #ffffff !important;
+}
+
+:is(a, button)[class~="bg-[#053759]"] :is(span, svg),
+:is(a, button)[class~="bg-[color:var(--brand-primary)]"] :is(span, svg),
+:is(a, button)[class~="bg-[color:var(--ink)]"] :is(span, svg) {
+  color: inherit !important;
+}
+
+/* Decorative dot markers are removed from all headers and labels. */
+span.h-1\.5.w-1\.5.rounded-full,
+span.h-1.w-1.rounded-full {
+  display: none !important;
 }
 
 /* ---- Typography: thin, elegant, tight tracking ----------
@@ -109,17 +171,6 @@ body {
   letter-spacing: 0.01em;
   color: var(--ink-soft);
 }
-.eyebrow .eyebrow-dot {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  height: 1.5rem;
-  width: 1.5rem;
-  border-radius: 9999px;
-  background: var(--brand-primary);
-  color: #ffffff;
-}
-
 /* Standard rounded card surface */
 .card-soft {
   border-radius: 14px;

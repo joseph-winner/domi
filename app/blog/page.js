@@ -82,18 +82,17 @@ export default function BlogPage() {
   return (
     <main className="bg-[color:var(--paper)]">
       {/* Header */}
-      <section className="border-b border-[color:var(--line)] bg-[color:var(--surface)]">
-        <div className="mx-auto max-w-7xl px-5 py-16 text-center sm:px-8 sm:py-20 lg:px-10">
-          <span className="inline-flex items-center gap-2 rounded-full border border-[color:var(--line)] bg-[color:var(--paper)] px-4 py-1.5 text-[0.78rem] font-medium text-[color:var(--ink-soft)]">
-            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[color:var(--brand-primary)] text-white">
-              <Newspaper className="h-3 w-3" />
-            </span>
+      <section className="relative isolate overflow-hidden border-b border-[color:var(--line)] bg-[#053759]">
+        <div className="absolute inset-0 -z-10 bg-[url('/img/3daymedcamp.jpg')] bg-cover bg-center" />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[#053759]/95 via-[#053759]/85 to-[#053759]/55" />
+        <div className="mx-auto max-w-7xl px-5 py-28 text-left sm:px-8 sm:py-32 lg:px-10">
+          <span className="inline-flex items-center rounded-full bg-[#eabf4e] px-4 py-1.5 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-[#053759]">
             Blog
           </span>
-          <h1 className="mx-auto mt-6 max-w-3xl text-[2.5rem] leading-[1.04] tracking-[-0.035em] text-[color:var(--ink)] sm:text-6xl">
+          <h1 className="mt-6 max-w-3xl text-[2.5rem] leading-[1.04] tracking-[-0.035em] text-white sm:text-6xl">
             Blog &amp; updates
           </h1>
-          <p className="mx-auto mt-5 max-w-2xl text-[1rem] leading-relaxed text-[color:var(--muted)] sm:text-lg">
+          <p className="mt-5 max-w-2xl text-[1rem] leading-relaxed text-white/85 sm:text-lg">
             Go behind the scenes of DOMI missions: field reports, volunteer
             reflections and simple health tips shaped by real patients in
             underserved communities.

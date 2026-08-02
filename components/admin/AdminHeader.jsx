@@ -15,7 +15,7 @@ export default function AdminHeader() {
           <input
             type="text"
             placeholder="Search..."
-            className="pl-10 pr-4 py-2 w-64 rounded-lg bg-slate-100 border-0 text-sm text-slate-700 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500/30"
+            className="w-64 bg-transparent border border-slate-200 pl-10 pr-4 py-2 rounded-lg text-sm text-slate-700 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500/30"
           />
         </div>
       </div>

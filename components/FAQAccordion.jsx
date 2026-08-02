@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Plus, Minus, ArrowUpRight, HelpCircle } from "lucide-react";
+import { Plus, Minus, ArrowUpRight } from "lucide-react";
 
 const defaultItems = [
   {
@@ -39,17 +39,14 @@ export default function FAQAccordion({
   const [open, setOpen] = useState(0);
 
   return (
-    <section className="bg-[color:var(--paper)] px-5 py-20 sm:px-8 lg:px-10 lg:py-28">
+    <section className="bg-white px-5 py-20 sm:px-8 lg:px-10 lg:py-28">
       <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-12 lg:gap-14">
         {/* Left */}
         <div className="lg:col-span-5">
-          <span className="inline-flex items-center gap-2 rounded-full border border-[color:var(--line)] bg-[color:var(--paper)] px-4 py-1.5 text-[0.78rem] font-medium text-[color:var(--ink-soft)]">
-            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[color:var(--brand-primary)] text-white">
-              <HelpCircle className="h-3 w-3" />
-            </span>
+          <p className="text-[0.78rem] font-medium uppercase tracking-[0.18em] text-[color:var(--muted)]">
             {eyebrow}
-          </span>
-          <h2 className="mt-6 text-[2rem] leading-[1.06] tracking-[-0.03em] text-[color:var(--ink)] sm:text-4xl lg:text-[2.75rem]">
+          </p>
+          <h2 className="mt-4 text-[2rem] leading-[1.06] tracking-[-0.03em] text-[color:var(--ink)] sm:text-4xl lg:text-[2.75rem]">
             {title}
           </h2>
           <p className="mt-5 max-w-md text-[0.98rem] leading-relaxed text-[color:var(--muted)]">
@@ -57,7 +54,7 @@ export default function FAQAccordion({
           </p>
           <a
             href="/contact"
-            className="mt-7 inline-flex items-center gap-2 rounded-full bg-[color:var(--ink)] px-6 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5"
+            className="mt-7 inline-flex items-center gap-2 rounded-full bg-[#eabf4e] px-6 py-3 text-sm font-semibold text-[#053759] transition hover:-translate-y-0.5 hover:brightness-105"
           >
             Contact Us <ArrowUpRight className="h-4 w-4" />
           </a>
@@ -65,27 +62,27 @@ export default function FAQAccordion({
 
         {/* Accordion */}
         <div className="lg:col-span-7">
-          <div className="divide-y divide-[color:var(--line)] overflow-hidden rounded-[14px] border border-[color:var(--line)]">
+          <div className="divide-y divide-white/15 overflow-hidden rounded-[14px] border border-[#053759]">
             {items.map((item, i) => {
               const isOpen = open === i;
               return (
                 <div
                   key={item.q}
-                  className={isOpen ? "bg-[color:var(--paper)]" : "bg-[color:var(--surface)]"}
+                  className="bg-[#053759]"
                 >
                   <button
                     onClick={() => setOpen(isOpen ? -1 : i)}
                     aria-expanded={isOpen}
                     className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left"
                   >
-                    <span className="text-[1.02rem] font-medium tracking-[-0.01em] text-[color:var(--ink)]">
+                    <span className="text-[1.02rem] font-medium tracking-[-0.01em] text-white">
                       {item.q}
                     </span>
                     <span
                       className={`flex h-7 w-7 flex-none items-center justify-center rounded-full border transition ${
                         isOpen
-                          ? "border-transparent bg-[color:var(--brand-primary)] text-white"
-                          : "border-[color:var(--line)] text-[color:var(--ink-soft)]"
+                          ? "border-transparent bg-[#eabf4e] text-[#053759]"
+                          : "border-white/25 text-white"
                       }`}
                     >
                       {isOpen ? (
@@ -103,7 +100,7 @@ export default function FAQAccordion({
                     }`}
                   >
                     <div className="overflow-hidden">
-                      <p className="px-6 pb-6 text-[0.92rem] leading-relaxed text-[color:var(--muted)]">
+                      <p className="px-6 pb-6 text-[0.92rem] leading-relaxed text-white/75">
                         {item.a}
                       </p>
                     </div>

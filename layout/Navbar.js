@@ -17,7 +17,7 @@ function Navbar() {
   const pathname = usePathname();
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 30);
+    const handleScroll = () => setScrolled(window.scrollY > 40);
     handleScroll();
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -28,8 +28,9 @@ function Navbar() {
     return pathname.startsWith(href);
   };
 
-  const isHome = pathname === "/";
-  const overlay = isHome && !scrolled;
+  // Every page now opens with a full-bleed image header, so the nav floats
+  // over an image at the top and sits on a solid bar once scrolled.
+  const overlay = !scrolled;
 
   const navLinks = [
     { label: "Home", href: "/" },
@@ -45,7 +46,7 @@ function Navbar() {
       match: ["/about", "/programs", "/gallery"],
     },
     { label: "Volunteer", href: "/voluteer" },
-    { label: "Support a Mission", href: "/support" },
+    { label: "Support", href: "/support" },
     { label: "Missions", href: "/missions" },
     {
       label: "News",
@@ -61,20 +62,22 @@ function Navbar() {
     { label: "Contact", href: "/contact" },
   ];
 
-  const linkBase = overlay
-    ? "text-white/80 hover:text-white"
-    : "text-[color:var(--ink-soft)] hover:text-[color:var(--ink)]";
-  const linkActive = overlay ? "text-white" : "text-[color:var(--ink)]";
+  // Pill link styles (inside the floating cream capsule)
+  const pillItem =
+    "rounded-full px-4 py-2 text-[0.82rem] font-medium transition-colors";
+  const pillActive = "bg-[color:var(--brand-primary)] text-white";
+  const pillIdle =
+    "text-[color:var(--ink-soft)] hover:text-[color:var(--ink)]";
 
   return (
     <header
-      className={`${isHome ? "fixed" : "sticky"} inset-x-0 top-0 z-40 transition-colors duration-300 ${
+      className={`fixed inset-x-0 top-0 z-40 transition-colors duration-300 ${
         overlay
           ? "bg-transparent"
-          : "border-b border-[color:var(--line)] bg-[color:var(--paper)]/85 backdrop-blur-xl"
+          : "border-b border-[color:var(--line)] bg-[color:var(--paper)]/90 backdrop-blur-xl"
       }`}
     >
-      {/* Top contact strip */}
+      {/* Top contact strip — commented out per request (kept for future use)
       <div
         className={`hidden border-b text-[0.72rem] transition-colors md:block ${
           overlay
@@ -85,35 +88,24 @@ function Navbar() {
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-2 lg:px-10">
           <div className="flex items-center gap-2">
             <Phone className="h-3.5 w-3.5" />
-            <a href="tel:+256782524317" className="transition hover:text-[color:var(--brand-accent)]">
-              +256 782 524 317
-            </a>
+            <a href="tel:+256782524317">+256 782 524 317</a>
             <span className="opacity-40">/</span>
-            <a href="tel:+256784808738" className="transition hover:text-[color:var(--brand-accent)]">
-              +256 784 808 738
-            </a>
+            <a href="tel:+256784808738">+256 784 808 738</a>
           </div>
           <div className="flex items-center gap-5">
-            <span className="uppercase tracking-[0.22em]">
-              Doctors on Mission International
-            </span>
+            <span className="uppercase tracking-[0.22em]">Doctors on Mission International</span>
             <div className="flex items-center gap-3.5">
-              <a href="#" aria-label="Twitter" className="transition hover:text-[color:var(--brand-accent)]">
-                <FaTwitter />
-              </a>
-              <a href="#" aria-label="Facebook" className="transition hover:text-[color:var(--brand-accent)]">
-                <FaFacebookF />
-              </a>
-              <a href="#" aria-label="LinkedIn" className="transition hover:text-[color:var(--brand-accent)]">
-                <FaLinkedinIn />
-              </a>
+              <a href="#" aria-label="Twitter"><FaTwitter /></a>
+              <a href="#" aria-label="Facebook"><FaFacebookF /></a>
+              <a href="#" aria-label="LinkedIn"><FaLinkedinIn /></a>
             </div>
           </div>
         </div>
       </div>
+      */}
 
       {/* Main bar */}
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-6 lg:px-10">
+      <nav className="relative mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-6 lg:px-10">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3">
           <Image
@@ -126,7 +118,7 @@ function Navbar() {
           <div className="hidden flex-col leading-none sm:flex">
             <span
               className={`text-[0.6rem] uppercase tracking-[0.24em] ${
-                overlay ? "text-white/65" : "text-[color:var(--muted)]"
+                overlay ? "text-white/70" : "text-[color:var(--muted)]"
               }`}
             >
               Doctors on Mission
@@ -141,68 +133,78 @@ function Navbar() {
           </div>
         </Link>
 
-        {/* Desktop links */}
-        <ul className="hidden items-center gap-8 text-[0.82rem] lg:flex">
-          {navLinks.map((item) =>
-            item.dropdown ? (
-              <li
-                key={item.label}
-                className="relative"
-                onMouseEnter={() => item.setOpen(true)}
-                onMouseLeave={() => item.setOpen(false)}
-              >
-                <button
-                  className={`flex items-center gap-1 transition-colors ${
-                    item.match.some((m) => isActive(m)) ? linkActive : linkBase
-                  }`}
+        {/* Centered floating pill nav */}
+        <div className="absolute left-1/2 hidden -translate-x-1/2 lg:block">
+          <ul className="flex items-center gap-1 rounded-full border border-[color:var(--line)]/70 bg-[color:var(--paper)]/85 p-1.5 shadow-[0_12px_40px_-24px_rgba(28,26,22,0.55)] backdrop-blur-xl">
+            {navLinks.map((item) =>
+              item.dropdown ? (
+                <li
+                  key={item.label}
+                  className="relative"
+                  onMouseEnter={() => item.setOpen(true)}
+                  onMouseLeave={() => item.setOpen(false)}
                 >
-                  {item.label}
-                  <ChevronDown className="h-3.5 w-3.5 opacity-60" />
-                </button>
-                {item.open && (
-                  <ul className="absolute left-1/2 top-full w-48 -translate-x-1/2 pt-4">
-                    <div className="overflow-hidden rounded-[14px] border border-[color:var(--line)] bg-[color:var(--paper)] p-1.5 shadow-[0_20px_50px_-30px_rgba(28,26,22,0.5)]">
-                      {item.dropdown.map((d) => (
-                        <li key={d.href}>
-                          <Link
-                            href={d.href}
-                            className="block rounded-[10px] px-3.5 py-2.5 text-[0.82rem] text-[color:var(--ink-soft)] transition hover:bg-[color:var(--surface)] hover:text-[color:var(--ink)]"
-                          >
-                            {d.label}
-                          </Link>
-                        </li>
-                      ))}
-                    </div>
-                  </ul>
-                )}
-              </li>
-            ) : (
-              <li key={item.label}>
-                <Link
-                  href={item.href}
-                  className={`transition-colors ${
-                    isActive(item.href) ? linkActive : linkBase
-                  }`}
-                >
-                  {item.label}
-                </Link>
-              </li>
-            )
-          )}
-        </ul>
+                  <button
+                    className={`flex items-center gap-1 ${pillItem} ${
+                      item.match.some((m) => isActive(m)) ? pillActive : pillIdle
+                    }`}
+                  >
+                    {item.label}
+                    <ChevronDown className="h-3.5 w-3.5 opacity-70" />
+                  </button>
+                  {item.open && (
+                    <ul className="absolute left-1/2 top-full w-48 -translate-x-1/2 pt-3">
+                      <div className="overflow-hidden rounded-[14px] border border-[color:var(--line)] bg-[color:var(--paper)] p-1.5 shadow-xl shadow-black/5">
+                        {item.dropdown.map((d) => (
+                          <li key={d.href}>
+                            <Link
+                              href={d.href}
+                              className="block rounded-[10px] px-3.5 py-2.5 text-[0.82rem] text-[color:var(--ink-soft)] transition hover:bg-[color:var(--surface)] hover:text-white"
+                            >
+                              {d.label}
+                            </Link>
+                          </li>
+                        ))}
+                      </div>
+                    </ul>
+                  )}
+                </li>
+              ) : (
+                <li key={item.label}>
+                  <Link
+                    href={item.href}
+                    className={`${pillItem} ${
+                      isActive(item.href) ? pillActive : pillIdle
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              )
+            )}
+          </ul>
+        </div>
 
         {/* Right actions */}
         <div className="flex items-center gap-3">
+          <a
+            href="tel:+256782524317"
+            aria-label="Call us"
+            className={`hidden h-11 w-11 items-center justify-center rounded-full border transition md:inline-flex ${
+              overlay
+                ? "border-white/40 text-white hover:bg-white/10"
+                : "border-[color:var(--line)] text-[color:var(--ink)] hover:border-[color:var(--brand-primary)]"
+            }`}
+          >
+            <Phone className="h-4 w-4" />
+          </a>
           <button
             type="button"
             onClick={() => setDonateOpen(true)}
-            className={`hidden rounded-full px-6 py-2.5 text-[0.82rem] font-semibold transition hover:-translate-y-0.5 md:inline-flex ${
-              overlay
-                ? "bg-[color:var(--paper)] text-[color:var(--ink)]"
-                : "bg-[color:var(--brand-primary)] text-white hover:bg-[color:var(--brand-primary-600)]"
-            }`}
+            className="hidden items-center gap-2 rounded-full bg-[#eabf4e] px-6 py-2.5 text-[0.82rem] font-semibold text-[#053759] transition hover:-translate-y-0.5 hover:brightness-105 md:inline-flex"
           >
             Donate
+            <span aria-hidden>→</span>
           </button>
           <button
             className={`lg:hidden ${overlay ? "text-white" : "text-[color:var(--ink)]"}`}
@@ -214,7 +216,7 @@ function Navbar() {
         </div>
       </nav>
 
-      {/* Mobile menu */}
+      {/* Mobile menu (unchanged behaviour) */}
       {menuOpen && (
         <div className="border-t border-[color:var(--line)] bg-[color:var(--paper)] px-5 py-4 lg:hidden">
           <div className="flex flex-col gap-1 text-[0.9rem]">
@@ -254,7 +256,7 @@ function Navbar() {
                   onClick={() => setMenuOpen(false)}
                   className={`py-2.5 ${
                     isActive(item.href)
-                      ? "font-semibold text-[color:var(--ink)]"
+                      ? "font-semibold text-[color:var(--brand-primary-700)]"
                       : "text-[color:var(--ink-soft)]"
                   }`}
                 >
@@ -268,7 +270,7 @@ function Navbar() {
                 setDonateOpen(true);
                 setMenuOpen(false);
               }}
-              className="mt-3 w-full rounded-full bg-[color:var(--brand-primary)] px-5 py-3 text-center text-sm font-semibold text-white"
+              className="mt-3 w-full rounded-full bg-[#eabf4e] px-5 py-3 text-center text-sm font-semibold text-[#053759]"
             >
               Donate
             </button>

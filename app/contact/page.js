@@ -1,15 +1,14 @@
 "use client";
 
 import React, { useMemo, useState } from "react";
+import Banner from "@/layout/Banner";
 import {
   MapPin,
   Phone,
   Mail,
   Send,
-  HeartHandshake,
-  MessageSquare,
+  MessageCircle,
   ArrowUpRight,
-  ExternalLink,
 } from "lucide-react";
 
 function page() {
@@ -21,15 +20,9 @@ function page() {
         "Mbarara City, South-Western Region, Uganda",
       ],
       phones: ["+256 782 524 317", "+256 784 808 738"],
+      whatsapp: "+256 782 524 317",
       email: "info@doctorsonmissionint.org",
-      website: "www.doctorsonmissionint.org",
-      scripture: {
-        ref: "Mark 1:34",
-        text: "…and Jesus healed many who had various diseases. He also drove out many demons, but he would not let the demons speak because they knew who he was.",
-      },
       mapQuery: "Mbarara-Isingiro Road, Mbarara, Uganda",
-      directionsUrl:
-        "https://www.google.com/maps/search/?api=1&query=Mbarara-Isingiro+Road,+Mbarara,+Uganda",
     }),
     []
   );
@@ -98,258 +91,233 @@ function page() {
     },
   ];
 
-  const reasons = [
+  const reachCards = [
     {
-      Icon: HeartHandshake,
-      title: "Personalized Support",
-      desc: "Whether you are a donor, volunteer or partner, our team helps you every step of the way.",
+      Icon: MessageCircle,
+      label: "WhatsApp",
+      value: CONTACT.whatsapp,
+      href: `https://wa.me/${CONTACT.whatsapp.replace(/[^0-9]/g, "")}`,
+      note: "The fastest way to reach our team and ask questions.",
     },
     {
-      Icon: MessageSquare,
-      title: "Clear Communication",
-      desc: "We respond promptly, typically within 24–48 hours, with the answers you need.",
+      Icon: Phone,
+      label: "Phone",
+      value: CONTACT.phones[1],
+      href: `tel:${CONTACT.phones[1].replace(/\s/g, "")}`,
+      note: "Speak with us about missions, volunteering and support.",
+    },
+    {
+      Icon: Mail,
+      label: "Email",
+      value: CONTACT.email,
+      href: `mailto:${CONTACT.email}`,
+      note: "Send your enquiry and any details in your own time.",
+    },
+    {
+      Icon: MapPin,
+      label: "Location",
+      value: "Mbarara City, Uganda",
+      href: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+        CONTACT.mapQuery
+      )}`,
+      note: "Where our outreach and mission planning begins.",
     },
   ];
 
+  const fieldClass =
+    "w-full rounded-[12px] border border-[color:var(--line)] bg-[color:var(--paper)] px-4 py-3 text-sm text-[color:var(--ink)] outline-none transition placeholder:text-[color:var(--muted)] focus:border-[color:var(--brand-primary)] focus:ring-4 focus:ring-[color:var(--brand-primary)]/12";
+
   return (
     <main className="bg-[color:var(--paper)]">
-      {/* Header */}
-      <section className="border-b border-[color:var(--line)] bg-[color:var(--surface)]">
-        <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-20 lg:px-10">
-          <span className="inline-flex items-center gap-2 rounded-full border border-[color:var(--line)] bg-[color:var(--paper)] px-4 py-1.5 text-[0.78rem] font-medium text-[color:var(--ink-soft)]">
-            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[color:var(--brand-primary)] text-white">
-              <Mail className="h-3 w-3" />
-            </span>
-            Contact Us
-          </span>
-          <h1 className="mt-6 max-w-3xl text-[2.5rem] leading-[1.03] tracking-[-0.035em] text-[color:var(--ink)] sm:text-6xl">
-            Let&rsquo;s start a conversation
-          </h1>
-          <p className="mt-5 max-w-2xl text-[1rem] leading-relaxed text-[color:var(--muted)] sm:text-lg">
-            Reach out for medical mission inquiries, volunteering, donations, or
-            partnership opportunities.
-          </p>
-        </div>
-      </section>
+      <Banner
+        eyebrow="Contact Us"
+        title="Let's start a conversation"
+        subtitle="Reach out for medical mission inquiries, volunteering, donations, or partnership opportunities."
+        backgroundImage="/img/partnerships.jpg"
+      />
 
       <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8 lg:px-10 lg:py-20">
-        {/* Inquiry cards */}
+        {/* Inquiry cards (kept) */}
         <div className="grid gap-5 md:grid-cols-2">
           {inquiryCards.map((c) => (
             <div
               key={c.title}
               className={`relative overflow-hidden rounded-[16px] ${c.tint} p-8 text-center sm:p-10`}
             >
-              <div className="pointer-events-none absolute -bottom-16 left-1/2 h-40 w-[26rem] -translate-x-1/2 rounded-full bg-white/20 blur-3xl" />
-              <div className="relative">
-                <h2 className={`text-2xl tracking-[-0.02em] ${c.textOn}`}>
-                  {c.title}
-                </h2>
-                <p className={`mx-auto mt-3 max-w-sm text-[0.92rem] leading-relaxed ${c.sub}`}>
-                  {c.desc}
-                </p>
-                <a
-                  href={`mailto:${CONTACT.email}`}
-                  className="mt-6 inline-flex items-center gap-2 rounded-full bg-[color:var(--ink)] px-6 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5"
-                >
-                  Contact Us <ArrowUpRight className="h-4 w-4" />
-                </a>
-              </div>
+              <h2 className={`text-2xl tracking-[-0.02em] ${c.textOn}`}>
+                {c.title}
+              </h2>
+              <p className={`mx-auto mt-3 max-w-sm text-[0.92rem] leading-relaxed ${c.sub}`}>
+                {c.desc}
+              </p>
+              <a
+                href="#inquiry"
+                className="mt-6 inline-flex items-center gap-2 rounded-full bg-[color:var(--ink)] px-6 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5"
+              >
+                Contact Us <ArrowUpRight className="h-4 w-4" />
+              </a>
             </div>
           ))}
         </div>
+      </div>
 
-        {/* Why reach out + form */}
-        <div className="mt-14 grid gap-10 lg:grid-cols-12 lg:gap-14">
-          {/* Left */}
-          <div className="lg:col-span-5">
-            <span className="inline-flex items-center gap-2 rounded-full border border-[color:var(--line)] bg-[color:var(--paper)] px-4 py-1.5 text-[0.78rem] font-medium text-[color:var(--ink-soft)]">
-              <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[color:var(--brand-primary)] text-white">
-                <HeartHandshake className="h-3 w-3" />
-              </span>
-              Contact Us
-            </span>
-            <h2 className="mt-6 text-[2rem] leading-[1.06] tracking-[-0.03em] text-[color:var(--ink)] sm:text-4xl">
-              Why reach out to us?
-            </h2>
-            <p className="mt-5 max-w-lg text-[0.98rem] leading-relaxed text-[color:var(--muted)]">
-              We are dedicated to offering personalized guidance and support for
-              any questions you may have. Whether you are a donor, volunteer or
-              partner, our team is here to assist you every step of the way.
-            </p>
-
-            <div className="mt-8 grid gap-6 sm:grid-cols-2">
-              {reasons.map((r) => (
-                <div key={r.title}>
-                  <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[color:var(--brand-primary)]/12 text-[color:var(--brand-primary-700)]">
-                    <r.Icon className="h-5 w-5" />
-                  </span>
-                  <h3 className="mt-4 text-lg tracking-[-0.02em] text-[color:var(--ink)]">
-                    {r.title}
-                  </h3>
-                  <p className="mt-1.5 text-[0.88rem] leading-relaxed text-[color:var(--muted)]">
-                    {r.desc}
-                  </p>
-                </div>
-              ))}
-            </div>
-
-            {/* Contact details */}
-            <div className="mt-9 space-y-4 rounded-[14px] border border-[color:var(--line)] bg-[color:var(--surface)] p-6">
-              <div className="flex items-start gap-3">
-                <MapPin className="mt-0.5 h-5 w-5 flex-none text-[color:var(--brand-primary-700)]" />
-                <p className="text-[0.9rem] leading-relaxed text-[color:var(--ink-soft)]">
-                  {CONTACT.addressLines.join(", ")}
-                </p>
-              </div>
-              <div className="flex items-start gap-3">
-                <Phone className="mt-0.5 h-5 w-5 flex-none text-[color:var(--brand-primary-700)]" />
-                <div className="text-[0.9rem] text-[color:var(--ink-soft)]">
-                  {CONTACT.phones.map((p) => (
-                    <a
-                      key={p}
-                      href={`tel:${p.replace(/\s/g, "")}`}
-                      className="block hover:text-[color:var(--brand-primary-700)]"
-                    >
-                      {p}
-                    </a>
-                  ))}
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <Mail className="mt-0.5 h-5 w-5 flex-none text-[color:var(--brand-primary-700)]" />
-                <a
-                  href={`mailto:${CONTACT.email}`}
-                  className="text-[0.9rem] text-[color:var(--ink-soft)] hover:text-[color:var(--brand-primary-700)]"
-                >
-                  {CONTACT.email}
-                </a>
-              </div>
-              <a
-                href={CONTACT.directionsUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 text-sm font-semibold text-[color:var(--brand-primary-700)] hover:underline"
-              >
-                <ExternalLink className="h-4 w-4" /> Open in Google Maps
-              </a>
-            </div>
-
-            {/* Scripture */}
-            <div className="mt-6 rounded-[14px] border border-[color:var(--line)] p-6">
-              <p className="text-sm font-semibold text-[color:var(--ink)]">
-                {CONTACT.scripture.ref}
-              </p>
-              <p className="mt-2 text-[0.9rem] leading-relaxed text-[color:var(--muted)]">
-                &ldquo;{CONTACT.scripture.text}&rdquo;
-              </p>
-            </div>
-          </div>
-
+      {/* Make an inquiry — reference form, appended after the cards */}
+      <section id="inquiry" className="bg-[color:var(--surface)] px-5 py-16 sm:px-8 lg:px-10 lg:py-24">
+        <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
           {/* Form */}
-          <div className="lg:col-span-7">
-            <div className="rounded-[16px] border border-[color:var(--line)] bg-[color:var(--surface)] p-6 sm:p-9">
-              <h2 className="text-2xl tracking-[-0.02em] text-[color:var(--ink)]">
-                Let&rsquo;s Chat
-              </h2>
-              <p className="mt-1.5 text-[0.92rem] text-[color:var(--muted)]">
-                Want to learn more about us, we are ready to help.
-              </p>
+          <div>
+            <h2 className="text-[2rem] tracking-[-0.03em] text-[color:var(--ink)] sm:text-4xl">
+              Make an inquiry
+            </h2>
 
-              {status.state !== "idle" && (
-                <div
-                  role="status"
-                  aria-live="polite"
-                  className={[
-                    "mt-5 rounded-2xl border px-4 py-3 text-sm",
-                    status.state === "success"
-                      ? "border-[color:var(--brand-accent)]/40 bg-[color:var(--brand-accent)]/10 text-[#4f6a1a]"
-                      : status.state === "sending"
-                      ? "border-[color:var(--brand-primary)]/30 bg-[color:var(--brand-primary)]/8 text-[color:var(--brand-primary-700)]"
-                      : "border-rose-200 bg-rose-50 text-rose-700",
-                  ].join(" ")}
-                >
-                  {status.msg}
-                </div>
-              )}
+            {status.state !== "idle" && (
+              <div
+                role="status"
+                aria-live="polite"
+                className={`mt-5 rounded-[12px] border px-4 py-3 text-sm ${
+                  status.state === "success"
+                    ? "border-[color:var(--brand-accent)]/40 bg-[color:var(--brand-accent)]/10 text-[color:var(--brand-primary-700)]"
+                    : status.state === "sending"
+                    ? "border-[color:var(--line)] bg-[color:var(--paper)] text-[color:var(--muted)]"
+                    : "border-rose-300 bg-rose-50 text-rose-700"
+                }`}
+              >
+                {status.msg}
+              </div>
+            )}
 
-              <form onSubmit={onSubmit} className="mt-6 space-y-4">
-                <div className="grid gap-4 sm:grid-cols-2">
-                  <Field
-                    label="Your Full Name"
+            <form onSubmit={onSubmit} className="mt-8 space-y-5">
+              <div className="grid gap-5 sm:grid-cols-2">
+                <div>
+                  <label className="mb-1.5 block text-sm font-medium text-[color:var(--ink)]">
+                    Full name
+                  </label>
+                  <input
                     name="name"
                     value={form.name}
                     onChange={onChange}
-                    placeholder="Enter your full name"
-                    error={errors.name}
+                    placeholder="Your name"
+                    className={fieldClass}
                   />
-                  <Field
-                    label="Your Email"
-                    name="email"
-                    value={form.email}
-                    onChange={onChange}
-                    placeholder="you@example.com"
-                    error={errors.email}
-                    type="email"
-                  />
+                  {errors.name && status.state === "error" && (
+                    <p className="mt-1 text-xs text-rose-600">{errors.name}</p>
+                  )}
                 </div>
-                <div className="grid gap-4 sm:grid-cols-2">
-                  <Field
-                    label="Phone Number"
+                <div>
+                  <label className="mb-1.5 block text-sm font-medium text-[color:var(--ink)]">
+                    Phone
+                  </label>
+                  <input
                     name="phone"
                     value={form.phone}
                     onChange={onChange}
-                    placeholder="+256 ..."
-                    error={errors.phone}
-                  />
-                  <Field
-                    label="Your Subject"
-                    name="subject"
-                    value={form.subject}
-                    onChange={onChange}
-                    placeholder="Your subject"
-                    error={errors.subject}
+                    placeholder="+256 700 000 000"
+                    className={fieldClass}
                   />
                 </div>
                 <div>
-                  <label className="mb-1.5 block text-sm font-medium text-[color:var(--ink-soft)]">
-                    Your Message
+                  <label className="mb-1.5 block text-sm font-medium text-[color:var(--ink)]">
+                    Email
                   </label>
-                  <textarea
-                    name="message"
-                    value={form.message}
+                  <input
+                    name="email"
+                    type="email"
+                    value={form.email}
                     onChange={onChange}
-                    rows={6}
-                    placeholder="Write your message…"
-                    className={[
-                      "w-full rounded-2xl border bg-[color:var(--paper)] px-4 py-3 text-sm text-[color:var(--ink)] outline-none transition placeholder:text-[color:var(--muted)]",
-                      errors.message
-                        ? "border-rose-300 focus:ring-4 focus:ring-rose-100"
-                        : "border-[color:var(--line)] focus:border-[color:var(--brand-primary)] focus:ring-4 focus:ring-[color:var(--brand-primary)]/12",
-                    ].join(" ")}
-                    aria-invalid={Boolean(errors.message)}
+                    placeholder="you@email.com"
+                    className={fieldClass}
                   />
-                  {errors.message && (
-                    <p className="mt-1 text-xs font-medium text-rose-600">
-                      {errors.message}
-                    </p>
+                  {errors.email && status.state === "error" && (
+                    <p className="mt-1 text-xs text-rose-600">{errors.email}</p>
                   )}
                 </div>
+                <div>
+                  <label className="mb-1.5 block text-sm font-medium text-[color:var(--ink)]">
+                    Subject
+                  </label>
+                  <input
+                    name="subject"
+                    value={form.subject}
+                    onChange={onChange}
+                    placeholder="What is this about?"
+                    className={fieldClass}
+                  />
+                  {errors.subject && status.state === "error" && (
+                    <p className="mt-1 text-xs text-rose-600">{errors.subject}</p>
+                  )}
+                </div>
+              </div>
+
+              <div>
+                <label className="mb-1.5 block text-sm font-medium text-[color:var(--ink)]">
+                  Tell us more
+                </label>
+                <textarea
+                  name="message"
+                  value={form.message}
+                  onChange={onChange}
+                  rows={6}
+                  placeholder="Share any details that will help us respond well."
+                  className={`${fieldClass} resize-y`}
+                />
+                {errors.message && status.state === "error" && (
+                  <p className="mt-1 text-xs text-rose-600">{errors.message}</p>
+                )}
+              </div>
+
+              <div className="flex flex-col gap-3 sm:flex-row">
                 <button
                   type="submit"
                   disabled={status.state === "sending"}
-                  className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[color:var(--ink)] px-5 py-3.5 text-sm font-semibold text-white transition hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-70"
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-[color:var(--brand-primary)] px-7 py-3.5 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-[color:var(--brand-primary-600)] disabled:opacity-70"
                 >
-                  <Send className="h-4 w-4" />
-                  Send Message
+                  Send inquiry <Send className="h-4 w-4" />
                 </button>
-              </form>
+              </div>
+
+              <p className="text-xs text-[color:var(--muted)]">
+                We read every message and reply personally, not with an automated
+                response.
+              </p>
+            </form>
+          </div>
+
+          {/* Reach us directly */}
+          <div>
+            <h2 className="text-[2rem] tracking-[-0.03em] text-[color:var(--ink)] sm:text-4xl">
+              Reach us directly
+            </h2>
+            <div className="mt-8 space-y-4">
+              {reachCards.map((c) => (
+                <a
+                  key={c.label}
+                  href={c.href}
+                  target={c.href.startsWith("http") ? "_blank" : undefined}
+                  rel="noreferrer"
+                  className="group flex items-start justify-between gap-4 rounded-[16px] bg-[color:var(--paper)] p-6 shadow-[0_18px_50px_-40px_rgba(28,26,22,0.5)] transition hover:-translate-y-0.5"
+                >
+                  <div>
+                    <p className="text-sm text-[color:var(--ink)]">{c.label}</p>
+                    <p className="mt-0.5 font-semibold text-[color:var(--brand-primary-700)]">
+                      {c.value}
+                    </p>
+                    <p className="mt-3 text-[0.85rem] leading-relaxed text-[color:var(--muted)]">
+                      {c.note}
+                    </p>
+                  </div>
+                  <span className="flex h-10 w-10 flex-none items-center justify-center rounded-full bg-[color:var(--brand-secondary)]/25 text-[color:var(--brand-primary-700)]">
+                    <c.Icon className="h-5 w-5" />
+                  </span>
+                </a>
+              ))}
             </div>
           </div>
         </div>
+      </section>
 
-        {/* Map */}
-        <div className="mt-14 overflow-hidden rounded-[16px] border border-[color:var(--line)]">
+      {/* Map */}
+      <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8 lg:px-10">
+        <div className="overflow-hidden rounded-[16px] border border-[color:var(--line)]">
           <iframe
             title="Doctors on Mission location map"
             src={`https://www.google.com/maps?q=${encodeURIComponent(
@@ -360,35 +328,11 @@ function page() {
             referrerPolicy="no-referrer-when-downgrade"
           />
         </div>
-
         <p className="mt-8 text-xs text-[color:var(--muted)]">
           © {new Date().getFullYear()} {CONTACT.org}. All rights reserved.
         </p>
       </div>
     </main>
-  );
-}
-
-function Field({ label, error, ...props }) {
-  return (
-    <div>
-      <label className="mb-1.5 block text-sm font-medium text-[color:var(--ink-soft)]">
-        {label}
-      </label>
-      <input
-        {...props}
-        className={[
-          "w-full rounded-2xl border bg-[color:var(--paper)] px-4 py-3 text-sm text-[color:var(--ink)] outline-none transition placeholder:text-[color:var(--muted)]",
-          error
-            ? "border-rose-300 focus:ring-4 focus:ring-rose-100"
-            : "border-[color:var(--line)] focus:border-[color:var(--brand-primary)] focus:ring-4 focus:ring-[color:var(--brand-primary)]/12",
-        ].join(" ")}
-        aria-invalid={Boolean(error)}
-      />
-      {error && (
-        <p className="mt-1 text-xs font-medium text-rose-600">{error}</p>
-      )}
-    </div>
   );
 }
 

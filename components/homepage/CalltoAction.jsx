@@ -26,13 +26,13 @@ function CalltoAction() {
           <div>
             {/* Header */}
             <div className="mx-auto max-w-2xl text-center">
-              <p className="text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-white/80">
+              <p className="text-[0.72rem] font-semibold uppercase tracking-[0.28em] !text-white">
                 Make an impact today
               </p>
-              <h2 className="mt-4 text-[2rem] leading-[1.06] tracking-[-0.03em] text-white sm:text-4xl lg:text-[2.75rem]">
+              <h2 className="mt-4 text-[2rem] leading-[1.06] tracking-[-0.03em] !text-white sm:text-4xl lg:text-[2.75rem]">
                 Your support changes lives
               </h2>
-              <p className="mx-auto mt-4 max-w-xl text-[0.98rem] leading-relaxed text-white/85">
+              <p className="mx-auto mt-4 max-w-xl text-[0.98rem] leading-relaxed !text-white">
                 Choose how you would like to get involved and help provide
                 life-changing care for children and communities.
               </p>

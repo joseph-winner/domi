@@ -131,16 +131,16 @@ function Page() {
                 Volunteer With Us
               </a>
             </div>
-            <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-4">
+            <div className="mt-8 grid grid-cols-2 overflow-hidden rounded-[16px] bg-[color:var(--brand-primary)] sm:grid-cols-4">
               {highlights.map((s) => (
                 <div
                   key={s.label}
-                  className="rounded-2xl border border-[color:var(--line)] bg-[color:var(--surface)] p-4"
+                  className="border-b border-r border-white/10 p-5 last:border-r-0 sm:border-b-0"
                 >
-                  <div className="text-3xl font-medium tracking-[-0.03em] text-[color:var(--ink)]">
+                  <div className="text-3xl font-semibold tracking-[-0.03em] text-white sm:text-4xl">
                     {s.value}
                   </div>
-                  <div className="mt-1 text-[0.78rem] font-medium text-[color:var(--muted)]">
+                  <div className="mt-1 text-[0.78rem] font-medium text-white/70">
                     {s.label}
                   </div>
                 </div>

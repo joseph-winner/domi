@@ -13,7 +13,6 @@ import {
   HandHeart,
   Quote,
   Play,
-  Check,
 } from "lucide-react";
 
 function AboutPage() {
@@ -134,18 +133,19 @@ function AboutPage() {
       {/* Impact stats */}
       <section className="bg-[color:var(--paper)] px-5 pt-14 sm:px-8 lg:px-10">
         <div className="mx-auto max-w-7xl">
-          <div className="grid grid-cols-2 gap-4 rounded-[16px] border border-[color:var(--line)] bg-[color:var(--surface)] p-6 sm:p-8 md:grid-cols-4">
+          <div className="grid grid-cols-2 gap-y-8 overflow-hidden rounded-[16px] bg-[color:var(--brand-primary)] p-8 sm:p-10 md:grid-cols-4">
             {stats.map((s) => (
-              <div key={s.label} className="text-center">
-                <span className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-[color:var(--brand-primary)]/10 text-[color:var(--brand-primary-700)]">
+              <div
+                key={s.label}
+                className="text-center md:border-r md:border-white/10 md:last:border-r-0"
+              >
+                <span className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10 text-[color:var(--brand-secondary)]">
                   <s.Icon className="h-5 w-5" />
                 </span>
-                <p className="mt-4 text-3xl font-medium tracking-[-0.03em] text-[color:var(--ink)] sm:text-4xl">
+                <p className="mt-4 text-4xl font-semibold tracking-[-0.03em] text-white sm:text-5xl">
                   {s.value}
                 </p>
-                <p className="mt-1 text-[0.82rem] text-[color:var(--muted)]">
-                  {s.label}
-                </p>
+                <p className="mt-1.5 text-[0.82rem] text-white/70">{s.label}</p>
               </div>
             ))}
           </div>
@@ -156,10 +156,7 @@ function AboutPage() {
       <section className="bg-[color:var(--paper)] px-5 py-20 sm:px-8 lg:px-10 lg:py-28">
         <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <div>
-            <span className="inline-flex items-center gap-2 rounded-full border border-[color:var(--line)] bg-[color:var(--paper)] px-4 py-1.5 text-[0.78rem] font-medium text-[color:var(--ink-soft)]">
-              <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[color:var(--brand-primary)] text-white">
-                <HandHeart className="h-3 w-3" />
-              </span>
+            <span className="inline-flex items-center gap-2 rounded-full border border-[color:var(--line)] bg-[color:var(--paper)] px-4 py-1.5 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-[color:var(--muted)]">
               Our Story
             </span>
             <h2 className="mt-6 text-[2rem] leading-[1.06] tracking-[-0.03em] text-[color:var(--ink)] sm:text-4xl lg:text-[2.75rem]">
@@ -252,7 +249,7 @@ function AboutPage() {
       <section className="bg-[color:var(--surface)] px-5 py-20 sm:px-8 lg:px-10 lg:py-28">
         <div className="mx-auto max-w-7xl">
           <div className="mx-auto max-w-2xl text-center">
-            <span className="inline-flex items-center gap-2 rounded-full border border-[color:var(--line)] bg-[color:var(--paper)] px-4 py-1.5 text-[0.78rem] font-medium text-[color:var(--ink-soft)]">
+            <span className="inline-flex items-center gap-2 rounded-full border border-[color:var(--line)] bg-[color:var(--paper)] px-4 py-1.5 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-[color:var(--muted)]">
               <span className="h-1.5 w-1.5 rounded-full bg-[color:var(--brand-secondary)]" />
               What Drives Us
             </span>
@@ -281,16 +278,12 @@ function AboutPage() {
                   </p>
                 )}
                 {c.values && (
-                  <div className="mt-5 flex flex-wrap gap-2">
+                  <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2">
                     {c.values.map((v) => (
                       <span
                         key={v}
-                        className="inline-flex items-center gap-1.5 rounded-full bg-[color:var(--surface)] px-3 py-1.5 text-[0.8rem] font-medium text-[color:var(--ink-soft)]"
+                        className="text-[0.8rem] font-medium text-[color:var(--ink-soft)]"
                       >
-                        <Check
-                          className="h-3 w-3 text-[color:var(--brand-primary-700)]"
-                          strokeWidth={3}
-                        />
                         {v}
                       </span>
                     ))}
@@ -306,10 +299,7 @@ function AboutPage() {
       <section className="bg-[color:var(--paper)] px-5 py-20 sm:px-8 lg:px-10 lg:py-28">
         <div className="mx-auto max-w-7xl">
           <div className="mx-auto max-w-2xl text-center">
-            <span className="inline-flex items-center gap-2 rounded-full border border-[color:var(--line)] bg-[color:var(--paper)] px-4 py-1.5 text-[0.78rem] font-medium text-[color:var(--ink-soft)]">
-              <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[color:var(--brand-secondary)] text-white">
-                <Quote className="h-3 w-3 fill-current" />
-              </span>
+            <span className="inline-flex items-center gap-2 rounded-full border border-[color:var(--line)] bg-[color:var(--paper)] px-4 py-1.5 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-[color:var(--muted)]">
               Leadership
             </span>
             <h2 className="mt-6 text-[2rem] leading-[1.06] tracking-[-0.03em] text-[color:var(--ink)] sm:text-4xl lg:text-[2.75rem]">
@@ -403,7 +393,7 @@ function AboutPage() {
       <section className="bg-[color:var(--surface)] px-5 py-20 sm:px-8 lg:px-10 lg:py-28">
         <div className="mx-auto max-w-7xl">
           <div className="mx-auto max-w-2xl text-center">
-            <span className="inline-flex items-center gap-2 rounded-full border border-[color:var(--line)] bg-[color:var(--paper)] px-4 py-1.5 text-[0.78rem] font-medium text-[color:var(--ink-soft)]">
+            <span className="inline-flex items-center gap-2 rounded-full border border-[color:var(--line)] bg-[color:var(--paper)] px-4 py-1.5 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-[color:var(--muted)]">
               <span className="h-1.5 w-1.5 rounded-full bg-[color:var(--brand-primary)]" />
               Making an Impact
             </span>
@@ -491,7 +481,7 @@ function AboutPage() {
       <section className="bg-[color:var(--paper)] px-5 py-20 sm:px-8 lg:px-10 lg:py-28">
         <div className="mx-auto max-w-7xl">
           <div className="mx-auto max-w-2xl text-center">
-            <span className="inline-flex items-center gap-2 rounded-full border border-[color:var(--line)] bg-[color:var(--paper)] px-4 py-1.5 text-[0.78rem] font-medium text-[color:var(--ink-soft)]">
+            <span className="inline-flex items-center gap-2 rounded-full border border-[color:var(--line)] bg-[color:var(--paper)] px-4 py-1.5 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-[color:var(--muted)]">
               <span className="h-1.5 w-1.5 rounded-full bg-[color:var(--brand-secondary)]" />
               Doctors on Mission International
             </span>

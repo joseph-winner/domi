@@ -90,7 +90,7 @@ function page() {
                       <Stethoscope className="h-4 w-4" /> Medical Missions
                     </span>
                     <span className="inline-flex items-center gap-2 rounded-full bg-white/15 px-3 py-1 backdrop-blur">
-                      <ShieldCheck className="h-4 w-4" /> Safe • Ethical •
+                      <ShieldCheck className="h-4 w-4" /> Safe, ethical,
                       Compassionate
                     </span>
                   </div>
@@ -100,10 +100,7 @@ function page() {
 
             {/* Copy */}
             <div className="lg:col-span-7">
-              <span className="inline-flex items-center gap-2 rounded-full border border-[color:var(--line)] bg-[color:var(--paper)] px-4 py-1.5 text-[0.78rem] font-medium text-[color:var(--ink-soft)]">
-                <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[color:var(--brand-primary)] text-white">
-                  <HeartHandshake className="h-3 w-3" />
-                </span>
+              <span className="inline-flex items-center gap-2 rounded-full border border-[color:var(--line)] bg-[color:var(--paper)] px-4 py-1.5 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-[color:var(--muted)]">
                 Support a medical mission
               </span>
               <h2 className="mt-6 text-[2rem] leading-[1.06] tracking-[-0.03em] text-[color:var(--ink)] sm:text-4xl lg:text-[2.75rem]">
@@ -162,10 +159,7 @@ function page() {
         <section className="px-5 pb-4 sm:px-8 lg:px-10">
           <div className="mx-auto max-w-7xl">
             <div className="mx-auto mb-10 max-w-2xl text-center">
-              <span className="inline-flex items-center gap-2 rounded-full border border-[color:var(--line)] bg-[color:var(--paper)] px-4 py-1.5 text-[0.78rem] font-medium text-[color:var(--ink-soft)]">
-                <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[color:var(--brand-secondary)] text-white">
-                  <HandCoins className="h-3 w-3" />
-                </span>
+              <span className="inline-flex items-center gap-2 rounded-full border border-[color:var(--line)] bg-[color:var(--paper)] px-4 py-1.5 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-[color:var(--muted)]">
                 Our Impact
               </span>
               <h2 className="mt-6 text-[2rem] leading-[1.06] tracking-[-0.03em] text-[color:var(--ink)] sm:text-4xl">
@@ -194,7 +188,7 @@ function page() {
         <section className="mx-auto max-w-7xl px-5 py-16 sm:px-8 lg:px-10 lg:py-20">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <span className="inline-flex items-center gap-2 rounded-full border border-[color:var(--line)] bg-[color:var(--paper)] px-4 py-1.5 text-[0.78rem] font-medium text-[color:var(--ink-soft)]">
+              <span className="inline-flex items-center gap-2 rounded-full border border-[color:var(--line)] bg-[color:var(--paper)] px-4 py-1.5 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-[color:var(--muted)]">
                 <span className="h-1.5 w-1.5 rounded-full bg-[color:var(--brand-primary)]" />
                 Impact
               </span>
@@ -258,7 +252,7 @@ function page() {
         {/* Featured video */}
         <section className="mx-auto max-w-7xl px-5 pb-16 sm:px-8 lg:px-10 lg:pb-20">
           <div className="mx-auto max-w-2xl text-center">
-            <span className="inline-flex items-center gap-2 rounded-full border border-[color:var(--line)] bg-[color:var(--paper)] px-4 py-1.5 text-[0.78rem] font-medium text-[color:var(--ink-soft)]">
+            <span className="inline-flex items-center gap-2 rounded-full border border-[color:var(--line)] bg-[color:var(--paper)] px-4 py-1.5 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-[color:var(--muted)]">
               <span className="h-1.5 w-1.5 rounded-full bg-[color:var(--brand-primary)]" />
               Watch our featured video
             </span>

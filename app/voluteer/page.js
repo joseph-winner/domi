@@ -141,9 +141,20 @@ function VolunteerPage() {
     []
   );
 
+  const journeySteps = useMemo(
+    () => [
+      { n: "01", label: "Project Location", body: locationBlocks[0].body, image: "/img/about-bg.jpg" },
+      { n: "02", label: "Arrival & Pickup", body: locationBlocks[1].body, image: "/img/support-1.jpg" },
+      { n: "03", label: "Orientation", body: locationBlocks[2].body, image: "/img/about-5.jpg" },
+    ],
+    [locationBlocks]
+  );
+  const [activeStep, setActiveStep] = useState(0);
+  const step = journeySteps[activeStep];
+
   return (
     <main className="bg-[color:var(--paper)] text-[color:var(--ink)]">
-      {/* Scripture strip */}
+      {/* Scripture strip intentionally hidden; the reference is placed in the volunteer hero below.
       <div className="border-b border-[color:var(--line)] bg-[color:var(--surface)]">
         <div className="mx-auto max-w-7xl px-5 py-3 sm:px-8 lg:px-10">
           <p className="text-center text-xs text-[color:var(--muted)]">
@@ -158,11 +169,13 @@ function VolunteerPage() {
           </p>
         </div>
       </div>
+      */}
 
       <Banner
         eyebrow="Uganda Placements"
         title="Volunteer. Serve. Heal with purpose."
         subtitle="Join a practical, faith-driven medical mission program in Uganda, support clinics, learn in real settings, and give back to communities with limited resources."
+        supportingText="Habakkuk 2:14"
       />
 
       {/* Hero content */}
@@ -357,46 +370,88 @@ function VolunteerPage() {
         </div>
       </section>
 
-      {/* Location + arrival */}
-      <section className="bg-[color:var(--surface)] px-5 py-16 sm:px-8 lg:px-10 lg:py-20">
-        <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-2">
-          <div>
+      {/* Location + arrival — numbered step composition */}
+      <section className="bg-[color:var(--surface)] px-5 py-16 sm:px-8 lg:px-10 lg:py-24">
+        <div className="mx-auto max-w-7xl">
+          <div className="max-w-2xl">
             <span className={eyebrowPill}>Travel & placement</span>
-            <h2 className="mt-5 text-[2rem] leading-[1.06] tracking-[-0.03em] text-[color:var(--ink)] sm:text-4xl">
-              Project location & arrival
+            <h2 className="mt-5 text-[2.25rem] leading-[1.02] tracking-[-0.035em] text-[color:var(--ink)] sm:text-5xl">
+              From arrival{" "}
+              <span className="tone-muted">to serving on the ground</span>
             </h2>
-            <p className="mt-4 text-[0.98rem] leading-relaxed text-[color:var(--muted)]">
-              We help you plan the practical steps: where you&rsquo;ll serve, how
-              you arrive, and how you start strong.
-            </p>
-            <div className="mt-7 space-y-4">
-              {locationBlocks.map((b) => (
-                <div
-                  key={b.title}
-                  className="rounded-[14px] border border-[color:var(--line)] bg-[color:var(--paper)] p-6"
-                >
-                  <h3 className="text-sm font-semibold text-[color:var(--ink)]">
-                    {b.title}
-                  </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-[color:var(--muted)]">
-                    {b.body}
-                  </p>
-                </div>
-              ))}
-            </div>
           </div>
 
-          <div className="relative overflow-hidden rounded-[16px] border border-[color:var(--line)]">
-            <img
-              src="/img/about-bg.jpg"
-              alt="Uganda placement location"
-              className="h-full min-h-[520px] w-full object-cover"
-            />
-            <div className="absolute left-5 top-5 max-w-xs rounded-2xl bg-white/95 px-4 py-3 text-xs text-[color:var(--ink-soft)] backdrop-blur">
-              <div className="flex items-center gap-2">
-                <Plane className="h-4 w-4 flex-none text-[color:var(--brand-primary-700)]" />
-                Arrive via Entebbe (EBB) · Start in Kampala · Travel to placement
+          <div className="mt-12 grid gap-6 lg:grid-cols-12 lg:gap-10">
+            {/* Numbered list */}
+            <div className="lg:col-span-4">
+              <ul className="space-y-1">
+                {journeySteps.map((s, i) => {
+                  const active = i === activeStep;
+                  return (
+                    <li key={s.n}>
+                      <button
+                        type="button"
+                        onClick={() => setActiveStep(i)}
+                        className={`flex w-full items-center gap-4 rounded-full px-5 py-4 text-left transition ${
+                          active
+                            ? "bg-[color:var(--paper)] shadow-[0_10px_40px_-30px_rgba(28,26,22,0.6)]"
+                            : "hover:bg-[color:var(--paper)]/60"
+                        }`}
+                      >
+                        <span
+                          className={`text-sm ${
+                            active
+                              ? "text-[color:var(--brand-primary-700)]"
+                              : "text-[color:var(--muted)]"
+                          }`}
+                        >
+                          {s.n}
+                        </span>
+                        <span
+                          className={`text-[1.05rem] tracking-[-0.01em] ${
+                            active
+                              ? "font-semibold text-[color:var(--ink)]"
+                              : "text-[color:var(--ink-soft)]"
+                          }`}
+                        >
+                          {s.label}
+                        </span>
+                      </button>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+
+            {/* Active step panel */}
+            <div className="lg:col-span-8">
+              <div className="grid gap-0 overflow-hidden rounded-[16px] bg-[color:var(--paper)] md:grid-cols-2">
+                <div className="relative min-h-[300px] overflow-hidden">
+                  <img
+                    src={step.image}
+                    alt={step.label}
+                    className="absolute inset-0 h-full w-full object-cover"
+                  />
+                </div>
+                <div className="flex flex-col justify-center p-8 sm:p-10">
+                  <p className="text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-[color:var(--muted)]">
+                    Step {step.n}
+                  </p>
+                  <h3 className="mt-2 text-2xl tracking-[-0.02em] text-[color:var(--ink)]">
+                    {step.label}
+                  </h3>
+                  <p className="mt-4 text-[0.95rem] leading-relaxed text-[color:var(--muted)]">
+                    {step.body}
+                  </p>
+                  <a href="#apply" className="btn btn-primary mt-8 w-fit">
+                    Apply for the program
+                  </a>
+                </div>
               </div>
+              <p className="mt-4 inline-flex items-center gap-2 text-xs text-[color:var(--muted)]">
+                <Plane className="h-4 w-4 text-[color:var(--brand-primary-700)]" />
+                Arrive via Entebbe (EBB) · Start in Kampala · Travel to placement
+              </p>
             </div>
           </div>
         </div>
