@@ -169,10 +169,10 @@ function Footer({ logoSrc = "/logos/doctors-mission-logo.svg" }) {
             © {new Date().getFullYear()} Doctors On Mission International
             {"  |  "}Powered by{" "}
             <a
-              href="https://joshtecs.com"
+              href="https://grayhost.dev"
               className="font-medium text-[color:var(--brand-primary-700)] hover:underline"
             >
-              joshtecs solutions
+             Grayhost Innovations
             </a>
           </p>
           <div className="flex items-center gap-4">
