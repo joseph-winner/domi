@@ -149,10 +149,10 @@ function page() {
       <div className="mx-auto max-w-7xl px-5 py-14 sm:px-8 lg:px-10 lg:py-16">
         {/* Quick actions + search */}
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <div className="flex flex-1 items-center gap-2 rounded-full border border-[color:var(--line)] bg-[color:var(--surface)] px-4 py-2.5">
+          <div className="flex flex-1 items-center gap-2 rounded-full border border-[color:var(--line)] bg-[color:var(--section-teal)] px-4 py-2.5">
             <Search className="h-4 w-4 text-[color:var(--muted)]" />
             <input
-              className="w-full bg-transparent text-sm text-[color:var(--ink)] placeholder:text-[color:var(--muted)] outline-none"
+              className="w-full bg-transparent text-sm !text-[color:var(--ink)] placeholder:text-[color:var(--muted)] outline-none"
               placeholder="Search press releases, newsletters, and articles..."
             />
           </div>
@@ -176,7 +176,7 @@ function page() {
                 className="h-[320px] w-full object-cover sm:h-[400px]"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent" />
-              <div className="absolute left-5 top-5 inline-flex items-center rounded-full bg-white/90 px-3 py-1 text-xs font-medium text-[color:var(--ink)] backdrop-blur">
+              <div className="absolute left-5 top-5 inline-flex items-center rounded-full bg-white/90 px-3 py-1 text-xs font-medium !text-[color:var(--ink)] backdrop-blur">
                 Featured Press Release
               </div>
               <div className="absolute inset-x-5 bottom-5 text-white">
@@ -214,8 +214,8 @@ function page() {
           </article>
 
           <aside className="lg:col-span-4">
-            <div className="rounded-[16px] border border-[color:var(--line)] bg-[color:var(--surface)] p-6">
-              <p className="text-sm font-semibold text-[color:var(--ink)]">
+            <div className="rounded-[16px] border border-[color:var(--line)] bg-[color:var(--section-teal)] p-6">
+              <p className="text-sm font-semibold !text-[color:var(--ink)]">
                 Mission highlights
               </p>
               <ul className="mt-5 space-y-3">
@@ -252,7 +252,7 @@ function page() {
               <span className="inline-flex items-center rounded-full border border-[color:var(--line)] bg-[color:var(--paper)] px-4 py-1.5 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-[color:var(--muted)]">
                 Newsletter
               </span>
-              <h3 className="mt-4 text-2xl tracking-[-0.02em] text-[color:var(--ink)] sm:text-3xl">
+              <h3 className="mt-4 text-2xl tracking-[-0.02em] !text-[color:var(--ink)] sm:text-3xl">
                 Weekly / Monthly Newsletter
               </h3>
               <p className="mt-2 text-[0.95rem] text-[color:var(--muted)]">
@@ -277,10 +277,10 @@ function page() {
               />
             </div>
             <div className="p-6 sm:p-8 lg:col-span-5">
-              <span className="inline-flex items-center rounded-full bg-[color:var(--surface)] px-3 py-1 text-xs font-medium text-[color:var(--ink-soft)]">
+              <span className="inline-flex items-center rounded-full bg-[color:var(--section-teal)] px-3 py-1 text-xs font-medium text-[color:var(--ink-soft)]">
                 Featured Newsletter
               </span>
-              <h4 className="mt-4 text-xl tracking-[-0.02em] text-[color:var(--ink)]">
+              <h4 className="mt-4 text-xl tracking-[-0.02em] !text-[color:var(--ink)]">
                 {featuredNewsletter.title}
               </h4>
               <p className="mt-2 text-sm text-[color:var(--muted)]">
@@ -311,7 +311,7 @@ function page() {
               <span className="inline-flex items-center rounded-full border border-[color:var(--line)] bg-[color:var(--paper)] px-4 py-1.5 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-[color:var(--muted)]">
                 In the media
               </span>
-              <h3 className="mt-4 text-2xl tracking-[-0.02em] text-[color:var(--ink)] sm:text-3xl">
+              <h3 className="mt-4 text-2xl tracking-[-0.02em] !text-[color:var(--ink)] sm:text-3xl">
                 Other news
               </h3>
               <p className="mt-2 text-[0.95rem] text-[color:var(--muted)]">
@@ -340,7 +340,7 @@ function page() {
                     className="h-44 w-full object-cover transition duration-700 group-hover:scale-105"
                   />
                   <div className="absolute left-3 top-3 flex flex-wrap gap-2">
-                    <span className="rounded-full bg-white/90 px-3 py-1 text-[11px] font-medium text-[color:var(--ink)] backdrop-blur">
+                    <span className="rounded-full bg-white/90 px-3 py-1 text-[11px] font-medium !text-[color:var(--ink)] backdrop-blur">
                       {n.source}
                     </span>
                     <span className="rounded-full bg-white/90 px-3 py-1 text-[11px] font-medium text-[color:var(--brand-primary-700)] backdrop-blur">
@@ -355,7 +355,7 @@ function page() {
                       <ExternalLink className="h-3.5 w-3.5" /> Link
                     </span>
                   </div>
-                  <h4 className="mt-3 text-base font-medium leading-snug text-[color:var(--ink)]">
+                  <h4 className="mt-3 text-base font-medium leading-snug !text-[color:var(--ink)]">
                     {n.title}
                   </h4>
                   <p className="mt-2 flex-1 text-sm text-[color:var(--muted)]">
@@ -363,7 +363,7 @@ function page() {
                   </p>
                   <a
                     href={n.href}
-                    className="group/btn mt-4 inline-flex w-fit items-center gap-2 rounded-full border border-[color:var(--line)] px-4 py-2 text-xs font-medium text-[color:var(--ink)] transition hover:border-[color:var(--brand-primary)] hover:bg-[color:var(--brand-primary)] hover:text-white"
+                    className="group/btn mt-4 inline-flex w-fit items-center gap-2 rounded-full border border-[color:var(--line)] px-4 py-2 text-xs font-medium !text-[color:var(--ink)] transition hover:border-[color:var(--brand-primary)] hover:bg-[color:var(--brand-primary)] hover:text-white"
                   >
                     Read full article
                     <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
@@ -376,10 +376,10 @@ function page() {
 
         {/* Media resources */}
         <section className="mt-16">
-          <div className="rounded-[16px] border border-[color:var(--line)] bg-[color:var(--surface)] p-8">
+          <div className="rounded-[16px] border border-[color:var(--line)] bg-[color:var(--section-teal)] p-8">
             <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
               <div>
-                <h3 className="text-2xl tracking-[-0.02em] text-[color:var(--ink)]">
+                <h3 className="text-2xl tracking-[-0.02em] !text-[color:var(--ink)]">
                   Media resources
                 </h3>
                 <p className="mt-2 text-[0.95rem] text-[color:var(--muted)]">
@@ -401,7 +401,7 @@ function page() {
                     </span>
                     <Download className="h-5 w-5 text-[color:var(--muted)] transition group-hover:text-[color:var(--brand-primary-700)]" />
                   </div>
-                  <h4 className="mt-4 text-base font-medium text-[color:var(--ink)]">
+                  <h4 className="mt-4 text-base font-medium !text-[color:var(--ink)]">
                     {r.title}
                   </h4>
                   <p className="mt-2 text-sm text-[color:var(--muted)]">
@@ -417,7 +417,7 @@ function page() {
         <section id="contact" className="mt-16">
           <div className="grid gap-6 lg:grid-cols-12">
             <div className="rounded-[16px] border border-[color:var(--line)] bg-[color:var(--paper)] p-8 lg:col-span-7">
-              <h3 className="text-2xl tracking-[-0.02em] text-[color:var(--ink)]">
+              <h3 className="text-2xl tracking-[-0.02em] !text-[color:var(--ink)]">
                 Media contact
               </h3>
               <p className="mt-2 text-[0.95rem] text-[color:var(--muted)]">
@@ -425,13 +425,13 @@ function page() {
                 media desk.
               </p>
               <div className="mt-6 grid gap-4 sm:grid-cols-2">
-                <div className="rounded-2xl border border-[color:var(--line)] bg-[color:var(--surface)] p-5">
+                <div className="rounded-2xl border border-[color:var(--line)] bg-[color:var(--section-teal)] p-5">
                   <div className="flex items-center gap-3">
                     <span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-[color:var(--brand-primary)]/10 text-[color:var(--brand-primary-700)]">
                       <Mail className="h-5 w-5" />
                     </span>
                     <div>
-                      <p className="text-sm font-semibold text-[color:var(--ink)]">
+                      <p className="text-sm font-semibold !text-[color:var(--ink)]">
                         Email
                       </p>
                       <p className="text-xs text-[color:var(--muted)]">
@@ -442,14 +442,14 @@ function page() {
                 </div>
                 <a
                   href="https://doctorsonmissionint.org/"
-                  className="rounded-2xl border border-[color:var(--line)] bg-[color:var(--surface)] p-5 transition hover:border-[color:var(--brand-primary)]"
+                  className="rounded-2xl border border-[color:var(--line)] bg-[color:var(--section-teal)] p-5 transition hover:border-[color:var(--brand-primary)]"
                 >
                   <div className="flex items-center gap-3">
                     <span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-[color:var(--brand-secondary)]/18 text-[#a07d1e]">
                       <Newspaper className="h-5 w-5" />
                     </span>
                     <div>
-                      <p className="text-sm font-semibold text-[color:var(--ink)]">
+                      <p className="text-sm font-semibold !text-[color:var(--ink)]">
                         Website
                       </p>
                       <p className="text-xs text-[color:var(--muted)]">
@@ -459,8 +459,8 @@ function page() {
                   </div>
                 </a>
               </div>
-              <div className="mt-6 rounded-2xl border border-[color:var(--line)] bg-[color:var(--surface)] p-5">
-                <p className="text-xs font-semibold text-[color:var(--ink)]">
+              <div className="mt-6 rounded-2xl border border-[color:var(--line)] bg-[color:var(--section-teal)] p-5">
+                <p className="text-xs font-semibold !text-[color:var(--ink)]">
                   Help us respond quickly
                 </p>
                 <p className="mt-1 text-xs text-[color:var(--muted)]">

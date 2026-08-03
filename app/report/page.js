@@ -152,7 +152,7 @@ function ReportModal({ open, onClose, report }) {
       <div className="relative z-[81] w-full max-w-5xl overflow-hidden rounded-[14px] border border-[color:var(--line)] bg-[color:var(--paper)] shadow-2xl">
         <div className="flex items-center justify-between gap-3 border-b border-[color:var(--line)] px-5 py-4">
           <div className="min-w-0">
-            <p className="truncate text-sm font-semibold text-[color:var(--ink)]">
+            <p className="truncate text-sm font-semibold !text-[color:var(--ink)]">
               {report.title}
             </p>
             <p className="truncate text-xs text-[color:var(--muted)]">
@@ -170,14 +170,14 @@ function ReportModal({ open, onClose, report }) {
             </a>
             <button
               onClick={onClose}
-              className="inline-flex items-center justify-center rounded-full border border-[color:var(--line)] bg-[color:var(--paper)] p-2 text-[color:var(--ink-soft)] transition hover:bg-[color:var(--surface)]"
+              className="inline-flex items-center justify-center rounded-full border border-[color:var(--line)] bg-[color:var(--paper)] p-2 text-[color:var(--ink-soft)] transition hover:bg-[color:var(--section-teal)]"
               aria-label="Close"
             >
               <Icon name="x" className="h-5 w-5" />
             </button>
           </div>
         </div>
-        <div className="h-[70vh] bg-[color:var(--surface)]">
+        <div className="h-[70vh] bg-[color:var(--section-teal)]">
           <iframe
             title={report.title}
             src={report.downloadUrl}
@@ -246,9 +246,9 @@ function page() {
           {stats.map((s) => (
             <div
               key={s.label}
-              className="rounded-2xl border border-[color:var(--line)] bg-[color:var(--surface)] p-5 text-center"
+              className="rounded-2xl border border-[color:var(--line)] bg-[color:var(--section-teal)] p-5 text-center"
             >
-              <p className="text-3xl font-medium tracking-[-0.03em] text-[color:var(--ink)]">
+              <p className="text-3xl font-medium tracking-[-0.03em] !text-[color:var(--ink)]">
                 {s.value}
               </p>
               <p className="mt-1 text-[0.82rem] text-[color:var(--muted)]">
@@ -261,13 +261,13 @@ function page() {
         {/* Filters */}
         <div className="mt-8 rounded-[14px] border border-[color:var(--line)] bg-[color:var(--paper)] p-4 sm:p-5">
           <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
-            <div className="flex flex-1 items-center gap-2 rounded-full border border-[color:var(--line)] bg-[color:var(--surface)] px-4 py-2.5">
+            <div className="flex flex-1 items-center gap-2 rounded-full border border-[color:var(--line)] bg-[color:var(--section-teal)] px-4 py-2.5">
               <Icon name="search" className="h-5 w-5 text-[color:var(--muted)]" />
               <input
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Search reports by title, location, or tag..."
-                className="w-full bg-transparent text-sm text-[color:var(--ink)] placeholder:text-[color:var(--muted)] focus:outline-none"
+                className="w-full bg-transparent text-sm !text-[color:var(--ink)] placeholder:text-[color:var(--muted)] focus:outline-none"
               />
             </div>
 
@@ -329,11 +329,11 @@ function page() {
             })}
             <span className="ml-auto text-xs text-[color:var(--muted)]">
               Showing{" "}
-              <span className="font-semibold text-[color:var(--ink)]">
+              <span className="font-semibold !text-[color:var(--ink)]">
                 {filtered.length}
               </span>{" "}
               of{" "}
-              <span className="font-semibold text-[color:var(--ink)]">
+              <span className="font-semibold !text-[color:var(--ink)]">
                 {REPORTS.length}
               </span>
             </span>
@@ -347,7 +347,7 @@ function page() {
               key={r.id}
               className="group flex h-full flex-col overflow-hidden rounded-[14px] border border-[color:var(--line)] bg-[color:var(--paper)] transition hover:-translate-y-1 hover:shadow-[0_28px_65px_-45px_rgba(12,34,51,0.5)]"
             >
-              <div className="relative m-2.5 h-48 overflow-hidden rounded-[12px] bg-[color:var(--surface)]">
+              <div className="relative m-2.5 h-48 overflow-hidden rounded-[12px] bg-[color:var(--section-teal)]">
                 <img
                   src={r.cover}
                   alt={`${r.title} cover`}
@@ -367,7 +367,7 @@ function page() {
               </div>
 
               <div className="flex flex-1 flex-col px-5 pb-5">
-                <h3 className="text-lg tracking-[-0.02em] text-[color:var(--ink)]">
+                <h3 className="text-lg tracking-[-0.02em] !text-[color:var(--ink)]">
                   {r.title}
                 </h3>
                 <p className="mt-1.5 line-clamp-2 text-[0.88rem] leading-relaxed text-[color:var(--muted)]">
@@ -408,7 +408,7 @@ function page() {
             <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-[color:var(--brand-primary)]/10 text-[color:var(--brand-primary-700)]">
               <Icon name="file" className="h-6 w-6" />
             </div>
-            <h3 className="mt-4 text-xl tracking-[-0.02em] text-[color:var(--ink)]">
+            <h3 className="mt-4 text-xl tracking-[-0.02em] !text-[color:var(--ink)]">
               No reports found
             </h3>
             <p className="mt-1 text-sm text-[color:var(--muted)]">
@@ -428,9 +428,9 @@ function page() {
         )}
 
         {/* CTA */}
-        <div className="mt-12 flex flex-col items-center justify-between gap-4 rounded-[14px] border border-[color:var(--line)] bg-[color:var(--surface)] px-6 py-7 text-center sm:flex-row sm:text-left">
+        <div className="mt-12 flex flex-col items-center justify-between gap-4 rounded-[14px] border border-[color:var(--line)] bg-[color:var(--section-teal)] px-6 py-7 text-center sm:flex-row sm:text-left">
           <div>
-            <p className="text-lg tracking-[-0.02em] text-[color:var(--ink)]">
+            <p className="text-lg tracking-[-0.02em] !text-[color:var(--ink)]">
               Need a report not listed here?
             </p>
             <p className="mt-1.5 text-[0.9rem] text-[color:var(--muted)]">

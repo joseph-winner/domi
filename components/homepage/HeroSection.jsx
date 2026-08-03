@@ -54,7 +54,17 @@ function HeroSection() {
     return () => clearInterval(timer);
   }, [slides.length]);
 
+  const heroStats = [
+    { value: "+500", label: "Lives touched through outreach" },
+    { value: "20+", label: "Medical & surgical camps" },
+    { value: "50+", label: "Volunteer clinicians & support" },
+  ];
+  const tagline = [content.tagline?.primary, content.tagline?.secondary]
+    .filter(Boolean)
+    .join(" ");
+
   return (
+    <>
     <section className="relative min-h-[100svh] w-full overflow-hidden text-white">
       {/* Background slides */}
       <div className="absolute inset-0 -z-10">
@@ -80,23 +90,6 @@ function HeroSection() {
       {/* Content — bottom-left composition (Natural ref) */}
       <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-7xl flex-col justify-end px-5 pb-16 pt-40 sm:px-8 sm:pb-20 md:pb-24 lg:px-10">
         <div className="max-w-3xl">
-          {/* Eyebrow — tagline */}
-          <div className="hero-rise hero-rise-1 mb-6 inline-flex items-center gap-2.5 rounded-full border border-white/25 bg-white/10 px-4 py-1.5 text-[0.7rem] uppercase tracking-[0.35em] backdrop-blur-md">
-            <span className="h-1.5 w-1.5 rounded-full bg-[color:var(--brand-accent)]" />
-            <span className="font-medium text-white">
-              {content.tagline?.primary || "Spirited"}
-            </span>
-            <span className="text-white/70">
-              {content.tagline?.secondary || "to Care"}
-            </span>
-          </div>
-
-          {/* Intro paragraph — small, light, above heading */}
-          <p className="hero-rise hero-rise-2 mb-5 max-w-xl text-[0.95rem] font-light leading-relaxed text-white/85 sm:text-base">
-            {content.subtitle ||
-              "Extending hope-giving healthcare and faith-filled compassion to the overlooked corners of the globe."}
-          </p>
-
           {/* Giant thin heading */}
           <h1 className="hero-rise hero-rise-3 text-[2.75rem] font-normal leading-[1.02] tracking-[-0.035em] text-white sm:text-6xl md:text-7xl lg:text-[5.25rem]">
             {content.title || "Doctors On Mission"}{" "}
@@ -109,14 +102,14 @@ function HeroSection() {
           <div className="hero-rise hero-rise-4 mt-9 flex flex-wrap items-center gap-3">
             <a
               href="/about"
-              className="group inline-flex items-center gap-2 rounded-full bg-[color:var(--paper)] px-7 py-3.5 text-sm font-medium text-[color:var(--ink)] shadow-lg shadow-black/20 transition hover:-translate-y-0.5 hover:bg-white/90"
+              className="group inline-flex items-center gap-2 rounded-full bg-[color:var(--brand-secondary)] px-7 py-3.5 text-sm font-semibold text-[#3a2a06] shadow-lg shadow-black/20 transition hover:-translate-y-0.5 hover:brightness-105"
             >
               About Us
               <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </a>
             <a
               href="/missions"
-              className="inline-flex items-center gap-2 rounded-full border border-white/40 bg-white/5 px-7 py-3.5 text-sm font-medium text-white backdrop-blur-md transition hover:-translate-y-0.5 hover:border-white/70 hover:bg-white/10"
+              className="inline-flex items-center gap-2 rounded-full bg-[color:var(--brand-accent)] px-7 py-3.5 text-sm font-semibold text-[#06232f] transition hover:-translate-y-0.5 hover:brightness-105"
             >
               Our Missions
             </a>
@@ -173,6 +166,49 @@ function HeroSection() {
         </div>
       </div>
     </section>
+
+    {/* Relocated intro — about + stats (reference composition) */}
+    <section className="bg-[color:var(--paper)] px-5 py-20 sm:px-8 lg:px-10 lg:py-28">
+      <div className="mx-auto max-w-7xl">
+        <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between">
+          <div className="max-w-2xl">
+            <span className="inline-flex items-center rounded-full bg-[color:var(--brand-accent)]/15 px-4 py-1.5 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-[color:var(--brand-primary)]">
+              {tagline || "Our Mission"}
+            </span>
+            <h2 className="mt-6 text-[2rem] font-normal leading-[1.08] tracking-[-0.03em] !text-[color:var(--ink)] sm:text-4xl lg:text-[2.75rem]">
+              {content.subtitle ||
+                "Extending hope-giving healthcare and faith-filled compassion to the underserved communities of the world."}
+            </h2>
+          </div>
+          <a
+            href="/about"
+            className="group inline-flex flex-none items-center gap-2 rounded-full bg-[color:var(--ink)] px-6 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5"
+          >
+            About us
+            <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white/15">
+              <ArrowUpRight className="h-3.5 w-3.5" />
+            </span>
+          </a>
+        </div>
+
+        <div className="mt-14 grid gap-6 sm:grid-cols-3">
+          {heroStats.map((s) => (
+            <div
+              key={s.label}
+              className="rounded-[16px] bg-[#faf9f6] p-8"
+            >
+              <p className="text-5xl font-normal tracking-[-0.03em] !text-[color:var(--ink)]">
+                {s.value}
+              </p>
+              <p className="mt-4 text-[0.9rem] leading-relaxed text-[color:var(--muted)]">
+                {s.label}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+    </>
   );
 }
 

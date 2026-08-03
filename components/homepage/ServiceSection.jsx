@@ -57,7 +57,7 @@ function ServiceSection() {
           <span className="inline-flex items-center rounded-full border border-[color:var(--line)] bg-[color:var(--paper)] px-4 py-1.5 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-[color:var(--muted)]">
             What we do
           </span>
-          <h2 className="mt-6 text-[2.25rem] leading-[1.02] tracking-[-0.035em] text-[color:var(--ink)] sm:text-4xl lg:text-[2.75rem]">
+          <h2 className="mt-6 text-[2.25rem] leading-[1.02] tracking-[-0.035em] !text-[color:var(--ink)] sm:text-4xl lg:text-[2.75rem]">
             Ways we bring care{" "}
             <span className="tone-muted">to communities</span>
           </h2>
@@ -79,7 +79,7 @@ function ServiceSection() {
               >
                 <s.Icon className="text-xl" />
               </span>
-              <h3 className="mt-6 text-xl tracking-[-0.02em] text-[color:var(--ink)]">
+              <h3 className="mt-6 text-xl tracking-[-0.02em] !text-[color:var(--ink)]">
                 {s.title}
               </h3>
               <p className="mt-3 text-[0.9rem] leading-relaxed text-[color:var(--muted)]">

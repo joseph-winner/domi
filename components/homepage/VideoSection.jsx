@@ -79,7 +79,7 @@ function VideoSection() {
                   ></iframe>
                 </div>
               </div>
-              <div className="pointer-events-none absolute left-4 top-4 inline-flex items-center gap-2 rounded-full bg-[color:var(--paper)] px-4 py-2 text-[0.8rem] font-semibold text-[color:var(--ink)] shadow-lg">
+              <div className="pointer-events-none absolute left-4 top-4 inline-flex items-center gap-2 rounded-full bg-[color:var(--paper)] px-4 py-2 text-[0.8rem] font-semibold !text-[color:var(--ink)] shadow-lg">
                 <Play className="h-3.5 w-3.5 fill-current text-[color:var(--brand-primary-700)]" />
                 Watch our story
               </div>

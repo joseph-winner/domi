@@ -44,14 +44,14 @@ function MissionsSection() {
   };
 
   return (
-    <section className="bg-[color:var(--surface)] px-5 py-20 sm:px-8 lg:px-10 lg:py-28">
+    <section className="bg-[color:var(--section-teal)] px-5 py-20 sm:px-8 lg:px-10 lg:py-28">
       <div className="mx-auto max-w-7xl">
         {/* Header */}
         <div className="mx-auto max-w-2xl text-center">
           <span className="inline-flex items-center rounded-full border border-[color:var(--line)] bg-[color:var(--paper)] px-4 py-1.5 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-[color:var(--muted)]">
             Our heartbeat
           </span>
-          <h2 className="mt-6 text-[2.25rem] leading-[1.02] tracking-[-0.035em] text-[color:var(--ink)] sm:text-4xl lg:text-[2.75rem]">
+          <h2 className="mt-6 text-[2.25rem] leading-[1.02] tracking-[-0.035em] !text-[color:var(--ink)] sm:text-4xl lg:text-[2.75rem]">
             What guides{" "}
             <span className="tone-muted">every mission</span>
           </h2>
@@ -80,12 +80,12 @@ function MissionsSection() {
                 <p className="mt-6 text-[0.72rem] font-semibold uppercase tracking-[0.2em] text-[color:var(--muted)]">
                   {card.label}
                 </p>
-                <h3 className="mt-1.5 text-2xl tracking-[-0.02em] text-[color:var(--ink)]">
+                <h3 className="mt-1.5 text-2xl tracking-[-0.02em] !text-[color:var(--ink)]">
                   {card.title}
                 </h3>
 
                 {card.pill && (
-                  <span className="mt-3 inline-flex w-fit items-center rounded-full bg-[color:var(--surface)] px-3 py-1 text-[0.7rem] font-medium text-[color:var(--ink-soft)]">
+                  <span className="mt-3 inline-flex w-fit items-center rounded-full bg-[color:var(--section-teal)] px-3 py-1 text-[0.7rem] font-medium text-[color:var(--ink-soft)]">
                     {card.pill}
                   </span>
                 )}

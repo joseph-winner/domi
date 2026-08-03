@@ -36,7 +36,7 @@ function Banner({
             {eyebrow}
           </span>
 
-          <h1 className="mt-6 text-[2.6rem] font-semibold leading-[1.02] tracking-[-0.035em] text-white sm:text-6xl lg:text-[4.25rem]">
+          <h1 className="mt-6 text-[2.6rem] font-normal leading-[1.04] tracking-[-0.03em] text-white sm:text-6xl lg:text-[4.25rem]">
             {title}
           </h1>
 

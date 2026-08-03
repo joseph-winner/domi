@@ -159,7 +159,7 @@ function Navbar() {
                           <li key={d.href}>
                             <Link
                               href={d.href}
-                              className="block rounded-[10px] px-3.5 py-2.5 text-[0.82rem] text-[color:var(--ink-soft)] transition hover:bg-[color:var(--surface)] hover:text-white"
+                              className="block rounded-[10px] px-3.5 py-2.5 text-[0.82rem] text-[color:var(--ink-soft)] transition hover:bg-[color:var(--section-teal)] hover:text-[color:var(--ink)]"
                             >
                               {d.label}
                             </Link>

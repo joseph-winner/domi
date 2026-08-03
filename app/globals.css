@@ -267,6 +267,21 @@ span.h-1.w-1.rounded-full {
   transform: translateY(-2px);
 }
 
+/* Button text colours must win over any inherited `text-white` in dark
+   sections — otherwise CTAs render light-on-light / low-contrast. */
+.btn-primary,
+.btn-dark,
+.btn-ghost {
+  color: #ffffff !important;
+}
+.btn-accent {
+  color: #06232f !important;
+}
+.btn-white,
+.btn-outline {
+  color: var(--ink) !important;
+}
+
 /* ---- Banner / hero animations (kept from before) -------- */
 @keyframes float {
   0%,

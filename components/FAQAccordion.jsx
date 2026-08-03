@@ -46,7 +46,7 @@ export default function FAQAccordion({
           <p className="text-[0.78rem] font-medium uppercase tracking-[0.18em] text-[color:var(--muted)]">
             {eyebrow}
           </p>
-          <h2 className="mt-4 text-[2rem] leading-[1.06] tracking-[-0.03em] text-[color:var(--ink)] sm:text-4xl lg:text-[2.75rem]">
+          <h2 className="mt-4 text-[2rem] leading-[1.06] tracking-[-0.03em] !text-[color:var(--ink)] sm:text-4xl lg:text-[2.75rem]">
             {title}
           </h2>
           <p className="mt-5 max-w-md text-[0.98rem] leading-relaxed text-[color:var(--muted)]">

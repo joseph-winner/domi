@@ -153,17 +153,17 @@ function VolunteerPage() {
   const step = journeySteps[activeStep];
 
   return (
-    <main className="bg-[color:var(--paper)] text-[color:var(--ink)]">
+    <main className="bg-[color:var(--paper)] !text-[color:var(--ink)]">
       {/* Scripture strip intentionally hidden; the reference is placed in the volunteer hero below.
-      <div className="border-b border-[color:var(--line)] bg-[color:var(--surface)]">
+      <div className="border-b border-[color:var(--line)] bg-[color:var(--section-teal)]">
         <div className="mx-auto max-w-7xl px-5 py-3 sm:px-8 lg:px-10">
           <p className="text-center text-xs text-[color:var(--muted)]">
-            <span className="font-semibold text-[color:var(--ink)]">
+            <span className="font-semibold !text-[color:var(--ink)]">
               Volunteer for Africa Medical Missions Program
             </span>{" "}
             · &ldquo;For the earth will be filled with the knowledge of the glory
             of the LORD, as the waters cover the sea.&rdquo;{" "}
-            <span className="font-semibold text-[color:var(--ink)]">
+            <span className="font-semibold !text-[color:var(--ink)]">
               Habakkuk 2:14
             </span>
           </p>
@@ -198,13 +198,13 @@ function VolunteerPage() {
               {quickStats.map((s) => (
                 <div
                   key={s.label}
-                  className="rounded-2xl border border-[color:var(--line)] bg-[color:var(--surface)] p-4"
+                  className="rounded-2xl border border-[color:var(--line)] bg-[color:var(--section-teal)] p-4"
                 >
                   <div className="flex items-center gap-2">
                     <s.icon className="h-4 w-4 text-[color:var(--brand-primary-700)]" />
                     <p className="text-xs text-[color:var(--muted)]">{s.label}</p>
                   </div>
-                  <p className="mt-2 text-sm font-semibold text-[color:var(--ink)]">
+                  <p className="mt-2 text-sm font-semibold !text-[color:var(--ink)]">
                     {s.value}
                   </p>
                 </div>
@@ -212,7 +212,7 @@ function VolunteerPage() {
             </div>
           </div>
 
-          <div className="overflow-hidden rounded-[16px] border border-[color:var(--line)] bg-[color:var(--surface)] p-3">
+          <div className="overflow-hidden rounded-[16px] border border-[color:var(--line)] bg-[color:var(--section-teal)] p-3">
             <img
               src="/img/VOLUNTEERS AMMP.jpg"
               alt="Volunteers program poster"
@@ -237,11 +237,11 @@ function VolunteerPage() {
       </section>
 
       {/* Intro + features */}
-      <section className="bg-[color:var(--surface)] px-5 py-16 sm:px-8 lg:px-10 lg:py-20">
+      <section className="bg-[color:var(--section-teal)] px-5 py-16 sm:px-8 lg:px-10 lg:py-20">
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-3">
           <div className="lg:col-span-2">
             <span className={eyebrowPill}>Introduction</span>
-            <h2 className="mt-5 text-[2rem] leading-[1.06] tracking-[-0.03em] text-[color:var(--ink)] sm:text-4xl">
+            <h2 className="mt-5 text-[2rem] leading-[1.06] tracking-[-0.03em] !text-[color:var(--ink)] sm:text-4xl">
               Serve in medical placements across Uganda
             </h2>
             <p className="mt-4 text-[0.98rem] leading-relaxed text-[color:var(--muted)]">
@@ -268,7 +268,7 @@ function VolunteerPage() {
               </span>
               <div>
                 <p className="text-xs text-[color:var(--muted)]">Program by</p>
-                <p className="text-sm font-semibold text-[color:var(--ink)]">
+                <p className="text-sm font-semibold !text-[color:var(--ink)]">
                   Doctors on Mission International
                 </p>
               </div>
@@ -278,11 +278,11 @@ function VolunteerPage() {
               care in low-resource settings while serving God and bringing
               healing to communities.
             </p>
-            <div className="mt-6 rounded-2xl border border-[color:var(--line)] bg-[color:var(--surface)] p-4">
+            <div className="mt-6 rounded-2xl border border-[color:var(--line)] bg-[color:var(--section-teal)] p-4">
               <p className="text-xs text-[color:var(--muted)]">
                 Need help choosing a package?
               </p>
-              <p className="mt-1 text-sm font-semibold text-[color:var(--ink)]">
+              <p className="mt-1 text-sm font-semibold !text-[color:var(--ink)]">
                 Talk to a Program Specialist
               </p>
               <div className="mt-3 flex flex-wrap gap-2">
@@ -301,9 +301,9 @@ function VolunteerPage() {
       {/* Highlights + image + services */}
       <section className="mx-auto max-w-7xl px-5 py-16 sm:px-8 lg:px-10 lg:py-20">
         <div className="grid gap-10 lg:grid-cols-2">
-          <div className="rounded-[16px] border border-[color:var(--line)] bg-[color:var(--surface)] p-7">
+          <div className="rounded-[16px] border border-[color:var(--line)] bg-[color:var(--section-teal)] p-7">
             <span className={eyebrowPill}>Project Highlights</span>
-            <h3 className="mt-5 text-2xl tracking-[-0.02em] text-[color:var(--ink)]">
+            <h3 className="mt-5 text-2xl tracking-[-0.02em] !text-[color:var(--ink)]">
               What you may be involved in
             </h3>
             <ul className="mt-5 space-y-3">
@@ -337,7 +337,7 @@ function VolunteerPage() {
                 <p className="text-xs text-[color:var(--muted)]">
                   Community & placement
                 </p>
-                <p className="text-sm font-semibold text-[color:var(--ink)]">
+                <p className="text-sm font-semibold !text-[color:var(--ink)]">
                   Serve alongside local teams
                 </p>
               </div>
@@ -358,7 +358,7 @@ function VolunteerPage() {
                 <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[color:var(--brand-primary)]/10 text-[color:var(--brand-primary-700)]">
                   <s.icon className="h-5 w-5" />
                 </span>
-                <p className="text-sm font-semibold text-[color:var(--ink)]">
+                <p className="text-sm font-semibold !text-[color:var(--ink)]">
                   {s.title}
                 </p>
               </div>
@@ -371,11 +371,11 @@ function VolunteerPage() {
       </section>
 
       {/* Location + arrival — numbered step composition */}
-      <section className="bg-[color:var(--surface)] px-5 py-16 sm:px-8 lg:px-10 lg:py-24">
+      <section className="bg-[color:var(--section-teal)] px-5 py-16 sm:px-8 lg:px-10 lg:py-24">
         <div className="mx-auto max-w-7xl">
           <div className="max-w-2xl">
             <span className={eyebrowPill}>Travel & placement</span>
-            <h2 className="mt-5 text-[2.25rem] leading-[1.02] tracking-[-0.035em] text-[color:var(--ink)] sm:text-5xl">
+            <h2 className="mt-5 text-[2.25rem] leading-[1.02] tracking-[-0.035em] !text-[color:var(--ink)] sm:text-5xl">
               From arrival{" "}
               <span className="tone-muted">to serving on the ground</span>
             </h2>
@@ -410,7 +410,7 @@ function VolunteerPage() {
                         <span
                           className={`text-[1.05rem] tracking-[-0.01em] ${
                             active
-                              ? "font-semibold text-[color:var(--ink)]"
+                              ? "font-semibold !text-[color:var(--ink)]"
                               : "text-[color:var(--ink-soft)]"
                           }`}
                         >
@@ -437,7 +437,7 @@ function VolunteerPage() {
                   <p className="text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-[color:var(--muted)]">
                     Step {step.n}
                   </p>
-                  <h3 className="mt-2 text-2xl tracking-[-0.02em] text-[color:var(--ink)]">
+                  <h3 className="mt-2 text-2xl tracking-[-0.02em] !text-[color:var(--ink)]">
                     {step.label}
                   </h3>
                   <p className="mt-4 text-[0.95rem] leading-relaxed text-[color:var(--muted)]">
@@ -462,7 +462,7 @@ function VolunteerPage() {
         <div className="grid gap-10 lg:grid-cols-3">
           <div className="lg:col-span-2">
             <span className={eyebrowPill}>Project details</span>
-            <h2 className="mt-5 text-[2rem] leading-[1.06] tracking-[-0.03em] text-[color:var(--ink)] sm:text-4xl">
+            <h2 className="mt-5 text-[2rem] leading-[1.06] tracking-[-0.03em] !text-[color:var(--ink)] sm:text-4xl">
               What your experience can look like
             </h2>
             <div className="mt-5 space-y-3 text-[0.98rem] leading-relaxed text-[color:var(--muted)]">
@@ -480,7 +480,7 @@ function VolunteerPage() {
           </div>
 
           <aside className="space-y-4">
-            <div className="rounded-[16px] border border-[color:var(--line)] bg-[color:var(--surface)] p-6">
+            <div className="rounded-[16px] border border-[color:var(--line)] bg-[color:var(--section-teal)] p-6">
               <p className="text-xs font-semibold text-[color:var(--muted)]">
                 Who we are
               </p>
@@ -493,7 +493,7 @@ function VolunteerPage() {
                   />
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-[color:var(--ink)]">
+                  <p className="text-sm font-semibold !text-[color:var(--ink)]">
                     Doctors on Mission International
                   </p>
                   <p className="text-xs text-[color:var(--muted)]">
@@ -509,11 +509,11 @@ function VolunteerPage() {
 
             <div className="rounded-[16px] border border-[color:var(--line)] bg-[color:var(--paper)] p-6">
               <p className="text-xs text-[color:var(--muted)]">Contact</p>
-              <p className="mt-1 text-sm font-semibold text-[color:var(--ink)]">
+              <p className="mt-1 text-sm font-semibold !text-[color:var(--ink)]">
                 +256 782 524317
               </p>
               <p className="mt-2 text-xs text-[color:var(--muted)]">Website</p>
-              <p className="text-sm font-semibold text-[color:var(--ink)]">
+              <p className="text-sm font-semibold !text-[color:var(--ink)]">
                 doctorsonmissionint.org
               </p>
             </div>
@@ -522,10 +522,10 @@ function VolunteerPage() {
       </section>
 
       {/* Logistics accordion */}
-      <section className="bg-[color:var(--surface)] px-5 py-16 sm:px-8 lg:px-10 lg:py-20">
+      <section className="bg-[color:var(--section-teal)] px-5 py-16 sm:px-8 lg:px-10 lg:py-20">
         <div className="mx-auto max-w-7xl">
           <span className={eyebrowPill}>Important information</span>
-          <h2 className="mt-5 text-[2rem] leading-[1.06] tracking-[-0.03em] text-[color:var(--ink)] sm:text-4xl">
+          <h2 className="mt-5 text-[2rem] leading-[1.06] tracking-[-0.03em] !text-[color:var(--ink)] sm:text-4xl">
             Requirements & logistics
           </h2>
           <p className="mt-4 max-w-3xl text-[0.98rem] leading-relaxed text-[color:var(--muted)]">
@@ -539,7 +539,7 @@ function VolunteerPage() {
       {/* Quick facts */}
       <section className="mx-auto max-w-7xl px-5 py-16 sm:px-8 lg:px-10 lg:py-20">
         <span className={eyebrowPill}>Project quick facts</span>
-        <h2 className="mt-5 text-[2rem] leading-[1.06] tracking-[-0.03em] text-[color:var(--ink)] sm:text-4xl">
+        <h2 className="mt-5 text-[2rem] leading-[1.06] tracking-[-0.03em] !text-[color:var(--ink)] sm:text-4xl">
           At a glance
         </h2>
 
@@ -549,10 +549,10 @@ function VolunteerPage() {
               <div
                 key={k}
                 className={`grid gap-2 p-5 sm:grid-cols-3 sm:items-center ${
-                  i % 2 ? "bg-[color:var(--surface)]" : "bg-[color:var(--paper)]"
+                  i % 2 ? "bg-[color:var(--section-teal)]" : "bg-[color:var(--paper)]"
                 }`}
               >
-                <p className="text-sm font-semibold text-[color:var(--ink)]">
+                <p className="text-sm font-semibold !text-[color:var(--ink)]">
                   {k}
                 </p>
                 <p className="text-sm text-[color:var(--muted)] sm:col-span-2">
@@ -579,10 +579,10 @@ function VolunteerPage() {
       </section>
 
       {/* Cost */}
-      <section id="cost" className="bg-[color:var(--surface)] px-5 py-16 sm:px-8 lg:px-10 lg:py-20">
+      <section id="cost" className="bg-[color:var(--section-teal)] px-5 py-16 sm:px-8 lg:px-10 lg:py-20">
         <div className="mx-auto max-w-7xl">
           <span className={eyebrowPill}>Program cost</span>
-          <h2 className="mt-5 text-[2rem] leading-[1.06] tracking-[-0.03em] text-[color:var(--ink)] sm:text-4xl">
+          <h2 className="mt-5 text-[2rem] leading-[1.06] tracking-[-0.03em] !text-[color:var(--ink)] sm:text-4xl">
             Choose a package
           </h2>
 
@@ -627,7 +627,7 @@ function VolunteerPage() {
 
           <div className="mt-10 grid gap-6 lg:grid-cols-2">
             <div className="rounded-[14px] border border-[color:var(--line)] bg-[color:var(--paper)] p-7">
-              <p className="text-sm font-semibold text-[color:var(--ink)]">
+              <p className="text-sm font-semibold !text-[color:var(--ink)]">
                 Program fee excludes
               </p>
               <ul className="mt-4 space-y-2 text-sm text-[color:var(--muted)]">
@@ -680,7 +680,7 @@ function VolunteerPage() {
             <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
               <div>
                 <span className={eyebrowPill}>Download resources</span>
-                <h3 className="mt-4 text-xl tracking-[-0.02em] text-[color:var(--ink)]">
+                <h3 className="mt-4 text-xl tracking-[-0.02em] !text-[color:var(--ink)]">
                   Files you may need
                 </h3>
               </div>
@@ -690,14 +690,14 @@ function VolunteerPage() {
                 <a
                   key={d.title}
                   href={d.href}
-                  className="group flex items-center justify-between rounded-2xl border border-[color:var(--line)] bg-[color:var(--surface)] p-5 transition hover:border-[color:var(--brand-primary)]"
+                  className="group flex items-center justify-between rounded-2xl border border-[color:var(--line)] bg-[color:var(--section-teal)] p-5 transition hover:border-[color:var(--brand-primary)]"
                 >
                   <div className="flex items-center gap-3">
                     <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[color:var(--brand-primary)]/10 text-[color:var(--brand-primary-700)]">
                       <d.icon className="h-5 w-5" />
                     </span>
                     <div>
-                      <p className="text-sm font-semibold text-[color:var(--ink)]">
+                      <p className="text-sm font-semibold !text-[color:var(--ink)]">
                         {d.title}
                       </p>
                       <p className="text-xs text-[color:var(--muted)]">
@@ -711,8 +711,8 @@ function VolunteerPage() {
                 </a>
               ))}
             </div>
-            <div className="mt-8 rounded-2xl border border-[color:var(--line)] bg-[color:var(--surface)] p-5">
-              <p className="text-sm font-semibold text-[color:var(--ink)]">
+            <div className="mt-8 rounded-2xl border border-[color:var(--line)] bg-[color:var(--section-teal)] p-5">
+              <p className="text-sm font-semibold !text-[color:var(--ink)]">
                 Payments
               </p>
               <p className="mt-2 text-sm text-[color:var(--muted)]">
@@ -729,7 +729,7 @@ function VolunteerPage() {
         <div className="mx-auto max-w-7xl px-5 py-12 sm:px-8 lg:px-10">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div>
-              <p className="text-lg tracking-[-0.02em] text-[color:var(--ink)]">
+              <p className="text-lg tracking-[-0.02em] !text-[color:var(--ink)]">
                 Ready to serve in Uganda?
               </p>
               <p className="mt-1 text-sm text-[color:var(--muted)]">
@@ -765,7 +765,7 @@ function FeatureCard({ icon: Icon, title, desc }) {
         <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[color:var(--brand-primary)]/10 text-[color:var(--brand-primary-700)]">
           <Icon className="h-5 w-5" />
         </span>
-        <p className="text-sm font-semibold text-[color:var(--ink)]">{title}</p>
+        <p className="text-sm font-semibold !text-[color:var(--ink)]">{title}</p>
       </div>
       <p className="mt-3 text-sm leading-relaxed text-[color:var(--muted)]">
         {desc}
@@ -776,14 +776,14 @@ function FeatureCard({ icon: Icon, title, desc }) {
 
 function InfoChip({ icon: Icon, title, value }) {
   return (
-    <div className="rounded-[14px] border border-[color:var(--line)] bg-[color:var(--surface)] p-5">
+    <div className="rounded-[14px] border border-[color:var(--line)] bg-[color:var(--section-teal)] p-5">
       <div className="flex items-center gap-3">
         <span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-[color:var(--brand-primary)]/10 text-[color:var(--brand-primary-700)]">
           <Icon className="h-5 w-5" />
         </span>
         <div>
           <p className="text-xs text-[color:var(--muted)]">{title}</p>
-          <p className="text-sm font-semibold text-[color:var(--ink)]">
+          <p className="text-sm font-semibold !text-[color:var(--ink)]">
             {value}
           </p>
         </div>
@@ -803,7 +803,7 @@ function Accordion({ items }) {
           <div
             key={it.k}
             className={`border-b border-[color:var(--line)] last:border-b-0 ${
-              open ? "bg-[color:var(--paper)]" : "bg-[color:var(--surface)]"
+              open ? "bg-[color:var(--paper)]" : "bg-[color:var(--section-teal)]"
             }`}
           >
             <button
@@ -812,7 +812,7 @@ function Accordion({ items }) {
               aria-expanded={open}
               className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left"
             >
-              <span className="text-[1.02rem] font-medium tracking-[-0.01em] text-[color:var(--ink)]">
+              <span className="text-[1.02rem] font-medium tracking-[-0.01em] !text-[color:var(--ink)]">
                 {it.k}
               </span>
               <span

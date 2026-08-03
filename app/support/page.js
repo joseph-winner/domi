@@ -71,7 +71,7 @@ function page() {
         subtitle="Connecting volunteer clinicians with local health facilities to deliver life-restoring care across Uganda."
       />
 
-      <main className="bg-[color:var(--paper)] text-[color:var(--ink)]">
+      <main className="bg-[color:var(--paper)] !text-[color:var(--ink)]">
         {/* Intro */}
         <section className="mx-auto max-w-7xl px-5 py-16 sm:px-8 lg:px-10 lg:py-20">
           <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-14">
@@ -103,7 +103,7 @@ function page() {
               <span className="inline-flex items-center gap-2 rounded-full border border-[color:var(--line)] bg-[color:var(--paper)] px-4 py-1.5 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-[color:var(--muted)]">
                 Support a medical mission
               </span>
-              <h2 className="mt-6 text-[2rem] leading-[1.06] tracking-[-0.03em] text-[color:var(--ink)] sm:text-4xl lg:text-[2.75rem]">
+              <h2 className="mt-6 text-[2rem] leading-[1.06] tracking-[-0.03em] !text-[color:var(--ink)] sm:text-4xl lg:text-[2.75rem]">
                 Care that reaches the last mile
               </h2>
               <p className="mt-5 max-w-2xl text-[1rem] leading-relaxed text-[color:var(--muted)]">
@@ -122,7 +122,7 @@ function page() {
                 </a>
                 <a
                   href="#give"
-                  className="inline-flex items-center justify-center gap-2 rounded-full border border-[color:var(--line)] bg-[color:var(--paper)] px-6 py-3 text-sm font-semibold text-[color:var(--ink)] transition hover:border-[color:var(--brand-primary)]"
+                  className="inline-flex items-center justify-center gap-2 rounded-full border border-[color:var(--line)] bg-[color:var(--paper)] px-6 py-3 text-sm font-semibold !text-[color:var(--ink)] transition hover:border-[color:var(--brand-primary)]"
                 >
                   Donate to a Camp <HandCoins className="h-4 w-4" />
                 </a>
@@ -132,7 +132,7 @@ function page() {
                 {quickStats.map((s) => (
                   <div
                     key={s.label}
-                    className="rounded-2xl border border-[color:var(--line)] bg-[color:var(--surface)] p-4"
+                    className="rounded-2xl border border-[color:var(--line)] bg-[color:var(--section-teal)] p-4"
                   >
                     <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-[color:var(--brand-primary)]/12 text-[color:var(--brand-primary-700)]">
                       <s.icon className="h-5 w-5" />
@@ -140,7 +140,7 @@ function page() {
                     <p className="mt-3 text-[0.68rem] font-semibold uppercase tracking-wide text-[color:var(--muted)]">
                       {s.label}
                     </p>
-                    <p className="mt-1 text-sm font-medium text-[color:var(--ink)]">
+                    <p className="mt-1 text-sm font-medium !text-[color:var(--ink)]">
                       {s.value}
                     </p>
                   </div>
@@ -162,7 +162,7 @@ function page() {
               <span className="inline-flex items-center gap-2 rounded-full border border-[color:var(--line)] bg-[color:var(--paper)] px-4 py-1.5 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-[color:var(--muted)]">
                 Our Impact
               </span>
-              <h2 className="mt-6 text-[2rem] leading-[1.06] tracking-[-0.03em] text-[color:var(--ink)] sm:text-4xl">
+              <h2 className="mt-6 text-[2rem] leading-[1.06] tracking-[-0.03em] !text-[color:var(--ink)] sm:text-4xl">
                 Your support, made visible
               </h2>
             </div>
@@ -171,7 +171,7 @@ function page() {
               <div className="relative grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
                 {impact.map((s) => (
                   <div key={s.label}>
-                    <p className="text-4xl font-medium tracking-[-0.03em] text-[color:var(--ink)] sm:text-5xl">
+                    <p className="text-4xl font-medium tracking-[-0.03em] !text-[color:var(--ink)] sm:text-5xl">
                       {s.value}
                     </p>
                     <p className="mt-2 text-[0.88rem] leading-snug text-[color:var(--ink-soft)]">
@@ -189,10 +189,9 @@ function page() {
           <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <span className="inline-flex items-center gap-2 rounded-full border border-[color:var(--line)] bg-[color:var(--paper)] px-4 py-1.5 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-[color:var(--muted)]">
-                <span className="h-1.5 w-1.5 rounded-full bg-[color:var(--brand-primary)]" />
                 Impact
               </span>
-              <h2 className="mt-5 text-[2rem] leading-[1.06] tracking-[-0.03em] text-[color:var(--ink)] sm:text-4xl">
+              <h2 className="mt-5 text-[2rem] leading-[1.06] tracking-[-0.03em] !text-[color:var(--ink)] sm:text-4xl">
                 Previous Outreaches
               </h2>
               <p className="mt-3 max-w-2xl text-[0.98rem] leading-relaxed text-[color:var(--muted)]">
@@ -219,20 +218,20 @@ function page() {
                     <span className="inline-flex items-center rounded-full bg-[color:var(--brand-primary)]/10 px-3 py-1 text-xs font-medium text-[color:var(--brand-primary-700)]">
                       {o.tag}
                     </span>
-                    <span className="inline-flex items-center gap-1.5 rounded-full bg-[color:var(--surface)] px-3 py-1 text-xs font-medium text-[color:var(--ink-soft)]">
+                    <span className="inline-flex items-center gap-1.5 rounded-full bg-[color:var(--section-teal)] px-3 py-1 text-xs font-medium text-[color:var(--ink-soft)]">
                       <MapPin className="h-3.5 w-3.5" /> {o.location}
                     </span>
-                    <span className="inline-flex items-center gap-1.5 rounded-full bg-[color:var(--surface)] px-3 py-1 text-xs font-medium text-[color:var(--ink-soft)]">
+                    <span className="inline-flex items-center gap-1.5 rounded-full bg-[color:var(--section-teal)] px-3 py-1 text-xs font-medium text-[color:var(--ink-soft)]">
                       <CalendarDays className="h-3.5 w-3.5" /> {o.date}
                     </span>
                   </div>
-                  <h3 className="mt-4 text-xl tracking-[-0.02em] text-[color:var(--ink)]">
+                  <h3 className="mt-4 text-xl tracking-[-0.02em] !text-[color:var(--ink)]">
                     {o.title}
                   </h3>
                   <p className="mt-3 text-[0.9rem] leading-relaxed text-[color:var(--muted)]">
                     {o.excerpt}
                   </p>
-                  <div className="mt-5 rounded-2xl border border-[color:var(--line)] bg-[color:var(--surface)] p-4">
+                  <div className="mt-5 rounded-2xl border border-[color:var(--line)] bg-[color:var(--section-teal)] p-4">
                     <p className="text-sm font-medium text-[color:var(--ink-soft)]">
                       {o.highlight}
                     </p>
@@ -253,10 +252,9 @@ function page() {
         <section className="mx-auto max-w-7xl px-5 pb-16 sm:px-8 lg:px-10 lg:pb-20">
           <div className="mx-auto max-w-2xl text-center">
             <span className="inline-flex items-center gap-2 rounded-full border border-[color:var(--line)] bg-[color:var(--paper)] px-4 py-1.5 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-[color:var(--muted)]">
-              <span className="h-1.5 w-1.5 rounded-full bg-[color:var(--brand-primary)]" />
               Watch our featured video
             </span>
-            <h2 className="mt-5 text-[2rem] leading-[1.06] tracking-[-0.03em] text-[color:var(--ink)] sm:text-4xl">
+            <h2 className="mt-5 text-[2rem] leading-[1.06] tracking-[-0.03em] !text-[color:var(--ink)] sm:text-4xl">
               Medical Mission Highlights
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-[0.98rem] leading-relaxed text-[color:var(--muted)]">
@@ -274,7 +272,7 @@ function page() {
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
               />
-              <div className="pointer-events-none absolute left-5 top-5 inline-flex items-center gap-2 rounded-full bg-white/90 px-4 py-2 text-xs font-semibold text-[color:var(--ink)] backdrop-blur">
+              <div className="pointer-events-none absolute left-5 top-5 inline-flex items-center gap-2 rounded-full bg-white/90 px-4 py-2 text-xs font-semibold !text-[color:var(--ink)] backdrop-blur">
                 <PlayCircle className="h-4 w-4 text-[color:var(--brand-primary-700)]" />
                 Featured mission video
               </div>
@@ -287,7 +285,6 @@ function page() {
           <div className="mx-auto grid max-w-7xl items-stretch gap-10 px-5 py-16 sm:px-8 lg:grid-cols-12 lg:px-10 lg:py-24">
             <div className="lg:col-span-6">
               <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-[0.78rem] font-medium text-white/80">
-                <span className="h-1.5 w-1.5 rounded-full bg-[color:var(--brand-secondary)]" />
                 DOMI
               </span>
               <h2 className="mt-5 text-[2rem] leading-[1.06] tracking-[-0.03em] text-white sm:text-4xl">

@@ -1,5 +1,6 @@
 import React from "react";
-import { Mail, MapPin, ArrowRight, Twitter, Facebook, Linkedin } from "lucide-react";
+import { Mail, MapPin, ArrowRight } from "lucide-react";
+import { FaFacebookF, FaXTwitter, FaYoutube, FaLinkedinIn, FaInstagram } from "react-icons/fa6";
 
 function Footer({ logoSrc = "/logos/doctors-mission-logo.svg" }) {
   const quickLinks = [
@@ -15,9 +16,11 @@ function Footer({ logoSrc = "/logos/doctors-mission-logo.svg" }) {
   ];
 
   const socials = [
-    { label: "X / Twitter", href: "https://twitter.com", Icon: Twitter },
-    { label: "Facebook", href: "https://facebook.com", Icon: Facebook },
-    { label: "LinkedIn", href: "https://linkedin.com", Icon: Linkedin },
+    { label: "Facebook", href: "https://www.facebook.com/people/Doctors-on-Mission-International/61573255932279/#", Icon: FaFacebookF },
+    { label: "X", href: "https://x.com/DoctorsMission/status/2074434034881400981", Icon: FaXTwitter },
+    { label: "YouTube", href: "https://www.youtube.com/@doctorsonmissioninternational", Icon: FaYoutube },
+    { label: "LinkedIn", href: "https://www.linkedin.com/company/doctors-on-mission-international/?originalSubdomain=ug", Icon: FaLinkedinIn },
+    { label: "Instagram", href: "https://www.instagram.com/doctors_on_mission_int/", Icon: FaInstagram },
   ];
 
   return (
@@ -121,6 +124,8 @@ function Footer({ logoSrc = "/logos/doctors-mission-logo.svg" }) {
                     key={label}
                     href={href}
                     aria-label={label}
+                    target="_blank"
+                    rel="noreferrer"
                     className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white/80 transition hover:bg-white/10 hover:text-[color:var(--brand-secondary)]"
                   >
                     <Icon className="h-4 w-4" />
@@ -149,6 +154,8 @@ function Footer({ logoSrc = "/logos/doctors-mission-logo.svg" }) {
                 key={label}
                 href={href}
                 aria-label={label}
+                target="_blank"
+                rel="noreferrer"
                 className="text-white/60 transition hover:text-[color:var(--brand-secondary)]"
               >
                 <Icon className="h-4 w-4" />

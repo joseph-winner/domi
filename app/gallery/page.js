@@ -48,7 +48,7 @@ export default async function ImagesPage() {
           {galleryImages.map((item, index) => (
             <article
               key={item.src}
-              className={`group relative overflow-hidden rounded-[12px] border border-[color:var(--line)] bg-[color:var(--surface)] transition duration-500 hover:-translate-y-1 hover:shadow-[0_28px_65px_-45px_rgba(12,34,51,0.55)] ${
+              className={`group relative overflow-hidden rounded-[12px] border border-[color:var(--line)] bg-[color:var(--section-teal)] transition duration-500 hover:-translate-y-1 hover:shadow-[0_28px_65px_-45px_rgba(12,34,51,0.55)] ${
                 index % 7 === 0
                   ? "md:col-span-2 md:row-span-2"
                   : index % 5 === 0

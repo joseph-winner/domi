@@ -25,7 +25,7 @@ function AboutSection() {
             Who We Are
           </span>
 
-          <h2 className="mt-6 text-[2.25rem] leading-[1.02] tracking-[-0.035em] text-[color:var(--ink)] sm:text-4xl lg:text-[2.75rem]">
+          <h2 className="mt-6 text-[2.25rem] leading-[1.02] tracking-[-0.035em] !text-[color:var(--ink)] sm:text-4xl lg:text-[2.75rem]">
             Uniting medical teams{" "}
             <span className="tone-muted">to serve humanity</span>
           </h2>
@@ -51,7 +51,7 @@ function AboutSection() {
                 <p className="text-[0.78rem] font-medium uppercase tracking-wide text-[color:var(--muted)]">
                   {s.label}
                 </p>
-                <p className="mt-1.5 text-4xl font-light tracking-[-0.03em] text-[color:var(--ink)]">
+                <p className="mt-1.5 text-4xl font-light tracking-[-0.03em] !text-[color:var(--ink)]">
                   {s.value}
                 </p>
                 <p className="mt-3 text-[0.82rem] leading-relaxed text-[color:var(--muted)]">
@@ -89,7 +89,7 @@ function AboutSection() {
               <MapPin className="h-5 w-5" />
             </span>
             <div>
-              <p className="text-sm font-semibold tracking-tight text-[color:var(--ink)]">
+              <p className="text-sm font-semibold tracking-tight !text-[color:var(--ink)]">
                 Faith-driven, volunteer-based
               </p>
               <p className="mt-0.5 text-[0.8rem] leading-snug text-[color:var(--muted)]">

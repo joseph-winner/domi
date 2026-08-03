@@ -28,14 +28,14 @@ function MessageSection() {
   ];
 
   return (
-    <section className="bg-[color:var(--surface)] px-5 py-20 sm:px-8 lg:px-10 lg:py-28">
+    <section className="bg-[color:var(--section-teal)] px-5 py-20 sm:px-8 lg:px-10 lg:py-28">
       <div className="mx-auto max-w-7xl">
         {/* Header */}
         <div className="mx-auto max-w-2xl text-center">
           <span className="inline-flex items-center rounded-full border border-[color:var(--line)] bg-[color:var(--paper)] px-4 py-1.5 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-[color:var(--muted)]">
             Leadership Message
           </span>
-          <h2 className="mt-6 text-[2.25rem] leading-[1.02] tracking-[-0.035em] text-[color:var(--ink)] sm:text-4xl lg:text-[2.75rem]">
+          <h2 className="mt-6 text-[2.25rem] leading-[1.02] tracking-[-0.035em] !text-[color:var(--ink)] sm:text-4xl lg:text-[2.75rem]">
             Message from{" "}
             <span className="tone-muted">our Team Leader</span>
           </h2>
@@ -78,7 +78,7 @@ function MessageSection() {
               <div className="space-y-4 text-[0.92rem] leading-relaxed text-[color:var(--muted)]">
                 {paragraphs.map((p) => (
                   <p key={p.lead}>
-                    <strong className="font-semibold text-[color:var(--ink)]">
+                    <strong className="font-semibold !text-[color:var(--ink)]">
                       {p.lead}
                     </strong>
                     {p.body}
@@ -88,7 +88,7 @@ function MessageSection() {
 
               <div className="mt-6 flex flex-wrap items-center justify-between gap-4 border-t border-[color:var(--line)] pt-5">
                 <div>
-                  <p className="text-sm font-semibold text-[color:var(--ink)]">
+                  <p className="text-sm font-semibold !text-[color:var(--ink)]">
                     Dr Mulyamboga Paul
                   </p>
                   <p className="text-xs text-[color:var(--muted)]">
@@ -96,11 +96,10 @@ function MessageSection() {
                   </p>
                 </div>
                 <div className="flex flex-wrap gap-2 text-[0.72rem] font-medium text-[color:var(--ink-soft)]">
-                  <span className="inline-flex items-center gap-1.5 rounded-full bg-[color:var(--surface)] px-3 py-1">
-                    <span className="h-1.5 w-1.5 rounded-full bg-[color:var(--brand-accent)]" />
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-[color:var(--section-teal)] px-3 py-1">
                     Impact-driven mission
                   </span>
-                  <span className="hidden items-center rounded-full bg-[color:var(--surface)] px-3 py-1 sm:inline-flex">
+                  <span className="hidden items-center rounded-full bg-[color:var(--section-teal)] px-3 py-1 sm:inline-flex">
                     Community health
                   </span>
                 </div>

@@ -159,11 +159,11 @@ function AboutPage() {
             <span className="inline-flex items-center gap-2 rounded-full border border-[color:var(--line)] bg-[color:var(--paper)] px-4 py-1.5 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-[color:var(--muted)]">
               Our Story
             </span>
-            <h2 className="mt-6 text-[2rem] leading-[1.06] tracking-[-0.03em] text-[color:var(--ink)] sm:text-4xl lg:text-[2.75rem]">
+            <h2 className="mt-6 text-[2rem] leading-[1.06] tracking-[-0.03em] !text-[color:var(--ink)] sm:text-4xl lg:text-[2.75rem]">
               Who we are
             </h2>
             <p className="mt-5 text-[0.98rem] leading-relaxed text-[color:var(--muted)]">
-              <span className="font-semibold text-[color:var(--ink)]">
+              <span className="font-semibold !text-[color:var(--ink)]">
                 Doctors on Mission International
               </span>{" "}
               is a volunteer-based non-profit organization uniting like-minded
@@ -174,7 +174,7 @@ function AboutPage() {
             </p>
             <p className="mt-4 text-[0.98rem] leading-relaxed text-[color:var(--muted)]">
               Founded in{" "}
-              <span className="font-semibold text-[color:var(--ink)]">2023</span>
+              <span className="font-semibold !text-[color:var(--ink)]">2023</span>
               , Doctors on Mission International unites Christian medical teams to
               provide quality medical care to underserved communities while
               serving God and bringing healing to those in need.
@@ -206,7 +206,7 @@ function AboutPage() {
                 <Heart className="h-5 w-5" />
               </span>
               <div>
-                <p className="text-sm font-semibold text-[color:var(--ink)]">
+                <p className="text-sm font-semibold !text-[color:var(--ink)]">
                   Faith-Driven
                 </p>
                 <p className="text-xs text-[color:var(--muted)]">
@@ -217,7 +217,7 @@ function AboutPage() {
 
             {/* Mini impact chart (donation-chart ref echo) */}
             <div className="absolute -top-6 -right-2 w-44 rounded-2xl border border-[color:var(--line)] bg-[color:var(--paper)] p-4 shadow-xl shadow-black/5 sm:-right-6">
-              <p className="text-xs font-semibold text-[color:var(--ink)]">
+              <p className="text-xs font-semibold !text-[color:var(--ink)]">
                 Lives reached
               </p>
               <p className="text-[0.68rem] text-[color:var(--muted)]">
@@ -246,14 +246,13 @@ function AboutPage() {
       </section>
 
       {/* Foundation */}
-      <section className="bg-[color:var(--surface)] px-5 py-20 sm:px-8 lg:px-10 lg:py-28">
+      <section className="bg-[color:var(--section-teal)] px-5 py-20 sm:px-8 lg:px-10 lg:py-28">
         <div className="mx-auto max-w-7xl">
           <div className="mx-auto max-w-2xl text-center">
             <span className="inline-flex items-center gap-2 rounded-full border border-[color:var(--line)] bg-[color:var(--paper)] px-4 py-1.5 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-[color:var(--muted)]">
-              <span className="h-1.5 w-1.5 rounded-full bg-[color:var(--brand-secondary)]" />
               What Drives Us
             </span>
-            <h2 className="mt-6 text-[2rem] leading-[1.06] tracking-[-0.03em] text-[color:var(--ink)] sm:text-4xl lg:text-[2.75rem]">
+            <h2 className="mt-6 text-[2rem] leading-[1.06] tracking-[-0.03em] !text-[color:var(--ink)] sm:text-4xl lg:text-[2.75rem]">
               Our Foundation
             </h2>
           </div>
@@ -269,7 +268,7 @@ function AboutPage() {
                 >
                   <c.Icon className="h-6 w-6" />
                 </span>
-                <h3 className="mt-6 text-2xl tracking-[-0.02em] text-[color:var(--ink)]">
+                <h3 className="mt-6 text-2xl tracking-[-0.02em] !text-[color:var(--ink)]">
                   {c.title}
                 </h3>
                 {c.body && (
@@ -302,16 +301,16 @@ function AboutPage() {
             <span className="inline-flex items-center gap-2 rounded-full border border-[color:var(--line)] bg-[color:var(--paper)] px-4 py-1.5 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-[color:var(--muted)]">
               Leadership
             </span>
-            <h2 className="mt-6 text-[2rem] leading-[1.06] tracking-[-0.03em] text-[color:var(--ink)] sm:text-4xl lg:text-[2.75rem]">
+            <h2 className="mt-6 text-[2rem] leading-[1.06] tracking-[-0.03em] !text-[color:var(--ink)] sm:text-4xl lg:text-[2.75rem]">
               Message from our Team Leader
             </h2>
           </div>
 
           <div className="mt-14 grid items-stretch gap-8 lg:grid-cols-5">
             <div className="lg:col-span-3">
-              <div className="relative h-full rounded-[16px] border border-[color:var(--line)] bg-[color:var(--surface)] p-8 md:p-10">
+              <div className="relative h-full rounded-[16px] border border-[color:var(--line)] bg-[color:var(--section-teal)] p-8 md:p-10">
                 <p className="text-[0.95rem] leading-relaxed text-[color:var(--muted)]">
-                  <span className="font-semibold text-[color:var(--ink)]">
+                  <span className="font-semibold !text-[color:var(--ink)]">
                     Greetings from Doctors on Mission International
                   </span>{" "}
                   a volunteer-based non-profit organization with an aim of being
@@ -328,7 +327,7 @@ function AboutPage() {
                     >
                       <span className="mt-1.5 h-1.5 w-1.5 flex-none rounded-full bg-[color:var(--brand-primary)]" />
                       <p className="text-[0.88rem] leading-relaxed text-[color:var(--muted)]">
-                        <span className="font-semibold text-[color:var(--ink)]">
+                        <span className="font-semibold !text-[color:var(--ink)]">
                           {item.title}:
                         </span>{" "}
                         {item.desc}
@@ -350,7 +349,7 @@ function AboutPage() {
                     PM
                   </span>
                   <div>
-                    <p className="font-semibold text-[color:var(--ink)]">
+                    <p className="font-semibold !text-[color:var(--ink)]">
                       Dr Mulyamboga Paul
                     </p>
                     <p className="text-sm text-[color:var(--muted)]">
@@ -378,7 +377,7 @@ function AboutPage() {
                     <p className="text-[0.7rem] text-[color:var(--muted)]">
                       Committed to
                     </p>
-                    <p className="text-sm font-semibold text-[color:var(--ink)]">
+                    <p className="text-sm font-semibold !text-[color:var(--ink)]">
                       Christian Medical Missions
                     </p>
                   </div>
@@ -390,14 +389,13 @@ function AboutPage() {
       </section>
 
       {/* Our work */}
-      <section className="bg-[color:var(--surface)] px-5 py-20 sm:px-8 lg:px-10 lg:py-28">
+      <section className="bg-[color:var(--section-teal)] px-5 py-20 sm:px-8 lg:px-10 lg:py-28">
         <div className="mx-auto max-w-7xl">
           <div className="mx-auto max-w-2xl text-center">
             <span className="inline-flex items-center gap-2 rounded-full border border-[color:var(--line)] bg-[color:var(--paper)] px-4 py-1.5 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-[color:var(--muted)]">
-              <span className="h-1.5 w-1.5 rounded-full bg-[color:var(--brand-primary)]" />
               Making an Impact
             </span>
-            <h2 className="mt-6 text-[2rem] leading-[1.06] tracking-[-0.03em] text-[color:var(--ink)] sm:text-4xl lg:text-[2.75rem]">
+            <h2 className="mt-6 text-[2rem] leading-[1.06] tracking-[-0.03em] !text-[color:var(--ink)] sm:text-4xl lg:text-[2.75rem]">
               Our work in the community
             </h2>
           </div>
@@ -414,12 +412,12 @@ function AboutPage() {
                     alt={w.title}
                     className="h-52 w-full object-cover transition duration-700 group-hover:scale-105"
                   />
-                  <span className="absolute left-3 top-3 rounded-full bg-white/90 px-3 py-1 text-[0.72rem] font-medium text-[color:var(--ink)] backdrop-blur">
+                  <span className="absolute left-3 top-3 rounded-full bg-white/90 px-3 py-1 text-[0.72rem] font-medium !text-[color:var(--ink)] backdrop-blur">
                     {w.pill}
                   </span>
                 </div>
                 <div className="flex flex-1 flex-col px-6 pb-6 pt-2">
-                  <h3 className="text-xl tracking-[-0.02em] text-[color:var(--ink)]">
+                  <h3 className="text-xl tracking-[-0.02em] !text-[color:var(--ink)]">
                     {w.title}
                   </h3>
                   <p className="mt-3 flex-1 text-[0.88rem] leading-relaxed text-[color:var(--muted)]">
@@ -427,7 +425,7 @@ function AboutPage() {
                   </p>
                   <a
                     href={w.href}
-                    className="group/btn mt-5 inline-flex w-fit items-center gap-2 rounded-full border border-[color:var(--line)] px-5 py-2.5 text-sm font-medium text-[color:var(--ink)] transition hover:border-[color:var(--brand-primary)] hover:bg-[color:var(--brand-primary)] hover:text-white"
+                    className="group/btn mt-5 inline-flex w-fit items-center gap-2 rounded-full border border-[color:var(--line)] px-5 py-2.5 text-sm font-medium !text-[color:var(--ink)] transition hover:border-[color:var(--brand-primary)] hover:bg-[color:var(--brand-primary)] hover:text-white"
                   >
                     {w.cta}
                     <ArrowUpRight className="h-4 w-4 transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
@@ -444,7 +442,6 @@ function AboutPage() {
         <div className="mx-auto max-w-5xl">
           <div className="mx-auto max-w-2xl text-center">
             <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-[0.78rem] font-medium text-white/80">
-              <span className="h-1.5 w-1.5 rounded-full bg-[color:var(--brand-accent)]" />
               Watch Our Story
             </span>
             <h2 className="mt-6 text-[2rem] leading-[1.06] tracking-[-0.03em] text-white sm:text-4xl">
@@ -469,7 +466,7 @@ function AboutPage() {
                 allowFullScreen
               ></iframe>
             </div>
-            <div className="pointer-events-none absolute left-5 top-5 inline-flex items-center gap-2 rounded-full bg-white/90 px-4 py-2 text-xs font-semibold text-[color:var(--ink)] backdrop-blur">
+            <div className="pointer-events-none absolute left-5 top-5 inline-flex items-center gap-2 rounded-full bg-white/90 px-4 py-2 text-xs font-semibold !text-[color:var(--ink)] backdrop-blur">
               <Play className="h-3.5 w-3.5 fill-current text-[color:var(--brand-primary-700)]" />
               Featured video
             </div>
@@ -482,10 +479,9 @@ function AboutPage() {
         <div className="mx-auto max-w-7xl">
           <div className="mx-auto max-w-2xl text-center">
             <span className="inline-flex items-center gap-2 rounded-full border border-[color:var(--line)] bg-[color:var(--paper)] px-4 py-1.5 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-[color:var(--muted)]">
-              <span className="h-1.5 w-1.5 rounded-full bg-[color:var(--brand-secondary)]" />
               Doctors on Mission International
             </span>
-            <h2 className="mt-6 text-[2rem] leading-[1.06] tracking-[-0.03em] text-[color:var(--ink)] sm:text-4xl lg:text-[2.75rem]">
+            <h2 className="mt-6 text-[2rem] leading-[1.06] tracking-[-0.03em] !text-[color:var(--ink)] sm:text-4xl lg:text-[2.75rem]">
               Our trusted partners
             </h2>
           </div>
@@ -499,7 +495,7 @@ function AboutPage() {
                 <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[color:var(--brand-primary)]/10 text-[color:var(--brand-primary-700)]">
                   <Stethoscope className="h-6 w-6" />
                 </span>
-                <h3 className="mt-6 text-lg tracking-[-0.02em] text-[color:var(--ink)]">
+                <h3 className="mt-6 text-lg tracking-[-0.02em] !text-[color:var(--ink)]">
                   {p.name}
                 </h3>
                 <p className="mt-1 text-[0.78rem] font-medium text-[color:var(--brand-primary-700)]">

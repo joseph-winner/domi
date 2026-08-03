@@ -31,7 +31,7 @@ function MedicalCampSection() {
             <div className="relative mt-8 flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
               <a
                 href="#"
-                className="inline-flex items-center gap-2 rounded-full bg-[color:var(--paper)] px-6 py-3 text-sm font-semibold text-[color:var(--ink)] shadow-lg shadow-black/10 transition hover:-translate-y-0.5"
+                className="inline-flex items-center gap-2 rounded-full bg-[color:var(--paper)] px-6 py-3 text-sm font-semibold !text-[color:var(--ink)] shadow-lg shadow-black/10 transition hover:-translate-y-0.5"
               >
                 <Play className="h-4 w-4 fill-current text-[color:var(--brand-primary-700)]" />
                 Watch camp highlights
@@ -69,7 +69,7 @@ function MedicalCampSection() {
             <span className="inline-flex items-center rounded-full border border-[color:var(--line)] bg-[color:var(--paper)] px-4 py-1.5 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-[color:var(--muted)]">
               Upcoming mission
             </span>
-            <h3 className="mt-6 text-[2.25rem] leading-[1.02] tracking-[-0.035em] text-[color:var(--ink)] sm:text-4xl">
+            <h3 className="mt-6 text-[2.25rem] leading-[1.02] tracking-[-0.035em] !text-[color:var(--ink)] sm:text-4xl">
               Eye Surgical Camp,{" "}
               <span className="tone-muted">Buhweju Uganda</span>
             </h3>
@@ -92,7 +92,7 @@ function MedicalCampSection() {
                 ></iframe>
               </div>
               <div className="pointer-events-none absolute inset-x-4 top-4 flex items-center justify-between">
-                <span className="rounded-full bg-white/90 px-3 py-1 text-[0.72rem] font-medium text-[color:var(--ink)] backdrop-blur">
+                <span className="rounded-full bg-white/90 px-3 py-1 text-[0.72rem] font-medium !text-[color:var(--ink)] backdrop-blur">
                   In preparation
                 </span>
                 <span className="rounded-full bg-black/40 px-3 py-1 text-[0.72rem] font-medium text-white backdrop-blur">

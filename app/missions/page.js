@@ -46,7 +46,7 @@ export default function MissionsPage() {
             <span className="inline-flex items-center rounded-full border border-[color:var(--line)] bg-[color:var(--paper)] px-4 py-1.5 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-[color:var(--muted)]">
               Mission Sites
             </span>
-            <h2 className="mt-6 text-[2.25rem] leading-[1.02] tracking-[-0.035em] text-[color:var(--ink)] sm:text-5xl">
+            <h2 className="mt-6 text-[2.25rem] leading-[1.02] tracking-[-0.035em] !text-[color:var(--ink)] sm:text-5xl">
               Where we go{" "}
               <span className="tone-muted">and who we serve</span>
             </h2>
@@ -76,7 +76,7 @@ export default function MissionsPage() {
                 href={`/missions/${mission.slug}`}
                 className="group"
               >
-                <div className="overflow-hidden rounded-[12px] bg-[color:var(--surface)]">
+                <div className="overflow-hidden rounded-[12px] bg-[color:var(--section-teal)]">
                   <img
                     src={mission.image}
                     alt={mission.title}
@@ -97,7 +97,7 @@ export default function MissionsPage() {
                     </span>
                   </div>
 
-                  <h3 className="mt-3 text-xl leading-snug tracking-[-0.02em] text-[color:var(--ink)]">
+                  <h3 className="mt-3 text-xl leading-snug tracking-[-0.02em] !text-[color:var(--ink)]">
                     {mission.title}
                   </h3>
                   <p className="mt-2 text-[0.9rem] leading-relaxed text-[color:var(--muted)]">

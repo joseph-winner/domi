@@ -44,18 +44,18 @@ function CalltoAction() {
                 <a
                   key={o.title}
                   href={o.href}
-                  className="group flex flex-col rounded-[14px] bg-white/95 p-6 shadow-lg shadow-black/10 transition hover:-translate-y-1 hover:bg-[color:var(--paper)]"
+                  className="group flex flex-col rounded-[14px] bg-[color:var(--paper)] p-6 shadow-lg shadow-black/10 transition hover:-translate-y-1"
                 >
-                  <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-[color:var(--brand-primary)]/12 text-[color:var(--brand-primary-700)]">
+                  <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-[color:var(--brand-primary)]/12 !text-[color:var(--brand-primary-700)]">
                     <o.Icon className="h-5 w-5" />
                   </span>
-                  <h3 className="mt-5 text-lg tracking-[-0.02em] text-[color:var(--ink)]">
+                  <h3 className="mt-5 text-lg font-semibold tracking-[-0.02em] !text-[color:var(--ink)]">
                     {o.title}
                   </h3>
-                  <p className="mt-2 flex-1 text-[0.88rem] leading-relaxed text-[color:var(--muted)]">
+                  <p className="mt-2 flex-1 text-[0.88rem] leading-relaxed !text-[color:var(--muted)]">
                     {o.desc}
                   </p>
-                  <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-[color:var(--brand-primary-700)]">
+                  <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold !text-[color:var(--brand-primary-700)]">
                     {o.cta}
                     <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </span>

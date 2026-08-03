@@ -74,7 +74,7 @@ export default function MissionDetailPage() {
   if (!mission) {
     return (
       <div className="flex min-h-[60vh] flex-col items-center justify-center px-6 text-center">
-        <h1 className="text-2xl tracking-[-0.02em] text-[color:var(--ink)]">
+        <h1 className="text-2xl tracking-[-0.02em] !text-[color:var(--ink)]">
           Mission not found
         </h1>
         <p className="mt-2 text-[color:var(--muted)]">
@@ -116,7 +116,7 @@ export default function MissionDetailPage() {
               </span>
             </div>
 
-            <h2 className="mt-4 text-[2rem] leading-[1.04] tracking-[-0.035em] text-[color:var(--ink)] sm:text-4xl">
+            <h2 className="mt-4 text-[2rem] leading-[1.04] tracking-[-0.035em] !text-[color:var(--ink)] sm:text-4xl">
               {mission.title}
             </h2>
             {mission.overview && (
@@ -127,7 +127,7 @@ export default function MissionDetailPage() {
 
             {mission.descriptionImages.length > 0 && (
               <div className="mt-10">
-                <h3 className="text-xl tracking-[-0.02em] text-[color:var(--ink)]">
+                <h3 className="text-xl tracking-[-0.02em] !text-[color:var(--ink)]">
                   Mission moments
                 </h3>
                 <div className="mt-4 grid auto-rows-[130px] grid-cols-2 gap-3 sm:auto-rows-[160px] sm:grid-cols-3">
@@ -136,7 +136,7 @@ export default function MissionDetailPage() {
                       key={`${url}-${index}`}
                       type="button"
                       onClick={() => setActiveImage(url)}
-                      className={`group relative overflow-hidden rounded-[12px] bg-[color:var(--surface)] ${
+                      className={`group relative overflow-hidden rounded-[12px] bg-[color:var(--section-teal)] ${
                         index === 0 && mission.descriptionImages.length > 2
                           ? "col-span-2 row-span-2"
                           : ""
@@ -156,7 +156,7 @@ export default function MissionDetailPage() {
 
             {mission.impact.length > 0 && (
               <div className="mt-10">
-                <h3 className="text-xl tracking-[-0.02em] text-[color:var(--ink)]">
+                <h3 className="text-xl tracking-[-0.02em] !text-[color:var(--ink)]">
                   Impact
                 </h3>
                 <ul className="mt-4 space-y-2.5">
@@ -186,7 +186,7 @@ export default function MissionDetailPage() {
             </div>
 
             {mission.partners.length > 0 && (
-              <div className="rounded-[14px] border border-[color:var(--line)] bg-[color:var(--surface)] p-6">
+              <div className="rounded-[14px] border border-[color:var(--line)] bg-[color:var(--section-teal)] p-6">
                 <div className="flex items-center gap-2 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-[color:var(--muted)]">
                   <Users className="h-4 w-4" /> Partners
                 </div>
@@ -202,7 +202,7 @@ export default function MissionDetailPage() {
             )}
 
             {embed && (
-              <div className="rounded-[14px] border border-[color:var(--line)] bg-[color:var(--surface)] p-6">
+              <div className="rounded-[14px] border border-[color:var(--line)] bg-[color:var(--section-teal)] p-6">
                 <h3 className="text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-[color:var(--muted)]">
                   Mission video
                 </h3>
@@ -257,7 +257,7 @@ export default function MissionDetailPage() {
           <button
             type="button"
             onClick={() => setActiveImage("")}
-            className="absolute right-5 top-5 rounded-full bg-[color:var(--paper)] px-4 py-2 text-sm font-semibold text-[color:var(--ink)] transition hover:-translate-y-0.5"
+            className="absolute right-5 top-5 rounded-full bg-[color:var(--paper)] px-4 py-2 text-sm font-semibold !text-[color:var(--ink)] transition hover:-translate-y-0.5"
           >
             Close
           </button>

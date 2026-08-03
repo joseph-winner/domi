@@ -19,7 +19,7 @@ function Field({ label, required, hint, children }) {
   return (
     <div className="space-y-2">
       <div className="flex items-start justify-between gap-3">
-        <label className="text-sm font-semibold text-[color:var(--ink)]">
+        <label className="text-sm font-semibold !text-[color:var(--ink)]">
           {label}{" "}
           {required ? (
             <span className="text-rose-500">*</span>
@@ -37,7 +37,7 @@ function Field({ label, required, hint, children }) {
 }
 
 const fieldClass = [
-  "w-full rounded-[10px] border border-[color:var(--line)] bg-[color:var(--paper)] px-4 py-3 text-sm text-[color:var(--ink)]",
+  "w-full rounded-[10px] border border-[color:var(--line)] bg-[color:var(--paper)] px-4 py-3 text-sm !text-[color:var(--ink)]",
   "outline-none transition placeholder:text-[color:var(--muted)]",
   "focus:border-[color:var(--brand-primary)] focus:ring-4 focus:ring-[color:var(--brand-primary)]/12",
   "disabled:cursor-not-allowed disabled:opacity-60",
@@ -210,12 +210,12 @@ export default function page() {
               {perks.map((p) => (
                 <div
                   key={p.title}
-                  className="rounded-[14px] border border-[color:var(--line)] bg-[color:var(--surface)] p-5"
+                  className="rounded-[14px] border border-[color:var(--line)] bg-[color:var(--section-teal)] p-5"
                 >
                   <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-[color:var(--brand-primary)]/10 text-[color:var(--brand-primary-700)]">
                     <p.icon className="h-5 w-5" />
                   </span>
-                  <p className="mt-4 text-sm font-semibold text-[color:var(--ink)]">
+                  <p className="mt-4 text-sm font-semibold !text-[color:var(--ink)]">
                     {p.title}
                   </p>
                   <p className="mt-1.5 text-[0.82rem] leading-relaxed text-[color:var(--muted)]">
@@ -245,7 +245,7 @@ export default function page() {
                 className="h-full min-h-[360px] w-full object-cover"
               />
               <div className="absolute inset-x-4 bottom-4 rounded-[12px] bg-[color:var(--paper)]/95 p-4 backdrop-blur">
-                <div className="flex items-center gap-2 text-sm font-semibold text-[color:var(--ink)]">
+                <div className="flex items-center gap-2 text-sm font-semibold !text-[color:var(--ink)]">
                   <BadgeCheck className="h-5 w-5 text-[color:var(--brand-primary-700)]" />
                   Quick note
                 </div>
@@ -263,7 +263,7 @@ export default function page() {
         <div className="mt-10 grid gap-4 border-t border-[color:var(--line)] pt-8 sm:grid-cols-3">
           {steps.map((s) => (
             <div key={s.title}>
-              <div className="text-sm font-semibold text-[color:var(--ink)]">
+              <div className="text-sm font-semibold !text-[color:var(--ink)]">
                 {s.title}
               </div>
               <div className="mt-1 text-sm text-[color:var(--muted)]">
@@ -275,14 +275,14 @@ export default function page() {
       </section>
 
       {/* Form + sidebar */}
-      <section className="bg-[color:var(--surface)] px-5 py-16 sm:px-8 lg:px-10 lg:py-20">
+      <section className="bg-[color:var(--section-teal)] px-5 py-16 sm:px-8 lg:px-10 lg:py-20">
         <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-12">
           {/* Form */}
           <div className="lg:col-span-8">
             <div className="overflow-hidden rounded-[16px] border border-[color:var(--line)] bg-[color:var(--paper)]">
               <div className="flex items-center justify-between gap-4 border-b border-[color:var(--line)] px-6 py-5">
                 <div>
-                  <h2 className="text-xl tracking-[-0.02em] text-[color:var(--ink)]">
+                  <h2 className="text-xl tracking-[-0.02em] !text-[color:var(--ink)]">
                     Volunteer Application
                   </h2>
                   <p className="mt-1 text-sm text-[color:var(--muted)]">
@@ -299,7 +299,7 @@ export default function page() {
               <form onSubmit={onSubmit} className="p-6 sm:p-8">
                 {submitted ? (
                   <div className="mb-6 rounded-[12px] border border-[color:var(--brand-accent)]/40 bg-[color:var(--brand-accent)]/10 p-4">
-                    <div className="font-semibold text-[color:var(--ink)]">
+                    <div className="font-semibold !text-[color:var(--ink)]">
                       Application received!
                     </div>
                     <div className="mt-1 text-sm text-[color:var(--muted)]">
@@ -311,8 +311,8 @@ export default function page() {
 
                 <div className="grid gap-6">
                   {/* Personal */}
-                  <div className="rounded-[14px] border border-[color:var(--line)] bg-[color:var(--surface)] p-5 sm:p-6">
-                    <div className="flex items-center gap-2 text-[color:var(--ink)]">
+                  <div className="rounded-[14px] border border-[color:var(--line)] bg-[color:var(--section-teal)] p-5 sm:p-6">
+                    <div className="flex items-center gap-2 !text-[color:var(--ink)]">
                       <HeartHandshake className="h-5 w-5 text-[color:var(--brand-primary-700)]" />
                       <h3 className="text-base font-semibold">Personal Details</h3>
                     </div>
@@ -338,8 +338,8 @@ export default function page() {
                   </div>
 
                   {/* Program */}
-                  <div className="rounded-[14px] border border-[color:var(--line)] bg-[color:var(--surface)] p-5 sm:p-6">
-                    <div className="flex items-center gap-2 text-[color:var(--ink)]">
+                  <div className="rounded-[14px] border border-[color:var(--line)] bg-[color:var(--section-teal)] p-5 sm:p-6">
+                    <div className="flex items-center gap-2 !text-[color:var(--ink)]">
                       <CalendarDays className="h-5 w-5 text-[color:var(--brand-primary-700)]" />
                       <h3 className="text-base font-semibold">Program Preferences</h3>
                     </div>
@@ -393,8 +393,8 @@ export default function page() {
                   </div>
 
                   {/* Background */}
-                  <div className="rounded-[14px] border border-[color:var(--line)] bg-[color:var(--surface)] p-5 sm:p-6">
-                    <div className="flex items-center gap-2 text-[color:var(--ink)]">
+                  <div className="rounded-[14px] border border-[color:var(--line)] bg-[color:var(--section-teal)] p-5 sm:p-6">
+                    <div className="flex items-center gap-2 !text-[color:var(--ink)]">
                       <ShieldCheck className="h-5 w-5 text-[color:var(--brand-primary-700)]" />
                       <h3 className="text-base font-semibold">Background & Safety</h3>
                     </div>
@@ -460,7 +460,7 @@ export default function page() {
           <aside className="lg:col-span-4">
             <div className="sticky top-24 space-y-6">
               <div className="rounded-[16px] border border-[color:var(--line)] bg-[color:var(--paper)] p-6">
-                <h3 className="text-base font-semibold text-[color:var(--ink)]">
+                <h3 className="text-base font-semibold !text-[color:var(--ink)]">
                   What to Expect
                 </h3>
                 <ul className="mt-4 space-y-3 text-sm text-[color:var(--muted)]">
@@ -477,8 +477,8 @@ export default function page() {
                     </li>
                   ))}
                 </ul>
-                <div className="mt-6 rounded-[12px] border border-[color:var(--line)] bg-[color:var(--surface)] p-4">
-                  <div className="flex items-center gap-2 text-sm font-semibold text-[color:var(--ink)]">
+                <div className="mt-6 rounded-[12px] border border-[color:var(--line)] bg-[color:var(--section-teal)] p-4">
+                  <div className="flex items-center gap-2 text-sm font-semibold !text-[color:var(--ink)]">
                     <MapPin className="h-5 w-5 text-[color:var(--brand-primary-700)]" />
                     Community Medical Missions
                   </div>
@@ -491,7 +491,7 @@ export default function page() {
               </div>
 
               <div className="rounded-[16px] border border-[color:var(--line)] bg-[color:var(--paper)] p-6">
-                <h3 className="text-base font-semibold text-[color:var(--ink)]">
+                <h3 className="text-base font-semibold !text-[color:var(--ink)]">
                   Need Help?
                 </h3>
                 <p className="mt-2 text-sm text-[color:var(--muted)]">

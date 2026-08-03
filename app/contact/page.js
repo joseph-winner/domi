@@ -10,6 +10,7 @@ import {
   MessageCircle,
   ArrowUpRight,
 } from "lucide-react";
+import { FaFacebookF, FaXTwitter, FaYoutube, FaLinkedinIn, FaInstagram } from "react-icons/fa6";
 
 function page() {
   const CONTACT = useMemo(
@@ -124,8 +125,16 @@ function page() {
     },
   ];
 
+  const socials = [
+    { label: "Facebook", href: "https://www.facebook.com/people/Doctors-on-Mission-International/61573255932279/#", Icon: FaFacebookF },
+    { label: "X", href: "https://x.com/DoctorsMission/status/2074434034881400981", Icon: FaXTwitter },
+    { label: "YouTube", href: "https://www.youtube.com/@doctorsonmissioninternational", Icon: FaYoutube },
+    { label: "LinkedIn", href: "https://www.linkedin.com/company/doctors-on-mission-international/?originalSubdomain=ug", Icon: FaLinkedinIn },
+    { label: "Instagram", href: "https://www.instagram.com/doctors_on_mission_int/", Icon: FaInstagram },
+  ];
+
   const fieldClass =
-    "w-full rounded-[12px] border border-[color:var(--line)] bg-[color:var(--paper)] px-4 py-3 text-sm text-[color:var(--ink)] outline-none transition placeholder:text-[color:var(--muted)] focus:border-[color:var(--brand-primary)] focus:ring-4 focus:ring-[color:var(--brand-primary)]/12";
+    "w-full rounded-[12px] border border-[color:var(--line)] bg-[color:var(--paper)] px-4 py-3 text-sm !text-[color:var(--ink)] outline-none transition placeholder:text-[color:var(--muted)] focus:border-[color:var(--brand-primary)] focus:ring-4 focus:ring-[color:var(--brand-primary)]/12";
 
   return (
     <main className="bg-[color:var(--paper)]">
@@ -162,11 +171,11 @@ function page() {
       </div>
 
       {/* Make an inquiry — reference form, appended after the cards */}
-      <section id="inquiry" className="bg-[color:var(--surface)] px-5 py-16 sm:px-8 lg:px-10 lg:py-24">
+      <section id="inquiry" className="bg-[color:var(--section-teal)] px-5 py-16 sm:px-8 lg:px-10 lg:py-24">
         <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
           {/* Form */}
           <div>
-            <h2 className="text-[2rem] tracking-[-0.03em] text-[color:var(--ink)] sm:text-4xl">
+            <h2 className="text-[2rem] tracking-[-0.03em] !text-[color:var(--ink)] sm:text-4xl">
               Make an inquiry
             </h2>
 
@@ -189,7 +198,7 @@ function page() {
             <form onSubmit={onSubmit} className="mt-8 space-y-5">
               <div className="grid gap-5 sm:grid-cols-2">
                 <div>
-                  <label className="mb-1.5 block text-sm font-medium text-[color:var(--ink)]">
+                  <label className="mb-1.5 block text-sm font-medium !text-[color:var(--ink)]">
                     Full name
                   </label>
                   <input
@@ -204,7 +213,7 @@ function page() {
                   )}
                 </div>
                 <div>
-                  <label className="mb-1.5 block text-sm font-medium text-[color:var(--ink)]">
+                  <label className="mb-1.5 block text-sm font-medium !text-[color:var(--ink)]">
                     Phone
                   </label>
                   <input
@@ -216,7 +225,7 @@ function page() {
                   />
                 </div>
                 <div>
-                  <label className="mb-1.5 block text-sm font-medium text-[color:var(--ink)]">
+                  <label className="mb-1.5 block text-sm font-medium !text-[color:var(--ink)]">
                     Email
                   </label>
                   <input
@@ -232,7 +241,7 @@ function page() {
                   )}
                 </div>
                 <div>
-                  <label className="mb-1.5 block text-sm font-medium text-[color:var(--ink)]">
+                  <label className="mb-1.5 block text-sm font-medium !text-[color:var(--ink)]">
                     Subject
                   </label>
                   <input
@@ -249,7 +258,7 @@ function page() {
               </div>
 
               <div>
-                <label className="mb-1.5 block text-sm font-medium text-[color:var(--ink)]">
+                <label className="mb-1.5 block text-sm font-medium !text-[color:var(--ink)]">
                   Tell us more
                 </label>
                 <textarea
@@ -284,7 +293,7 @@ function page() {
 
           {/* Reach us directly */}
           <div>
-            <h2 className="text-[2rem] tracking-[-0.03em] text-[color:var(--ink)] sm:text-4xl">
+            <h2 className="text-[2rem] tracking-[-0.03em] !text-[color:var(--ink)] sm:text-4xl">
               Reach us directly
             </h2>
             <div className="mt-8 space-y-4">
@@ -297,7 +306,7 @@ function page() {
                   className="group flex items-start justify-between gap-4 rounded-[16px] bg-[color:var(--paper)] p-6 shadow-[0_18px_50px_-40px_rgba(28,26,22,0.5)] transition hover:-translate-y-0.5"
                 >
                   <div>
-                    <p className="text-sm text-[color:var(--ink)]">{c.label}</p>
+                    <p className="text-sm !text-[color:var(--ink)]">{c.label}</p>
                     <p className="mt-0.5 font-semibold text-[color:var(--brand-primary-700)]">
                       {c.value}
                     </p>
@@ -310,6 +319,28 @@ function page() {
                   </span>
                 </a>
               ))}
+            </div>
+            <div className="mt-6" aria-labelledby="social-links-heading">
+              <p
+                id="social-links-heading"
+                className="text-sm font-medium text-[color:var(--ink)]"
+              >
+                Follow Doctors On Mission
+              </p>
+              <div className="mt-3 flex flex-wrap gap-3">
+                {socials.map(({ label, href, Icon }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    aria-label={label}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[color:var(--brand-primary)] text-white transition hover:-translate-y-0.5 hover:bg-[color:var(--brand-primary-600)]"
+                  >
+                    <Icon className="h-5 w-5" />
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
         </div>
