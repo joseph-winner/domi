@@ -24,8 +24,8 @@ const defaultSlides = [
 
 const defaultContent = {
   slides: defaultSlides,
-  tagline: { primary: "Spirited", secondary: "to Care" },
-  title: "Doctors On Mission",
+  tagline: { primary: "Reaching the Least.", secondary: "Restoring Hope." },
+  title: "Doctors on Mission",
   titleHighlight: "International",
   subtitle:
     "Since 2023, Doctors on Mission International has been transforming underserved communities through life-saving medical and surgical care, humanitarian outreach missions, specialist procedures, and compassionate service.",
@@ -219,4 +219,5 @@ function HeroSection() {
 }
 
 export default HeroSection;
+
 

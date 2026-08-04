@@ -1,4 +1,4 @@
-import Banner from "@/layout/Banner";
+﻿import Banner from "@/layout/Banner";
 import React from "react";
 import Image from "next/image";
 import FAQAccordion from "@/components/FAQAccordion";
@@ -17,10 +17,15 @@ import {
 
 function AboutPage() {
   const stats = [
-    { Icon: Stethoscope, value: "50+", label: "Medical Volunteers" },
-    { Icon: Globe, value: "10+", label: "Communities Served" },
-    { Icon: HandHeart, value: "5000+", label: "Lives Impacted" },
-    { Icon: Heart, value: "20+", label: "Medical Camps" },
+    { Icon: Stethoscope, value: "100+", label: "Medical & Surgical Missions" },
+    { Icon: Heart, value: "50,000+", label: "Patients Served" },
+    {
+      Icon: Globe,
+      value: "6",
+      label: "Countries with Volunteer Presence (Uganda, Burundi, DRC, Nigeria, Ethiopia, Malawi)",
+    },
+    { Icon: HandHeart, value: "500+", label: "Surgical Procedures Performed" },
+    { Icon: Heart, value: "10", label: "Satellite Hospitals Supporting Specialist Care" },
   ];
 
   const foundation = [
@@ -546,3 +551,4 @@ function AboutPage() {
 }
 
 export default AboutPage;
+

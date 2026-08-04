@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { getAboutContent } from "@/lib/firestore";
@@ -8,18 +8,15 @@ const defaultContent = {
   description:
     "Doctor's on Mission International is a volunteer-based non-for-profit organization uniting like-minded Christian medical teams with the aim of serving humanity through freely accessible, acceptable, and reliable medical and surgical care. Our goal is to reduce the burden on medical care within communities while serving God and bringing healing to those in need.",
   stats: [
+    { number: "100+", label: "Medical & Surgical Missions", description: "" },
+    { number: "50,000+", label: "Patients Served", description: "" },
     {
-      number: "2023",
-      label: "Founded",
-      description:
-        "Established in 2023 to unite Christian medical teams to deliver hope and healing in underserved communities.",
+      number: "6",
+      label: "Countries with Volunteer Presence (Uganda, Burundi, DRC, Nigeria, Ethiopia, Malawi)",
+      description: "",
     },
-    {
-      number: "+500",
-      label: "Lives Touched",
-      description:
-        "Through free surgeries, outreach clinics, and medical missions across low-resource settings.",
-    },
+    { number: "500+", label: "Surgical Procedures Performed", description: "" },
+    { number: "10", label: "Satellite Hospitals Supporting Specialist Care", description: "" },
   ],
   image: "/img/who-we-are.jpg",
 };
@@ -107,3 +104,4 @@ function AboutSection() {
 }
 
 export default AboutSection;
+
