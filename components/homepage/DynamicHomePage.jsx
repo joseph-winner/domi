@@ -1,9 +1,11 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { Fragment, useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import { getPageOrder, getCustomSections } from "@/lib/firestore";
 import CustomSection from "./CustomSection";
+import ExploreImpactSection from "./ExploreImpactSection";
+import UpcomingMissionsSection from "./UpcomingMissionsSection";
 
 // Lazy load built-in sections
 const BUILT_IN_COMPONENTS = {
@@ -83,6 +85,15 @@ export default function DynamicHomePage() {
         if (section.type === "built-in") {
           const Component = BUILT_IN_COMPONENTS[section.id];
           if (Component) {
+            if (section.id === "message") {
+              return (
+                <Fragment key={`built-in-${section.id}`}>
+                  <Component />
+                  <ExploreImpactSection />
+                  <UpcomingMissionsSection />
+                </Fragment>
+              );
+            }
             return <Component key={`built-in-${section.id}`} />;
           }
           return null;

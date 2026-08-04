@@ -49,10 +49,10 @@ function Page() {
   };
 
   const highlights = [
-    { label: "Medical Camps", value: "12+" },
-    { label: "Patients Served", value: "5,000+" },
-    { label: "Partners", value: "20+" },
-    { label: "Volunteers", value: "150+" },
+    { label: "Medical & Surgical Missions", value: "100+" },
+    { label: "Patients Served", value: "50,000+" },
+    { label: "Surgical Procedures", value: "500+" },
+    { label: "Satellite Hospitals", value: "10" },
   ];
 
   const categories = [
