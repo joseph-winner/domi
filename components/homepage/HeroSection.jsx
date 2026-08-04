@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
@@ -28,7 +28,7 @@ const defaultContent = {
   title: "Doctors On Mission",
   titleHighlight: "International",
   subtitle:
-    "Extending hope-giving healthcare and faith-filled compassion to the overlooked corners of the globe.",
+    "Since 2023, Doctors on Mission International has been transforming underserved communities through life-saving medical and surgical care, humanitarian outreach missions, specialist procedures, and compassionate service.",
 };
 
 function HeroSection() {
@@ -55,9 +55,15 @@ function HeroSection() {
   }, [slides.length]);
 
   const heroStats = [
-    { value: "+500", label: "Lives touched through outreach" },
-    { value: "20+", label: "Medical & surgical camps" },
-    { value: "50+", label: "Volunteer clinicians & support" },
+    { value: "100+", label: "Medical & Surgical Missions" },
+    { value: "50,000+", label: "Patients Served" },
+    {
+      value: "6",
+      label:
+        "Countries with Volunteer Presence (Uganda, Burundi, DRC, Nigeria, Ethiopia, Malawi)",
+    },
+    { value: "500+", label: "Surgical Procedures Performed" },
+    { value: "10", label: "Satellite Hospitals Supporting Specialist Care" },
   ];
   const tagline = [content.tagline?.primary, content.tagline?.secondary]
     .filter(Boolean)
@@ -87,7 +93,7 @@ function HeroSection() {
         <div className="absolute inset-0 bg-gradient-to-tr from-black/85 via-black/35 to-transparent" />
       </div>
 
-      {/* Content — bottom-left composition (Natural ref) */}
+      {/* Content â€” bottom-left composition (Natural ref) */}
       <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-7xl flex-col justify-end px-5 pb-16 pt-40 sm:px-8 sm:pb-20 md:pb-24 lg:px-10">
         <div className="max-w-3xl">
           {/* Giant thin heading */}
@@ -115,7 +121,7 @@ function HeroSection() {
             </a>
           </div>
 
-          {/* Scripture focus — retained CMS content, refined as a quiet line */}
+          {/* Scripture focus â€” retained CMS content, refined as a quiet line */}
           <div
             className="hero-rise hero-rise-4 mt-10 max-w-2xl border-l border-white/25 pl-5"
             aria-live="polite"
@@ -134,7 +140,7 @@ function HeroSection() {
                   }`}
                 >
                   <span className="font-medium text-white">{slide.verse}</span>
-                  {" — "}
+                  {" â€” "}
                   {slide.text}
                 </p>
               ))}
@@ -167,7 +173,7 @@ function HeroSection() {
       </div>
     </section>
 
-    {/* Relocated intro — about + stats (reference composition) */}
+    {/* Relocated intro â€” about + stats (reference composition) */}
     <section className="bg-[color:var(--paper)] px-5 py-20 sm:px-8 lg:px-10 lg:py-28">
       <div className="mx-auto max-w-7xl">
         <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between">
@@ -213,3 +219,4 @@ function HeroSection() {
 }
 
 export default HeroSection;
+
