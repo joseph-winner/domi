@@ -1,32 +1,29 @@
 import Image from "next/image";
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 
 const impactAreas = [
   {
     title: "Ebola Emergency Response in DRC & Uganda",
     description:
-      "Together with Amigos Internacionales and Marie Claire Foundation in the Democratic Republic of Congo, Doctors on Mission International supports Ebola response efforts through contact tracing, community engagement, disease surveillance, emergency response, treatment support, isolation centres, and collaboration with health authorities.",
+      "With Amigos Internacionales and Marie Claire Foundation, we support Ebola response through contact tracing, community engagement, disease surveillance, treatment support and isolation centres.",
     image: "/img/ebola-response.jpeg",
     alt: "Ebola emergency response work in the community",
-    layout: "lg:col-span-3 lg:row-span-2",
     type: "image",
+    cta: { label: "View missions", href: "/missions" },
   },
   {
     title: "Medical & Surgical Missions",
     description:
       "We conduct monthly and quarterly medical and surgical outreach missions, providing essential healthcare services to vulnerable communities with limited access to medical care.",
-    image: "/img/upcoming-programs-1.jpg",
-    alt: "Medical team providing care during an outreach mission",
-    layout: "lg:col-span-3",
     type: "gold",
+    cta: { label: "View missions", href: "/missions" },
   },
   {
     title: "Humanitarian Medical Relief",
     description:
       "Working together with our partners, we respond to humanitarian medical needs and emergencies, delivering essential healthcare services to communities affected by crises.",
-    image: "/img/3daymedcamp.jpg",
-    alt: "Humanitarian medical relief outreach",
-    layout: "lg:col-span-3 lg:row-span-2",
-    type: "image",
+    type: "navy",
   },
   {
     title: "Satellite Hospitals Network",
@@ -34,8 +31,7 @@ const impactAreas = [
       "Through our Satellite Hospitals Program, we partner with healthcare facilities to expand access to specialist and surgical care for vulnerable communities.",
     image: "/img/about-5.jpg",
     alt: "Partner healthcare facility supporting specialist care",
-    layout: "lg:col-span-3",
-    type: "navy",
+    type: "image",
   },
   {
     title: "Volunteer Medical Programs",
@@ -43,17 +39,126 @@ const impactAreas = [
       "We provide opportunities for healthcare professionals from around the world to volunteer in Africa, using their skills and expertise to transform lives and strengthen healthcare delivery.",
     image: "/img/volunteers.jpg",
     alt: "Volunteer medical professionals working together",
-    layout: "lg:col-span-6",
     type: "wide",
+    cta: { label: "Become a volunteer", href: "/voluteer" },
   },
 ];
 
-const cardClasses = {
-  gold: "bg-[color:var(--brand-secondary)]",
-  navy: "bg-[color:var(--brand-primary)]",
-};
+const Eyebrow = ({ tone }) => (
+  <p
+    className={`text-[0.68rem] font-semibold uppercase tracking-[0.2em] ${
+      tone === "dark"
+        ? "text-[#8a6a12]"
+        : "text-[color:var(--brand-secondary)]"
+    }`}
+  >
+    Impact Area
+  </p>
+);
+
+function ImageCard({ area, wide }) {
+  return (
+    <article
+      className={`group relative overflow-hidden rounded-[16px] ${
+        wide ? "min-h-[20rem] sm:col-span-2 lg:col-span-4" : "min-h-[26rem]"
+      }`}
+    >
+      <Image
+        src={area.image}
+        alt={area.alt}
+        fill
+        sizes={wide ? "100vw" : "(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"}
+        className="object-cover transition duration-700 group-hover:scale-105"
+      />
+      {/* Strong scrim so copy is always legible */}
+      <div
+        className={`absolute inset-0 ${
+          wide
+            ? "bg-gradient-to-r from-black/85 via-black/55 to-black/10"
+            : "bg-gradient-to-t from-black/90 via-black/45 to-black/10"
+        }`}
+      />
+      <div
+        className={`absolute inset-x-0 bottom-0 p-6 sm:p-7 ${
+          wide ? "max-w-xl" : ""
+        }`}
+      >
+        <Eyebrow />
+        <h3 className="mt-2 text-xl font-semibold leading-tight text-white sm:text-2xl">
+          {area.title}
+        </h3>
+        <p className="mt-3 text-sm leading-relaxed text-white/85">
+          {area.description}
+        </p>
+        {area.cta && (
+          <Link
+            href={area.cta.href}
+            className="group/btn mt-5 inline-flex items-center gap-2 rounded-full bg-[color:var(--brand-secondary)] px-5 py-2.5 text-sm font-semibold text-[#3a2a06] transition hover:-translate-y-0.5"
+          >
+            {area.cta.label}
+            <ArrowUpRight className="h-4 w-4 transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
+          </Link>
+        )}
+      </div>
+    </article>
+  );
+}
+
+function SolidCard({ area }) {
+  const isNavy = area.type === "navy";
+  return (
+    <article
+      className={`relative flex min-h-[26rem] flex-col overflow-hidden rounded-[16px] p-7 ${
+        isNavy
+          ? "bg-[color:var(--brand-primary)]"
+          : "bg-[color:var(--brand-secondary)]"
+      }`}
+    >
+      {/* Decorative concentric rings */}
+      <div
+        className={`pointer-events-none absolute -bottom-16 -right-16 h-56 w-56 rounded-full border ${
+          isNavy ? "border-white/15" : "border-[#3a2a06]/15"
+        }`}
+      />
+      <div
+        className={`pointer-events-none absolute -bottom-28 -right-2 h-56 w-56 rounded-full border ${
+          isNavy ? "border-white/15" : "border-[#3a2a06]/15"
+        }`}
+      />
+      <div className="relative">
+        <Eyebrow tone={isNavy ? "light" : "dark"} />
+        <h3
+          className={`mt-4 text-xl font-semibold leading-tight sm:text-2xl ${
+            isNavy ? "text-white" : "text-[#2a1f04]"
+          }`}
+        >
+          {area.title}
+        </h3>
+      </div>
+      <p
+        className={`relative mt-4 text-sm leading-relaxed ${
+          isNavy ? "text-white/80" : "text-[#3a2a06]/85"
+        }`}
+      >
+        {area.description}
+      </p>
+      {area.cta && (
+        <Link
+          href={area.cta.href}
+          className="group/btn relative mt-6 inline-flex w-fit items-center gap-2 rounded-full bg-[color:var(--ink)] px-5 py-2.5 text-sm font-semibold text-white transition hover:-translate-y-0.5"
+        >
+          {area.cta.label}
+          <ArrowUpRight className="h-4 w-4 transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
+        </Link>
+      )}
+    </article>
+  );
+}
 
 function ExploreImpactSection() {
+  const topCards = impactAreas.filter((a) => a.type !== "wide");
+  const wideCard = impactAreas.find((a) => a.type === "wide");
+
   return (
     <section className="bg-[color:var(--paper)] px-5 py-20 sm:px-8 lg:px-10 lg:py-28">
       <div className="mx-auto max-w-7xl">
@@ -65,92 +170,20 @@ function ExploreImpactSection() {
             Explore <span className="tone-muted">Our Impact</span>
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-[0.98rem] leading-relaxed text-[color:var(--muted)]">
-            From emergency response to lasting partnerships, our programmes
-            bring compassionate healthcare closer to communities across Africa.
+            From emergency response to lasting partnerships, our programmes bring
+            compassionate healthcare closer to communities across Africa.
           </p>
         </div>
 
-        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:auto-rows-[17rem] lg:grid-cols-12">
-          {impactAreas.map((area) => {
-            if (area.type === "image") {
-              return (
-                <article
-                  key={area.title}
-                  className={`group relative min-h-[22rem] overflow-hidden rounded-[16px] border border-[color:var(--line)] ${area.layout}`}
-                >
-                  <Image
-                    src={area.image}
-                    alt={area.alt}
-                    fill
-                    sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
-                    className="object-cover transition duration-500 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[color:var(--brand-primary)] via-[color:var(--brand-primary)]/50 to-transparent" />
-                  <div className="absolute inset-x-0 bottom-0 p-6 sm:p-7">
-                    <p className="text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-[color:var(--brand-secondary)]">
-                      Impact area
-                    </p>
-                    <h3 className="mt-2 text-xl leading-tight text-white sm:text-2xl">
-                      {area.title}
-                    </h3>
-                    <p className="mt-3 text-sm leading-relaxed text-white/80">
-                      {area.description}
-                    </p>
-                  </div>
-                </article>
-              );
-            }
-
-            if (area.type === "wide") {
-              return (
-                <article
-                  key={area.title}
-                  className={`group relative min-h-[22rem] overflow-hidden rounded-[16px] border border-[color:var(--line)] ${area.layout}`}
-                >
-                  <Image
-                    src={area.image}
-                    alt={area.alt}
-                    fill
-                    sizes="(min-width: 1024px) 50vw, 100vw"
-                    className="object-cover transition duration-500 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-r from-[color:var(--brand-primary)] via-[color:var(--brand-primary)]/70 to-transparent" />
-                  <div className="relative flex h-full max-w-lg flex-col justify-end p-6 sm:p-7">
-                    <p className="text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-[color:var(--brand-secondary)]">
-                      Impact area
-                    </p>
-                    <h3 className="mt-2 text-xl leading-tight text-white sm:text-2xl">
-                      {area.title}
-                    </h3>
-                    <p className="mt-3 text-sm leading-relaxed text-white/80">
-                      {area.description}
-                    </p>
-                  </div>
-                </article>
-              );
-            }
-
-            return (
-              <article
-                key={area.title}
-                className={`relative flex min-h-[17rem] flex-col justify-between overflow-hidden rounded-[16px] border border-[color:var(--line)] p-6 sm:p-7 ${area.layout} ${cardClasses[area.type]}`}
-              >
-                <div className="absolute -bottom-14 -right-14 h-48 w-48 rounded-full border border-white/20" />
-                <div className="absolute -bottom-24 -right-4 h-48 w-48 rounded-full border border-white/20" />
-                <div className="relative">
-                  <p className={`text-[0.68rem] font-semibold uppercase tracking-[0.18em] ${area.type === "navy" ? "text-[color:var(--brand-secondary)]" : "text-[color:var(--ink)]/70"}`}>
-                    Impact area
-                  </p>
-                  <h3 className={`mt-4 text-xl leading-tight sm:text-2xl ${area.type === "navy" ? "text-white" : "!text-[color:var(--ink)]"}`}>
-                    {area.title}
-                  </h3>
-                </div>
-                <p className={`relative mt-5 text-sm leading-relaxed ${area.type === "navy" ? "text-white/80" : "text-[color:var(--ink-soft)]"}`}>
-                  {area.description}
-                </p>
-              </article>
-            );
-          })}
+        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {topCards.map((area) =>
+            area.type === "image" ? (
+              <ImageCard key={area.title} area={area} />
+            ) : (
+              <SolidCard key={area.title} area={area} />
+            )
+          )}
+          {wideCard && <ImageCard key={wideCard.title} area={wideCard} wide />}
         </div>
       </div>
     </section>
