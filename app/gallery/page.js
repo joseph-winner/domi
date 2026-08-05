@@ -44,23 +44,17 @@ export default async function ImagesPage() {
       />
 
       <section className="mx-auto max-w-7xl px-5 py-16 sm:px-8 lg:px-10 lg:py-20">
-        <div className="grid auto-rows-[180px] gap-4 md:auto-rows-[220px] md:grid-cols-3 lg:auto-rows-[260px]">
-          {galleryImages.map((item, index) => (
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+          {galleryImages.map((item) => (
             <article
               key={item.src}
-              className={`group relative overflow-hidden rounded-[12px] border border-[color:var(--line)] bg-[color:var(--section-teal)] transition duration-500 hover:-translate-y-1 hover:shadow-[0_28px_65px_-45px_rgba(12,34,51,0.55)] ${
-                index % 7 === 0
-                  ? "md:col-span-2 md:row-span-2"
-                  : index % 5 === 0
-                  ? "md:row-span-2"
-                  : ""
-              }`}
+              className="group relative aspect-square overflow-hidden rounded-[12px] border border-[color:var(--line)] bg-[color:var(--section-teal)] transition duration-500 hover:-translate-y-1 hover:shadow-[0_28px_65px_-45px_rgba(12,34,51,0.55)]"
             >
               <Image
                 src={item.src}
                 alt={item.title}
                 fill
-                sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                sizes="(min-width: 1024px) 25vw, (min-width: 640px) 33vw, 50vw"
                 className="object-cover transition duration-700 group-hover:scale-105"
               />
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-black/5 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />

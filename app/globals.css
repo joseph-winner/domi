@@ -89,9 +89,11 @@ span.inline-flex.rounded-full {
   padding: 0 !important;
 }
 
-/* Never allow light surfaces to inherit white text from a dark parent card. */
-:is(article, div, li)[class~="bg-[color:var(--paper)]"] :is(h1, h2, h3, h4, h5, h6, p, span, a, strong, li, label),
-:is(article, div, li)[class~="bg-white"] :is(h1, h2, h3, h4, h5, h6, p, span, a, strong, li, label) {
+/* Never allow light surfaces to inherit white text from a dark parent card.
+   Buttons (.btn) keep their own label colour — a navy .btn-primary inside a
+   white card must stay white text, so exclude buttons and their contents. */
+:is(article, div, li)[class~="bg-[color:var(--paper)]"] :is(h1, h2, h3, h4, h5, h6, p, span, a, strong, li, label):not(.btn):not(.btn *),
+:is(article, div, li)[class~="bg-white"] :is(h1, h2, h3, h4, h5, h6, p, span, a, strong, li, label):not(.btn):not(.btn *) {
   color: #000000 !important;
 }
 

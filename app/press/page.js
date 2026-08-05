@@ -25,7 +25,8 @@ function page() {
     orgs: ["Amigos Internacionales", "Doctors On Mission International"],
     excerpt:
       "A successful medical camp delivered critical healthcare services to underserved communities in Northern Uganda, supporting screenings, surgeries, lab diagnostics, and health education with local partners.",
-    image: "/images/press/press-release-hero.jpg",
+    // Local placeholder image — a CMS may override this `image` field.
+    image: "/img/3daymedcamp.jpg",
     ctaText: "Read More",
     ctaHref: "https://doctorsonmissionint.org/",
     highlights: [
@@ -40,7 +41,7 @@ function page() {
   const featuredNewsletter = {
     title: "Monthly Newsletter — March 2025",
     subtitle: "Medical Missions have huge success",
-    image: "/images/press/newsletter-march-2025.jpg",
+    image: "/img/main-slide1.jpg",
     downloadHref: "https://doctorsonmissionint.org/",
   };
 
@@ -50,7 +51,7 @@ function page() {
       title: "Across to qualify healthcare in a fundamental right...",
       excerpt:
         "A brief highlight about mission impact, community hope, and long-term commitment.",
-      image: "/images/press/ap-news.jpg",
+      image: "/img/trainings.jpg",
       href: "https://doctorsonmissionint.org/",
       type: "Article",
       date: "Mar 2025",
@@ -60,7 +61,7 @@ function page() {
       title: "Successful medical camp transforms lives in Ogul Village, Gulu",
       excerpt:
         "New initiative launched to provide healthcare in remote areas of Uganda.",
-      image: "/images/press/parrots-media.jpg",
+      image: "/img/support-1.jpg",
       href: "https://doctorsonmissionint.org/",
       type: "Article",
       date: "Mar 2025",
@@ -70,7 +71,7 @@ function page() {
       title: "Amigos Internacionales and Doctors on Mission International...",
       excerpt:
         "Coverage on outreach impact and collaboration across communities.",
-      image: "/images/press/uganda-business-channel.jpg",
+      image: "/img/partnerships.jpg",
       href: "https://doctorsonmissionint.org/",
       type: "Article",
       date: "Mar 2025",
@@ -80,7 +81,7 @@ function page() {
       title: "Hope was blind, but now I see — Doctors on Mission...",
       excerpt:
         "A story about restoring sight and hope through outreach and surgery support.",
-      image: "/images/press/ein-presswire.jpg",
+      image: "/img/about-5.jpg",
       href: "https://doctorsonmissionint.org/",
       type: "Press",
       date: "Feb 2025",
@@ -90,7 +91,7 @@ function page() {
       title: "Healing in His Name",
       excerpt:
         "The Dr. John L. Nabu Medical Clinic brings hope to Ogul Village.",
-      image: "/images/press/healing-in-his-name.jpg",
+      image: "/img/who-we-are.jpg",
       href: "https://doctorsonmissionint.org/",
       type: "Story",
       date: "Jan 2025",
@@ -100,7 +101,7 @@ function page() {
       title: "UPDATE: From Darkness to Light — John Paul's Story",
       excerpt:
         "A testimony of restored vision and renewed life after surgery support.",
-      image: "/images/press/john-pauls-story.jpg",
+      image: "/img/john.webp",
       href: "https://doctorsonmissionint.org/",
       type: "Story",
       date: "Jan 2025",
@@ -110,7 +111,7 @@ function page() {
       title: "Joy's Vision Restored",
       excerpt:
         "A powerful story of resilience, support, and healing from the heart of Uganda.",
-      image: "/images/press/joy-vision-restored.jpg",
+      image: "/img/volunteers.jpg",
       href: "https://doctorsonmissionint.org/",
       type: "Story",
       date: "Dec 2024",
@@ -361,6 +362,7 @@ function page() {
                   <p className="mt-2 flex-1 text-sm text-[color:var(--muted)]">
                     {n.excerpt}
                   </p>
+                  {/* Read full article button — commented out per request
                   <a
                     href={n.href}
                     className="group/btn mt-4 inline-flex w-fit items-center gap-2 rounded-full border border-[color:var(--line)] px-4 py-2 text-xs font-medium !text-[color:var(--ink)] transition hover:border-[color:var(--brand-primary)] hover:bg-[color:var(--brand-primary)] hover:text-white"
@@ -368,6 +370,7 @@ function page() {
                     Read full article
                     <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
                   </a>
+                  */}
                 </div>
               </article>
             ))}

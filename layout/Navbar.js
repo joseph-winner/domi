@@ -11,6 +11,7 @@ function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [aboutOpen, setAboutOpen] = useState(false);
   const [newsOpen, setNewsOpen] = useState(false);
+  const [missionsOpen, setMissionsOpen] = useState(false);
   const [donateOpen, setDonateOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -47,7 +48,17 @@ function Navbar() {
     },
     { label: "Volunteer", href: "/voluteer" },
     { label: "Support", href: "/support" },
-    { label: "Missions", href: "/missions" },
+    {
+      label: "Missions",
+      dropdown: [
+        { label: "All Missions", href: "/missions" },
+        { label: "Bethel Cleft Program", href: "/missions/bethel-cleft-program" },
+        { label: "Health Reach Program", href: "/missions/health-reach-program" },
+      ],
+      open: missionsOpen,
+      setOpen: setMissionsOpen,
+      match: ["/missions"],
+    },
     {
       label: "News",
       dropdown: [
@@ -153,7 +164,7 @@ function Navbar() {
                     <ChevronDown className="h-3.5 w-3.5 opacity-70" />
                   </button>
                   {item.open && (
-                    <ul className="absolute left-1/2 top-full w-48 -translate-x-1/2 pt-3">
+                    <ul className="absolute left-1/2 top-full w-56 -translate-x-1/2 pt-3">
                       <div className="overflow-hidden rounded-[14px] border border-[color:var(--line)] bg-[color:var(--paper)] p-1.5 shadow-xl shadow-black/5">
                         {item.dropdown.map((d) => (
                           <li key={d.href}>
