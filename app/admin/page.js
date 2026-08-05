@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
-import { Eye, EyeOff, Lock, Mail, AlertCircle } from "lucide-react";
+import { Eye, EyeOff, AlertCircle } from "lucide-react";
 
 export default function AdminLoginPage() {
   const [email, setEmail] = useState("");
@@ -30,29 +30,79 @@ export default function AdminLoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 px-4">
-      <div className="w-full max-w-md">
-        {/* Logo */}
-        <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-cyan-500 to-blue-600 shadow-lg mb-4">
+    <div
+      className="min-h-screen lg:grid lg:grid-cols-2"
+      style={{ background: "var(--paper)" }}
+    >
+      {/* Left — branded panel */}
+      <div className="relative hidden overflow-hidden lg:block">
+        <img
+          src="/img/who-we-are.jpg"
+          alt=""
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#053759]/96 via-[#053759]/90 to-[#053759]/75" />
+        {/* Decorative rings */}
+        <div className="pointer-events-none absolute -bottom-24 -right-24 h-80 w-80 rounded-full border border-white/10" />
+        <div className="pointer-events-none absolute -bottom-40 -right-4 h-80 w-80 rounded-full border border-white/10" />
+
+        <div className="relative flex h-full flex-col justify-between p-12">
+          <div className="flex items-center gap-3">
             <img
               src="/logos/doctors-mission-logo.svg"
-              alt="Logo"
-              className="w-10 h-10"
+              alt="Doctors on Mission International"
+              className="h-10 w-10 object-contain"
             />
+            <span className="text-sm font-semibold uppercase tracking-[0.2em] text-white">
+              DOMI Admin
+            </span>
           </div>
-          <h1 className="text-2xl font-bold text-white">Admin Dashboard</h1>
-          <p className="text-slate-400 mt-2">
-            Sign in to manage your website content
+
+          <div className="max-w-md">
+            <h2 className="text-[2.5rem] font-semibold leading-[1.05] tracking-[-0.03em] text-white">
+              Manage your missions,{" "}
+              <span className="text-[color:var(--brand-secondary)]">
+                stories and impact.
+              </span>
+            </h2>
+            <p className="mt-5 text-[0.98rem] leading-relaxed text-white/70">
+              Sign in to update content, publish reports and keep the Doctors on
+              Mission story moving forward.
+            </p>
+          </div>
+
+          <p className="text-xs text-white/50">
+            © {new Date().getFullYear()} Doctors On Mission International
           </p>
         </div>
+      </div>
 
-        {/* Login Form */}
-        <div className="bg-white/10 backdrop-blur-xl rounded-[16px] border border-white/10 p-8 shadow-2xl">
-          <form onSubmit={handleSubmit} className="space-y-6">
+      {/* Right — login form */}
+      <div className="flex min-h-screen items-center justify-center px-5 py-16 sm:px-8 lg:px-12">
+        <div className="w-full max-w-sm">
+          {/* Mobile logo */}
+          <div className="mb-10 flex items-center gap-3 lg:hidden">
+            <img
+              src="/logos/doctors-mission-logo.svg"
+              alt="Doctors on Mission International"
+              className="h-9 w-9 object-contain"
+            />
+            <span className="text-sm font-semibold uppercase tracking-[0.2em] text-[color:var(--ink)]">
+              DOMI Admin
+            </span>
+          </div>
+
+          <h1 className="text-[2rem] font-semibold tracking-[-0.03em] !text-[color:var(--ink)]">
+            Login
+          </h1>
+          <p className="mt-2 text-sm text-[color:var(--muted)]">
+            Sign in to manage your website content.
+          </p>
+
+          <form onSubmit={handleSubmit} className="mt-8 space-y-5">
             {error && (
-              <div className="flex items-center gap-3 p-4 rounded-2xl bg-red-500/10 border border-red-500/20 text-red-400">
-                <AlertCircle className="w-5 h-5 flex-shrink-0" />
+              <div className="flex items-center gap-3 rounded-[12px] border border-rose-300 bg-rose-50 p-3.5 text-rose-700">
+                <AlertCircle className="h-5 w-5 flex-shrink-0" />
                 <p className="text-sm">{error}</p>
               </div>
             )}
@@ -60,51 +110,48 @@ export default function AdminLoginPage() {
             <div>
               <label
                 htmlFor="email"
-                className="block text-sm font-medium text-slate-300 mb-2"
+                className="mb-1.5 block text-sm font-medium !text-[color:var(--ink)]"
               >
                 Email address
               </label>
-              <div className="relative">
-                <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
-                <input
-                  type="email"
-                  id="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="w-full pl-12 pr-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-transparent transition"
-                  placeholder="admin@example.com"
-                  required
-                />
-              </div>
+              <input
+                type="email"
+                id="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="w-full rounded-[12px] border border-[color:var(--line)] bg-[color:var(--paper)] px-4 py-3 text-sm !text-[color:var(--ink)] outline-none transition placeholder:text-[color:var(--muted)] focus:border-[color:var(--brand-primary)] focus:ring-4 focus:ring-[color:var(--brand-primary)]/12"
+                placeholder="name@example.com"
+                required
+              />
             </div>
 
             <div>
               <label
                 htmlFor="password"
-                className="block text-sm font-medium text-slate-300 mb-2"
+                className="mb-1.5 block text-sm font-medium !text-[color:var(--ink)]"
               >
                 Password
               </label>
               <div className="relative">
-                <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
                 <input
                   type={showPassword ? "text" : "password"}
                   id="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full pl-12 pr-12 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-transparent transition"
-                  placeholder="••••••••"
+                  className="w-full rounded-[12px] border border-[color:var(--line)] bg-[color:var(--paper)] px-4 py-3 pr-12 text-sm !text-[color:var(--ink)] outline-none transition placeholder:text-[color:var(--muted)] focus:border-[color:var(--brand-primary)] focus:ring-4 focus:ring-[color:var(--brand-primary)]/12"
+                  placeholder="••••••••••"
                   required
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white transition"
+                  aria-label={showPassword ? "Hide password" : "Show password"}
+                  className="absolute right-3.5 top-1/2 -translate-y-1/2 text-[color:var(--muted)] transition hover:text-[color:var(--ink)]"
                 >
                   {showPassword ? (
-                    <EyeOff className="w-5 h-5" />
+                    <EyeOff className="h-5 w-5" />
                   ) : (
-                    <Eye className="w-5 h-5" />
+                    <Eye className="h-5 w-5" />
                   )}
                 </button>
               </div>
@@ -113,11 +160,11 @@ export default function AdminLoginPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold shadow-lg hover:shadow-cyan-500/25 transition disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full rounded-[12px] bg-[color:var(--brand-primary)] py-3.5 text-sm font-semibold text-white transition hover:bg-[color:var(--brand-primary-600)] disabled:cursor-not-allowed disabled:opacity-60"
             >
               {loading ? (
                 <span className="flex items-center justify-center gap-2">
-                  <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
+                  <svg className="h-5 w-5 animate-spin" viewBox="0 0 24 24">
                     <circle
                       className="opacity-25"
                       cx="12"
@@ -136,15 +183,15 @@ export default function AdminLoginPage() {
                   Signing in...
                 </span>
               ) : (
-                "Sign in"
+                "Login"
               )}
             </button>
           </form>
-        </div>
 
-        <p className="text-center text-slate-500 text-sm mt-6">
-          © {new Date().getFullYear()} Doctors On Mission International
-        </p>
+          <p className="mt-10 text-xs text-[color:var(--muted)] lg:hidden">
+            © {new Date().getFullYear()} Doctors On Mission International
+          </p>
+        </div>
       </div>
     </div>
   );
