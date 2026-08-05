@@ -140,7 +140,7 @@ function HeroSection() {
                   }`}
                 >
                   <span className="font-medium text-white">{slide.verse}</span>
-                  {" â€” "}
+                  {" — "}
                   {slide.text}
                 </p>
               ))}
